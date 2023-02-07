@@ -1,0 +1,33 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:SpotifyApp.Shared.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="SpotifyApp.Shared.Views.MainView">
+    <Design.DataContext>
+        <viewModels:MainWindowViewModel />
+    </Design.DataContext>
+    <SplitView Classes="Menu">
+        <Interaction.Behaviors>
+            <AdaptiveBehavior>
+                <AdaptiveClassSetter MinWidth="0" MaxWidth="500" ClassName="Small" />
+                <AdaptiveClassSetter MinWidth="500" MaxWidth="900" ClassName="Medium" />
+                <AdaptiveClassSetter MinWidth="900" MaxWidth="Infinity" ClassName="Wide" />
+            </AdaptiveBehavior>
+        </Interaction.Behaviors>
+        
+        <SplitView.Pane>
+           <Grid VerticalAlignment="Stretch"
+                 RowDefinitions="Auto, *, Auto">
+               <StackPanel>
+                   <Button Classes="MenuCompactButton"
+                           Content="☰"
+                           ToolTip.Tip="Menu"/>
+               </StackPanel>    
+           </Grid>
+       </SplitView.Pane>
+        
+        <ContentControl Content="{Binding Content}" />
+    </SplitView>
+</UserControl>

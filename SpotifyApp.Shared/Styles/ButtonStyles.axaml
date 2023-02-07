@@ -1,0 +1,17 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="20"
+                Width="88">
+            <Button Classes="MenuCompactButton" Content="☰"/>
+        </Border>
+    </Design.PreviewWith>
+
+    <Style Selector="Button.MenuCompactButton">
+        <Setter Property="Height" Value="48" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="FontSize" Value="25" />
+    </Style>
+</Styles>

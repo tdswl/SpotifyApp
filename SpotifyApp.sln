@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyApp.Api.Contracts", "SpotifyApp.Api.Contracts\SpotifyApp.Api.Contracts.csproj", "{17A4B577-2AC2-4BDB-A78B-4B49B794E490}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".sln", ".sln", "{8CC09CC7-6A09-45F5-A751-753AAADE5953}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		Directory.Build.props = Directory.Build.props
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyApp.Api.Client", "SpotifyApp.Api.Client\SpotifyApp.Api.Client.csproj", "{483A3B49-CC1C-401D-9C28-16BCEE8EB383}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyApp.Desktop", "SpotifyApp.Desktop\SpotifyApp.Desktop.csproj", "{F478E2CC-A3E5-47B6-8755-5473FD3B223C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyApp.Shared", "SpotifyApp.Shared\SpotifyApp.Shared.csproj", "{B1B74E56-A9AB-499C-91D1-62072C434187}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyApp.Storage", "SpotifyApp.Storage\SpotifyApp.Storage.csproj", "{0D8D003C-58BE-4B5F-BCCE-57F6D2AE31E9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{17A4B577-2AC2-4BDB-A78B-4B49B794E490}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17A4B577-2AC2-4BDB-A78B-4B49B794E490}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17A4B577-2AC2-4BDB-A78B-4B49B794E490}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17A4B577-2AC2-4BDB-A78B-4B49B794E490}.Release|Any CPU.Build.0 = Release|Any CPU
+		{483A3B49-CC1C-401D-9C28-16BCEE8EB383}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{483A3B49-CC1C-401D-9C28-16BCEE8EB383}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{483A3B49-CC1C-401D-9C28-16BCEE8EB383}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{483A3B49-CC1C-401D-9C28-16BCEE8EB383}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F478E2CC-A3E5-47B6-8755-5473FD3B223C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F478E2CC-A3E5-47B6-8755-5473FD3B223C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F478E2CC-A3E5-47B6-8755-5473FD3B223C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F478E2CC-A3E5-47B6-8755-5473FD3B223C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1B74E56-A9AB-499C-91D1-62072C434187}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1B74E56-A9AB-499C-91D1-62072C434187}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1B74E56-A9AB-499C-91D1-62072C434187}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1B74E56-A9AB-499C-91D1-62072C434187}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D8D003C-58BE-4B5F-BCCE-57F6D2AE31E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D8D003C-58BE-4B5F-BCCE-57F6D2AE31E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D8D003C-58BE-4B5F-BCCE-57F6D2AE31E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D8D003C-58BE-4B5F-BCCE-57F6D2AE31E9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

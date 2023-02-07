@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <AvaloniaResource Include="Assets\**" />
+        <TrimmerRootDescriptor Include="Roots.xml" />
+    </ItemGroup>
+    
+    <ItemGroup><FrameworkReference Include="Microsoft.AspNetCore.App"></FrameworkReference>
+        <PackageReference Include="Avalonia" Version="$(AvaloniaVersion)" />
+        <PackageReference Include="Avalonia.Themes.Fluent" Version="$(AvaloniaVersion)" />
+        <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
+        <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="$(AvaloniaVersion)" />
+        <PackageReference Include="Avalonia.Xaml.Interactions" Version="$(AvaloniaVersion)" />
+        <PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+        <PackageReference Include="XamlNameReferenceGenerator" Version="1.5.1" />
+        <PackageReference Include="IdentityModel.OidcClient" Version="5.2.1" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <ProjectReference Include="..\SpotifyApp.Api.Client\SpotifyApp.Api.Client.csproj" />
+      <ProjectReference Include="..\SpotifyApp.Storage\SpotifyApp.Storage.csproj" />
+    </ItemGroup>
+</Project>

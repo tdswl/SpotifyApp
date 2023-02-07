@@ -8,7 +8,29 @@
     <Design.DataContext>
         <viewModels:ProfileViewModel/>
     </Design.DataContext>
-    <TextBox Text="{Binding UserProfile.Email, FallbackValue=test}"
-             HorizontalAlignment="Stretch"
-             VerticalAlignment="Stretch"/>
+    <Grid ColumnDefinitions="Auto, *"
+          RowDefinitions="*, *">
+        <TextBlock Text="{Binding UserProfile.DisplayName}"
+                 Grid.Column="1"/>
+
+        <ListBox Grid.Row="1" 
+                 Grid.ColumnSpan="2"
+                 Items="{Binding TopArtists}" 
+                 Background="Transparent"
+                 Margin="0 20">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel />
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Spacing="5" Width="200">
+                        <TextBlock Text="{Binding Name}" HorizontalAlignment="Center" />
+                        <TextBlock Text="Artist" HorizontalAlignment="Center" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
 </UserControl>

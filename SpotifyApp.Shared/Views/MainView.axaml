@@ -22,8 +22,8 @@
                  RowDefinitions="Auto, *, Auto">
                <StackPanel>
                    <Button Classes="MenuCompactButton"
-                           Content="☰"
-                           ToolTip.Tip="Menu"/>
+                           Content="Profile"
+                           ToolTip.Tip="Profile"/>
                </StackPanel>    
            </Grid>
        </SplitView.Pane>

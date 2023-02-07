@@ -63,7 +63,7 @@ public class AuthService : IAuthService
             Authority = ApplicationSettings.Authority,
             ClientId = ApplicationSettings.ClientId,
             RedirectUri = ApplicationSettings.RedirectUri,
-            Scope = "user-read-private user-read-email",
+            Scope = "user-read-private user-read-email user-library-read user-top-read",
             Browser = _browser,
             ProviderInformation = new ProviderInformation
             {

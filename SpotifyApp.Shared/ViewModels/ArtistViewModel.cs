@@ -33,10 +33,10 @@ public sealed partial class ArtistViewModel : ObservableRecipient
     [RelayCommand(IncludeCancelCommand = true)]
     private async Task LoadCoverAsync(CancellationToken token)
     {
-        var cover = _artist.Images.FirstOrDefault();
+        var cover = Artist.Images.FirstOrDefault();
         if (cover != null)
         {
-            var imagePath = await _imageCache.GetImage(_artist.Id,
+            var imagePath = await _imageCache.GetImage(Artist.Id,
                 ImageType.Artist,
                 cover.Url,
                 token);

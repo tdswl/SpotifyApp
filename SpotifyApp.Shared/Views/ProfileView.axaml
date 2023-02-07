@@ -9,9 +9,14 @@
         <viewModels:ProfileViewModel/>
     </Design.DataContext>
     <Grid ColumnDefinitions="Auto, *"
-          RowDefinitions="*, *">
-        <TextBlock Text="{Binding UserProfile.DisplayName}"
-                 Grid.Column="1"/>
+          RowDefinitions="Auto, *">
+        <Border ClipToBounds="True">
+            <Panel Background="#7FFF22DD">
+                <Image Width="200" Height="200" Stretch="Uniform" Source="{Binding  CurrentUser.Avatar}" />
+            </Panel>
+        </Border>
+        <TextBlock Text="{Binding CurrentUser.UserProfile.DisplayName}"
+                   Grid.Column="1"/>
 
         <ListBox Grid.Row="1" 
                  Grid.ColumnSpan="2"

@@ -6,7 +6,7 @@ using ProfileViewModel = SpotifyApp.Shared.ViewModels.ProfileViewModel;
 
 namespace SpotifyApp.Shared.Services;
 
-public sealed class NavigationService : INavigationService
+internal sealed class NavigationService : INavigationService
 {
     public UserControl NavigateTo(PageType pageType, object? navigateParams = null)
     {

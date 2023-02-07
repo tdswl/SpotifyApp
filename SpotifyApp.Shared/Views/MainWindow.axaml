@@ -6,6 +6,7 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="SpotifyApp.Shared.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
-        Title="SpotifyApp.Desktop">
+        Title="SpotifyApp.Desktop"
+        ExtendClientAreaToDecorationsHint="True">
         <views:MainView />
 </Window>

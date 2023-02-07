@@ -10,7 +10,7 @@ using SpotifyApp.Storage.Entities;
 
 namespace SpotifyApp.Shared.Services;
 
-public class AuthService : IAuthService
+internal class AuthService : IAuthService
 {
     private readonly IApplicationContext _applicationContext;
     private readonly IMemoryCache _memoryCache;

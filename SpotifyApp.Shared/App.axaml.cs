@@ -69,6 +69,7 @@ public sealed class App : Application
             .AddTransient<ProfileViewModel>()
 
             .AddScoped<IAuthService, AuthService>()
+            .AddScoped<IImageCache, ImageCache>()
             .AddSingleton<INavigationService, NavigationService>();
         
         _serviceProvider = _serviceCollection.BuildServiceProvider();

@@ -13,12 +13,13 @@ public sealed partial class ProfileViewModel : ObservableRecipient
 {
     private readonly IAuthService _authService;
     private readonly IUsersClient _usersClient;
+    private readonly IImageCache _imageCache;
     
     [ObservableProperty]
     private GetCurrentUserProfileResponse? _userProfile;
 
     [ObservableProperty] 
-    private ObservableCollection<TopItemModel> _topArtists;
+    private ObservableCollection<ArtistViewModel> _topArtists;
 
     public ProfileViewModel()
     {
@@ -26,10 +27,12 @@ public sealed partial class ProfileViewModel : ObservableRecipient
     }
     
     public ProfileViewModel(IAuthService authService,
-        IUsersClient usersClient)
+        IUsersClient usersClient,
+        IImageCache imageCache)
     {
         _authService = authService;
         _usersClient = usersClient;
+        _imageCache = imageCache;
 
         GetUserInfoCommand.Execute(null);
         GetArtistsCommand.Execute(null);
@@ -47,6 +50,10 @@ public sealed partial class ProfileViewModel : ObservableRecipient
     {
         var authInfo = await _authService.Login(token);
         var artistsResponse = await _usersClient.GetUsersTopItems(ItemsType.Artists, authInfo.AccessToken, token);
-        TopArtists = new ObservableCollection<TopItemModel>(artistsResponse.Items);
+        TopArtists = new ObservableCollection<ArtistViewModel>(
+            artistsResponse.Items.Select(a => new ArtistViewModel(_imageCache)
+            {
+                Artist = a,
+            }));
     }
 }

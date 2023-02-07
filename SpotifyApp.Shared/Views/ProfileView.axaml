@@ -26,11 +26,15 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Spacing="5" Width="200">
-                        <TextBlock Text="{Binding Name}" HorizontalAlignment="Center" />
+                        <Border ClipToBounds="True">
+                            <Panel Background="#7FFF22DD">
+                                <Image Width="200" Stretch="Uniform" Source="{Binding Cover}" />
+                            </Panel>
+                        </Border>
+                        <TextBlock Text="{Binding Artist.Name}" HorizontalAlignment="Center" />
                         <TextBlock Text="Artist" HorizontalAlignment="Center" />
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-    </Grid>
-</UserControl>
+    </Grid></UserControl>

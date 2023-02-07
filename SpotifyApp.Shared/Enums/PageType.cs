@@ -1,6 +1,6 @@
 namespace SpotifyApp.Shared.Enums;
 
-public enum PageType
+public enum PageType : byte
 {
     Profile = 1,
 }

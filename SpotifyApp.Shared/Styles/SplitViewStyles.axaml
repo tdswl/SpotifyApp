@@ -2,25 +2,69 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Design.PreviewWith>
         <Border Padding="20">
-            <!-- Add Controls for Previewer Here -->
+            <StackPanel>
+                <SplitView Classes="MenuSmall"
+                           IsPaneOpen="False">
+                    <SplitView.Pane>
+                        <Grid VerticalAlignment="Stretch"
+                              RowDefinitions="Auto, *, Auto">
+                            <StackPanel>
+                                <Button Content="Test" />
+                            </StackPanel>    
+                        </Grid>
+                    </SplitView.Pane>
+                    <Border BorderThickness="1" 
+                            BorderBrush="Black"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch">
+                        <TextBlock Text="Content" />
+                    </Border>
+                </SplitView>
+                <SplitView Classes="MenuMedium"
+                           IsPaneOpen="False">
+                    <SplitView.Pane>
+                        <Grid VerticalAlignment="Stretch"
+                              RowDefinitions="Auto, *, Auto">
+                            <StackPanel>
+                                <Button Content="Test" />
+                            </StackPanel>    
+                        </Grid>
+                    </SplitView.Pane>
+                    <Border BorderThickness="1" 
+                            BorderBrush="Black"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch">
+                        <TextBlock Text="Content" />
+                    </Border>
+                </SplitView>
+                <SplitView Classes="MenuWide"
+                           IsPaneOpen="True">
+                    <SplitView.Pane>
+                        <Grid VerticalAlignment="Stretch"
+                              RowDefinitions="Auto, *, Auto">
+                            <StackPanel>
+                                <Button Content="Test" />
+                            </StackPanel>    
+                        </Grid>
+                    </SplitView.Pane>
+                    <Border BorderThickness="1" 
+                            BorderBrush="Black"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch">
+                        <TextBlock Text="Content" />
+                    </Border>
+                </SplitView>
+            </StackPanel>
         </Border>
     </Design.PreviewWith>
 
-    <Style Selector="SplitView.Menu">
-        <Setter Property="PanePlacement" Value="Left" />
-        <Setter Property="IsPaneOpen" Value="False" />
+    <Style Selector="SplitView.MenuSmall">
         <Setter Property="DisplayMode" Value="Inline" />
     </Style>
-    <Style Selector="SplitView.Small">
-        <Setter Property="IsPaneOpen" Value="False" />
-        <Setter Property="DisplayMode" Value="Inline" />
-    </Style>
-    <Style Selector="SplitView.Medium">
-        <Setter Property="IsPaneOpen" Value="False" />
+    <Style Selector="SplitView.MenuMedium">
         <Setter Property="DisplayMode" Value="CompactInline" />
     </Style>
-    <Style Selector="SplitView.Wide">
-        <Setter Property="IsPaneOpen" Value="True" />
+    <Style Selector="SplitView.MenuWide">
         <Setter Property="DisplayMode" Value="Inline" />
     </Style>
 </Styles>

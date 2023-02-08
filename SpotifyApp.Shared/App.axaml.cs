@@ -5,6 +5,7 @@ using CommunityToolkit.Mvvm.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using SpotifyApp.Shared.Services;
 using Microsoft.Extensions.DependencyInjection;
+using Serilog;
 using SpotifyApp.Api.Client.DI;
 using SpotifyApp.Storage;
 using SpotifyApp.Storage.DI;
@@ -62,6 +63,7 @@ public sealed class App : Application
     private void RegisterDi()
     {
         _serviceCollection
+            .AddLogging(builder => builder.AddSerilog())
             .AddMemoryCache()
             .AddDatabase()
             .AddApiClients()

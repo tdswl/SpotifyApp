@@ -8,12 +8,13 @@
     <Design.DataContext>
         <viewModels:MainWindowViewModel />
     </Design.DataContext>
-    <SplitView Classes="Menu">
+ 
+    <SplitView Classes="MenuWide">
         <Interaction.Behaviors>
             <AdaptiveBehavior>
-                <AdaptiveClassSetter MinWidth="0" MaxWidth="500" ClassName="Small" />
-                <AdaptiveClassSetter MinWidth="500" MaxWidth="900" ClassName="Medium" />
-                <AdaptiveClassSetter MinWidth="900" MaxWidth="Infinity" ClassName="Wide" />
+                <AdaptiveClassSetter MinWidth="0" MaxWidth="500" ClassName="MenuSmall" />
+                <AdaptiveClassSetter MinWidth="500" MaxWidth="900" ClassName="MenuMedium" />
+                <AdaptiveClassSetter MinWidth="900" MaxWidth="Infinity" ClassName="MenuWide" />
             </AdaptiveBehavior>
         </Interaction.Behaviors>
         

@@ -3,7 +3,7 @@
              x:Class="SpotifyApp.Shared.App">
 
     <Application.Styles>
-        <FluentTheme Mode="Dark"/>
+        <FluentTheme />
         <StyleInclude Source="/Styles/ButtonStyles.axaml" />
         <StyleInclude Source="/Styles/SplitViewStyles.axaml" />
     </Application.Styles>

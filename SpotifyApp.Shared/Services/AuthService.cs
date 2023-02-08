@@ -3,6 +3,7 @@ using IdentityModel.OidcClient;
 using IdentityModel.OidcClient.Browser;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Logging;
 using SpotifyApp.Shared.Constants;
 using SpotifyApp.Shared.Models;
 using SpotifyApp.Storage;
@@ -15,14 +16,17 @@ internal class AuthService : IAuthService
     private readonly IApplicationContext _applicationContext;
     private readonly IMemoryCache _memoryCache;
     private readonly IBrowser _browser;
+    private readonly ILoggerFactory _loggerFactory;
     
     public AuthService(IApplicationContext applicationContext,
         IMemoryCache memoryCache,
-        IBrowser browser)
+        IBrowser browser,
+        ILoggerFactory loggerFactory)
     {
         _applicationContext = applicationContext;
         _memoryCache = memoryCache;
         _browser = browser;
+        _loggerFactory = loggerFactory;
     }
     
     public async Task<AuthorizationInfoModel> Login(CancellationToken token)
@@ -74,6 +78,7 @@ internal class AuthService : IAuthService
                 KeySet = new JsonWebKeySet(),
             },
             LoadProfile = false,
+            LoggerFactory = _loggerFactory,
         };
     }
 

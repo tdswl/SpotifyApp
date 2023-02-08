@@ -3,8 +3,7 @@
     <Design.PreviewWith>
         <Border Padding="20">
             <StackPanel>
-                <SplitView Classes="MenuSmall"
-                           IsPaneOpen="False">
+                <SplitView Classes="MenuSmall">
                     <SplitView.Pane>
                         <Grid VerticalAlignment="Stretch"
                               RowDefinitions="Auto, *, Auto">
@@ -20,8 +19,7 @@
                         <TextBlock Text="Content" />
                     </Border>
                 </SplitView>
-                <SplitView Classes="MenuMedium"
-                           IsPaneOpen="False">
+                <SplitView Classes="MenuMedium">
                     <SplitView.Pane>
                         <Grid VerticalAlignment="Stretch"
                               RowDefinitions="Auto, *, Auto">
@@ -37,8 +35,7 @@
                         <TextBlock Text="Content" />
                     </Border>
                 </SplitView>
-                <SplitView Classes="MenuWide"
-                           IsPaneOpen="True">
+                <SplitView Classes="MenuWide">
                     <SplitView.Pane>
                         <Grid VerticalAlignment="Stretch"
                               RowDefinitions="Auto, *, Auto">
@@ -65,6 +62,6 @@
         <Setter Property="DisplayMode" Value="CompactInline" />
     </Style>
     <Style Selector="SplitView.MenuWide">
-        <Setter Property="DisplayMode" Value="Inline" />
+        <Setter Property="DisplayMode" Value="CompactInline" />
     </Style>
 </Styles>

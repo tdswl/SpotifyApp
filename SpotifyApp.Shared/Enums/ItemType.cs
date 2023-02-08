@@ -1,8 +1,10 @@
 namespace SpotifyApp.Shared.Enums;
 
-public enum ImageType : byte
+public enum ItemType : byte
 {
     Profile = 0,
-    
+
     Artist = 1,
+
+    Album = 2,
 }

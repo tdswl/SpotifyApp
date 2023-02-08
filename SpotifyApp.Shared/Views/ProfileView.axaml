@@ -8,38 +8,42 @@
     <Design.DataContext>
         <viewModels:ProfileViewModel/>
     </Design.DataContext>
-    <Grid ColumnDefinitions="Auto, *"
-          RowDefinitions="Auto, *">
-        <Border ClipToBounds="True">
-            <Panel Background="#7FFF22DD">
-                <Image Width="200" Height="200" Stretch="Uniform" Source="{Binding  CurrentUser.Avatar}" />
-            </Panel>
-        </Border>
-        <TextBlock Text="{Binding CurrentUser.UserProfile.DisplayName}"
-                   Grid.Column="1"/>
+    
+    <UserControl.DataTemplates>
+        <DataTemplate DataType="{x:Type viewModels:ItemWithPreviewViewModel}">
+            <StackPanel Spacing="5" Width="240">
+                <Border ClipToBounds="True"
+                        CornerRadius="180">
+                    <Panel Background="Gray">
+                        <Image Width="240" 
+                               Stretch="Uniform" 
+                               Source="{Binding Preview}" />
+                        <ProgressBar VerticalAlignment="Center" 
+                                     IsIndeterminate="True"
+                                     IsVisible="{Binding Preview, Converter={x:Static ObjectConverters.IsNull}}"/>
+                    </Panel>
+                </Border>
+                <TextBlock Text="{Binding Item.Name}" HorizontalAlignment="Center" />
+                <TextBlock Text="{Binding Item.ItemType}" HorizontalAlignment="Center" />
+            </StackPanel>
+        </DataTemplate>
+    </UserControl.DataTemplates>
+    
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled"
+                  VerticalScrollBarVisibility="Auto">
+        <StackPanel>
+            <ContentControl Content="{Binding CurrentUser}"
+                            HorizontalAlignment="Left"/>
 
-        <ListBox Grid.Row="1" 
-                 Grid.ColumnSpan="2"
-                 Items="{Binding TopArtists}" 
-                 Background="Transparent"
-                 Margin="0 20">
-            <ListBox.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel />
-                </ItemsPanelTemplate>
-            </ListBox.ItemsPanel>
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Spacing="5" Width="200">
-                        <Border ClipToBounds="True">
-                            <Panel Background="#7FFF22DD">
-                                <Image Width="200" Stretch="Uniform" Source="{Binding Cover}" />
-                            </Panel>
-                        </Border>
-                        <TextBlock Text="{Binding Artist.Name}" HorizontalAlignment="Center" />
-                        <TextBlock Text="Artist" HorizontalAlignment="Center" />
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-    </Grid></UserControl>
+            <ListBox Items="{Binding TopArtists}" 
+                     Background="Transparent"
+                     Margin="0 20">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel />
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+            </ListBox>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

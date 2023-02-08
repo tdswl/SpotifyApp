@@ -1,3 +1,4 @@
+using AutoMapper;
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
@@ -7,6 +8,7 @@ using SpotifyApp.Shared.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 using SpotifyApp.Api.Client.DI;
+using SpotifyApp.Shared.AutoMapper;
 using SpotifyApp.Storage;
 using SpotifyApp.Storage.DI;
 using MainView = SpotifyApp.Shared.Views.MainView;
@@ -66,6 +68,7 @@ public sealed class App : Application
             .AddLogging(builder => builder.AddSerilog())
             .AddMemoryCache()
             .AddDatabase()
+            .AddAutoMapper(AutoMapperConfig)
             .AddApiClients()
             .AddTransient<MainWindowViewModel>()
             .AddTransient<ProfileViewModel>()
@@ -77,6 +80,11 @@ public sealed class App : Application
         _serviceProvider = _serviceCollection.BuildServiceProvider();
         
         Ioc.Default.ConfigureServices(_serviceProvider);
+    }
+    
+    private static void AutoMapperConfig(IMapperConfigurationExpression cfg)
+    {
+        cfg.AddProfile<ApplicationMapProfile>();
     }
     
     private void CreateDatabase()

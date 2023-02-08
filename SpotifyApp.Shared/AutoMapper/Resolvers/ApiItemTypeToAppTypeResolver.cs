@@ -5,21 +5,18 @@ using SpotifyApp.Shared.Models;
 
 namespace SpotifyApp.Shared.AutoMapper.Resolvers;
 
-public sealed class ApiItemTypeToAppTypeResolver: IValueResolver<TopItemModel, ItemWithImages, ItemType>
+public sealed class ApiItemTypeToAppTypeResolver: IValueResolver<TopItemModel, ItemModel, ItemType>
 {
     public ItemType Resolve(TopItemModel source, 
-        ItemWithImages destination, 
+        ItemModel destination, 
         ItemType member, 
         ResolutionContext context)
     {
-        switch (source.Type)
+        return source.Type switch
         {
-            case "artist":
-                return ItemType.Artist;
-            case "album":
-                return ItemType.Album;
-            default:
-                throw new ArgumentOutOfRangeException(nameof(source.Type), source.Type, "Wrong TopItemModel Type");
-        }
+            "artist" => ItemType.Artist,
+            "track" => ItemType.Track,
+            _ => throw new ArgumentOutOfRangeException(nameof(source.Type), source.Type, "Wrong TopItemModel Type")
+        };
     }
 }

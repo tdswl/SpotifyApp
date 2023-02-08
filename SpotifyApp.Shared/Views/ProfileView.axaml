@@ -6,44 +6,118 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="SpotifyApp.Shared.Views.ProfileView">
     <Design.DataContext>
-        <viewModels:ProfileViewModel/>
+        <viewModels:ProfileViewModel />
     </Design.DataContext>
-    
+
     <UserControl.DataTemplates>
-        <DataTemplate DataType="{x:Type viewModels:ItemWithPreviewViewModel}">
-            <StackPanel Spacing="5" Width="240">
+        <DataTemplate DataType="{x:Type viewModels:UserViewModel}">
+            <Grid ColumnDefinitions="Auto, *">
                 <Border ClipToBounds="True"
-                        CornerRadius="180">
+                        CornerRadius="180"
+                        Margin="45">
                     <Panel Background="Gray">
-                        <Image Width="240" 
-                               Stretch="Uniform" 
+                        <Image Width="290"
+                               Stretch="Uniform"
                                Source="{Binding Preview}" />
-                        <ProgressBar VerticalAlignment="Center" 
+                        <ProgressBar VerticalAlignment="Center"
                                      IsIndeterminate="True"
-                                     IsVisible="{Binding Preview, Converter={x:Static ObjectConverters.IsNull}}"/>
+                                     IsVisible="{Binding Preview, Converter={x:Static ObjectConverters.IsNull}}" />
                     </Panel>
                 </Border>
-                <TextBlock Text="{Binding Item.Name}" HorizontalAlignment="Center" />
-                <TextBlock Text="{Binding Item.ItemType}" HorizontalAlignment="Center" />
-            </StackPanel>
+                <StackPanel Grid.Column="1"
+                            Spacing="5"
+                            VerticalAlignment="Center">
+                    <TextBlock Text="PROFILE" />
+                    <TextBlock Text="{Binding Item.DisplayName}" />
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewModels:AlbumViewModel}">
+            <Border ClipToBounds="True"
+                    CornerRadius="5"
+                    Background="DimGray"
+                    Width="240"
+                    Height="335">
+                <StackPanel Spacing="5">
+                    <Border ClipToBounds="True"
+                            CornerRadius="180"
+                            Margin="20">
+                        <Panel Background="Gray">
+                            <Image Width="200"
+                                   Stretch="Uniform"
+                                   Source="{Binding Preview}" />
+                            <ProgressBar VerticalAlignment="Center"
+                                         IsIndeterminate="True"
+                                         IsVisible="{Binding Preview, Converter={x:Static ObjectConverters.IsNull}}" />
+                        </Panel>
+                    </Border>
+                    <TextBlock Text="{Binding Item.Name}" 
+                               HorizontalAlignment="Center" />
+                    <TextBlock Text="{Binding Item.ItemType}" 
+                               HorizontalAlignment="Center" />
+                </StackPanel>
+            </Border>
+        </DataTemplate>
+        
+        <DataTemplate DataType="{x:Type viewModels:TrackViewModel}">
+            <Border ClipToBounds="True"
+                    CornerRadius="5"
+                    Background="Transparent"
+                    Height="70">
+                <StackPanel Spacing="5"
+                            Orientation="Horizontal">
+                    <Border ClipToBounds="True"
+                            Margin="10">
+                        <Panel Background="Gray"
+                               Width="50"
+                               Height="50">
+                            <Image Stretch="Uniform"
+                                   Source="{Binding Preview}" />
+                            <ProgressBar VerticalAlignment="Center"
+                                         IsIndeterminate="True"
+                                         IsVisible="{Binding Preview, Converter={x:Static ObjectConverters.IsNull}}" />
+                        </Panel>
+                    </Border>
+                    <TextBlock Text="{Binding Item.Name}" 
+                               HorizontalAlignment="Center" />
+                </StackPanel>
+            </Border>
         </DataTemplate>
     </UserControl.DataTemplates>
-    
+
     <ScrollViewer HorizontalScrollBarVisibility="Disabled"
                   VerticalScrollBarVisibility="Auto">
         <StackPanel>
             <ContentControl Content="{Binding CurrentUser}"
-                            HorizontalAlignment="Left"/>
+                            HorizontalAlignment="Left" />
 
-            <ListBox Items="{Binding TopArtists}" 
-                     Background="Transparent"
-                     Margin="0 20">
-                <ListBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <WrapPanel />
-                    </ItemsPanelTemplate>
-                </ListBox.ItemsPanel>
-            </ListBox>
+            <StackPanel Spacing="25"
+                        Margin="40">
+                <TextBlock Text="Top artists this month" />
+                <TextBlock Text="Only visible to you" />
+                <ItemsControl Items="{Binding TopArtists}"
+                         Background="Transparent">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal" Spacing="30" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </StackPanel>
+            
+            <StackPanel>
+                <TextBlock Text="Top tracks this month" />
+                <TextBlock Text="Only visible to you" />
+                <ListBox Items="{Binding TopTracks}"
+                              Background="Transparent">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel />
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                </ListBox>
+            </StackPanel>
         </StackPanel>
     </ScrollViewer>
 </UserControl>

@@ -17,11 +17,14 @@ public sealed partial class ProfileViewModel : ObservableRecipient
     private readonly IMapper _mapper;
     
     [ObservableProperty]
-    private ItemWithPreviewViewModel? _currentUser;
+    private UserViewModel? _currentUser;
 
     [ObservableProperty] 
-    private ObservableCollection<ItemWithPreviewViewModel> _topArtists = new();
-
+    private ObservableCollection<AlbumViewModel> _topArtists = new();
+    
+    [ObservableProperty] 
+    private ObservableCollection<TrackViewModel> _topTracks = new();
+    
     public ProfileViewModel()
     {
         //Designer constructor
@@ -39,6 +42,7 @@ public sealed partial class ProfileViewModel : ObservableRecipient
 
         GetUserInfoCommand.Execute(null);
         GetArtistsCommand.Execute(null);
+        GetTracksCommand.Execute(null);
     }
     
     [RelayCommand(IncludeCancelCommand = true)]
@@ -46,9 +50,9 @@ public sealed partial class ProfileViewModel : ObservableRecipient
     {
         var authInfo = await _authService.Login(token);
         var userInfo = await _usersClient.GetCurrentUserProfile(authInfo.AccessToken, token);
-        CurrentUser = new ItemWithPreviewViewModel(_imageCache)
+        CurrentUser = new UserViewModel(_imageCache)
         {
-            Item = _mapper.Map<ItemWithImages>(userInfo),
+            Item = _mapper.Map<UserModel>(userInfo),
         };
     }
     
@@ -61,7 +65,26 @@ public sealed partial class ProfileViewModel : ObservableRecipient
         TopArtists.Clear();
         foreach (var artist in artistsResponse.Items)
         {
-            TopArtists.Add(new ItemWithPreviewViewModel(_imageCache) { Item = _mapper.Map<ItemWithImages>(artist), });
+            TopArtists.Add(new AlbumViewModel(_imageCache)
+            {
+                Item = _mapper.Map<ItemModel>(artist),
+            });
+        }
+    }
+    
+    [RelayCommand(IncludeCancelCommand = true)]
+    private async Task GetTracksAsync(CancellationToken token)
+    {
+        var authInfo = await _authService.Login(token);
+        var tracksResponse = await _usersClient.GetUsersTopItems(ItemsType.Tracks, authInfo.AccessToken, token);
+
+        TopTracks.Clear();
+        foreach (var track in tracksResponse.Items)
+        {
+            TopTracks.Add(new TrackViewModel(_imageCache)
+            {
+                Item = _mapper.Map<ItemModel>(track),
+            });
         }
     }
 }

@@ -4,26 +4,26 @@ using CommunityToolkit.Mvvm.Input;
 using SpotifyApp.Shared.Models;
 using SpotifyApp.Shared.Services;
 
-namespace SpotifyApp.Shared.ViewModels;
+namespace SpotifyApp.Shared.ViewModels.Base;
 
-public sealed partial class ItemWithPreviewViewModel : ObservableRecipient
+public abstract partial class ImagePreviewViewModel<T> : ObservableRecipient where T: IItemWithImages
 {
     private const int MaxImageWidth = 400;
     private readonly IImageCache _imageCache;
     
     [ObservableProperty]
     [NotifyCanExecuteChangedFor(nameof(LoadPreviewCommand))]
-    private ItemWithImages? _item;
+    private T? _item;
 
     [ObservableProperty]
     private Bitmap? _preview;
 
-    public ItemWithPreviewViewModel(IImageCache imageCache)
+    protected ImagePreviewViewModel(IImageCache imageCache)
     {
         _imageCache = imageCache;
     }
     
-    partial void OnItemChanged(ItemWithImages? value)
+    partial void OnItemChanged(T? value)
     {
         if (value != null)
         {

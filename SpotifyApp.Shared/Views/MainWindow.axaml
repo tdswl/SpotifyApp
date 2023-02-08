@@ -7,6 +7,6 @@
         x:Class="SpotifyApp.Shared.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
         Title="SpotifyApp.Desktop"
-        ExtendClientAreaToDecorationsHint="True">
+        ExtendClientAreaToDecorationsHint="False">
         <views:MainView />
 </Window>

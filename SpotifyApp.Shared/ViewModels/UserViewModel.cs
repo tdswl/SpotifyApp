@@ -11,7 +11,8 @@ public sealed partial class UserViewModel : ObservableRecipient
 {
     private readonly IImageCache _imageCache;
     
-   [ObservableProperty]
+    [ObservableProperty]
+    [NotifyCanExecuteChangedFor(nameof(GetProfileImageCommand))]
     private GetCurrentUserProfileResponse? _userProfile;
 
     [ObservableProperty]
@@ -32,10 +33,10 @@ public sealed partial class UserViewModel : ObservableRecipient
         }
     }
 
-    [RelayCommand(IncludeCancelCommand = true)]
+    [RelayCommand(IncludeCancelCommand = true, CanExecute = nameof(GetProfileImageCanExecute))]
     private async Task GetProfileImageAsync(CancellationToken token)
     {
-        var avatar = UserProfile.Images.FirstOrDefault();
+        var avatar = UserProfile?.Images.FirstOrDefault();
         if (avatar != null)
         {
             var imagePath = await _imageCache.GetImage(UserProfile.Id,
@@ -48,5 +49,10 @@ public sealed partial class UserViewModel : ObservableRecipient
                 Avatar = await Task.Run(() => Bitmap.DecodeToWidth(fileStream, 400), token);
             }
         }
+    }
+
+    private bool GetProfileImageCanExecute()
+    {
+        return UserProfile != null;
     }
 }

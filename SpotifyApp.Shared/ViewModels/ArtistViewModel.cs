@@ -12,6 +12,7 @@ public sealed partial class ArtistViewModel : ObservableRecipient
     private readonly IImageCache _imageCache;
     
     [ObservableProperty]
+    [NotifyCanExecuteChangedFor(nameof(LoadCoverCommand))]
     private TopItemModel? _artist;
 
     [ObservableProperty]
@@ -30,10 +31,10 @@ public sealed partial class ArtistViewModel : ObservableRecipient
         }
     }
     
-    [RelayCommand(IncludeCancelCommand = true)]
+    [RelayCommand(IncludeCancelCommand = true, CanExecute = nameof(LoadCoverCanExecute))]
     private async Task LoadCoverAsync(CancellationToken token)
     {
-        var cover = Artist.Images.FirstOrDefault();
+        var cover = Artist?.Images.FirstOrDefault();
         if (cover != null)
         {
             var imagePath = await _imageCache.GetImage(Artist.Id,
@@ -46,5 +47,10 @@ public sealed partial class ArtistViewModel : ObservableRecipient
                 Cover = await Task.Run(() => Bitmap.DecodeToWidth(fileStream, 400), token);
             }
         }
+    }
+
+    private bool LoadCoverCanExecute()
+    {
+        return Artist != null;
     }
 }

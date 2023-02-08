@@ -11,7 +11,8 @@
         <TrimmerRootDescriptor Include="Roots.xml" />
     </ItemGroup>
     
-    <ItemGroup><FrameworkReference Include="Microsoft.AspNetCore.App"></FrameworkReference>
+    <ItemGroup>
+        <FrameworkReference Include="Microsoft.AspNetCore.App" />
         <PackageReference Include="Avalonia" Version="$(AvaloniaVersion)" />
         <PackageReference Include="Avalonia.Themes.Fluent" Version="$(AvaloniaVersion)" />
         <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->

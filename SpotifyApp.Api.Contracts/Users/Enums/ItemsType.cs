@@ -12,4 +12,7 @@ public enum ItemsType : byte
     
     [EnumMember(Value = "tracks")]
     Tracks = 1,
+    
+    [EnumMember(Value = "user")]
+    User = 2,
 }

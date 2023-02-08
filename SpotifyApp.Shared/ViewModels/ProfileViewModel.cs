@@ -4,6 +4,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using SpotifyApp.Api.Client.Users;
 using SpotifyApp.Api.Contracts.Users.Enums;
+using SpotifyApp.Api.Contracts.Users.Requests;
 using SpotifyApp.Shared.Models;
 using SpotifyApp.Shared.Services;
 
@@ -60,7 +61,10 @@ public sealed partial class ProfileViewModel : ObservableRecipient
     private async Task GetArtistsAsync(CancellationToken token)
     {
         var authInfo = await _authService.Login(token);
-        var artistsResponse = await _usersClient.GetUsersTopItems(ItemsType.Artists, authInfo.AccessToken, token);
+        var artistsResponse = await _usersClient.GetUsersTopItems(
+            new GetUsersTopItemsRequest { Type = ItemsType.Artists },
+            authInfo.AccessToken,
+            token);
 
         TopArtists.Clear();
         foreach (var artist in artistsResponse.Items)
@@ -76,7 +80,10 @@ public sealed partial class ProfileViewModel : ObservableRecipient
     private async Task GetTracksAsync(CancellationToken token)
     {
         var authInfo = await _authService.Login(token);
-        var tracksResponse = await _usersClient.GetUsersTopItems(ItemsType.Tracks, authInfo.AccessToken, token);
+        var tracksResponse = await _usersClient.GetUsersTopItems(
+            new GetUsersTopItemsRequest { Type = ItemsType.Tracks },
+            authInfo.AccessToken,
+            token);
 
         TopTracks.Clear();
         foreach (var track in tracksResponse.Items)

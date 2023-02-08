@@ -24,5 +24,5 @@ public sealed class ApplicationContext : DbContext, IApplicationContext
         builder.ApplyConfigurationsFromAssembly(typeof(IApplicationContext).Assembly);
     }
 
-    public DbSet<AppUserSettings> Users { get; set; }
+    public DbSet<AppUserSettings> UserSettings { get; set; }
 }

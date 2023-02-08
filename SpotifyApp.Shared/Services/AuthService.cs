@@ -94,7 +94,7 @@ internal class AuthService : IAuthService
     
     private async Task<AuthorizationInfoModel?> GetInfoFromDatabase(CancellationToken cancellationToken)
     {
-        var latestUser = await _applicationContext.Users.FirstOrDefaultAsync(cancellationToken);
+        var latestUser = await _applicationContext.UserSettings.FirstOrDefaultAsync(cancellationToken);
         if (latestUser == null)
         {
             return null;
@@ -139,7 +139,7 @@ internal class AuthService : IAuthService
   
     private async Task AddOrUpdateInfoInStorage(AuthorizationInfoModel infoModel, CancellationToken token)
     {
-        var userSettings = await _applicationContext.Users.FirstOrDefaultAsync(token);
+        var userSettings = await _applicationContext.UserSettings.FirstOrDefaultAsync(token);
         if (userSettings != null)
         {
             userSettings.AuthenticationTime = infoModel.AuthenticationTime;
@@ -147,7 +147,7 @@ internal class AuthService : IAuthService
             userSettings.RefreshToken = infoModel.RefreshToken;
             userSettings.AccessTokenExpiration = infoModel.AccessTokenExpiration;
             
-            _applicationContext.Users.Update(userSettings);
+            _applicationContext.UserSettings.Update(userSettings);
             await _applicationContext.SaveChangesAsync(token);
         }
         else
@@ -161,7 +161,7 @@ internal class AuthService : IAuthService
                 AuthenticationTime = infoModel.AuthenticationTime
             };
             
-            await _applicationContext.Users.AddAsync(userSettings, token);
+            await _applicationContext.UserSettings.AddAsync(userSettings, token);
             await _applicationContext.SaveChangesAsync(token);
         }
     }

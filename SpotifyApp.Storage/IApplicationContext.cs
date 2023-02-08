@@ -5,7 +5,7 @@ namespace SpotifyApp.Storage;
 
 public interface IApplicationContext
 {
-    public DbSet<AppUserSettings> Users { get; set; }
+    public DbSet<AppUserSettings> UserSettings { get; set; }
 
     public Task<int> SaveChangesAsync(CancellationToken token);
 }

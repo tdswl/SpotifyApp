@@ -3,6 +3,9 @@ using SpotifyApp.Api.Contracts.Users.Responses;
 
 namespace SpotifyApp.Api.Client.Users;
 
+/// <summary>
+/// Api for getting information for User from Spotify
+/// </summary>
 public interface IUsersClient
 {
     /// <summary>
@@ -16,6 +19,7 @@ public interface IUsersClient
     /// Get the current user's top artists or tracks based on calculated affinity.
     /// https://developer.spotify.com/documentation/web-api/reference/#/operations/get-users-top-artists-and-tracks
     /// </summary>
-    Task<GetUsersTopItemsResponse> GetUsersTopItems(ItemsType type, string accessToken,
+    Task<GetUsersTopItemsResponse> GetUsersTopItems(ItemsType type, 
+        string accessToken,
         CancellationToken cancellationToken);
 }

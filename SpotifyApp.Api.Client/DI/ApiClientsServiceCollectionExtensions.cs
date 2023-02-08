@@ -4,8 +4,14 @@ using SpotifyApp.Api.Client.Users;
 
 namespace SpotifyApp.Api.Client.DI;
 
+/// <summary>
+/// Extensions with service collections
+/// </summary>
 public static class ApiClientsServiceCollectionExtensions
 {
+    /// <summary>
+    /// Add spotify api clients to service collection
+    /// </summary>
     public static IServiceCollection AddApiClients(this IServiceCollection services)
     {
         services.TryAdd(ServiceDescriptor.Scoped<IUsersClient, UsersClient>());

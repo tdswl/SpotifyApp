@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Http;
 namespace SpotifyApp.Desktop.Browser;
 
 /// <summary>
+/// Browser for oAuth2 redirect
 /// Code from example
 /// https://github.com/IdentityModel/IdentityModel.OidcClient.Samples/blob/main/NetCoreConsoleClient/src/NetCoreConsoleClient/SystemBrowser.cs
 /// </summary>

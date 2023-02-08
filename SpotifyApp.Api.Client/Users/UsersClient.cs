@@ -7,7 +7,7 @@ namespace SpotifyApp.Api.Client.Users;
 
 internal class UsersClient : IUsersClient
 {
-    public Task<GetCurrentUserProfileResponse> GetCurrentUserProfile(string accessToken, 
+    Task<GetCurrentUserProfileResponse> IUsersClient.GetCurrentUserProfile(string accessToken, 
         CancellationToken cancellationToken)
     {
         return "https://api.spotify.com/v1/me"
@@ -15,7 +15,7 @@ internal class UsersClient : IUsersClient
             .GetJsonAsync<GetCurrentUserProfileResponse>(cancellationToken);
     }
 
-    public Task<GetUsersTopItemsResponse> GetUsersTopItems(ItemsType type, 
+    Task<GetUsersTopItemsResponse> IUsersClient.GetUsersTopItems(ItemsType type, 
         string accessToken, 
         CancellationToken cancellationToken)
     {

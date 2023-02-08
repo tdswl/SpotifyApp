@@ -25,5 +25,4 @@ public sealed class GetUsersTopItemsResponse
     
     [JsonProperty("items")]
     public List<TopItemModel> Items { get; set; }
-    
 }

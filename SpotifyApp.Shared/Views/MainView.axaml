@@ -23,8 +23,8 @@
                  RowDefinitions="Auto, *, Auto">
                <StackPanel>
                    <Button Classes="MenuCompactButton"
-                           Content="Profile"
-                           ToolTip.Tip="Profile"/>
+                           Content="{SvgImage /Assets/profile.svg}"
+                           ToolTip.Tip="Profile" />
                </StackPanel>    
            </Grid>
        </SplitView.Pane>

@@ -1,9 +1,8 @@
 using Newtonsoft.Json;
-using SpotifyApp.Api.Contracts.Users.Models;
 
-namespace SpotifyApp.Api.Contracts.Users.Responses;
+namespace SpotifyApp.Api.Contracts.Users.Models;
 
-public sealed class GetUsersTopItemsResponse
+public sealed class ArtistModel
 {
     /// <summary>
     /// A link to the Web API endpoint returning the full result of the request
@@ -21,19 +20,11 @@ public sealed class GetUsersTopItemsResponse
     /// URL to the next page of items. ( null if none)
     /// </summary>
     [JsonProperty("next")]
-    public required string? Next { get; set; }
+    public string? Next { get; set; }
     
-    /// <summary>
-    /// The offset of the items returned (as set in the query or by default)
-    /// </summary>
-    [JsonProperty("offset")]
-    public required int Offset { get; set; }
-    
-    /// <summary>
-    /// URL to the previous page of items. ( null if none)
-    /// </summary>
-    [JsonProperty("previous")]
-    public required string? Previous { get; set; }
+    /// <inheritdoc cref="CursorModel"/>
+    [JsonProperty("cursors")]
+    public required CursorModel Cursors { get; set; }
     
     /// <summary>
     /// The total number of items available to return.

@@ -3,7 +3,8 @@
     <Design.PreviewWith>
         <Border Padding="20"
                 Width="88">
-            <Button Classes="MenuCompactButton" Content="☰"/>
+            <Button Classes="MenuCompactButton"
+                    Content="{SvgImage /Assets/profile.svg}" />
         </Border>
     </Design.PreviewWith>
 

@@ -41,4 +41,20 @@ public interface IUsersClient
     Task<GetUsersTopItemsResponse> GetUsersTopItems(GetUsersTopItemsRequest request, 
         string accessToken,
         CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Get the current user's followed artists.
+    /// </summary>
+    /// <exception cref="FlurlHttpException">
+    /// 401 - Bad or expired token. This can happen if the user revoked a token or the
+    /// access token has expired. You should re-authenticate the user.
+    ///
+    /// 403 - Bad OAuth request (wrong consumer key, bad nonce, expired timestamp...).
+    /// Unfortunately, re-authenticating the user won't help here.
+    ///
+    /// 429 - The app has exceeded its rate limits.
+    /// </exception>
+    Task<GetFollowedArtistsResponse> GetFollowedArtists(GetFollowedArtistsRequest request,
+        string accessToken,
+        CancellationToken cancellationToken);
 }

@@ -35,7 +35,7 @@ public sealed class TopItemModel
     /// Images of the artist in various sizes, widest first.
     /// </summary>
     [JsonProperty("images")]
-    public List<Image>? Images { get; set; }
+    public IReadOnlyCollection<Image>? Images { get; set; }
     
     /// <summary>
     /// The name of the artist.

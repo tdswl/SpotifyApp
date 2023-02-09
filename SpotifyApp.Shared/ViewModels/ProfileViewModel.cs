@@ -8,6 +8,7 @@ using SpotifyApp.Api.Contracts.Users.Enums;
 using SpotifyApp.Api.Contracts.Users.Requests;
 using SpotifyApp.Shared.Models;
 using SpotifyApp.Shared.Services;
+using SpotifyApp.Shared.ViewModels.Items;
 
 namespace SpotifyApp.Shared.ViewModels;
 
@@ -21,10 +22,13 @@ public sealed partial class ProfileViewModel : ObservableRecipient
     private UserViewModel? _currentUser;
 
     [ObservableProperty] 
-    private ObservableCollection<AlbumViewModel> _topArtists = new();
+    private ObservableCollection<ArtistViewModel> _topArtists = new();
     
     [ObservableProperty] 
     private ObservableCollection<TrackViewModel> _topTracks = new();
+    
+    [ObservableProperty] 
+    private ObservableCollection<ArtistViewModel> _followingArtists = new();
     
     public ProfileViewModel()
     {
@@ -39,9 +43,10 @@ public sealed partial class ProfileViewModel : ObservableRecipient
         _usersClient = usersClient;
         _mapper = mapper;
 
-        GetUserInfoCommand.Execute(null);
-        GetArtistsCommand.Execute(null);
-        GetTracksCommand.Execute(null);
+        GetUserInfoCommand.ExecuteAsync(null);
+        GetArtistsCommand.ExecuteAsync(null);
+        GetTracksCommand.ExecuteAsync(null);
+        GetFollowingArtistsCommand.ExecuteAsync(null);
     }
     
     [RelayCommand(IncludeCancelCommand = true)]
@@ -66,7 +71,7 @@ public sealed partial class ProfileViewModel : ObservableRecipient
         TopArtists.Clear();
         foreach (var artist in artistsResponse.Items)
         {
-            var artistVm = Ioc.Default.GetRequiredService<AlbumViewModel>();
+            var artistVm = Ioc.Default.GetRequiredService<ArtistViewModel>();
             TopArtists.Add(artistVm);
             artistVm.Item = _mapper.Map<ItemModel>(artist);
         }
@@ -87,6 +92,24 @@ public sealed partial class ProfileViewModel : ObservableRecipient
             var trackVm = Ioc.Default.GetRequiredService<TrackViewModel>();
             TopTracks.Add(trackVm);
             trackVm.Item = _mapper.Map<ItemModel>(track);
+        }
+    }
+
+    [RelayCommand(IncludeCancelCommand = true)]
+    private async Task GetFollowingArtistsAsync(CancellationToken token)
+    {
+        var authInfo = await _authService.Login(token);
+        var artistsResponse = await _usersClient.GetFollowedArtists(
+            new GetFollowedArtistsRequest { Type = ItemsTypeApi.Artist, },
+            authInfo.AccessToken,
+            token);
+
+        FollowingArtists.Clear();
+        foreach (var artist in artistsResponse.Artists.Items)
+        {
+            var artistVm = Ioc.Default.GetRequiredService<ArtistViewModel>();
+            FollowingArtists.Add(artistVm);
+            artistVm.Item = _mapper.Map<ItemModel>(artist);
         }
     }
 }

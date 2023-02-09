@@ -25,7 +25,7 @@ public sealed partial class MainWindowViewModel : ObservableRecipient
         _navigationService = navigationService;
         _authService = authService;
 
-        LoginCommand.Execute(null);
+        LoginCommand.ExecuteAsync(null);
     }
 
     [RelayCommand(IncludeCancelCommand = true)]

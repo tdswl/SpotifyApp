@@ -41,4 +41,26 @@ internal class UsersClient : IUsersClient
             .WithOAuthBearerToken(accessToken)
             .GetJsonAsync<GetUsersTopItemsResponse>(cancellationToken);
     }
+
+    Task<GetFollowedArtistsResponse> IUsersClient.GetFollowedArtists(GetFollowedArtistsRequest request, 
+        string accessToken, 
+        CancellationToken cancellationToken)
+    {
+        var query = "https://api.spotify.com/v1/me/following"
+            .SetQueryParam("type", request.Type.ToString().ToLower());
+
+        if (request.Limit != null)
+        {
+            query.SetQueryParam("limit", request.Limit);
+        }
+        
+        if (request.After != null)
+        {
+            query.SetQueryParam("after", request.After);
+        }
+        
+        return query
+            .WithOAuthBearerToken(accessToken)
+            .GetJsonAsync<GetFollowedArtistsResponse>(cancellationToken);
+    }
 }

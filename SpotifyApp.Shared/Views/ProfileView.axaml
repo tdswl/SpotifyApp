@@ -3,6 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewModels="clr-namespace:SpotifyApp.Shared.ViewModels"
+             xmlns:items="clr-namespace:SpotifyApp.Shared.ViewModels.Items"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="SpotifyApp.Shared.Views.ProfileView">
     <Design.DataContext>
@@ -10,7 +11,7 @@
     </Design.DataContext>
 
     <UserControl.DataTemplates>
-        <DataTemplate DataType="{x:Type viewModels:UserViewModel}">
+        <DataTemplate DataType="{x:Type items:UserViewModel}">
             <Grid ColumnDefinitions="Auto, *">
                 <Border ClipToBounds="True"
                         CornerRadius="180"
@@ -33,7 +34,7 @@
             </Grid>
         </DataTemplate>
 
-        <DataTemplate DataType="{x:Type viewModels:AlbumViewModel}">
+        <DataTemplate DataType="{x:Type items:ArtistViewModel}">
             <Border ClipToBounds="True"
                     CornerRadius="5"
                     Background="DimGray"
@@ -60,7 +61,7 @@
             </Border>
         </DataTemplate>
         
-        <DataTemplate DataType="{x:Type viewModels:TrackViewModel}">
+        <DataTemplate DataType="{x:Type items:TrackViewModel}">
             <Border ClipToBounds="True"
                     CornerRadius="5"
                     Background="Transparent"
@@ -80,7 +81,7 @@
                         </Panel>
                     </Border>
                     <TextBlock Text="{Binding Item.Name}" 
-                               HorizontalAlignment="Center" />
+                               VerticalAlignment="Center"/>
                 </StackPanel>
             </Border>
         </DataTemplate>
@@ -88,25 +89,26 @@
 
     <ScrollViewer HorizontalScrollBarVisibility="Disabled"
                   VerticalScrollBarVisibility="Auto">
-        <StackPanel>
+        <StackPanel Margin="40 20 20 20"
+                    Spacing="25">
             <ContentControl Content="{Binding CurrentUser}"
                             HorizontalAlignment="Left" />
 
-            <StackPanel Spacing="25"
-                        Margin="40">
+            <StackPanel Spacing="25">
                 <TextBlock Text="Top artists this month" />
                 <TextBlock Text="Only visible to you" />
                 <ItemsControl Items="{Binding TopArtists}"
                          Background="Transparent">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <StackPanel Orientation="Horizontal" Spacing="30" />
+                            <StackPanel Orientation="Horizontal" 
+                                        Spacing="30" />
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
                 </ItemsControl>
             </StackPanel>
             
-            <StackPanel>
+            <StackPanel Spacing="25">
                 <TextBlock Text="Top tracks this month" />
                 <TextBlock Text="Only visible to you" />
                 <ListBox Items="{Binding TopTracks}"
@@ -117,6 +119,19 @@
                         </ItemsPanelTemplate>
                     </ListBox.ItemsPanel>
                 </ListBox>
+            </StackPanel>
+            
+            <StackPanel Spacing="25">
+                <TextBlock Text="Following" />
+                <ItemsControl Items="{Binding FollowingArtists}"
+                              Background="Transparent">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal" 
+                                        Spacing="30" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
             </StackPanel>
         </StackPanel>
     </ScrollViewer>

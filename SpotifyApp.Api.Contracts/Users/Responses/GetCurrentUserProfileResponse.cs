@@ -54,7 +54,7 @@ public sealed class GetCurrentUserProfileResponse
     /// The Spotify user ID for the user.
     /// </summary>
     [JsonProperty("id")]
-    public string Id { get; set; }
+    public required string Id { get; set; }
     
     /// <summary>
     /// The user's profile image.

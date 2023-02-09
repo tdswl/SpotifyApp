@@ -1,6 +1,7 @@
 using System.Collections.ObjectModel;
 using AutoMapper;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.DependencyInjection;
 using CommunityToolkit.Mvvm.Input;
 using SpotifyApp.Api.Client.Users;
 using SpotifyApp.Api.Contracts.Users.Enums;
@@ -14,7 +15,6 @@ public sealed partial class ProfileViewModel : ObservableRecipient
 {
     private readonly IAuthService _authService;
     private readonly IUsersClient _usersClient;
-    private readonly IImageCache _imageCache;
     private readonly IMapper _mapper;
     
     [ObservableProperty]
@@ -33,12 +33,10 @@ public sealed partial class ProfileViewModel : ObservableRecipient
     
     public ProfileViewModel(IAuthService authService,
         IUsersClient usersClient,
-        IImageCache imageCache,
         IMapper mapper)
     {
         _authService = authService;
         _usersClient = usersClient;
-        _imageCache = imageCache;
         _mapper = mapper;
 
         GetUserInfoCommand.Execute(null);
@@ -51,10 +49,9 @@ public sealed partial class ProfileViewModel : ObservableRecipient
     {
         var authInfo = await _authService.Login(token);
         var userInfo = await _usersClient.GetCurrentUserProfile(authInfo.AccessToken, token);
-        CurrentUser = new UserViewModel(_imageCache)
-        {
-            Item = _mapper.Map<UserModel>(userInfo),
-        };
+        var userVm = Ioc.Default.GetRequiredService<UserViewModel>();
+        userVm.Item = _mapper.Map<UserModel>(userInfo);
+        CurrentUser = userVm;
     }
     
     [RelayCommand(IncludeCancelCommand = true)]
@@ -62,17 +59,16 @@ public sealed partial class ProfileViewModel : ObservableRecipient
     {
         var authInfo = await _authService.Login(token);
         var artistsResponse = await _usersClient.GetUsersTopItems(
-            new GetUsersTopItemsRequest { Type = ItemsTypeApi.Artist },
+            new GetUsersTopItemsRequest { Type = ItemsTypeApi.Artist, },
             authInfo.AccessToken,
             token);
 
         TopArtists.Clear();
         foreach (var artist in artistsResponse.Items)
         {
-            TopArtists.Add(new AlbumViewModel(_imageCache)
-            {
-                Item = _mapper.Map<ItemModel>(artist),
-            });
+            var artistVm = Ioc.Default.GetRequiredService<AlbumViewModel>();
+            TopArtists.Add(artistVm);
+            artistVm.Item = _mapper.Map<ItemModel>(artist);
         }
     }
     
@@ -81,17 +77,16 @@ public sealed partial class ProfileViewModel : ObservableRecipient
     {
         var authInfo = await _authService.Login(token);
         var tracksResponse = await _usersClient.GetUsersTopItems(
-            new GetUsersTopItemsRequest { Type = ItemsTypeApi.Track },
+            new GetUsersTopItemsRequest { Type = ItemsTypeApi.Track, Limit = 4, },
             authInfo.AccessToken,
             token);
 
         TopTracks.Clear();
         foreach (var track in tracksResponse.Items)
         {
-            TopTracks.Add(new TrackViewModel(_imageCache)
-            {
-                Item = _mapper.Map<ItemModel>(track),
-            });
+            var trackVm = Ioc.Default.GetRequiredService<TrackViewModel>();
+            TopTracks.Add(trackVm);
+            trackVm.Item = _mapper.Map<ItemModel>(track);
         }
     }
 }

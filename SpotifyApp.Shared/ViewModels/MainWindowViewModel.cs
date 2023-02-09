@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using Avalonia.Controls;
+﻿using Avalonia.Controls;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using SpotifyApp.Shared.Enums;

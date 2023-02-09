@@ -17,31 +17,31 @@ public sealed class TopItemModel
     /// A list of the genres the artist is associated with. If not yet classified, the array is empty.
     /// </summary>
     [JsonProperty("genres")]
-    public List<string> Genres { get; set; }
+    public List<string>? Genres { get; set; }
     
     /// <summary>
     /// A link to the Web API endpoint providing full details of the artist.
     /// </summary>
     [JsonProperty("href")]
-    public string Href { get; set; }
+    public required string Href { get; set; }
     
     /// <summary>
     /// The Spotify ID for the artist.
     /// </summary>
     [JsonProperty("id")]
-    public string Id { get; set; }
+    public required string Id { get; set; }
     
     /// <summary>
     /// Images of the artist in various sizes, widest first.
     /// </summary>
     [JsonProperty("images")]
-    public List<Image> Images { get; set; }
+    public List<Image>? Images { get; set; }
     
     /// <summary>
     /// The name of the artist.
     /// </summary>
     [JsonProperty("name")]
-    public string Name { get; set; }
+    public required string Name { get; set; }
     
     /// <summary>
     /// The popularity of the artist. The value will be between 0 and 100, with 100 being the most popular.
@@ -61,5 +61,5 @@ public sealed class TopItemModel
     /// The Spotify URI for the artist.
     /// </summary>
     [JsonProperty("uri")]
-    public string Uri { get; set; }
+    public required string Uri { get; set; }
 }

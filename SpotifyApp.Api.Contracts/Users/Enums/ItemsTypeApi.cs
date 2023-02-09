@@ -5,13 +5,13 @@ using Newtonsoft.Json.Converters;
 namespace SpotifyApp.Api.Contracts.Users.Enums;
 
 [JsonConverter(typeof(StringEnumConverter))]
-public enum ItemsType : byte
+public enum ItemsTypeApi : byte
 {
-    [EnumMember(Value = "artists")]
-    Artists = 0,
+    [EnumMember(Value = "artist")]
+    Artist = 0,
     
-    [EnumMember(Value = "tracks")]
-    Tracks = 1,
+    [EnumMember(Value = "track")]
+    Track = 1,
     
     [EnumMember(Value = "user")]
     User = 2,

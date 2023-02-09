@@ -62,7 +62,7 @@ public sealed partial class ProfileViewModel : ObservableRecipient
     {
         var authInfo = await _authService.Login(token);
         var artistsResponse = await _usersClient.GetUsersTopItems(
-            new GetUsersTopItemsRequest { Type = ItemsType.Artists },
+            new GetUsersTopItemsRequest { Type = ItemsTypeApi.Artist },
             authInfo.AccessToken,
             token);
 
@@ -81,7 +81,7 @@ public sealed partial class ProfileViewModel : ObservableRecipient
     {
         var authInfo = await _authService.Login(token);
         var tracksResponse = await _usersClient.GetUsersTopItems(
-            new GetUsersTopItemsRequest { Type = ItemsType.Tracks },
+            new GetUsersTopItemsRequest { Type = ItemsTypeApi.Track },
             authInfo.AccessToken,
             token);
 

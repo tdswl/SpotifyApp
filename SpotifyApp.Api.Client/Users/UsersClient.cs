@@ -20,7 +20,7 @@ internal class UsersClient : IUsersClient
         CancellationToken cancellationToken)
     {
         var query = "https://api.spotify.com/v1/me/top/"
-            .AppendPathSegment(request.Type.ToString().ToLower());
+            .AppendPathSegment($"{request.Type.ToString().ToLower()}s");
 
         if (request.Limit != null)
         {

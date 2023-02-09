@@ -1,7 +1,9 @@
 using AutoMapper;
+using AutoMapper.Extensions.EnumMapping;
+using SpotifyApp.Api.Contracts.Users.Enums;
 using SpotifyApp.Api.Contracts.Users.Models;
 using SpotifyApp.Api.Contracts.Users.Responses;
-using SpotifyApp.Shared.AutoMapper.Resolvers;
+using SpotifyApp.Shared.Enums;
 using SpotifyApp.Shared.Models;
 using Image = SpotifyApp.Api.Contracts.Users.Models.Image;
 
@@ -11,6 +13,14 @@ public sealed class ApplicationMapProfile : Profile
 {
     public ApplicationMapProfile()
     {
+        CreateMap<ItemsTypeApi, ItemType>()
+            .ConvertUsingEnumMapping(opt => opt
+                .MapValue(ItemsTypeApi.Artist, ItemType.Artist)
+                .MapValue(ItemsTypeApi.Track, ItemType.Track)
+                .MapValue(ItemsTypeApi.User, ItemType.User)
+            )
+            .ReverseMap();
+        
         CreateMap<Image, Models.Image>()
             .ValidateMemberList(MemberList.Destination);
 
@@ -18,7 +28,6 @@ public sealed class ApplicationMapProfile : Profile
             .ValidateMemberList(MemberList.Destination);
         
         CreateMap<TopItemModel, ItemModel>()
-            .ForMember(d => d.ItemType, opt => opt.MapFrom(new ApiItemTypeToAppTypeResolver()))
             .ValidateMemberList(MemberList.Destination);
     }
 }

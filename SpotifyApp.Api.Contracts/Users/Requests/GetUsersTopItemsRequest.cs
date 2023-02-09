@@ -10,7 +10,7 @@ public sealed class GetUsersTopItemsRequest
     /// Allowed values:"artists""tracks"
     /// </summary>
     [JsonProperty("type")]
-    public required ItemsType Type { get; set; }
+    public required ItemsTypeApi Type { get; set; }
     
     /// <summary>
     /// The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.

@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using SpotifyApp.Api.Contracts.Users.Enums;
 using SpotifyApp.Api.Contracts.Users.Models;
 
 namespace SpotifyApp.Api.Contracts.Users.Responses;
@@ -74,7 +75,7 @@ public sealed class GetCurrentUserProfileResponse
     /// The object type: "user"
     /// </summary>
     [JsonProperty("type")]
-    public required string Type { get; set; }
+    public required ItemsTypeApi Type { get; set; }
     
     /// <summary>
     /// The Spotify URI for the user.

@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using SpotifyApp.Api.Contracts.Users.Enums;
 
 namespace SpotifyApp.Api.Contracts.Users.Models;
 
@@ -54,7 +55,7 @@ public sealed class TopItemModel
     /// Allowed value:"artist"
     /// </summary>
     [JsonProperty("type")]
-    public string Type { get; set; }
+    public ItemsTypeApi Type { get; set; }
     
     /// <summary>
     /// The Spotify URI for the artist.

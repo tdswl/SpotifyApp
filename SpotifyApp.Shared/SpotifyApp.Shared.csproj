@@ -11,12 +11,12 @@
             <_Parameter1>SpotifyApp.Shared.Tests</_Parameter1>
         </AssemblyAttribute>
     </ItemGroup>
-    
+
     <ItemGroup>
         <AvaloniaResource Include="Assets\**" />
         <TrimmerRootDescriptor Include="Roots.xml" />
     </ItemGroup>
-    
+
     <ItemGroup>
         <FrameworkReference Include="Microsoft.AspNetCore.App" />
         <PackageReference Include="AutoMapper" Version="12.0.1" />
@@ -35,13 +35,13 @@
         <PackageReference Include="XamlNameReferenceGenerator" Version="1.5.1" />
         <PackageReference Include="IdentityModel.OidcClient" Version="5.2.1" />
     </ItemGroup>
-    
+
     <ItemGroup>
-      <ProjectReference Include="..\SpotifyApp.Api.Client\SpotifyApp.Api.Client.csproj" />
-      <ProjectReference Include="..\SpotifyApp.Storage\SpotifyApp.Storage.csproj" />
+        <ProjectReference Include="..\SpotifyApp.Api.Client\SpotifyApp.Api.Client.csproj" />
+        <ProjectReference Include="..\SpotifyApp.Storage\SpotifyApp.Storage.csproj" />
     </ItemGroup>
-    
+
     <ItemGroup>
-      <UpToDateCheckInput Remove="DataTemplates\TrackTemplates.axaml" />
+        <UpToDateCheckInput Remove="DataTemplates\TrackTemplates.axaml" />
     </ItemGroup>
 </Project>

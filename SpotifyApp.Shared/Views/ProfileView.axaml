@@ -10,7 +10,6 @@
     <Design.DataContext>
         <viewModels:ProfileViewModel />
     </Design.DataContext>
-
     <UserControl.DataTemplates>
         <DataTemplate DataType="{x:Type items:UserViewModel}">
             <Grid ColumnDefinitions="Auto, *">
@@ -35,7 +34,7 @@
             </Grid>
         </DataTemplate>
 
-        
+
     </UserControl.DataTemplates>
 
     <ScrollViewer HorizontalScrollBarVisibility="Disabled"
@@ -48,16 +47,17 @@
             <StackPanel Spacing="25">
                 <TextBlock Text="Top artists this month" />
                 <TextBlock Text="Only visible to you" />
-                <ItemsControl Items="{Binding TopArtists}"
-                              Background="Transparent"
-                              ItemTemplate="{StaticResource ArtistCard}">
-                    <ItemsControl.ItemsPanel>
+                <ListBox Items="{Binding TopArtists}"
+                         Background="Transparent"
+                         ItemContainerTheme="{StaticResource ArtistItem}"
+                         ItemTemplate="{StaticResource ArtistCard}">
+                    <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
                             <StackPanel Orientation="Horizontal"
                                         Spacing="30" />
                         </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                </ItemsControl>
+                    </ListBox.ItemsPanel>
+                </ListBox>
             </StackPanel>
 
             <StackPanel Spacing="25">
@@ -68,16 +68,17 @@
 
             <StackPanel Spacing="25">
                 <TextBlock Text="Following" />
-                <ItemsControl Items="{Binding FollowingArtists}"
-                              Background="Transparent"
-                              ItemTemplate="{StaticResource ArtistCard}">
-                    <ItemsControl.ItemsPanel>
+                <ListBox Items="{Binding FollowingArtists}"
+                         Background="Transparent"
+                         ItemContainerTheme="{StaticResource ArtistItem}"
+                         ItemTemplate="{StaticResource ArtistCard}">
+                    <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
                             <StackPanel Orientation="Horizontal"
                                         Spacing="30" />
                         </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                </ItemsControl>
+                    </ListBox.ItemsPanel>
+                </ListBox>
             </StackPanel>
         </StackPanel>
     </ScrollViewer>

@@ -9,10 +9,10 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Avalonia.Desktop" Version="$(AvaloniaVersion)" />
+        <PackageReference Include="Avalonia.Desktop" Version="$(AvaloniaVersion)"/>
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\SpotifyApp.Shared\SpotifyApp.Shared.csproj" />
+        <ProjectReference Include="..\SpotifyApp.Shared\SpotifyApp.Shared.csproj"/>
     </ItemGroup>
 </Project>

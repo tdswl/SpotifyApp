@@ -14,20 +14,43 @@
             <Setter Property="BorderBrush" Value="Gray" />
             <Setter Property="BorderThickness" Value="0 0 0 1" />
         </ControlTheme>
-
-        <!-- Cell focus brushes -->
-        <SolidColorBrush x:Key="DataGridCellFocusVisualPrimaryBrush" Color="Transparent" />
-        <SolidColorBrush x:Key="DataGridCellFocusVisualSecondaryBrush" Color="Transparent" />
-
-        <SolidColorBrush x:Key="DataGridRowHoveredBackgroundColor" Color="Gray" />
-        <SolidColorBrush x:Key="DataGridRowSelectedUnfocusedBackgroundBrush" Color="Gray" />
-        <SolidColorBrush x:Key="DataGridRowSelectedHoveredUnfocusedBackgroundBrush" Color="Gray" />
-        <SolidColorBrush x:Key="DataGridRowSelectedHoveredBackgroundBrush" Color="DarkGray" />
-        <SolidColorBrush x:Key="DataGridRowSelectedBackgroundBrush" Color="Gray" />
+        
+        <ControlTheme x:Key="TracksCell" 
+                      TargetType="DataGridCell"
+                      BasedOn="{StaticResource {x:Type DataGridCell}}">
+            <Style Selector="^:focus /template/ Grid#FocusVisual > Rectangle">
+                <Setter Property="Stroke" Value="Transparent" />
+            </Style>
+        </ControlTheme>
+        
+        <ControlTheme x:Key="TracksRow" 
+                      TargetType="DataGridRow"
+                      BasedOn="{StaticResource {x:Type DataGridRow}}">
+            <Style Selector="^:pointerover /template/ Rectangle#BackgroundRectangle">
+                <Setter Property="Fill" Value="Gray" />
+            </Style>
+            <Style Selector="^:selected">
+                <Style Selector="^ /template/ Rectangle#BackgroundRectangle">
+                    <Setter Property="Fill" Value="Gray" />
+                    <Setter Property="Opacity" Value="{DynamicResource DataGridRowSelectedUnfocusedBackgroundOpacity}" />
+                </Style>
+                <Style Selector="^:pointerover /template/ Rectangle#BackgroundRectangle">
+                    <Setter Property="Fill" Value="Gray" />
+                    <Setter Property="Opacity" Value="{DynamicResource DataGridRowSelectedHoveredUnfocusedBackgroundOpacity}" />
+                </Style>
+                <Style Selector="^:focus /template/ Rectangle#BackgroundRectangle">
+                    <Setter Property="Fill" Value="Gray" />
+                    <Setter Property="Opacity" Value="{DynamicResource DataGridRowSelectedBackgroundOpacity}" />
+                </Style>
+                <Style Selector="^:pointerover:focus /template/ Rectangle#BackgroundRectangle">
+                    <Setter Property="Fill" Value="DarkGray" />
+                    <Setter Property="Opacity" Value="{DynamicResource DataGridRowSelectedHoveredBackgroundOpacity}" />
+                </Style>
+            </Style>
+        </ControlTheme>
     </Styles.Resources>
 
     <Style Selector="controls|TracksGridControl">
-        <!-- Set Defaults -->
         <Setter Property="Template">
             <ControlTemplate>
                 <DataGrid Items="{TemplateBinding Items}"
@@ -39,7 +62,9 @@
                           CanUserSortColumns="False"
                           IsReadOnly="True"
                           GridLinesVisibility="None"
-                          ColumnHeaderTheme="{StaticResource TracksHeader}">
+                          ColumnHeaderTheme="{StaticResource TracksHeader}"
+                          CellTheme="{StaticResource TracksCell}"
+                          RowTheme="{StaticResource TracksRow}">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="#" Binding="{Binding Item.Index}" />
                         <DataGridTemplateColumn Header="TITLE">

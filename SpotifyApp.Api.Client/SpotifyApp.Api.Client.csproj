@@ -7,12 +7,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Flurl.Http" Version="3.2.4" />
-        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
+        <PackageReference Include="Flurl.Http" Version="3.2.4"/>
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0"/>
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\SpotifyApp.Api.Contracts\SpotifyApp.Api.Contracts.csproj" />
+        <ProjectReference Include="..\SpotifyApp.Api.Contracts\SpotifyApp.Api.Contracts.csproj"/>
     </ItemGroup>
 
 </Project>

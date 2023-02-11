@@ -4,29 +4,26 @@
     <Design.PreviewWith>
         <controls:TracksGridControl />
     </Design.PreviewWith>
-    
+
     <Styles.Resources>
         <ControlTheme x:Key="TracksHeader"
-                      TargetType="DataGridColumnHeader" 
+                      TargetType="DataGridColumnHeader"
                       BasedOn="{StaticResource {x:Type DataGridColumnHeader}}">
             <Setter Property="Background" Value="Transparent" />
             <Setter Property="Foreground" Value="White" />
             <Setter Property="BorderBrush" Value="Gray" />
             <Setter Property="BorderThickness" Value="0 0 0 1" />
         </ControlTheme>
-        
+
         <!-- Cell focus brushes -->
         <SolidColorBrush x:Key="DataGridCellFocusVisualPrimaryBrush" Color="Transparent" />
         <SolidColorBrush x:Key="DataGridCellFocusVisualSecondaryBrush" Color="Transparent" />
-        
-        <SolidColorBrush x:Key="DataGridRowHoveredBackgroundColor" Color="Gray"/>
-        <SolidColorBrush x:Key="DataGridRowSelectedUnfocusedBackgroundBrush" Color="Gray"/>
-        <SolidColorBrush x:Key="DataGridRowSelectedHoveredUnfocusedBackgroundBrush" Color="Gray"/>
-        <SolidColorBrush x:Key="DataGridRowSelectedHoveredBackgroundBrush" Color="DarkGray"/>
-        <SolidColorBrush x:Key="DataGridRowSelectedBackgroundBrush" Color="Gray"/>
-        
-        
-        
+
+        <SolidColorBrush x:Key="DataGridRowHoveredBackgroundColor" Color="Gray" />
+        <SolidColorBrush x:Key="DataGridRowSelectedUnfocusedBackgroundBrush" Color="Gray" />
+        <SolidColorBrush x:Key="DataGridRowSelectedHoveredUnfocusedBackgroundBrush" Color="Gray" />
+        <SolidColorBrush x:Key="DataGridRowSelectedHoveredBackgroundBrush" Color="DarkGray" />
+        <SolidColorBrush x:Key="DataGridRowSelectedBackgroundBrush" Color="Gray" />
     </Styles.Resources>
 
     <Style Selector="controls|TracksGridControl">

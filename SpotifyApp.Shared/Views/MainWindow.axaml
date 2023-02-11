@@ -8,5 +8,5 @@
         Icon="/Assets/avalonia-logo.ico"
         Title="SpotifyApp.Desktop"
         ExtendClientAreaToDecorationsHint="False">
-        <views:MainView />
+    <views:MainView />
 </Window>

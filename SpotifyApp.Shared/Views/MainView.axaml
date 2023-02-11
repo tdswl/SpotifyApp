@@ -9,7 +9,7 @@
     <Design.DataContext>
         <viewModels:MainWindowViewModel />
     </Design.DataContext>
- 
+
     <SplitView Classes="MenuWide">
         <Interaction.Behaviors>
             <AdaptiveBehavior>
@@ -18,25 +18,25 @@
                 <AdaptiveClassSetter MinWidth="900" MaxWidth="Infinity" ClassName="MenuWide" />
             </AdaptiveBehavior>
         </Interaction.Behaviors>
-        
+
         <SplitView.Pane>
-           <Grid VerticalAlignment="Stretch"
-                 RowDefinitions="Auto, *, Auto">
-               <StackPanel>
-                   <Button Classes="MenuCompactButton"
-                           Content="⌂"
-                           ToolTip.Tip="Profile"
-                           Command="{Binding NavigateToCommand}"
-                           CommandParameter="{x:Static enums:PageType.Profile}"/>
-                   <Button Classes="MenuCompactButton"
-                           Content="♡"
-                           ToolTip.Tip="Liked songs"
-                           Command="{Binding NavigateToCommand}"
-                           CommandParameter="{x:Static enums:PageType.LikedSongs}"/>
-               </StackPanel>    
-           </Grid>
-       </SplitView.Pane>
-        
+            <Grid VerticalAlignment="Stretch"
+                  RowDefinitions="Auto, *, Auto">
+                <StackPanel>
+                    <Button Classes="MenuCompactButton"
+                            Content="⌂"
+                            ToolTip.Tip="Profile"
+                            Command="{Binding NavigateToCommand}"
+                            CommandParameter="{x:Static enums:PageType.Profile}" />
+                    <Button Classes="MenuCompactButton"
+                            Content="♡"
+                            ToolTip.Tip="Liked songs"
+                            Command="{Binding NavigateToCommand}"
+                            CommandParameter="{x:Static enums:PageType.LikedSongs}" />
+                </StackPanel>
+            </Grid>
+        </SplitView.Pane>
+
         <ContentControl Content="{Binding Content}" />
     </SplitView>
 </UserControl>

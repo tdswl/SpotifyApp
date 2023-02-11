@@ -1,20 +1,14 @@
-using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using SpotifyApp.Storage.Entities;
+using SpotifyApp.Storage.OptionsFactories;
 
 namespace SpotifyApp.Storage;
 
 public sealed class ApplicationContext : DbContext, IApplicationContext
 {
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    public ApplicationContext(IContextOptionsFactory optionsFactory)
+        : base(optionsFactory.CreateOptions())
     {
-        var connectionString = new SqliteConnectionStringBuilder("Data Source=App.db")
-        {
-            Mode = SqliteOpenMode.ReadWriteCreate,
-            Password = "test",
-        }.ToString();
-        
-        optionsBuilder.UseSqlite(connectionString);
     }
     
     protected override void OnModelCreating(ModelBuilder builder)
@@ -24,5 +18,5 @@ public sealed class ApplicationContext : DbContext, IApplicationContext
         builder.ApplyConfigurationsFromAssembly(typeof(IApplicationContext).Assembly);
     }
 
-    public DbSet<AppUserSettings> UserSettings { get; set; }
+    public DbSet<UserSettings> UserSettings { get; set; }
 }

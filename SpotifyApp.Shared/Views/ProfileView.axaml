@@ -55,7 +55,7 @@
                     </Border>
                     <TextBlock Text="{Binding Item.Name}"
                                HorizontalAlignment="Center" />
-                    <TextBlock Text="{Binding Item.ItemType}"
+                    <TextBlock Text="{Binding Item.Type}"
                                HorizontalAlignment="Center" />
                 </StackPanel>
             </Border>

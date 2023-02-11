@@ -10,5 +10,5 @@ public sealed class ItemModel : IItemWithImages
 
     public required IReadOnlyCollection<Image> Images { get; set; }
     
-    public ItemType ItemType { get; set; }
+    public ItemType Type { get; set; }
 }

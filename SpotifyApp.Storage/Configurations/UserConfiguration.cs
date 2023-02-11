@@ -4,9 +4,9 @@ using SpotifyApp.Storage.Entities;
 
 namespace SpotifyApp.Storage.Configurations;
 
-public sealed class UserConfiguration : IEntityTypeConfiguration<AppUserSettings>
+public sealed class UserConfiguration : IEntityTypeConfiguration<UserSettings>
 {
-    public void Configure(EntityTypeBuilder<AppUserSettings> builder)
+    public void Configure(EntityTypeBuilder<UserSettings> builder)
     {
         builder.HasKey(a => a.Id);
         builder.Property(a => a.Id).IsRequired();

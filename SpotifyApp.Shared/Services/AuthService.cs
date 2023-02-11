@@ -152,7 +152,7 @@ internal class AuthService : IAuthService
         }
         else
         {
-            userSettings = new AppUserSettings
+            userSettings = new UserSettings
             {
                 Id = Guid.NewGuid(),
                 AccessToken = infoModel.AccessToken,

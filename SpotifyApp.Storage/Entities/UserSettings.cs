@@ -3,7 +3,7 @@ namespace SpotifyApp.Storage.Entities;
 /// <summary>
 /// Application user
 /// </summary>
-public sealed class AppUserSettings
+public sealed class UserSettings
 {
     public required Guid Id { get; set; }
     

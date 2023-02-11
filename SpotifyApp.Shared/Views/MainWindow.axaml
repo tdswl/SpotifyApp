@@ -7,6 +7,19 @@
         x:Class="SpotifyApp.Shared.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
         Title="SpotifyApp.Desktop"
+        TransparencyLevelHint="AcrylicBlur"
+        Background="Transparent"
         ExtendClientAreaToDecorationsHint="False">
-    <views:MainView />
+    <Panel>
+        <ExperimentalAcrylicBorder IsHitTestVisible="False">
+            <ExperimentalAcrylicBorder.Material>
+                <ExperimentalAcrylicMaterial
+                    BackgroundSource="Digger"
+                    TintColor="Black"
+                    TintOpacity="1"
+                    MaterialOpacity="0.65" />
+            </ExperimentalAcrylicBorder.Material>
+        </ExperimentalAcrylicBorder>
+        <views:MainView />
+    </Panel>
 </Window>

@@ -16,5 +16,5 @@ public sealed class TrackModel : IItemWithImages
     
     public required TimeSpan DurationMs { get; set; }
 
-    public required IReadOnlyCollection<Image> Images { get; set; }
+    public required IReadOnlyCollection<ImageModel> Images { get; set; }
 }

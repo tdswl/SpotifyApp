@@ -23,7 +23,7 @@ public sealed class ApplicationMapProfile : Profile
             )
             .ReverseMap();
         
-        CreateMap<ImageModelApi, Image>()
+        CreateMap<ImageModelApi, ImageModel>()
             .ValidateMemberList(MemberList.Destination);
 
         CreateMap<GetCurrentUserProfileResponse, UserModel>()

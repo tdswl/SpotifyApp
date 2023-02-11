@@ -1,6 +1,6 @@
 namespace SpotifyApp.Shared.Models;
 
-public sealed class Image
+public sealed class ImageModel
 {
     public required string Url { get; set; }
     

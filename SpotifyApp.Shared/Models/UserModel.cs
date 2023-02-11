@@ -6,5 +6,5 @@ public sealed class UserModel : IItemWithImages
     
     public required string DisplayName { get; set; }
 
-    public required IReadOnlyCollection<Image> Images { get; set; }
+    public required IReadOnlyCollection<ImageModel> Images { get; set; }
 }

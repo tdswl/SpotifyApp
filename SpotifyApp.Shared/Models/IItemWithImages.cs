@@ -2,5 +2,5 @@ namespace SpotifyApp.Shared.Models;
 
 public interface IItemWithImages
 {
-    IReadOnlyCollection<Image> Images { get; set; }
+    IReadOnlyCollection<ImageModel> Images { get; set; }
 }

@@ -3,6 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewModels="clr-namespace:SpotifyApp.Shared.ViewModels"
+             xmlns:enums="clr-namespace:SpotifyApp.Shared.Enums"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="SpotifyApp.Shared.Views.MainView">
     <Design.DataContext>
@@ -24,7 +25,9 @@
                <StackPanel>
                    <Button Classes="MenuCompactButton"
                            Content="{SvgImage /Assets/profile.svg}"
-                           ToolTip.Tip="Profile" />
+                           ToolTip.Tip="Profile"
+                           Command="{Binding NavigateToCommand}"
+                           CommandParameter="{x:Static enums:PageType.Profile}"/>
                </StackPanel>    
            </Grid>
        </SplitView.Pane>

@@ -8,7 +8,7 @@ public sealed class ItemModel : IItemWithImages
     
     public required string Name { get; set; }
 
-    public required IReadOnlyCollection<Image> Images { get; set; }
+    public required IReadOnlyCollection<ImageModel> Images { get; set; }
     
     public ItemType Type { get; set; }
 }

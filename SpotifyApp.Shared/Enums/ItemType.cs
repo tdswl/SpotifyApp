@@ -7,4 +7,6 @@ public enum ItemType : byte
     Track = 1,
     
     User = 2,
+    
+    Album = 3,
 }

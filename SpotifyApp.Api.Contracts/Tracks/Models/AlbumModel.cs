@@ -53,7 +53,7 @@ public sealed class AlbumModel
     /// The cover art for the album in various sizes, widest first.
     /// </summary>
     [JsonProperty("images")]
-    public IReadOnlyCollection<Image>? Images { get; set; }
+    public IReadOnlyCollection<ImageModelApi>? Images { get; set; }
     
     /// <summary>
     /// The name of the album. In case of an album takedown, the value may be an empty string.

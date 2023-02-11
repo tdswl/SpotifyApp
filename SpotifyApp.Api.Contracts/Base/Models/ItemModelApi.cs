@@ -4,7 +4,7 @@ using SpotifyApp.Api.Contracts.Users.Models;
 
 namespace SpotifyApp.Api.Contracts.Base.Models;
 
-public sealed class ItemModel
+public sealed class ItemModelApi
 {
     /// <inheritdoc cref="Users.Models.ExternalUrls"/>
     [JsonProperty("external_urls")]
@@ -36,7 +36,7 @@ public sealed class ItemModel
     /// Images of the artist in various sizes, widest first.
     /// </summary>
     [JsonProperty("images")]
-    public IReadOnlyCollection<Image>? Images { get; set; }
+    public IReadOnlyCollection<ImageModelApi>? Images { get; set; }
     
     /// <summary>
     /// The name of the artist.

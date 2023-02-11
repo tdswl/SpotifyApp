@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyApp.Shared", "Spotif
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyApp.Storage", "SpotifyApp.Storage\SpotifyApp.Storage.csproj", "{0D8D003C-58BE-4B5F-BCCE-57F6D2AE31E9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyApp.Shared.Tests", "SpotifyApp.Shared.Tests\SpotifyApp.Shared.Tests.csproj", "{59283190-160D-4929-A700-95A10612D22B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,5 +45,9 @@ Global
 		{0D8D003C-58BE-4B5F-BCCE-57F6D2AE31E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D8D003C-58BE-4B5F-BCCE-57F6D2AE31E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D8D003C-58BE-4B5F-BCCE-57F6D2AE31E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59283190-160D-4929-A700-95A10612D22B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59283190-160D-4929-A700-95A10612D22B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59283190-160D-4929-A700-95A10612D22B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59283190-160D-4929-A700-95A10612D22B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

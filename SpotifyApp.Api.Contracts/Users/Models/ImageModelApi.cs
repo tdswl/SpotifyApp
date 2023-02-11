@@ -5,7 +5,7 @@ namespace SpotifyApp.Api.Contracts.Users.Models;
 /// <summary>
 /// Image model
 /// </summary>
-public sealed class Image
+public sealed class ImageModelApi
 {
     /// <summary>
     /// The source URL of the image.

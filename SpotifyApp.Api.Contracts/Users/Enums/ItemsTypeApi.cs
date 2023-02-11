@@ -15,4 +15,7 @@ public enum ItemsTypeApi : byte
     
     [EnumMember(Value = "user")]
     User = 2,
+    
+    [EnumMember(Value = "album")]
+    Album = 3,
 }

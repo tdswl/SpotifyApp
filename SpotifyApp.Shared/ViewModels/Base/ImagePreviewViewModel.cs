@@ -12,7 +12,7 @@ public abstract partial class ImagePreviewViewModel<T> : ObservableRecipient whe
     private readonly IImageCache _imageCache;
     
     [ObservableProperty]
-    [NotifyCanExecuteChangedFor(nameof(LoadPreviewCommand))]
+    [NotifyCanExecuteChangedFor(nameof(LoadAdditionalInfoCommand))]
     private T? _item;
 
     [ObservableProperty]
@@ -27,12 +27,22 @@ public abstract partial class ImagePreviewViewModel<T> : ObservableRecipient whe
     {
         if (value != null)
         {
-            LoadPreviewCommand.ExecuteAsync(null);
+            LoadAdditionalInfoCommand.ExecuteAsync(null);
         }
     }
     
-    [RelayCommand(IncludeCancelCommand = true, CanExecute = nameof(LoadPreviewCanExecute))]
-    private async Task LoadPreviewAsync(CancellationToken token)
+    [RelayCommand(IncludeCancelCommand = true, CanExecute = nameof(LoadAdditionalInfoCanExecute))]
+    private Task LoadAdditionalInfoAsync(CancellationToken token)
+    {
+        return LoadPreview(token);
+    }
+
+    private bool LoadAdditionalInfoCanExecute()
+    {
+        return Item != null;
+    }
+
+    private async Task LoadPreview(CancellationToken token)
     {
         var previewImage = Item?.Images.FirstOrDefault();
         if (previewImage != null)
@@ -45,10 +55,5 @@ public abstract partial class ImagePreviewViewModel<T> : ObservableRecipient whe
                 Preview = await Task.Run(() => Bitmap.DecodeToWidth(fileStream, width), token);
             }
         }
-    }
-
-    private bool LoadPreviewCanExecute()
-    {
-        return Item != null;
     }
 }

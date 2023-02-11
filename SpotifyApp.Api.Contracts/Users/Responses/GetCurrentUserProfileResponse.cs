@@ -60,7 +60,7 @@ public sealed class GetCurrentUserProfileResponse
     /// The user's profile image.
     /// </summary>
     [JsonProperty("images")]
-    public IReadOnlyCollection<Image>? Images { get; set; }
+    public IReadOnlyCollection<ImageModelApi>? Images { get; set; }
     
     /// <summary>
     /// The user's Spotify subscription level: "premium", "free", etc.

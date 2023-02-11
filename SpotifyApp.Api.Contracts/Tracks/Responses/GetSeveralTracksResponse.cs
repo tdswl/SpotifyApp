@@ -8,5 +8,5 @@ public sealed class GetSeveralTracksResponse
     /// A set of tracks
     /// </summary>
     [JsonProperty("tracks")]
-    public required IReadOnlyCollection<GetTrackResponse> Tracks { get; set; }
+    public required IReadOnlyList<GetTrackResponse> Tracks { get; set; }
 }

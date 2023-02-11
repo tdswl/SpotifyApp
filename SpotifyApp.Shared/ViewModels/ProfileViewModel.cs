@@ -3,7 +3,9 @@ using AutoMapper;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.DependencyInjection;
 using CommunityToolkit.Mvvm.Input;
+using SpotifyApp.Api.Client.Tracks;
 using SpotifyApp.Api.Client.Users;
+using SpotifyApp.Api.Contracts.Tracks.Requests;
 using SpotifyApp.Api.Contracts.Users.Enums;
 using SpotifyApp.Api.Contracts.Users.Requests;
 using SpotifyApp.Shared.Models;
@@ -16,6 +18,7 @@ public sealed partial class ProfileViewModel : ObservableRecipient
 {
     private readonly IAuthService _authService;
     private readonly IUsersClient _usersClient;
+    private readonly ITracksClient _tracksClient;
     private readonly IMapper _mapper;
     
     [ObservableProperty]
@@ -37,15 +40,17 @@ public sealed partial class ProfileViewModel : ObservableRecipient
     
     public ProfileViewModel(IAuthService authService,
         IUsersClient usersClient,
+        ITracksClient tracksClient,
         IMapper mapper)
     {
         _authService = authService;
         _usersClient = usersClient;
+        _tracksClient = tracksClient;
         _mapper = mapper;
 
         GetUserInfoCommand.ExecuteAsync(null);
         GetArtistsCommand.ExecuteAsync(null);
-        GetTracksCommand.ExecuteAsync(null);
+        GetTracksCommand.Execute(null);
         GetFollowingArtistsCommand.ExecuteAsync(null);
     }
     
@@ -81,17 +86,26 @@ public sealed partial class ProfileViewModel : ObservableRecipient
     private async Task GetTracksAsync(CancellationToken token)
     {
         var authInfo = await _authService.Login(token);
-        var tracksResponse = await _usersClient.GetUsersTopItems(
+        var topTracksResponse = await _usersClient.GetUsersTopItems(
             new GetUsersTopItemsRequest { Type = ItemsTypeApi.Track, Limit = 4, },
             authInfo.AccessToken,
             token);
 
+        // 50 - max by api
+        var trackIds = string.Join(",", topTracksResponse.Items.Take(50).Select(a => a.Id));
+        var tracksInfoResponse = await _tracksClient.GetSeveralTracks(
+            new GetSeveralTracksRequest { Ids = trackIds, },
+            authInfo.AccessToken,
+            token);
+
         TopTracks.Clear();
-        foreach (var track in tracksResponse.Items)
+        for (var i = 0; i < tracksInfoResponse.Tracks.Count; i++)
         {
             var trackVm = Ioc.Default.GetRequiredService<TrackViewModel>();
             TopTracks.Add(trackVm);
-            trackVm.Item = _mapper.Map<ItemModel>(track);
+            var track = _mapper.Map<TrackModel>(tracksInfoResponse.Tracks[i]);
+            track.Index = i + 1;
+            trackVm.Item = track;
         }
     }
 

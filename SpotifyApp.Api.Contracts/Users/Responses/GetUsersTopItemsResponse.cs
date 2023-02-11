@@ -43,5 +43,5 @@ public sealed class GetUsersTopItemsResponse
     public required int Total { get; set; }
     
     [JsonProperty("items")]
-    public required IReadOnlyCollection<ItemModel>? Items { get; set; }
+    public required IReadOnlyCollection<ItemModelApi>? Items { get; set; }
 }

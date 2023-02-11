@@ -20,7 +20,7 @@ public sealed class GetTrackResponse
     /// Each artist object includes a link in href to more detailed information about the artist.
     /// </summary>
     [JsonProperty("artist")]
-    public required ItemModel Artist { get; set; }
+    public required ItemModelApi Artist { get; set; }
     
     /// <summary>
     /// A list of the countries in which the track can be played, identified by their ISO 3166-1 alpha-2 code.
@@ -38,13 +38,13 @@ public sealed class GetTrackResponse
     /// The track length in milliseconds.
     /// </summary>
     [JsonProperty("duration_ms")]
-    public int? DurationMs { get; set; }   
+    public required int DurationMs { get; set; }   
     
     /// <summary>
     /// Whether or not the track has explicit lyrics ( true = yes it does; false = no it does not OR unknown).
     /// </summary>
     [JsonProperty("explicit")]
-    public bool? Explicit { get; set; }   
+    public bool Explicit { get; set; }   
     
     /// <summary>
     /// Known external IDs for the track.

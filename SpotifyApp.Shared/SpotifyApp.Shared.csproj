@@ -5,6 +5,12 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
     </PropertyGroup>
+
+    <ItemGroup>
+        <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
+            <_Parameter1>SpotifyApp.Shared.Tests</_Parameter1>
+        </AssemblyAttribute>
+    </ItemGroup>
     
     <ItemGroup>
         <AvaloniaResource Include="Assets\**" />
@@ -33,9 +39,5 @@
     <ItemGroup>
       <ProjectReference Include="..\SpotifyApp.Api.Client\SpotifyApp.Api.Client.csproj" />
       <ProjectReference Include="..\SpotifyApp.Storage\SpotifyApp.Storage.csproj" />
-    </ItemGroup>
-    
-    <ItemGroup>
-      <UpToDateCheckInput Remove="Controls\UserProfileControl.axaml" />
     </ItemGroup>
 </Project>

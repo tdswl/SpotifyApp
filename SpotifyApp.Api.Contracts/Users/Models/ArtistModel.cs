@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using SpotifyApp.Api.Contracts.Base.Models;
 
 namespace SpotifyApp.Api.Contracts.Users.Models;
 
@@ -33,5 +34,5 @@ public sealed class ArtistModel
     public required int Total { get; set; }
     
     [JsonProperty("items")]
-    public required IReadOnlyCollection<TopItemModel>? Items { get; set; }
+    public required IReadOnlyCollection<ItemModel>? Items { get; set; }
 }

@@ -1,15 +1,16 @@
 using Newtonsoft.Json;
 using SpotifyApp.Api.Contracts.Users.Enums;
+using SpotifyApp.Api.Contracts.Users.Models;
 
-namespace SpotifyApp.Api.Contracts.Users.Models;
+namespace SpotifyApp.Api.Contracts.Base.Models;
 
-public sealed class TopItemModel
+public sealed class ItemModel
 {
-    /// <inheritdoc cref="Models.ExternalUrls"/>
+    /// <inheritdoc cref="Users.Models.ExternalUrls"/>
     [JsonProperty("external_urls")]
     public ExternalUrls? ExternalUrls { get; set; }
     
-    /// <inheritdoc cref="Models.Followers"/>
+    /// <inheritdoc cref="Users.Models.Followers"/>
     [JsonProperty("followers")]
     public Followers? Followers { get; set; }
     
@@ -17,7 +18,7 @@ public sealed class TopItemModel
     /// A list of the genres the artist is associated with. If not yet classified, the array is empty.
     /// </summary>
     [JsonProperty("genres")]
-    public List<string>? Genres { get; set; }
+    public IReadOnlyCollection<string>? Genres { get; set; }
     
     /// <summary>
     /// A link to the Web API endpoint providing full details of the artist.

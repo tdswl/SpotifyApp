@@ -50,7 +50,7 @@ public sealed partial class ProfileViewModel : ObservableRecipient
 
         GetUserInfoCommand.ExecuteAsync(null);
         GetArtistsCommand.ExecuteAsync(null);
-        GetTracksCommand.Execute(null);
+        GetTracksCommand.ExecuteAsync(null);
         GetFollowingArtistsCommand.ExecuteAsync(null);
     }
     

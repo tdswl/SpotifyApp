@@ -32,7 +32,7 @@ internal class UsersClient : IUsersClient
             query.SetQueryParam("offset", request.Offset);
         }
         
-        if (request.Limit != null)
+        if (request.TimeRange != null)
         {
             query.SetQueryParam("time_range", request.TimeRange);
         }

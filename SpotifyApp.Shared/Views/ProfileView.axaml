@@ -34,84 +34,7 @@
             </Grid>
         </DataTemplate>
 
-        <DataTemplate DataType="{x:Type items:ArtistViewModel}">
-            <Border ClipToBounds="True"
-                    CornerRadius="5"
-                    Background="DimGray"
-                    Width="240"
-                    Height="335">
-                <StackPanel Spacing="5">
-                    <Border ClipToBounds="True"
-                            CornerRadius="180"
-                            Margin="20">
-                        <Panel Background="Gray">
-                            <Image Width="200"
-                                   Stretch="Uniform"
-                                   Source="{Binding Preview}" />
-                            <ProgressBar VerticalAlignment="Center"
-                                         IsIndeterminate="True"
-                                         IsVisible="{Binding Preview, Converter={x:Static ObjectConverters.IsNull}}" />
-                        </Panel>
-                    </Border>
-                    <TextBlock Text="{Binding Item.Name}"
-                               HorizontalAlignment="Center" />
-                    <TextBlock Text="{Binding Item.Type}"
-                               HorizontalAlignment="Center" />
-                </StackPanel>
-            </Border>
-        </DataTemplate>
-
-        <DataTemplate DataType="{x:Type items:TrackViewModel}">
-            <Border ClipToBounds="True"
-                    CornerRadius="5"
-                    Background="Transparent"
-                    Height="70">
-                <Grid ColumnDefinitions="20, 80, Auto, *, Auto, 20, Auto">
-                    <TextBlock Text="{Binding Item.Index}"
-                               VerticalAlignment="Center"/>
-                    <Border Grid.Column="1"
-                            ClipToBounds="True"
-                            Margin="10">
-                        <Panel Background="Gray"
-                               Width="50"
-                               Height="50">
-                            <Image Stretch="Uniform"
-                                   Source="{Binding Preview}" />
-                            <ProgressBar VerticalAlignment="Center"
-                                         IsIndeterminate="True"
-                                         IsVisible="{Binding Preview, Converter={x:Static ObjectConverters.IsNull}}" />
-                        </Panel>
-                    </Border>
-                    <StackPanel Grid.Column="2"
-                                VerticalAlignment="Center">
-                        <TextBlock Text="{Binding Item.Name}"
-                                   VerticalAlignment="Center"/>
-                        <StackPanel Orientation="Horizontal">
-                            <Border ClipToBounds="True"
-                                    CornerRadius="2"
-                                    Background="DarkGray"
-                                    Height="20"
-                                    Width="20"
-                                    IsVisible="{Binding Item.Explicit}">
-                                <TextBlock Text="E"
-                                           VerticalAlignment="Center"
-                                           HorizontalAlignment="Center"/>
-                            </Border>
-                            <TextBlock Text="{Binding Item.ArtistName}"
-                                       VerticalAlignment="Center"/>
-                        </StackPanel>
-                    </StackPanel>
         
-                    <TextBlock Grid.Column="4"
-                               Text="{Binding Item.AlbumName}"
-                               VerticalAlignment="Center" />
-        
-                    <TextBlock Grid.Column="6"
-                               Text="{Binding Item.DurationMs, StringFormat={}{0:g}}"
-                               VerticalAlignment="Center"/>
-                </Grid>
-            </Border>
-        </DataTemplate>
     </UserControl.DataTemplates>
 
     <ScrollViewer HorizontalScrollBarVisibility="Disabled"
@@ -125,7 +48,8 @@
                 <TextBlock Text="Top artists this month" />
                 <TextBlock Text="Only visible to you" />
                 <ItemsControl Items="{Binding TopArtists}"
-                              Background="Transparent">
+                              Background="Transparent"
+                              ItemTemplate="{StaticResource ArtistCard}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <StackPanel Orientation="Horizontal"
@@ -139,7 +63,8 @@
                 <TextBlock Text="Top tracks this month" />
                 <TextBlock Text="Only visible to you" />
                 <ListBox Items="{Binding TopTracks}"
-                         Background="Transparent">
+                         Background="Transparent"
+                         ItemTemplate="{StaticResource TrackListItem}">
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
                             <StackPanel />
@@ -151,7 +76,8 @@
             <StackPanel Spacing="25">
                 <TextBlock Text="Following" />
                 <ItemsControl Items="{Binding FollowingArtists}"
-                              Background="Transparent">
+                              Background="Transparent"
+                              ItemTemplate="{StaticResource ArtistCard}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <StackPanel Orientation="Horizontal"

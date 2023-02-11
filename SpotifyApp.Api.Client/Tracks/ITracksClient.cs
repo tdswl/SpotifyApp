@@ -38,4 +38,20 @@ public interface ITracksClient
     Task<GetSeveralTracksResponse> GetSeveralTracks(GetSeveralTracksRequest request, 
         string accessToken,
         CancellationToken cancellationToken);
+    
+    /// <summary>
+    /// Get a list of the songs saved in the current Spotify user's 'Your Music' library.
+    /// </summary>
+    /// <exception cref="FlurlHttpException">
+    /// 401 - Bad or expired token. This can happen if the user revoked a token or the
+    /// access token has expired. You should re-authenticate the user.
+    ///
+    /// 403 - Bad OAuth request (wrong consumer key, bad nonce, expired timestamp...).
+    /// Unfortunately, re-authenticating the user won't help here.
+    ///
+    /// 429 - The app has exceeded its rate limits.
+    /// </exception>
+    Task<GetUsersSavedTracksResponse> GetUsersSavedTracks(GetUsersSavedTracksRequest request, 
+        string accessToken,
+        CancellationToken cancellationToken);
 }

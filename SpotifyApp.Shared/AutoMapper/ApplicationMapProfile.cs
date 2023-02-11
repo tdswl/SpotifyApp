@@ -40,7 +40,5 @@ public sealed class ApplicationMapProfile : Profile
             .ForMember(d => d.DurationMs, opt => opt.MapFrom(s => TimeSpan.FromMilliseconds(s.DurationMs)))
             .ForMember(d => d.Index, opt => opt.Ignore())
             .ValidateMemberList(MemberList.Destination);
-
-
     }
 }

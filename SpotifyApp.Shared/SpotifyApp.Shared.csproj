@@ -40,4 +40,8 @@
       <ProjectReference Include="..\SpotifyApp.Api.Client\SpotifyApp.Api.Client.csproj" />
       <ProjectReference Include="..\SpotifyApp.Storage\SpotifyApp.Storage.csproj" />
     </ItemGroup>
+    
+    <ItemGroup>
+      <UpToDateCheckInput Remove="DataTemplates\TrackTemplates.axaml" />
+    </ItemGroup>
 </Project>

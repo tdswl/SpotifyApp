@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 using SpotifyApp.Api.Client.DI;
 using SpotifyApp.Shared.AutoMapper;
+using SpotifyApp.Shared.ViewModels;
 using SpotifyApp.Shared.ViewModels.Items;
 using SpotifyApp.Storage;
 using SpotifyApp.Storage.DI;
@@ -73,6 +74,8 @@ public sealed class App : Application
             .AddApiClients()
             .AddTransient<MainWindowViewModel>()
             .AddTransient<ProfileViewModel>()
+            .AddTransient<LikedSongsViewModel>()
+            
             .AddTransient<TrackViewModel>()
             .AddTransient<UserViewModel>()
             .AddTransient<ArtistViewModel>()

@@ -28,6 +28,11 @@
                            ToolTip.Tip="Profile"
                            Command="{Binding NavigateToCommand}"
                            CommandParameter="{x:Static enums:PageType.Profile}"/>
+                   <Button Classes="MenuCompactButton"
+                           Content="♡"
+                           ToolTip.Tip="Liked songs"
+                           Command="{Binding NavigateToCommand}"
+                           CommandParameter="{x:Static enums:PageType.LikedSongs}"/>
                </StackPanel>    
            </Grid>
        </SplitView.Pane>

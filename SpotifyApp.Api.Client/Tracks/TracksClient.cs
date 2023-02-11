@@ -40,4 +40,30 @@ internal class TracksClient : ITracksClient
             .WithOAuthBearerToken(accessToken)
             .GetJsonAsync<GetSeveralTracksResponse>(cancellationToken);
     }
+
+    public Task<GetUsersSavedTracksResponse> GetUsersSavedTracks(GetUsersSavedTracksRequest request,
+        string accessToken, 
+        CancellationToken cancellationToken)
+    {
+        const string query = "https://api.spotify.com/v1/me/tracks";
+
+        if (request.Limit != null) 
+        {
+            query.SetQueryParam("limit", request.Limit);
+        }
+        
+        if (request.Offset != null)
+        {
+            query.SetQueryParam("offset", request.Offset);
+        }
+        
+        if (request.Market != null)
+        {
+            query.SetQueryParam("market", request.Market);
+        }
+        
+        return query
+            .WithOAuthBearerToken(accessToken)
+            .GetJsonAsync<GetUsersSavedTracksResponse>(cancellationToken);
+    }
 }

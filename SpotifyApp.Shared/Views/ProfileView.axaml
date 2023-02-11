@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewModels="clr-namespace:SpotifyApp.Shared.ViewModels"
              xmlns:items="clr-namespace:SpotifyApp.Shared.ViewModels.Items"
+             xmlns:controls="clr-namespace:SpotifyApp.Shared.Controls"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="SpotifyApp.Shared.Views.ProfileView">
     <Design.DataContext>
@@ -62,15 +63,7 @@
             <StackPanel Spacing="25">
                 <TextBlock Text="Top tracks this month" />
                 <TextBlock Text="Only visible to you" />
-                <ListBox Items="{Binding TopTracks}"
-                         Background="Transparent"
-                         ItemTemplate="{StaticResource TrackListItem}">
-                    <ListBox.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <StackPanel />
-                        </ItemsPanelTemplate>
-                    </ListBox.ItemsPanel>
-                </ListBox>
+                <controls:TracksGridControl Items="{Binding TopTracks}" />
             </StackPanel>
 
             <StackPanel Spacing="25">

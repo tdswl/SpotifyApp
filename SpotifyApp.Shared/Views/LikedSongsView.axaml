@@ -3,18 +3,11 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewModels="clr-namespace:SpotifyApp.Shared.ViewModels"
+             xmlns:controls="clr-namespace:SpotifyApp.Shared.Controls"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="SpotifyApp.Shared.Views.LikedSongsView">
     <Design.DataContext>
         <viewModels:LikedSongsViewModel />
     </Design.DataContext>
-    <ListBox Items="{Binding LikedSongs}"
-             Background="Transparent"
-             ItemTemplate="{StaticResource TrackListItem}">
-        <ListBox.ItemsPanel>
-            <ItemsPanelTemplate>
-                <StackPanel />
-            </ItemsPanelTemplate>
-        </ListBox.ItemsPanel>
-    </ListBox>
+    <controls:TracksGridControl Items="{Binding LikedSongs}"/>
 </UserControl>

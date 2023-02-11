@@ -37,7 +37,8 @@ public sealed class ApplicationMapProfile : Profile
             .ForMember(d => d.ArtistName,
                 opt => opt.MapFrom(s => string.Join(", ", s.Album.Artists.Select(a => a.Name))))
             .ForMember(d => d.AlbumName, opt => opt.MapFrom(s => string.Join(", ", s.Album.Name)))
-            .ForMember(d => d.DurationMs, opt => opt.MapFrom(s => TimeSpan.FromMilliseconds(s.DurationMs)))
+            .ForMember(d => d.DurationMs, 
+                opt => opt.MapFrom(s => TimeSpan.FromMilliseconds(s.DurationMs).ToString(@"mm\:ss")))
             .ForMember(d => d.Index, opt => opt.Ignore())
             .ValidateMemberList(MemberList.Destination);
     }

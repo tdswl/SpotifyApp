@@ -4,14 +4,15 @@
 
     <Application.Styles>
         <FluentTheme />
+        <StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Fluent.xaml"/>
         <StyleInclude Source="/Styles/ButtonStyles.axaml" />
         <StyleInclude Source="/Styles/SplitViewStyles.axaml" />
+        <StyleInclude Source="avares://SpotifyApp.Shared/Controls/TracksGridControl.axaml" />
     </Application.Styles>
     
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceInclude Source="/Resources/TrackDataTemplates.axaml"/>
                 <ResourceInclude Source="/Resources/ArtistDataTemplates.axaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

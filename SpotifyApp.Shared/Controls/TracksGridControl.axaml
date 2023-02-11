@@ -1,0 +1,94 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:SpotifyApp.Shared.Controls">
+    <Design.PreviewWith>
+        <controls:TracksGridControl />
+    </Design.PreviewWith>
+    
+    <Styles.Resources>
+        <ControlTheme x:Key="TracksHeader"
+                      TargetType="DataGridColumnHeader" 
+                      BasedOn="{StaticResource {x:Type DataGridColumnHeader}}">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="BorderBrush" Value="Gray" />
+            <Setter Property="BorderThickness" Value="0 0 0 1" />
+        </ControlTheme>
+        
+        <!-- Cell focus brushes -->
+        <SolidColorBrush x:Key="DataGridCellFocusVisualPrimaryBrush" Color="Transparent" />
+        <SolidColorBrush x:Key="DataGridCellFocusVisualSecondaryBrush" Color="Transparent" />
+        
+        <SolidColorBrush x:Key="DataGridRowHoveredBackgroundColor" Color="Gray"/>
+        <SolidColorBrush x:Key="DataGridRowSelectedUnfocusedBackgroundBrush" Color="Gray"/>
+        <SolidColorBrush x:Key="DataGridRowSelectedHoveredUnfocusedBackgroundBrush" Color="Gray"/>
+        <SolidColorBrush x:Key="DataGridRowSelectedHoveredBackgroundBrush" Color="DarkGray"/>
+        <SolidColorBrush x:Key="DataGridRowSelectedBackgroundBrush" Color="Gray"/>
+        
+        
+        
+    </Styles.Resources>
+
+    <Style Selector="controls|TracksGridControl">
+        <!-- Set Defaults -->
+        <Setter Property="Template">
+            <ControlTemplate>
+                <DataGrid Items="{TemplateBinding Items}"
+                          Background="Transparent"
+                          AutoGenerateColumns="False"
+                          SelectionMode="Single"
+                          CanUserReorderColumns="False"
+                          CanUserResizeColumns="False"
+                          CanUserSortColumns="False"
+                          IsReadOnly="True"
+                          GridLinesVisibility="None"
+                          ColumnHeaderTheme="{StaticResource TracksHeader}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="#" Binding="{Binding Item.Index}" />
+                        <DataGridTemplateColumn Header="TITLE">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Border ClipToBounds="True"
+                                                Margin="10">
+                                            <Panel Background="Gray"
+                                                   Width="50"
+                                                   Height="50">
+                                                <Image Stretch="Uniform"
+                                                       Source="{Binding Preview}" />
+                                                <ProgressBar VerticalAlignment="Center"
+                                                             IsIndeterminate="True"
+                                                             IsVisible="{Binding Preview, Converter={x:Static ObjectConverters.IsNull}}" />
+                                            </Panel>
+                                        </Border>
+                                        <StackPanel VerticalAlignment="Center">
+                                            <TextBlock Text="{Binding Item.Name}"
+                                                       VerticalAlignment="Center" />
+                                            <StackPanel Orientation="Horizontal">
+                                                <Border ClipToBounds="True"
+                                                        CornerRadius="2"
+                                                        Background="DarkGray"
+                                                        Height="20"
+                                                        Width="20"
+                                                        IsVisible="{Binding Item.Explicit}">
+                                                    <TextBlock Text="E"
+                                                               VerticalAlignment="Center"
+                                                               HorizontalAlignment="Center" />
+                                                </Border>
+                                                <TextBlock Text="{Binding Item.ArtistName}"
+                                                           VerticalAlignment="Center" />
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTextColumn Header="ALBUM" Binding="{Binding Item.AlbumName}" />
+                        <DataGridTextColumn Header="DURATION" Binding="{Binding Item.DurationMs}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+</Styles>

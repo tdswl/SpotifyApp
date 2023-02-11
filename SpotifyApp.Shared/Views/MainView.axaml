@@ -24,7 +24,7 @@
                  RowDefinitions="Auto, *, Auto">
                <StackPanel>
                    <Button Classes="MenuCompactButton"
-                           Content="{SvgImage /Assets/profile.svg}"
+                           Content="⌂"
                            ToolTip.Tip="Profile"
                            Command="{Binding NavigateToCommand}"
                            CommandParameter="{x:Static enums:PageType.Profile}"/>

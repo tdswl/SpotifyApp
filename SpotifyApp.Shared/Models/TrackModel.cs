@@ -14,7 +14,10 @@ public sealed class TrackModel : IItemWithImages
     
     public bool Explicit { get; set; }   
     
-    public required TimeSpan DurationMs { get; set; }
+    /// <summary>
+    /// string in mm:ss format
+    /// </summary>
+    public required string DurationMs { get; set; }
 
     public required IReadOnlyCollection<ImageModel> Images { get; set; }
 }

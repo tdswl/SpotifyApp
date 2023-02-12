@@ -14,16 +14,16 @@
             <Setter Property="BorderBrush" Value="Gray" />
             <Setter Property="BorderThickness" Value="0 0 0 1" />
         </ControlTheme>
-        
-        <ControlTheme x:Key="TracksCell" 
+
+        <ControlTheme x:Key="TracksCell"
                       TargetType="DataGridCell"
                       BasedOn="{StaticResource {x:Type DataGridCell}}">
             <Style Selector="^:focus /template/ Grid#FocusVisual > Rectangle">
                 <Setter Property="Stroke" Value="Transparent" />
             </Style>
         </ControlTheme>
-        
-        <ControlTheme x:Key="TracksRow" 
+
+        <ControlTheme x:Key="TracksRow"
                       TargetType="DataGridRow"
                       BasedOn="{StaticResource {x:Type DataGridRow}}">
             <Style Selector="^:pointerover /template/ Rectangle#BackgroundRectangle">
@@ -36,7 +36,8 @@
                 </Style>
                 <Style Selector="^:pointerover /template/ Rectangle#BackgroundRectangle">
                     <Setter Property="Fill" Value="Gray" />
-                    <Setter Property="Opacity" Value="{DynamicResource DataGridRowSelectedHoveredUnfocusedBackgroundOpacity}" />
+                    <Setter Property="Opacity"
+                            Value="{DynamicResource DataGridRowSelectedHoveredUnfocusedBackgroundOpacity}" />
                 </Style>
                 <Style Selector="^:focus /template/ Rectangle#BackgroundRectangle">
                     <Setter Property="Fill" Value="Gray" />
@@ -66,12 +67,18 @@
                           CellTheme="{StaticResource TracksCell}"
                           RowTheme="{StaticResource TracksRow}">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="#" Binding="{Binding Item.Index}" />
-                        <DataGridTemplateColumn Header="TITLE">
+                        <DataGridTextColumn Header="#" 
+                                            Binding="{Binding Item.Index}" 
+                                            Width="Auto" />
+                        <DataGridTemplateColumn Header="TITLE"
+                                                MinWidth="150"
+                                                Width="*">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                        <Border ClipToBounds="True"
+                                    <Grid ColumnDefinitions="Auto, Auto, *"
+                                          RowDefinitions="*, *">
+                                        <Border Grid.RowSpan="2"
+                                                ClipToBounds="True"
                                                 Margin="10">
                                             <Panel Background="Gray"
                                                    Width="50"
@@ -83,31 +90,50 @@
                                                              IsVisible="{Binding Preview, Converter={x:Static ObjectConverters.IsNull}}" />
                                             </Panel>
                                         </Border>
-                                        <StackPanel VerticalAlignment="Center">
-                                            <TextBlock Text="{Binding Item.Name}"
-                                                       VerticalAlignment="Center" />
-                                            <StackPanel Orientation="Horizontal">
-                                                <Border ClipToBounds="True"
-                                                        CornerRadius="2"
-                                                        Background="DarkGray"
-                                                        Height="20"
-                                                        Width="20"
-                                                        IsVisible="{Binding Item.Explicit}">
-                                                    <TextBlock Text="E"
-                                                               VerticalAlignment="Center"
-                                                               HorizontalAlignment="Center" />
-                                                </Border>
-                                                <TextBlock Text="{Binding Item.ArtistName}"
-                                                           VerticalAlignment="Center" />
-                                            </StackPanel>
-                                        </StackPanel>
-                                    </StackPanel>
+                                        <TextBlock Grid.Row="0"
+                                                   Grid.Column="1"
+                                                   Grid.ColumnSpan="2"
+                                                   Text="{Binding Item.Name}"
+                                                   TextTrimming="CharacterEllipsis"
+                                                   VerticalAlignment="Bottom" />
+                                        <Border Grid.Row="1"
+                                                Grid.Column="1"
+                                                ClipToBounds="True"
+                                                CornerRadius="2"
+                                                Background="DarkGray"
+                                                Height="20"
+                                                Width="20"
+                                                Margin="0"
+                                                VerticalAlignment="Top"
+                                                IsVisible="{Binding Item.Explicit}">
+                                            <TextBlock Text="E"
+                                                       VerticalAlignment="Center"
+                                                       HorizontalAlignment="Center" />
+                                        </Border> 
+                                        <TextBlock Grid.Row="1"
+                                                   Grid.Column="2"
+                                                   Text="{Binding Item.ArtistName}"
+                                                   TextTrimming="CharacterEllipsis"
+                                                   VerticalAlignment="Top" />
+                                    </Grid>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="ALBUM" 
+                                                MinWidth="150"
+                                                Width="*">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Item.AlbumName}"
+                                               VerticalAlignment="Center"
+                                               TextTrimming="CharacterEllipsis" />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
 
-                        <DataGridTextColumn Header="ALBUM" Binding="{Binding Item.AlbumName}" />
-                        <DataGridTextColumn Header="DURATION" Binding="{Binding Item.DurationMs}" />
+                        <DataGridTextColumn Header="DURATION" 
+                                            Binding="{Binding Item.DurationMs}"
+                                            Width="Auto"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </ControlTemplate>

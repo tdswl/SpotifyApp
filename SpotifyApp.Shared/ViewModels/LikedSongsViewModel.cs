@@ -1,4 +1,5 @@
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using AutoMapper;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.DependencyInjection;
@@ -54,5 +55,11 @@ public sealed partial class LikedSongsViewModel : ObservableRecipient
             track.Index = i + 1;
             trackVm.Item = track;
         }
+    }
+    
+    [RelayCommand(IncludeCancelCommand = true)]
+    private async Task LoadMoreAsync(CancellationToken token)
+    {
+        Debug.WriteLine("LoadMoreAsync");
     }
 }

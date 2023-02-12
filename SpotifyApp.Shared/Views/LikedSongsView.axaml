@@ -9,5 +9,6 @@
     <Design.DataContext>
         <viewModels:LikedSongsViewModel />
     </Design.DataContext>
-    <controls:TracksGridControl Items="{Binding LikedSongs}" />
+    <controls:TracksGridControl Items="{Binding LikedSongs}"
+                                LoadMoreCommand="{Binding LoadMoreCommand}"/>
 </UserControl>

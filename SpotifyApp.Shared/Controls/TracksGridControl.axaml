@@ -54,7 +54,8 @@
     <Style Selector="controls|TracksGridControl">
         <Setter Property="Template">
             <ControlTemplate>
-                <DataGrid Items="{TemplateBinding Items}"
+                <DataGrid x:Name="TracksGrid"
+                          Items="{TemplateBinding Items}"
                           Background="Transparent"
                           AutoGenerateColumns="False"
                           SelectionMode="Single"
@@ -67,8 +68,8 @@
                           CellTheme="{StaticResource TracksCell}"
                           RowTheme="{StaticResource TracksRow}">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="#" 
-                                            Binding="{Binding Item.Index}" 
+                        <DataGridTextColumn Header="#"
+                                            Binding="{Binding Item.Index}"
                                             Width="Auto" />
                         <DataGridTemplateColumn Header="TITLE"
                                                 MinWidth="150"
@@ -109,7 +110,7 @@
                                             <TextBlock Text="E"
                                                        VerticalAlignment="Center"
                                                        HorizontalAlignment="Center" />
-                                        </Border> 
+                                        </Border>
                                         <TextBlock Grid.Row="1"
                                                    Grid.Column="2"
                                                    Text="{Binding Item.ArtistName}"
@@ -119,7 +120,7 @@
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTemplateColumn Header="ALBUM" 
+                        <DataGridTemplateColumn Header="ALBUM"
                                                 MinWidth="150"
                                                 Width="*">
                             <DataGridTemplateColumn.CellTemplate>
@@ -131,9 +132,9 @@
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
 
-                        <DataGridTextColumn Header="DURATION" 
+                        <DataGridTextColumn Header="DURATION"
                                             Binding="{Binding Item.DurationMs}"
-                                            Width="Auto"/>
+                                            Width="Auto" />
                     </DataGrid.Columns>
                 </DataGrid>
             </ControlTemplate>

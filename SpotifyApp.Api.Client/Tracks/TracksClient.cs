@@ -64,38 +64,90 @@ internal class TracksClient : ITracksClient
         return query.GetJsonAsync<GetUsersSavedTracksResponse>(cancellationToken);
     }
 
-    public Task SaveTracksForCurrentUser(string ids, string accessToken, CancellationToken cancellationToken)
+    Task ITracksClient.SaveTracksForCurrentUser(string ids, 
+        string accessToken, 
+        CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        return "https://api.spotify.com/v1/me/tracks"
+            .WithOAuthBearerToken(accessToken)
+            .SetQueryParam("ids", ids)
+            .PutAsync(cancellationToken: cancellationToken);
     }
 
-    public Task RemoveUsersSavedTracks(string ids, string accessToken, CancellationToken cancellationToken)
+    Task ITracksClient.RemoveUsersSavedTracks(string ids, 
+        string accessToken, 
+        CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        return "https://api.spotify.com/v1/me/tracks"
+            .WithOAuthBearerToken(accessToken)
+            .SetQueryParam("ids", ids)
+            .DeleteAsync(cancellationToken: cancellationToken);
     }
 
-    public Task<IReadOnlyList<bool>> CheckUsersSavedTracks(string ids, string accessToken, CancellationToken cancellationToken)
+    Task<IReadOnlyList<bool>> ITracksClient.CheckUsersSavedTracks(string ids, 
+        string accessToken, 
+        CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        return "https://api.spotify.com/v1/me/tracks/contains"
+            .WithOAuthBearerToken(accessToken)
+            .SetQueryParam("ids", ids)
+            .GetJsonAsync<IReadOnlyList<bool>>(cancellationToken: cancellationToken);
     }
 
-    public Task<GetTracksAudioFeaturesResponse> GetTracksAudioFeatures(string ids, string accessToken, CancellationToken cancellationToken)
+    Task<GetTracksAudioFeaturesResponse> ITracksClient.GetTracksAudioFeatures(string ids, 
+        string accessToken, 
+        CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        return "https://api.spotify.com/v1/audio-features"
+            .WithOAuthBearerToken(accessToken)
+            .SetQueryParam("ids", ids)
+            .GetJsonAsync<GetTracksAudioFeaturesResponse>(cancellationToken: cancellationToken);
     }
 
-    public Task<AudioFeaturesModel> GetTrackAudioFeatures(string id, string accessToken, CancellationToken cancellationToken)
+    Task<AudioFeaturesModel> ITracksClient.GetTrackAudioFeatures(string id, 
+        string accessToken, 
+        CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        return "https://api.spotify.com/v1/audio-features"
+            .WithOAuthBearerToken(accessToken)
+            .AppendPathSegment(id)
+            .GetJsonAsync<AudioFeaturesModel>(cancellationToken: cancellationToken);
     }
 
-    public Task<GetTracksAudioAnalysisResponse> GetTracksAudioAnalysis(string id, string accessToken, CancellationToken cancellationToken)
+    Task<GetTracksAudioAnalysisResponse> ITracksClient.GetTracksAudioAnalysis(string id, 
+        string accessToken, 
+        CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        return "https://api.spotify.com/v1/audio-analysis"
+            .WithOAuthBearerToken(accessToken)
+            .AppendPathSegment(id)
+            .GetJsonAsync<GetTracksAudioAnalysisResponse>(cancellationToken: cancellationToken);
     }
 
-    public Task<GetRecommendationsResponse> GetRecommendations(GetRecommendationsRequest request, string accessToken, CancellationToken cancellationToken)
+    Task<GetRecommendationsResponse> ITracksClient.GetRecommendations(GetRecommendationsRequest request, 
+        string accessToken, 
+        CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var query = "https://api.spotify.com/v1/recommendations"
+            .WithOAuthBearerToken(accessToken);
+
+        if (request.SeedArtists != null)
+        {
+            query = query.SetQueryParam("seed_artists", request.SeedArtists);
+        }
+        
+        if (request.SeedGenres != null)
+        {
+            query = query.SetQueryParam("seed_genres", request.SeedGenres);
+        }
+        
+        if (request.SeedTracks != null)
+        {
+            query = query.SetQueryParam("seed_tracks", request.SeedTracks);
+        }
+        
+        // TODO: other query params
+        
+        return query.GetJsonAsync<GetRecommendationsResponse>(cancellationToken);
     }
 }

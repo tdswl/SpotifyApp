@@ -9,5 +9,5 @@ public sealed class GetFollowedArtistsResponse
     ///     A paged set of artists
     /// </summary>
     [JsonProperty("artists")]
-    public required ArtistModel Artists { get; set; }
+    public required ArtistApiModel Artists { get; set; }
 }

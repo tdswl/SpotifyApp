@@ -78,7 +78,7 @@ public sealed partial class ProfileViewModel : ObservableRecipient
         {
             var artistVm = Ioc.Default.GetRequiredService<ArtistViewModel>();
             TopArtists.Add(artistVm);
-            artistVm.Item = _mapper.Map<ItemModel>(artist);
+            artistVm.Item = _mapper.Map<ArtistModel>(artist);
         }
     }
     
@@ -123,7 +123,7 @@ public sealed partial class ProfileViewModel : ObservableRecipient
         {
             var artistVm = Ioc.Default.GetRequiredService<ArtistViewModel>();
             FollowingArtists.Add(artistVm);
-            artistVm.Item = _mapper.Map<ItemModel>(artist);
+            artistVm.Item = _mapper.Map<ArtistModel>(artist);
         }
     }
 }

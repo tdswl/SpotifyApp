@@ -13,7 +13,7 @@ public sealed class GetTrackResponse
     /// The album object includes a link in href to full information about the album.
     /// </summary>
     [JsonProperty("album")]
-    public required AlbumModel Album { get; set; }
+    public required AlbumApiModel Album { get; set; }
     
     /// <summary>
     /// The artists who performed the track.

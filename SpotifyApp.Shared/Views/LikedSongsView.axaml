@@ -10,5 +10,5 @@
         <viewModels:LikedSongsViewModel />
     </Design.DataContext>
     <controls:TracksGridControl Items="{Binding LikedSongs}"
-                                LoadMoreCommand="{Binding LoadMoreCommand}"/>
+                                LoadMoreCommand="{Binding GetTracksCommand}"/>
 </UserControl>

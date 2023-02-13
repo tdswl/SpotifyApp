@@ -18,4 +18,10 @@ public enum ItemsTypeApi : byte
     
     [EnumMember(Value = "album")]
     Album = 3,
+    
+    [EnumMember(Value = "audio_features")]
+    AudioFeatures = 4,
+    
+    [EnumMember(Value = "genre")]
+    Genre = 5,
 }

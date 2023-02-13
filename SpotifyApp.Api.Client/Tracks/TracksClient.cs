@@ -1,4 +1,5 @@
 using Flurl.Http;
+using SpotifyApp.Api.Contracts.Tracks.Models;
 using SpotifyApp.Api.Contracts.Tracks.Requests;
 using SpotifyApp.Api.Contracts.Tracks.Responses;
 
@@ -61,5 +62,40 @@ internal class TracksClient : ITracksClient
         }
         
         return query.GetJsonAsync<GetUsersSavedTracksResponse>(cancellationToken);
+    }
+
+    public Task SaveTracksForCurrentUser(string ids, string accessToken, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task RemoveUsersSavedTracks(string ids, string accessToken, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<IReadOnlyList<bool>> CheckUsersSavedTracks(string ids, string accessToken, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<GetTracksAudioFeaturesResponse> GetTracksAudioFeatures(string ids, string accessToken, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<AudioFeaturesModel> GetTrackAudioFeatures(string id, string accessToken, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<GetTracksAudioAnalysisResponse> GetTracksAudioAnalysis(string id, string accessToken, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<GetRecommendationsResponse> GetRecommendations(GetRecommendationsRequest request, string accessToken, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
     }
 }

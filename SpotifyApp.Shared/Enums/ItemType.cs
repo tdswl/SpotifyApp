@@ -9,4 +9,8 @@ public enum ItemType : byte
     User = 2,
     
     Album = 3,
+    
+    AudioFeatures = 4,
+    
+    Genre = 5,
 }

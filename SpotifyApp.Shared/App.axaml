@@ -8,6 +8,7 @@
         <StyleInclude Source="/Styles/ButtonStyles.axaml" />
         <StyleInclude Source="/Styles/SplitViewStyles.axaml" />
         <StyleInclude Source="avares://SpotifyApp.Shared/Controls/TracksGridControl.axaml" />
+        <StyleInclude Source="avares://SpotifyApp.Shared/Controls/SpotifyItemDetailsControl.axaml" />
     </Application.Styles>
     
     <Application.Resources>

@@ -6,14 +6,14 @@ using SpotifyApp.Shared.Services;
 
 namespace SpotifyApp.Shared.ViewModels.Base;
 
-public abstract partial class ImagePreviewViewModel<T> : ObservableRecipient where T: ISpotifyItem
+public abstract partial class ImagePreviewViewModel : ObservableRecipient, ISpotifyItemViewModel
 {
     private const int MaxImageWidth = 400;
     private readonly IImageCache _imageCache;
     
     [ObservableProperty]
     [NotifyCanExecuteChangedFor(nameof(LoadAdditionalInfoCommand))]
-    private T? _item;
+    private ISpotifyItem? _item;
 
     [ObservableProperty]
     private Bitmap? _preview;
@@ -23,7 +23,7 @@ public abstract partial class ImagePreviewViewModel<T> : ObservableRecipient whe
         _imageCache = imageCache;
     }
     
-    partial void OnItemChanged(T? value)
+    partial void OnItemChanged(ISpotifyItem? value)
     {
         if (value != null)
         {

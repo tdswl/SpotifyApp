@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
+using SpotifyApp.Api.Contracts.Base.Enums;
 using SpotifyApp.Api.Contracts.Tracks.Enums;
-using SpotifyApp.Api.Contracts.Users.Enums;
 using SpotifyApp.Api.Contracts.Users.Models;
 
 namespace SpotifyApp.Api.Contracts.Tracks.Models;

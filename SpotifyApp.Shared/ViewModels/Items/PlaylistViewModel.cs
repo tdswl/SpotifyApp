@@ -3,9 +3,9 @@ using SpotifyApp.Shared.ViewModels.Base;
 
 namespace SpotifyApp.Shared.ViewModels.Items;
 
-public sealed class TrackViewModel : ImagePreviewViewModel
+public sealed class PlaylistViewModel : ImagePreviewViewModel
 {
-    public TrackViewModel(IImageCache imageCache) : base(imageCache)
+    public PlaylistViewModel(IImageCache imageCache) : base(imageCache)
     {
     }
 }

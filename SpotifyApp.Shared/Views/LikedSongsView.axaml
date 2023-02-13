@@ -9,6 +9,8 @@
     <Design.DataContext>
         <viewModels:LikedSongsViewModel />
     </Design.DataContext>
-    <controls:TracksGridControl Items="{Binding LikedSongs}"
-                                LoadMoreCommand="{Binding GetTracksCommand}"/>
+    <controls:SpotifyItemDetailsControl Header="{Binding Playlist}">
+        <controls:TracksGridControl Items="{Binding LikedSongs}"
+                                    LoadMoreCommand="{Binding GetTracksCommand}"/>
+    </controls:SpotifyItemDetailsControl>
 </UserControl>

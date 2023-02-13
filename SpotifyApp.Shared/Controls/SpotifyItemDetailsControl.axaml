@@ -1,0 +1,49 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:SpotifyApp.Shared.Controls"
+        xmlns:converters="clr-namespace:SpotifyApp.Shared.Converters">
+    <Design.PreviewWith>
+        <controls:SpotifyItemDetailsControl />
+    </Design.PreviewWith>
+
+    <Style Selector="controls|SpotifyItemDetailsControl">
+        <!-- Set Defaults -->
+        <Setter Property="Template">
+            <ControlTemplate>
+                <ScrollViewer x:Name="PART_Scroll" 
+                              HorizontalScrollBarVisibility="Disabled"
+                              VerticalScrollBarVisibility="Auto">
+                    <StackPanel Spacing="25"
+                                Margin="40 20 0 20">
+                        <Grid ColumnDefinitions="Auto, *"
+                              HorizontalAlignment="Left"
+                              DataContext="{TemplateBinding Header}">
+                            <Border ClipToBounds="True"
+                                    CornerRadius="180"
+                                    Margin="40">
+                                <Panel Background="Gray"
+                                       Width="200"
+                                       Height="200">
+                                    <Image Width="200"
+                                           Stretch="Uniform"
+                                           Source="{Binding Preview}" />
+                                    <ProgressBar VerticalAlignment="Center"
+                                                 IsIndeterminate="True"
+                                                 IsVisible="{Binding Preview, Converter={x:Static ObjectConverters.IsNull}}" />
+                                </Panel>
+                            </Border>
+                            <StackPanel Grid.Column="1"
+                                        Spacing="5"
+                                        VerticalAlignment="Center">
+                                <TextBlock Text="{Binding Item.Type, Converter={x:Static converters:ItemTypeToTextConverter.Instance}}" />
+                                <TextBlock Text="{Binding Item.Name}" />
+                            </StackPanel>
+                        </Grid>
+
+                        <ContentControl Content="{TemplateBinding Content}" />
+                    </StackPanel>
+                </ScrollViewer>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+</Styles>

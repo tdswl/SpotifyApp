@@ -20,7 +20,8 @@
                 <ListBox Items="{Binding TopArtists}"
                          Background="Transparent"
                          ItemContainerTheme="{StaticResource ArtistItem}"
-                         ItemTemplate="{StaticResource ArtistCard}">
+                         ItemTemplate="{StaticResource ArtistCard}"
+                         SelectedItem="{Binding SelectedTopArtist}">
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
                             <StackPanel Orientation="Horizontal"

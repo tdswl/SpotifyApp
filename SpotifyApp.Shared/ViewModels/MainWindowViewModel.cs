@@ -4,6 +4,7 @@ using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using SpotifyApp.Shared.Enums;
 using SpotifyApp.Shared.Messages;
+using SpotifyApp.Shared.Models.NavigateParams;
 using SpotifyApp.Shared.Services;
 
 namespace SpotifyApp.Shared.ViewModels;
@@ -26,6 +27,7 @@ public sealed partial class MainWindowViewModel : ObservableRecipient, IRecipien
     {
         _navigationService = navigationService;
         _authService = authService;
+        WeakReferenceMessenger.Default.Register(this);
 
         LoginCommand.ExecuteAsync(null);
     }
@@ -40,11 +42,16 @@ public sealed partial class MainWindowViewModel : ObservableRecipient, IRecipien
     [RelayCommand]
     private void NavigateTo(PageType type)
     {
-        Content = _navigationService.NavigateTo(type);
+        NavigateWithParams(type, null);
+    }
+    
+    private void NavigateWithParams(PageType pageType, INavigateParams? navigateParams)
+    {
+        Content = _navigationService.NavigateTo(pageType, navigateParams);
     }
 
     public void Receive(NavigateMessage message)
     {
-        NavigateToCommand.Execute(message.Type);
+        NavigateWithParams(message.Type, message.NavigateParams);
     }
 }

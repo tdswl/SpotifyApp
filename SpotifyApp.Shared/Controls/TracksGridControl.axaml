@@ -89,6 +89,7 @@
                                                        Source="{Binding Preview}" />
                                                 <ProgressBar VerticalAlignment="Center"
                                                              IsIndeterminate="True"
+                                                             Margin="5"
                                                              IsVisible="{Binding Preview, Converter={x:Static ObjectConverters.IsNull}}" />
                                             </Panel>
                                         </Border>

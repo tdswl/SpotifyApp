@@ -13,14 +13,13 @@
                 <ScrollViewer x:Name="PART_Scroll" 
                               HorizontalScrollBarVisibility="Disabled"
                               VerticalScrollBarVisibility="Auto">
-                    <StackPanel Spacing="25"
+                    <StackPanel Spacing="40"
                                 Margin="40 20 0 20">
-                        <Grid ColumnDefinitions="Auto, *"
+                        <Grid ColumnDefinitions="Auto, 20, *"
                               HorizontalAlignment="Left"
                               DataContext="{TemplateBinding Header}">
                             <Border ClipToBounds="True"
-                                    CornerRadius="180"
-                                    Margin="40">
+                                    CornerRadius="180">
                                 <Panel Background="Gray"
                                        Width="200"
                                        Height="200">
@@ -29,14 +28,16 @@
                                            Source="{Binding Preview}" />
                                     <ProgressBar VerticalAlignment="Center"
                                                  IsIndeterminate="True"
+                                                 Margin="5"
                                                  IsVisible="{Binding Preview, Converter={x:Static ObjectConverters.IsNull}}" />
                                 </Panel>
                             </Border>
-                            <StackPanel Grid.Column="1"
+                            <StackPanel Grid.Column="2"
                                         Spacing="5"
                                         VerticalAlignment="Center">
                                 <TextBlock Text="{Binding Item.Type, Converter={x:Static converters:ItemTypeToTextConverter.Instance}}" />
-                                <TextBlock Text="{Binding Item.Name}" />
+                                <TextBlock Classes="Header"
+                                           Text="{Binding Item.Name}"/>
                             </StackPanel>
                         </Grid>
 

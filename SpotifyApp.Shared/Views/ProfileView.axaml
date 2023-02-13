@@ -45,7 +45,8 @@
                 <ListBox Items="{Binding FollowingArtists}"
                          Background="Transparent"
                          ItemContainerTheme="{StaticResource ArtistItem}"
-                         ItemTemplate="{StaticResource ArtistCard}">
+                         ItemTemplate="{StaticResource ArtistCard}"
+                         SelectedItem="{Binding SelectedFollowingArtist}">
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
                             <StackPanel Orientation="Horizontal"

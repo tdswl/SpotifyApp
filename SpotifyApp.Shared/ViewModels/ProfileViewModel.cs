@@ -30,6 +30,9 @@ public sealed partial class ProfileViewModel : ObservableRecipient
 
     [ObservableProperty] 
     private ArtistViewModel? _selectedTopArtist;
+    
+    [ObservableProperty] 
+    private ArtistViewModel? _selectedFollowingArtist;
 
     [ObservableProperty] 
     private ObservableCollection<ArtistViewModel> _topArtists = new();
@@ -39,14 +42,6 @@ public sealed partial class ProfileViewModel : ObservableRecipient
     
     [ObservableProperty] 
     private ObservableCollection<ArtistViewModel> _followingArtists = new();
-
-    partial void OnSelectedTopArtistChanged(ArtistViewModel? value)
-    {
-        if (value != null)
-        {
-            OpenArtistCommand.Execute(value.Item.Id);
-        }
-    }
 
     public ProfileViewModel()
     {
@@ -150,5 +145,21 @@ public sealed partial class ProfileViewModel : ObservableRecipient
             Type = PageType.Artist,
             NavigateParams = new ArtistParams { Id = id },
         });
+    }
+    
+    partial void OnSelectedTopArtistChanged(ArtistViewModel? value)
+    {
+        if (value != null)
+        {
+            OpenArtistCommand.Execute(value.Item.Id);
+        }
+    }
+    
+    partial void OnSelectedFollowingArtistChanged(ArtistViewModel? value)
+    {
+        if (value != null)
+        {
+            OpenArtistCommand.Execute(value.Item.Id);
+        }
     }
 }

@@ -7,6 +7,8 @@ namespace SpotifyApp.Shared.Controls;
 
 public class TracksGridControl : ItemsControl
 {
+    private DataGrid? _tracksGrid;
+    
     private ICommand? _loadMoreCommand;
 
     /// <summary>
@@ -29,28 +31,41 @@ public class TracksGridControl : ItemsControl
 
     protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
     {
-        // Worked only when drag thumb by mouse
-        var tracksGrid = e.NameScope.Find<DataGrid>("TracksGrid");
-        if (tracksGrid != null)
+        _tracksGrid = e.NameScope.Find<DataGrid>("TracksGrid");
+        if (_tracksGrid != null)
         {
-            tracksGrid.VerticalScroll += (sender, args) =>
-            {
-                if (sender is not ScrollBar sb)
-                {
-                    return;
-                }
-
-                if (args.ScrollEventType == ScrollEventType.EndScroll)
-                {
-                    var delta = Math.Abs(sb.Maximum - args.NewValue);
-                    if (delta <= double.Epsilon)
-                    {
-                        LoadMoreCommand?.Execute(null);
-                    }
-                }
-            };
+            _tracksGrid.VerticalScroll += TracksGridOnVerticalScroll;
         }
         
         base.OnApplyTemplate(e);
+    }
+
+    protected override void OnUnloaded()
+    {
+        if (_tracksGrid != null)
+        {
+            _tracksGrid.VerticalScroll -= TracksGridOnVerticalScroll;
+        }
+        
+        base.OnUnloaded();
+    }
+
+    // Worked only when drag thumb by mouse
+    // TODO: same code for mouse wheel scroll
+    private void TracksGridOnVerticalScroll(object? sender, ScrollEventArgs e)
+    {
+        if (sender is not ScrollBar sb)
+        {
+            return;
+        }
+
+        if (e.ScrollEventType == ScrollEventType.EndScroll)
+        {
+            var delta = Math.Abs(sb.Maximum - e.NewValue);
+            if (delta <= double.Epsilon)
+            {
+                LoadMoreCommand?.Execute(null);
+            }
+        }
     }
 }

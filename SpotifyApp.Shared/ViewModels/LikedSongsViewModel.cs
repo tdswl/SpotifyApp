@@ -1,5 +1,4 @@
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using AutoMapper;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.DependencyInjection;
@@ -60,6 +59,20 @@ public sealed partial class LikedSongsViewModel : ObservableRecipient
     [RelayCommand(IncludeCancelCommand = true)]
     private async Task LoadMoreAsync(CancellationToken token)
     {
-        Debug.WriteLine("LoadMoreAsync");
+        var currentItemsCount = LikedSongs.Count;
+        var authInfo = await _authService.Login(token);
+        var tracksInfoResponse = await _tracksClient.GetUsersSavedTracks(
+            new GetUsersSavedTracksRequest{Offset = LikedSongs.Count,},
+            authInfo.AccessToken,
+            token);
+        
+        for (var i = 0; i < tracksInfoResponse.Items.Count; i++)
+        {
+            var trackVm = Ioc.Default.GetRequiredService<TrackViewModel>();
+            LikedSongs.Add(trackVm);
+            var track = _mapper.Map<TrackModel>(tracksInfoResponse.Items[i].Track);
+            track.Index = currentItemsCount + i + 1;
+            trackVm.Item = track;
+        }
     }
 }

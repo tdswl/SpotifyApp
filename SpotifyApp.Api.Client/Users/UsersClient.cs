@@ -20,26 +20,25 @@ internal class UsersClient : IUsersClient
         CancellationToken cancellationToken)
     {
         var query = "https://api.spotify.com/v1/me/top/"
+            .WithOAuthBearerToken(accessToken)
             .AppendPathSegment($"{request.Type.ToString().ToLower()}s");
 
         if (request.Limit != null)
         {
-            query.SetQueryParam("limit", request.Limit);
+            query = query.SetQueryParam("limit", request.Limit);
         }
         
         if (request.Offset != null)
         {
-            query.SetQueryParam("offset", request.Offset);
+            query = query.SetQueryParam("offset", request.Offset);
         }
         
         if (request.TimeRange != null)
         {
-            query.SetQueryParam("time_range", request.TimeRange);
+            query = query.SetQueryParam("time_range", request.TimeRange);
         }
         
-        return query
-            .WithOAuthBearerToken(accessToken)
-            .GetJsonAsync<GetUsersTopItemsResponse>(cancellationToken);
+        return query.GetJsonAsync<GetUsersTopItemsResponse>(cancellationToken);
     }
 
     Task<GetFollowedArtistsResponse> IUsersClient.GetFollowedArtists(GetFollowedArtistsRequest request, 
@@ -47,20 +46,19 @@ internal class UsersClient : IUsersClient
         CancellationToken cancellationToken)
     {
         var query = "https://api.spotify.com/v1/me/following"
+            .WithOAuthBearerToken(accessToken)
             .SetQueryParam("type", request.Type.ToString().ToLower());
 
         if (request.Limit != null)
         {
-            query.SetQueryParam("limit", request.Limit);
+            query = query.SetQueryParam("limit", request.Limit);
         }
         
         if (request.After != null)
         {
-            query.SetQueryParam("after", request.After);
+            query = query.SetQueryParam("after", request.After);
         }
         
-        return query
-            .WithOAuthBearerToken(accessToken)
-            .GetJsonAsync<GetFollowedArtistsResponse>(cancellationToken);
+        return query.GetJsonAsync<GetFollowedArtistsResponse>(cancellationToken);
     }
 }

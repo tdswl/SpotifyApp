@@ -12,16 +12,15 @@ internal class TracksClient : ITracksClient
         CancellationToken cancellationToken)
     {
         var query = "https://api.spotify.com/v1/tracks/"
+            .WithOAuthBearerToken(accessToken)
             .AppendPathSegment(request.Id);
 
         if (request.Market != null)
         {
-            query.SetQueryParam("market", request.Market);
+            query = query.SetQueryParam("market", request.Market);
         }
         
-        return query
-            .WithOAuthBearerToken(accessToken)
-            .GetJsonAsync<GetTrackResponse>(cancellationToken);
+        return query.GetJsonAsync<GetTrackResponse>(cancellationToken);
     }
 
     public Task<GetSeveralTracksResponse> GetSeveralTracks(GetSeveralTracksRequest request, 
@@ -29,41 +28,39 @@ internal class TracksClient : ITracksClient
         CancellationToken cancellationToken)
     {
         var query = "https://api.spotify.com/v1/tracks"
+            .WithOAuthBearerToken(accessToken)
             .SetQueryParam("ids", request.Ids);
 
         if (request.Market != null)
         {
-            query.SetQueryParam("market", request.Market);
+            query = query.SetQueryParam("market", request.Market);
         }
         
-        return query
-            .WithOAuthBearerToken(accessToken)
-            .GetJsonAsync<GetSeveralTracksResponse>(cancellationToken);
+        return query.GetJsonAsync<GetSeveralTracksResponse>(cancellationToken);
     }
 
     public Task<GetUsersSavedTracksResponse> GetUsersSavedTracks(GetUsersSavedTracksRequest request,
         string accessToken, 
         CancellationToken cancellationToken)
     {
-        const string query = "https://api.spotify.com/v1/me/tracks";
+        var query = "https://api.spotify.com/v1/me/tracks"
+            .WithOAuthBearerToken(accessToken);
 
         if (request.Limit != null) 
         {
-            query.SetQueryParam("limit", request.Limit);
+            query = query.SetQueryParam("limit", request.Limit);
         }
         
         if (request.Offset != null)
         {
-            query.SetQueryParam("offset", request.Offset);
+            query = query.SetQueryParam("offset", request.Offset);
         }
         
         if (request.Market != null)
         {
-            query.SetQueryParam("market", request.Market);
+            query = query.SetQueryParam("market", request.Market);
         }
         
-        return query
-            .WithOAuthBearerToken(accessToken)
-            .GetJsonAsync<GetUsersSavedTracksResponse>(cancellationToken);
+        return query.GetJsonAsync<GetUsersSavedTracksResponse>(cancellationToken);
     }
 }

@@ -39,7 +39,7 @@
 
     <ScrollViewer HorizontalScrollBarVisibility="Disabled"
                   VerticalScrollBarVisibility="Auto">
-        <StackPanel Margin="40 20 20 20"
+        <StackPanel Margin="40 20 0 20"
                     Spacing="25">
             <ContentControl Content="{Binding CurrentUser}"
                             HorizontalAlignment="Left" />

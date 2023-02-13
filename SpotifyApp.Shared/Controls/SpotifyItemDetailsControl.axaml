@@ -13,16 +13,25 @@
                 <ScrollViewer x:Name="PART_Scroll" 
                               HorizontalScrollBarVisibility="Disabled"
                               VerticalScrollBarVisibility="Auto">
-                    <StackPanel Spacing="40"
-                                Margin="40 20 0 20">
-                        <Grid ColumnDefinitions="Auto, 20, *"
-                              HorizontalAlignment="Left"
+                    <Grid RowDefinitions="250, *">
+                        <Image Grid.Row="0"
+                               IsVisible="{TemplateBinding IsFullHeaderImage}" 
+                               HorizontalAlignment="Stretch"
+                               VerticalAlignment="Stretch"
+                               Stretch="UniformToFill"
+                               DataContext="{TemplateBinding Header}"
+                               Source="{Binding Preview}" />
+                        
+                        <Grid Grid.Row="0" 
+                              Margin="40 20 0 20"
+                              ColumnDefinitions="Auto, 20, *"
+                              HorizontalAlignment="Stretch"
+                              VerticalAlignment="Stretch"
                               DataContext="{TemplateBinding Header}">
                             <Border ClipToBounds="True"
-                                    CornerRadius="180">
-                                <Panel Background="Gray"
-                                       Width="200"
-                                       Height="200">
+                                    CornerRadius="180"
+                                    IsVisible="{Binding !IsFullHeaderImage, RelativeSource={RelativeSource TemplatedParent}}">
+                                <Panel Background="Gray">
                                     <Image Width="200"
                                            Stretch="Uniform"
                                            Source="{Binding Preview}" />
@@ -41,8 +50,11 @@
                             </StackPanel>
                         </Grid>
 
-                        <ContentControl Content="{TemplateBinding Content}" />
-                    </StackPanel>
+                        <ContentControl 
+                            Grid.Row="1" 
+                            Margin="40 20 0 20"
+                            Content="{TemplateBinding Content}" />
+                    </Grid>
                 </ScrollViewer>
             </ControlTemplate>
         </Setter>

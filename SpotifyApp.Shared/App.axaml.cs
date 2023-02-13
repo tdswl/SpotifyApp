@@ -75,6 +75,7 @@ public sealed class App : Application
             .AddTransient<MainWindowViewModel>()
             .AddTransient<ProfileViewModel>()
             .AddTransient<LikedSongsViewModel>()
+            .AddTransient<ArtistScreenViewModel>()
             
             .AddTransient<TrackViewModel>()
             .AddTransient<UserViewModel>()

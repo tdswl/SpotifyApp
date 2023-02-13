@@ -3,12 +3,16 @@ using AutoMapper;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.DependencyInjection;
 using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 using SpotifyApp.Api.Client.Tracks;
 using SpotifyApp.Api.Client.Users;
 using SpotifyApp.Api.Contracts.Base.Enums;
 using SpotifyApp.Api.Contracts.Tracks.Requests;
 using SpotifyApp.Api.Contracts.Users.Requests;
+using SpotifyApp.Shared.Enums;
+using SpotifyApp.Shared.Messages;
 using SpotifyApp.Shared.Models;
+using SpotifyApp.Shared.Models.NavigateParams;
 using SpotifyApp.Shared.Services;
 using SpotifyApp.Shared.ViewModels.Items;
 
@@ -25,6 +29,9 @@ public sealed partial class ProfileViewModel : ObservableRecipient
     private UserViewModel? _currentUser;
 
     [ObservableProperty] 
+    private ArtistViewModel? _selectedTopArtist;
+
+    [ObservableProperty] 
     private ObservableCollection<ArtistViewModel> _topArtists = new();
     
     [ObservableProperty] 
@@ -32,7 +39,15 @@ public sealed partial class ProfileViewModel : ObservableRecipient
     
     [ObservableProperty] 
     private ObservableCollection<ArtistViewModel> _followingArtists = new();
-    
+
+    partial void OnSelectedTopArtistChanged(ArtistViewModel? value)
+    {
+        if (value != null)
+        {
+            OpenArtistCommand.Execute(value.Item.Id);
+        }
+    }
+
     public ProfileViewModel()
     {
         //Designer constructor
@@ -125,5 +140,15 @@ public sealed partial class ProfileViewModel : ObservableRecipient
             FollowingArtists.Add(artistVm);
             artistVm.Item = _mapper.Map<ArtistModel>(artist);
         }
+    }
+
+    [RelayCommand]
+    private void OpenArtist(string id)
+    {
+        WeakReferenceMessenger.Default.Send(new NavigateMessage
+        {
+            Type = PageType.Artist,
+            NavigateParams = new ArtistParams { Id = id },
+        });
     }
 }

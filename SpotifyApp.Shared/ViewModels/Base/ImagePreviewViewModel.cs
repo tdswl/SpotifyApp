@@ -8,8 +8,10 @@ namespace SpotifyApp.Shared.ViewModels.Base;
 
 public abstract partial class ImagePreviewViewModel : ObservableRecipient, ISpotifyItemViewModel
 {
-    private const int MaxImageWidth = 400;
+    private const int DefaultImageWidth = 400;
     private readonly IImageCache _imageCache;
+
+    public bool TakeBiggestImage = false;
     
     [ObservableProperty]
     [NotifyCanExecuteChangedFor(nameof(LoadAdditionalInfoCommand))]
@@ -44,14 +46,16 @@ public abstract partial class ImagePreviewViewModel : ObservableRecipient, ISpot
 
     private async Task LoadPreview(CancellationToken token)
     {
-        var previewImage = Item?.Images.FirstOrDefault();
+        var previewImage = TakeBiggestImage ? 
+            (Item?.Images).MaxBy(a => a.Width) : 
+            (Item?.Images).MinBy(a => a.Width);
         if (previewImage != null)
         {
             var imagePath = await _imageCache.GetImage(previewImage.Url, token);
 
             await using (var fileStream = File.OpenRead(imagePath))
             {
-                var width = previewImage.Width is null or >= MaxImageWidth ? MaxImageWidth : previewImage.Width.Value;
+                var width = previewImage.Width ?? DefaultImageWidth;
                 Preview = await Task.Run(() => Bitmap.DecodeToWidth(fileStream, width), token);
             }
         }

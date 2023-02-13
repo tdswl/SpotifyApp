@@ -3,47 +3,15 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewModels="clr-namespace:SpotifyApp.Shared.ViewModels"
-             xmlns:items="clr-namespace:SpotifyApp.Shared.ViewModels.Items"
              xmlns:controls="clr-namespace:SpotifyApp.Shared.Controls"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="SpotifyApp.Shared.Views.ProfileView">
     <Design.DataContext>
         <viewModels:ProfileViewModel />
     </Design.DataContext>
-    <UserControl.DataTemplates>
-        <DataTemplate DataType="{x:Type items:UserViewModel}">
-            <Grid ColumnDefinitions="Auto, *">
-                <Border ClipToBounds="True"
-                        CornerRadius="180"
-                        Margin="45">
-                    <Panel Background="Gray">
-                        <Image Width="290"
-                               Stretch="Uniform"
-                               Source="{Binding Preview}" />
-                        <ProgressBar VerticalAlignment="Center"
-                                     IsIndeterminate="True"
-                                     IsVisible="{Binding Preview, Converter={x:Static ObjectConverters.IsNull}}" />
-                    </Panel>
-                </Border>
-                <StackPanel Grid.Column="1"
-                            Spacing="5"
-                            VerticalAlignment="Center">
-                    <TextBlock Text="PROFILE" />
-                    <TextBlock Text="{Binding Item.Name}" />
-                </StackPanel>
-            </Grid>
-        </DataTemplate>
 
-
-    </UserControl.DataTemplates>
-
-    <ScrollViewer HorizontalScrollBarVisibility="Disabled"
-                  VerticalScrollBarVisibility="Auto">
-        <StackPanel Margin="40 20 0 20"
-                    Spacing="25">
-            <ContentControl Content="{Binding CurrentUser}"
-                            HorizontalAlignment="Left" />
-
+    <controls:SpotifyItemDetailsControl Header="{Binding CurrentUser}">
+        <StackPanel Spacing="25">
             <StackPanel Spacing="25">
                 <TextBlock Text="Top artists this month" />
                 <TextBlock Text="Only visible to you" />
@@ -81,5 +49,5 @@
                 </ListBox>
             </StackPanel>
         </StackPanel>
-    </ScrollViewer>
+    </controls:SpotifyItemDetailsControl>
 </UserControl>

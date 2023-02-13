@@ -18,6 +18,9 @@ public sealed partial class LikedSongsViewModel : ObservableRecipient
     private readonly IMapper _mapper;
 
     [ObservableProperty] 
+    private PlaylistViewModel? _playlist;
+
+    [ObservableProperty] 
     private ObservableCollection<TrackViewModel> _likedSongs = new();
     
     public LikedSongsViewModel()
@@ -45,6 +48,15 @@ public sealed partial class LikedSongsViewModel : ObservableRecipient
             new GetUsersSavedTracksRequest{Offset = currentItemsCount,},
             authInfo.AccessToken,
             token);
+
+        var playlistVm = Ioc.Default.GetRequiredService<PlaylistViewModel>();
+        playlistVm.Item = new PlaylistModel
+        {
+            Id = Guid.NewGuid().ToString(),
+            Images = new List<ImageModel>(),
+            Name = "Liked Songs",
+        };
+        Playlist = playlistVm;
         
         for (var i = 0; i < tracksInfoResponse.Items.Count; i++)
         {

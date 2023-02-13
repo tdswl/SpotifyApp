@@ -1,5 +1,5 @@
 using Newtonsoft.Json;
-using SpotifyApp.Api.Contracts.Users.Enums;
+using SpotifyApp.Api.Contracts.Base.Enums;
 
 namespace SpotifyApp.Api.Contracts.Users.Requests;
 

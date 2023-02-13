@@ -13,4 +13,6 @@ public enum ItemType : byte
     AudioFeatures = 4,
     
     Genre = 5,
+    
+    Playlist = 6,
 }

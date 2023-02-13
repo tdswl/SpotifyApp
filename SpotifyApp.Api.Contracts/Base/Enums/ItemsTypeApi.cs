@@ -2,7 +2,7 @@ using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace SpotifyApp.Api.Contracts.Users.Enums;
+namespace SpotifyApp.Api.Contracts.Base.Enums;
 
 [JsonConverter(typeof(StringEnumConverter))]
 public enum ItemsTypeApi : byte
@@ -24,4 +24,7 @@ public enum ItemsTypeApi : byte
     
     [EnumMember(Value = "genre")]
     Genre = 5,
+    
+    [EnumMember(Value = "playlist")]
+    Playlist = 6,
 }

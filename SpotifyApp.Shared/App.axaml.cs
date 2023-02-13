@@ -79,6 +79,7 @@ public sealed class App : Application
             .AddTransient<TrackViewModel>()
             .AddTransient<UserViewModel>()
             .AddTransient<ArtistViewModel>()
+            .AddTransient<PlaylistViewModel>()
 
             .AddScoped<IAuthService, AuthService>()
             .AddSingleton<IImageCache, ImageCache>()

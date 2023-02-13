@@ -6,7 +6,7 @@ using SpotifyApp.Shared.Services;
 
 namespace SpotifyApp.Shared.ViewModels.Base;
 
-public abstract partial class ImagePreviewViewModel<T> : ObservableRecipient where T: IItemWithImages
+public abstract partial class ImagePreviewViewModel<T> : ObservableRecipient where T: ISpotifyItem
 {
     private const int MaxImageWidth = 400;
     private readonly IImageCache _imageCache;

@@ -3,7 +3,7 @@ using SpotifyApp.Api.Contracts.Base.Models;
 
 namespace SpotifyApp.Api.Contracts.Users.Models;
 
-public sealed class ArtistModel
+public sealed class ArtistApiModel
 {
     /// <summary>
     /// A link to the Web API endpoint returning the full result of the request

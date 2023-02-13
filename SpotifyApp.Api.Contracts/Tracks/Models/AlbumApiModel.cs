@@ -9,7 +9,7 @@ namespace SpotifyApp.Api.Contracts.Tracks.Models;
 /// The album on which the track appears. The album object
 /// includes a link in href to full information about the album.
 /// </summary>
-public sealed class AlbumModel
+public sealed class AlbumApiModel
 {
     /// <summary>
     /// The type of the album.

@@ -7,6 +7,7 @@ using SpotifyApp.Api.Contracts.Users.Models;
 using SpotifyApp.Api.Contracts.Users.Responses;
 using SpotifyApp.Shared.Enums;
 using SpotifyApp.Shared.Models;
+using ArtistModel = SpotifyApp.Shared.Models.ArtistModel;
 
 namespace SpotifyApp.Shared.AutoMapper;
 
@@ -29,9 +30,10 @@ public sealed class ApplicationMapProfile : Profile
             .ValidateMemberList(MemberList.Destination);
 
         CreateMap<GetCurrentUserProfileResponse, UserModel>()
+            .ForMember(d => d.Name, opt => opt.MapFrom(s => s.DisplayName))
             .ValidateMemberList(MemberList.Destination);
         
-        CreateMap<ItemModelApi, ItemModel>()
+        CreateMap<ItemModelApi, ArtistModel>()
             .ValidateMemberList(MemberList.Destination);
 
         CreateMap<GetTrackResponse, TrackModel>()

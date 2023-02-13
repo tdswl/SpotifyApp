@@ -20,6 +20,8 @@ public sealed class ApplicationMapProfile : Profile
                 .MapValue(ItemsTypeApi.Track, ItemType.Track)
                 .MapValue(ItemsTypeApi.User, ItemType.User)
                 .MapValue(ItemsTypeApi.Album, ItemType.Album)
+                .MapValue(ItemsTypeApi.AudioFeatures, ItemType.AudioFeatures)
+                .MapValue(ItemsTypeApi.Genre, ItemType.Genre)
             )
             .ReverseMap();
         

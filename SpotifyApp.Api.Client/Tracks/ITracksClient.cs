@@ -25,6 +25,7 @@ public interface ITracksClient
     
     /// <summary>
     /// Get Spotify catalog information for multiple tracks based on their Spotify IDs.
+    /// https://developer.spotify.com/documentation/web-api/reference/#/operations/get-several-tracks
     /// </summary>
     /// <exception cref="FlurlHttpException">
     /// 401 - Bad or expired token. This can happen if the user revoked a token or the
@@ -41,6 +42,7 @@ public interface ITracksClient
     
     /// <summary>
     /// Get a list of the songs saved in the current Spotify user's 'Your Music' library.
+    /// https://developer.spotify.com/documentation/web-api/reference/#/operations/get-users-saved-tracks
     /// </summary>
     /// <exception cref="FlurlHttpException">
     /// 401 - Bad or expired token. This can happen if the user revoked a token or the

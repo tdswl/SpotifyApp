@@ -1,4 +1,3 @@
-using Flurl;
 using Flurl.Http;
 using SpotifyApp.Api.Contracts.Tracks.Requests;
 using SpotifyApp.Api.Contracts.Tracks.Responses;
@@ -7,7 +6,7 @@ namespace SpotifyApp.Api.Client.Tracks;
 
 internal class TracksClient : ITracksClient
 {
-    public Task<GetTrackResponse> GetTrack(GetTrackRequest request, 
+    Task<GetTrackResponse> ITracksClient.GetTrack(GetTrackRequest request, 
         string accessToken, 
         CancellationToken cancellationToken)
     {
@@ -23,7 +22,7 @@ internal class TracksClient : ITracksClient
         return query.GetJsonAsync<GetTrackResponse>(cancellationToken);
     }
 
-    public Task<GetSeveralTracksResponse> GetSeveralTracks(GetSeveralTracksRequest request, 
+    Task<GetSeveralTracksResponse> ITracksClient.GetSeveralTracks(GetSeveralTracksRequest request, 
         string accessToken, 
         CancellationToken cancellationToken)
     {
@@ -39,7 +38,7 @@ internal class TracksClient : ITracksClient
         return query.GetJsonAsync<GetSeveralTracksResponse>(cancellationToken);
     }
 
-    public Task<GetUsersSavedTracksResponse> GetUsersSavedTracks(GetUsersSavedTracksRequest request,
+    Task<GetUsersSavedTracksResponse> ITracksClient.GetUsersSavedTracks(GetUsersSavedTracksRequest request,
         string accessToken, 
         CancellationToken cancellationToken)
     {

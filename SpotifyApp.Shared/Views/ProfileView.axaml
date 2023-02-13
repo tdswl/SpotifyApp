@@ -11,10 +11,12 @@
     </Design.DataContext>
 
     <controls:SpotifyItemDetailsControl Header="{Binding CurrentUser}">
-        <StackPanel Spacing="25">
-            <StackPanel Spacing="25">
-                <TextBlock Text="Top artists this month" />
-                <TextBlock Text="Only visible to you" />
+        <StackPanel Spacing="40">
+            <StackPanel Spacing="10">
+                <TextBlock Classes="H1" 
+                           Text="Top artists this month" />
+                <TextBlock Classes="Remark" 
+                           Text="Only visible to you" />
                 <ListBox Items="{Binding TopArtists}"
                          Background="Transparent"
                          ItemContainerTheme="{StaticResource ArtistItem}"
@@ -28,14 +30,17 @@
                 </ListBox>
             </StackPanel>
 
-            <StackPanel Spacing="25">
-                <TextBlock Text="Top tracks this month" />
-                <TextBlock Text="Only visible to you" />
+            <StackPanel Spacing="10">
+                <TextBlock Classes="H1" 
+                           Text="Top tracks this month" />
+                <TextBlock Classes="Remark" 
+                           Text="Only visible to you" />
                 <controls:TracksGridControl Items="{Binding TopTracks}" />
             </StackPanel>
 
-            <StackPanel Spacing="25">
-                <TextBlock Text="Following" />
+            <StackPanel Spacing="10">
+                <TextBlock Classes="H1" 
+                           Text="Following" />
                 <ListBox Items="{Binding FollowingArtists}"
                          Background="Transparent"
                          ItemContainerTheme="{StaticResource ArtistItem}"

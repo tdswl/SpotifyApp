@@ -10,5 +10,5 @@ public sealed class PlaylistModel : ISpotifyItem
 
     public required IReadOnlyCollection<ImageModel> Images { get; set; }
 
-    public ItemType Type => ItemType.Artist;
+    public ItemType Type => ItemType.Playlist;
 }

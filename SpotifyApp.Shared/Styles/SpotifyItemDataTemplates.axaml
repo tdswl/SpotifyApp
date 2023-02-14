@@ -13,13 +13,13 @@
             <Border ClipToBounds="True"
                     CornerRadius="180">
                 <Panel Background="Gray">
+                    <TextBlock VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               FontSize="50"
+                               Text="-" />
                     <Image Width="200"
                            Stretch="Uniform"
                            Source="{Binding Preview}" />
-                    <ProgressBar VerticalAlignment="Center"
-                                 IsIndeterminate="True"
-                                 Margin="5"
-                                 IsVisible="{Binding Preview, Converter={x:Static ObjectConverters.IsNull}}" />
                 </Panel>
             </Border>
             <StackPanel Grid.Column="2"

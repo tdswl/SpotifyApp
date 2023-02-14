@@ -3,11 +3,12 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using SpotifyApp.Shared.Models;
 using SpotifyApp.Shared.Services;
-using Svg.Skia;
 
 namespace SpotifyApp.Shared.ViewModels.Base;
 
-public abstract partial class ImagePreviewViewModel : ObservableRecipient, ISpotifyItemViewModel
+public abstract partial class ImagePreviewViewModel : ObservableRecipient, 
+    ISpotifyItemViewModel, 
+    IDisposable
 {
     private const int DefaultImageWidth = 400;
     private readonly IImageCache _imageCache;
@@ -56,11 +57,10 @@ public abstract partial class ImagePreviewViewModel : ObservableRecipient, ISpot
                 Preview = await Task.Run(() => Bitmap.DecodeToWidth(fileStream, width), token);
             }
         }
-        else
-        {
-            var svg = new SKSvg();
-            svg.Load("image.svg");
+    }
 
-        }
+    public void Dispose()
+    {
+        Preview?.Dispose();
     }
 }

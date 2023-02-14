@@ -34,7 +34,7 @@ public class TracksGridControl : ItemsControl
         _tracksGrid = e.NameScope.Find<DataGrid>("TracksGrid");
         if (_tracksGrid != null)
         {
-            _tracksGrid.VerticalScroll += TracksGridOnVerticalScroll;
+            //_tracksGrid.VerticalScroll += TracksGridOnVerticalScroll;
         }
         
         base.OnApplyTemplate(e);
@@ -44,7 +44,7 @@ public class TracksGridControl : ItemsControl
     {
         if (_tracksGrid != null)
         {
-            _tracksGrid.VerticalScroll -= TracksGridOnVerticalScroll;
+            //_tracksGrid.VerticalScroll -= TracksGridOnVerticalScroll;
         }
         
         base.OnUnloaded();

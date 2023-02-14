@@ -135,7 +135,6 @@ internal class UsersClient : IUsersClient
         return "https://api.spotify.com/v1/playlists"
             .WithOAuthBearerToken(accessToken)
             .AppendPathSegment(playlistId)
-            .AppendPathSegment(playlistId)
             .SetQueryParam("followers/contains")
             .GetJsonAsync<IReadOnlyList<bool>>(cancellationToken);
     }

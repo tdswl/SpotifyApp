@@ -37,6 +37,6 @@
             </Grid>
         </SplitView.Pane>
 
-        <ContentControl Content="{Binding Content}" />
+        <TransitioningContentControl Content="{Binding Content}" />
     </SplitView>
 </UserControl>

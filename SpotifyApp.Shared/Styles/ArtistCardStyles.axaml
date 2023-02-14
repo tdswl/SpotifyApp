@@ -1,8 +1,7 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:items="clr-namespace:SpotifyApp.Shared.ViewModels.Items">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     
-    <ControlTheme x:Key="ArtistItem"
+    <ControlTheme x:Key="ArtistCardItem"
                   TargetType="ListBoxItem"
                   BasedOn="{StaticResource {x:Type ListBoxItem}}">
         <Setter Property="Background" Value="Gray" />
@@ -17,28 +16,4 @@
             <Setter Property="Background" Value="DarkGray" />
         </Style>
     </ControlTheme>
-    
-    <DataTemplate x:Key="ArtistCard"
-                  DataType="{x:Type items:ArtistViewModel}">
-        <StackPanel Spacing="5"
-                    Width="240"
-                    Height="335">
-            <Border ClipToBounds="True"
-                    CornerRadius="180"
-                    Margin="20">
-                <Panel Background="Gray">
-                    <Image Width="200"
-                           Stretch="Uniform"
-                           Source="{Binding Preview}" />
-                    <ProgressBar VerticalAlignment="Center"
-                                 IsIndeterminate="True"
-                                 IsVisible="{Binding Preview, Converter={x:Static ObjectConverters.IsNull}}" />
-                </Panel>
-            </Border>
-            <TextBlock Text="{Binding Item.Name}"
-                       HorizontalAlignment="Center" />
-            <TextBlock Text="{Binding Item.Type}"
-                       HorizontalAlignment="Center" />
-        </StackPanel>
-    </DataTemplate>
 </ResourceDictionary>

@@ -1,7 +1,6 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:controls="using:SpotifyApp.Shared.Controls"
-        xmlns:converters="clr-namespace:SpotifyApp.Shared.Converters">
+        xmlns:controls="using:SpotifyApp.Shared.Controls">
     <Design.PreviewWith>
         <controls:SpotifyItemDetailsControl />
     </Design.PreviewWith>
@@ -10,50 +9,16 @@
         <!-- Set Defaults -->
         <Setter Property="Template">
             <ControlTemplate>
-                <ScrollViewer x:Name="PART_Scroll" 
+                <ScrollViewer x:Name="PART_Scroll"
                               HorizontalScrollBarVisibility="Disabled"
                               VerticalScrollBarVisibility="Auto">
                     <Grid RowDefinitions="250, *">
-                        <Image Grid.Row="0"
-                               IsVisible="{TemplateBinding IsFullHeaderImage}" 
-                               HorizontalAlignment="Stretch"
-                               VerticalAlignment="Stretch"
-                               Stretch="UniformToFill"
-                               DataContext="{TemplateBinding Header}"
-                               Source="{Binding Preview}" />
-                        
-                        <Grid Grid.Row="0" 
-                              Margin="40 20 0 20"
-                              ColumnDefinitions="Auto, 20, *"
-                              HorizontalAlignment="Stretch"
-                              VerticalAlignment="Stretch"
-                              DataContext="{TemplateBinding Header}">
-                            <Border ClipToBounds="True"
-                                    CornerRadius="180"
-                                    IsVisible="{Binding !IsFullHeaderImage, RelativeSource={RelativeSource TemplatedParent}}">
-                                <Panel Background="Gray">
-                                    <Image Width="200"
-                                           Stretch="Uniform"
-                                           Source="{Binding Preview}" />
-                                    <ProgressBar VerticalAlignment="Center"
-                                                 IsIndeterminate="True"
-                                                 Margin="5"
-                                                 IsVisible="{Binding Preview, Converter={x:Static ObjectConverters.IsNull}}" />
-                                </Panel>
-                            </Border>
-                            <StackPanel Grid.Column="2"
-                                        Spacing="5"
-                                        VerticalAlignment="Center">
-                                <TextBlock Text="{Binding Item.Type, Converter={x:Static converters:ItemTypeToTextConverter.Instance}}" />
-                                <TextBlock Classes="Header"
-                                           Text="{Binding Item.Name}"/>
-                            </StackPanel>
-                        </Grid>
+                        <ContentControl Content="{TemplateBinding Header}"
+                                        ContentTemplate="{TemplateBinding HeaderTemplate}" />
 
-                        <ContentControl 
-                            Grid.Row="1" 
-                            Margin="40 20 0 20"
-                            Content="{TemplateBinding Content}" />
+                        <ContentControl Grid.Row="1"
+                                        Margin="40 20 0 20"
+                                        Content="{TemplateBinding Content}" />
                     </Grid>
                 </ScrollViewer>
             </ControlTemplate>

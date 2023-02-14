@@ -10,7 +10,8 @@
         <viewModels:ProfileViewModel />
     </Design.DataContext>
 
-    <controls:SpotifyItemDetailsControl Header="{Binding CurrentUser}">
+    <controls:SpotifyItemDetailsControl Header="{Binding CurrentUser}"
+                                        HeaderTemplate="{StaticResource DefaultItemHeader}">
         <StackPanel Spacing="40">
             <StackPanel Spacing="10">
                 <TextBlock Classes="H1" 
@@ -19,7 +20,7 @@
                            Text="Only visible to you" />
                 <ListBox Items="{Binding TopArtists}"
                          Background="Transparent"
-                         ItemContainerTheme="{StaticResource ArtistItem}"
+                         ItemContainerTheme="{StaticResource ArtistCardItem}"
                          ItemTemplate="{StaticResource ArtistCard}"
                          SelectedItem="{Binding SelectedTopArtist}">
                     <ListBox.ItemsPanel>
@@ -44,7 +45,7 @@
                            Text="Following" />
                 <ListBox Items="{Binding FollowingArtists}"
                          Background="Transparent"
-                         ItemContainerTheme="{StaticResource ArtistItem}"
+                         ItemContainerTheme="{StaticResource ArtistCardItem}"
                          ItemTemplate="{StaticResource ArtistCard}"
                          SelectedItem="{Binding SelectedFollowingArtist}">
                     <ListBox.ItemsPanel>

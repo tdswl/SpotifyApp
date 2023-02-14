@@ -10,8 +10,6 @@ public abstract partial class ImagePreviewViewModel : ObservableRecipient, ISpot
 {
     private const int DefaultImageWidth = 400;
     private readonly IImageCache _imageCache;
-
-    public bool TakeBiggestImage = false;
     
     [ObservableProperty]
     [NotifyCanExecuteChangedFor(nameof(LoadAdditionalInfoCommand))]
@@ -46,9 +44,7 @@ public abstract partial class ImagePreviewViewModel : ObservableRecipient, ISpot
 
     private async Task LoadPreview(CancellationToken token)
     {
-        var previewImage = TakeBiggestImage ? 
-            (Item?.Images).MaxBy(a => a.Width) : 
-            (Item?.Images).MinBy(a => a.Width);
+        var previewImage = (Item?.Images).MaxBy(a => a.Width);
         if (previewImage != null)
         {
             var imagePath = await _imageCache.GetImage(previewImage.Url, token);

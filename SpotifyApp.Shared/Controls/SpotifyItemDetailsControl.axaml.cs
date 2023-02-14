@@ -1,5 +1,7 @@
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.Templates;
+using Avalonia.Metadata;
 using SpotifyApp.Shared.ViewModels.Base;
 
 namespace SpotifyApp.Shared.Controls;
@@ -15,24 +17,25 @@ public class SpotifyItemDetailsControl : ContentControl
     /// <summary>
     /// Gets or sets the content of header to display.
     /// </summary>
+    [DependsOn(nameof(HeaderTemplate))]
     public ISpotifyItemViewModel? Header
     {
-        get { return GetValue(HeaderProperty); }
-        set { SetValue(HeaderProperty, value); }
+        get => GetValue(HeaderProperty);
+        set => SetValue(HeaderProperty, value);
     }
     
     /// <summary>
-    /// Defines the <see cref="IsFullHeaderImageProperty"/> property.
+    /// Defines the <see cref="HeaderTemplate"/> property.
     /// </summary>
-    public static readonly StyledProperty<bool> IsFullHeaderImageProperty =
-        AvaloniaProperty.Register<SpotifyItemDetailsControl, bool>(nameof(IsFullHeaderImage));
+    public static readonly StyledProperty<IDataTemplate?> HeaderTemplateProperty =
+        AvaloniaProperty.Register<SpotifyItemDetailsControl, IDataTemplate?>(nameof(HeaderTemplate));
     
     /// <summary>
-    /// Show image to full screen
+    /// Gets or sets the data template used to display the content of the control.
     /// </summary>
-    public bool IsFullHeaderImage
+    public IDataTemplate? HeaderTemplate
     {
-        get { return GetValue(IsFullHeaderImageProperty); }
-        set { SetValue(IsFullHeaderImageProperty, value); }
+        get => GetValue(HeaderTemplateProperty);
+        set => SetValue(HeaderTemplateProperty, value);
     }
 }

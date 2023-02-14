@@ -10,6 +10,5 @@
         <viewModels:ArtistScreenViewModel />
     </Design.DataContext>
     <controls:SpotifyItemDetailsControl Header="{Binding Artist}"
-                                        IsFullHeaderImage="True">
-    </controls:SpotifyItemDetailsControl>
+                                        HeaderTemplate="{StaticResource ArtistItemHeader}" />
 </UserControl>

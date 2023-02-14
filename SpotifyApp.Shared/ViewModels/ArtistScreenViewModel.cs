@@ -41,7 +41,6 @@ public sealed partial class ArtistScreenViewModel : ObservableRecipient
             token);
 
         var artistVm = Ioc.Default.GetRequiredService<ArtistViewModel>();
-        artistVm.TakeBiggestImage = true;
         var artist = _mapper.Map<ArtistModel>(artistResponse);
         artistVm.Item = artist;
         Artist = artistVm;

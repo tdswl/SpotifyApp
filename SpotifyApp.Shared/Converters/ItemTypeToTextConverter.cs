@@ -11,10 +11,10 @@ public class ItemTypeToTextConverter : IValueConverter
 
     public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture )
     {
-        if (value is ItemType sourceText && 
+        if (value is ItemType sourceItemType && 
             targetType.IsAssignableTo(typeof(string)))
         {
-            return sourceText.ToString().ToUpperInvariant();
+            return sourceItemType.ToString().ToUpperInvariant();
         }
         
         // converter used for the wrong type

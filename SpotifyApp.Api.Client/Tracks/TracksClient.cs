@@ -129,22 +129,10 @@ internal class TracksClient : ITracksClient
         CancellationToken cancellationToken)
     {
         var query = "https://api.spotify.com/v1/recommendations"
-            .WithOAuthBearerToken(accessToken);
-
-        if (request.SeedArtists != null)
-        {
-            query = query.SetQueryParam("seed_artists", request.SeedArtists);
-        }
-        
-        if (request.SeedGenres != null)
-        {
-            query = query.SetQueryParam("seed_genres", request.SeedGenres);
-        }
-        
-        if (request.SeedTracks != null)
-        {
-            query = query.SetQueryParam("seed_tracks", request.SeedTracks);
-        }
+            .WithOAuthBearerToken(accessToken)
+            .SetQueryParam("seed_artists", request.SeedArtists)
+            .SetQueryParam("seed_genres", request.SeedGenres)
+            .SetQueryParam("seed_tracks", request.SeedTracks);
         
         // TODO: other query params
         

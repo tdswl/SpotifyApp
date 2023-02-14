@@ -61,6 +61,19 @@ public abstract partial class ImagePreviewViewModel : ObservableRecipient,
 
     public void Dispose()
     {
-        Preview?.Dispose();
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+    
+    protected virtual void Dispose(bool disposing)
+    {
+        if (disposing)
+        {
+            if (Preview != null)
+            {
+                Preview.Dispose();
+                Preview = null;
+            }
+        }
     }
 }

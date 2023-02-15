@@ -2,6 +2,6 @@ namespace SpotifyApp.Shared.Services;
 
 public interface IImageCache
 {
-    Task<string> GetImage(string webPath,
+    Task<string> GetCachedImagePath(string webPath,
         CancellationToken cancellationToken);
 }

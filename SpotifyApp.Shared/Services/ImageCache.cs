@@ -12,7 +12,7 @@ internal class ImageCache : IImageCache
         o.PoolInitialFill = 1;
     });
     
-    public async Task<string> GetImage(string webPath, CancellationToken cancellationToken)
+    public async Task<string> GetCachedImagePath(string webPath, CancellationToken cancellationToken)
     {
         using (await AsyncKeyedLocker.LockAsync(webPath, cancellationToken))
         {

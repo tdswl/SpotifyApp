@@ -10,6 +10,8 @@ namespace SpotifyApp.Shared.Services;
 
 internal class AuthService : IAuthService
 {
+    private static SemaphoreSlim _semaphore = new(1, 1);
+    
     private readonly IApplicationContext _applicationContext;
     private readonly IMemoryCache _memoryCache;
     private readonly IAuthClient _authClient;
@@ -25,30 +27,32 @@ internal class AuthService : IAuthService
     
     public async Task<AuthorizationInfoModel> Login(CancellationToken token)
     {
-        // Get from cache or database
-        var info = GetInfoFromCache() ?? await GetInfoFromDatabase(token);
+        // lock to prevent many login requests to Spotify
+        await _semaphore.WaitAsync(token).ConfigureAwait(false);
 
-        // If found and token is expired - refresh
-        if (info?.RefreshToken != null &&
-            (info.AccessToken == null || info.AccessTokenExpiration < DateTimeOffset.UtcNow))
+        try
         {
-            info = await GetInfoByRefreshToken(info.RefreshToken, token);
+            // Get from cache or database
+            var info = GetInfoFromCache() ?? await GetInfoFromDatabase(token);
+
+            // If found and token is expired - refresh
+            if (info?.RefreshToken != null &&
+                (info.AccessToken == null || info.AccessTokenExpiration < DateTimeOffset.UtcNow))
+            {
+                info = await GetInfoByRefreshToken(info.RefreshToken, token);
+            }
+
+            // Else do a new login
+            info ??= await NewLogin(token);
+
+            _memoryCache.Set(MemoryCacheKeys.AuthorizationInfo, info);
+
+            return info;
         }
-        
-        // Else do a new login
-        info ??= await NewLogin(token);
-
-        _memoryCache.Set(MemoryCacheKeys.AuthorizationInfo, info);
-        
-        return info;
-    }
-    
-    public async Task<AuthorizationInfoModel> RefreshToken(string refreshToken, CancellationToken token)
-    {
-        var info = await GetInfoByRefreshToken(refreshToken, token);
-        _memoryCache.Set(MemoryCacheKeys.AuthorizationInfo, info);
-
-        return info;
+        finally
+        {
+            _semaphore.Release();
+        }
     }
 
     private AuthorizationInfoModel? GetInfoFromCache()

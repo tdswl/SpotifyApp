@@ -6,7 +6,11 @@ namespace SpotifyApp.Shared.Services;
 internal class ImageCache : IImageCache 
 {
     private const string CacheFolder = "Cache";
-    private static readonly AsyncKeyedLocker<string> AsyncKeyedLocker = new();
+    private static readonly AsyncKeyedLocker<string> AsyncKeyedLocker = new(o =>
+    {
+        o.PoolSize = 20;
+        o.PoolInitialFill = 1;
+    });
     
     public async Task<string> GetImage(string webPath, CancellationToken cancellationToken)
     {

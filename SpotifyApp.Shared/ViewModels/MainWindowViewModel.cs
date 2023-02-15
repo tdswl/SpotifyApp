@@ -27,7 +27,12 @@ public sealed partial class MainWindowViewModel : ObservableRecipient, IRecipien
     {
         _navigationService = navigationService;
         _authService = authService;
-        WeakReferenceMessenger.Default.Register(this);
+        IsActive = true;
+    }
+
+    protected override void OnActivated()
+    {
+        base.OnActivated();
 
         LoginCommand.ExecuteAsync(null);
     }
@@ -47,6 +52,10 @@ public sealed partial class MainWindowViewModel : ObservableRecipient, IRecipien
     
     private void NavigateWithParams(PageType pageType, INavigateParams? navigateParams)
     {
+        if (Content?.DataContext is ObservableRecipient previous)
+        {
+            previous.IsActive = false;
+        }
         Content = _navigationService.NavigateTo(pageType, navigateParams);
     }
 

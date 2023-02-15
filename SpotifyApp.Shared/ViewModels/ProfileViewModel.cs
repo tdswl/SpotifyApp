@@ -57,13 +57,19 @@ public sealed partial class ProfileViewModel : ObservableRecipient
         _usersClient = usersClient;
         _tracksClient = tracksClient;
         _mapper = mapper;
+        IsActive = true;
+    }
+
+    protected override void OnActivated()
+    {
+        base.OnActivated();
 
         GetUserInfoCommand.ExecuteAsync(null);
         GetArtistsCommand.ExecuteAsync(null);
         GetTracksCommand.ExecuteAsync(null);
         GetFollowingArtistsCommand.ExecuteAsync(null);
     }
-    
+
     [RelayCommand(IncludeCancelCommand = true)]
     private async Task GetUserInfoAsync(CancellationToken token)
     {
@@ -161,5 +167,29 @@ public sealed partial class ProfileViewModel : ObservableRecipient
         {
             OpenArtistCommand.Execute(value.Item.Id);
         }
+    }
+
+    protected override void OnDeactivated()
+    {
+        CurrentUser?.Dispose();
+        CurrentUser = null;
+
+        foreach (var track in TopTracks)
+        {
+            track.Dispose();
+        }
+        TopTracks.Clear();        
+        
+        foreach (var artist in TopArtists)
+        {
+            artist.Dispose();
+        }
+        TopArtists.Clear();
+
+        foreach (var followingArtist in FollowingArtists)
+        {
+            followingArtist.Dispose();
+        }
+        FollowingArtists.Clear();
     }
 }

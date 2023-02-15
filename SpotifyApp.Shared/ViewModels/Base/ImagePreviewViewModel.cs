@@ -23,6 +23,7 @@ public abstract partial class ImagePreviewViewModel : ObservableRecipient,
     protected ImagePreviewViewModel(IImageCache imageCache)
     {
         _imageCache = imageCache;
+        IsActive = true;
     }
     
     partial void OnItemChanged(ISpotifyItem? value)
@@ -69,6 +70,7 @@ public abstract partial class ImagePreviewViewModel : ObservableRecipient,
     {
         if (disposing)
         {
+            IsActive = false;
             if (Preview != null)
             {
                 Preview.Dispose();

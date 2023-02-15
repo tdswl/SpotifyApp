@@ -30,8 +30,16 @@ public sealed partial class ArtistScreenViewModel : ObservableRecipient
         _authService = authService;
         _artistsClient = artistsClient;
         _mapper = mapper;
+        IsActive = true;
     }
-    
+
+    protected override void OnActivated()
+    {
+        base.OnActivated();
+        
+        GetArtistCommand.ExecuteAsync(null);
+    }
+
     [RelayCommand(IncludeCancelCommand = true)]
     private async Task GetArtistAsync(string id, CancellationToken token)
     {
@@ -44,5 +52,11 @@ public sealed partial class ArtistScreenViewModel : ObservableRecipient
         var artist = _mapper.Map<ArtistModel>(artistResponse);
         artistVm.Item = artist;
         Artist = artistVm;
+    }
+
+    protected override void OnDeactivated()
+    {
+        Artist?.Dispose();
+        Artist = null;
     }
 }

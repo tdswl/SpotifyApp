@@ -9,7 +9,7 @@ internal class UsersClient : IUsersClient
     Task<GetCurrentUserProfileResponse> IUsersClient.GetCurrentUserProfile(string accessToken, 
         CancellationToken cancellationToken)
     {
-        return "https://api.spotify.com/v1/me"
+        return UserRoutes.GetCurrentUserProfile
             .WithOAuthBearerToken(accessToken)
             .GetJsonAsync<GetCurrentUserProfileResponse>(cancellationToken);
     }
@@ -18,7 +18,7 @@ internal class UsersClient : IUsersClient
         string accessToken, 
         CancellationToken cancellationToken)
     {
-        var query = "https://api.spotify.com/v1/me/top/"
+        var query = UserRoutes.GetUsersTopItems
             .WithOAuthBearerToken(accessToken)
             .AppendPathSegment($"{request.Type.ToString().ToLower()}s");
 
@@ -44,7 +44,7 @@ internal class UsersClient : IUsersClient
         string accessToken, 
         CancellationToken cancellationToken)
     {
-        return "https://api.spotify.com/v1/users"
+        return UserRoutes.GetUsersProfile
             .WithOAuthBearerToken(accessToken)
             .AppendPathSegment(userId)
             .GetJsonAsync<GetUsersProfileResponse>(cancellationToken);
@@ -55,10 +55,8 @@ internal class UsersClient : IUsersClient
         string accessToken, 
         CancellationToken cancellationToken)
     {
-        return "https://api.spotify.com/v1/playlists"
+        return string.Format(UserRoutes.FollowPlaylist, playlistId)
             .WithOAuthBearerToken(accessToken)
-            .AppendPathSegment(playlistId)
-            .AppendPathSegment("followers")
             .PutJsonAsync(request, cancellationToken: cancellationToken);
     }
 
@@ -66,10 +64,8 @@ internal class UsersClient : IUsersClient
         string accessToken, 
         CancellationToken cancellationToken)
     {
-        return "https://api.spotify.com/v1/playlists"
+        return string.Format(UserRoutes.FollowPlaylist, playlistId)
             .WithOAuthBearerToken(accessToken)
-            .AppendPathSegment(playlistId)
-            .AppendPathSegment("followers")
             .DeleteAsync(cancellationToken: cancellationToken);
     }
     
@@ -77,7 +73,7 @@ internal class UsersClient : IUsersClient
         string accessToken, 
         CancellationToken cancellationToken)
     {
-        var query = "https://api.spotify.com/v1/me/following"
+        var query = UserRoutes.GetFollowedArtists
             .WithOAuthBearerToken(accessToken)
             .SetQueryParam("type", request.Type.ToString().ToLower());
 
@@ -98,7 +94,7 @@ internal class UsersClient : IUsersClient
         string accessToken, 
         CancellationToken cancellationToken)
     {
-        return "https://api.spotify.com/v1/me/following"
+        return UserRoutes.FollowArtistsOrUsers
             .WithOAuthBearerToken(accessToken)
             .SetQueryParam("type", request.Type.ToString().ToLower())
             .SetQueryParam("ids", request.Ids)
@@ -109,7 +105,7 @@ internal class UsersClient : IUsersClient
         string accessToken,
         CancellationToken cancellationToken)
     {
-        return "https://api.spotify.com/v1/me/following"
+        return UserRoutes.FollowArtistsOrUsers
             .WithOAuthBearerToken(accessToken)
             .SetQueryParam("type", request.Type.ToString().ToLower())
             .SetQueryParam("ids", request.Ids)
@@ -120,7 +116,7 @@ internal class UsersClient : IUsersClient
         string accessToken,
         CancellationToken cancellationToken)
     {
-        return "https://api.spotify.com/v1/me/following/contains"
+        return UserRoutes.CheckIfUserFollowsArtistsOrUsers
             .WithOAuthBearerToken(accessToken)
             .SetQueryParam("type", request.Type.ToString().ToLower())
             .SetQueryParam("ids", request.Ids)
@@ -132,10 +128,8 @@ internal class UsersClient : IUsersClient
         string accessToken, 
         CancellationToken cancellationToken)
     {
-        return "https://api.spotify.com/v1/playlists"
+        return string.Format(UserRoutes.CheckIfUsersFollowPlaylist, playlistId)
             .WithOAuthBearerToken(accessToken)
-            .AppendPathSegment(playlistId)
-            .SetQueryParam("followers/contains")
             .GetJsonAsync<IReadOnlyList<bool>>(cancellationToken);
     }
 }

@@ -44,7 +44,6 @@ internal class AuthService : IAuthService
         // Else do a new login
         info ??= await NewLogin(token);
 
-        await AddOrUpdateInfoInStorage(info, token);
         _memoryCache.Set(MemoryCacheKeys.AuthorizationInfo, info);
         
         return info;
@@ -53,8 +52,6 @@ internal class AuthService : IAuthService
     public async Task<AuthorizationInfoModel> RefreshToken(string refreshToken, CancellationToken token)
     {
         var info = await GetInfoByRefreshToken(refreshToken, token);
-
-        await AddOrUpdateInfoInStorage(info, token);
         _memoryCache.Set(MemoryCacheKeys.AuthorizationInfo, info);
 
         return info;
@@ -113,28 +110,36 @@ internal class AuthService : IAuthService
         var options = GenerateOptions();
         var oidcClient = new OidcClient(options);
         var result = await oidcClient.RefreshTokenAsync(refreshToken, cancellationToken: token);
-        
-        return  new AuthorizationInfoModel
+
+        var info = new AuthorizationInfoModel
         {
             RefreshToken = result.RefreshToken,
             AccessToken = result.AccessToken,
             AccessTokenExpiration = result.AccessTokenExpiration,
         };
+        
+        await AddOrUpdateInfoInStorage(info, token);
+        
+        return info;
     }
 
-    private async Task<AuthorizationInfoModel> NewLogin(CancellationToken cancellationToken)
+    private async Task<AuthorizationInfoModel> NewLogin(CancellationToken token)
     {
         var options = GenerateOptions();
         var oidcClient = new OidcClient(options);
-        var result = await oidcClient.LoginAsync(cancellationToken: cancellationToken);
-            
-        return new AuthorizationInfoModel
+        var result = await oidcClient.LoginAsync(cancellationToken: token);
+        
+        var info = new AuthorizationInfoModel
         {
             RefreshToken = result.RefreshToken,
             AccessToken = result.AccessToken,
             AccessTokenExpiration = result.AccessTokenExpiration,
             AuthenticationTime = result.AuthenticationTime,
         };
+        
+        await AddOrUpdateInfoInStorage(info, token);
+        
+        return info;
     }
   
     private async Task AddOrUpdateInfoInStorage(AuthorizationInfoModel infoModel, CancellationToken token)

@@ -95,13 +95,13 @@ public sealed partial class ProfileViewModel : ObservableRecipient
             authInfo.AccessToken,
             token);
 
-        TopArtists.Clear();
         foreach (var artist in artistsResponse.Items)
         {
             if (token.IsCancellationRequested)
             {
                 return;
             }
+            
             var artistVm = Ioc.Default.GetRequiredService<ArtistViewModel>();
             TopArtists.Add(artistVm);
             artistVm.Item = _mapper.Map<ArtistModel>(artist);
@@ -124,13 +124,13 @@ public sealed partial class ProfileViewModel : ObservableRecipient
             authInfo.AccessToken,
             token);
 
-        TopTracks.Clear();
         for (var i = 0; i < tracksInfoResponse.Tracks.Count; i++)
         {
             if (token.IsCancellationRequested)
             {
                 return;
             }
+            
             var trackVm = Ioc.Default.GetRequiredService<TrackViewModel>();
             TopTracks.Add(trackVm);
             var track = _mapper.Map<TrackModel>(tracksInfoResponse.Tracks[i]);
@@ -148,20 +148,19 @@ public sealed partial class ProfileViewModel : ObservableRecipient
             authInfo.AccessToken,
             token);
 
-        FollowingArtists.Clear();
         foreach (var artist in artistsResponse.Artists.Items)
         {
             if (token.IsCancellationRequested)
             {
                 return;
             }
+            
             var artistVm = Ioc.Default.GetRequiredService<ArtistViewModel>();
             FollowingArtists.Add(artistVm);
             artistVm.Item = _mapper.Map<ArtistModel>(artist);
         }
     }
 
-    [RelayCommand]
     private void OpenArtist(string id)
     {
         WeakReferenceMessenger.Default.Send(new NavigateMessage
@@ -175,7 +174,7 @@ public sealed partial class ProfileViewModel : ObservableRecipient
     {
         if (value != null)
         {
-            OpenArtistCommand.Execute(value.Item.Id);
+            OpenArtist(value.Item.Id);
         }
     }
     
@@ -183,7 +182,7 @@ public sealed partial class ProfileViewModel : ObservableRecipient
     {
         if (value != null)
         {
-            OpenArtistCommand.Execute(value.Item.Id);
+            OpenArtist(value.Item.Id);
         }
     }
 

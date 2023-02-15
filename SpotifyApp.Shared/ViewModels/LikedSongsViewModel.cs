@@ -62,10 +62,12 @@ public sealed partial class LikedSongsViewModel : ObservableRecipient
             Images = new List<ImageModel>(),
             Name = "Liked Songs",
         };
+        
         if (token.IsCancellationRequested)
         {
             return;
         }
+        
         Playlist = playlistVm;
         
         for (var i = 0; i < tracksInfoResponse.Items.Count; i++)
@@ -74,6 +76,7 @@ public sealed partial class LikedSongsViewModel : ObservableRecipient
             {
                 return;
             }
+            
             var trackVm = Ioc.Default.GetRequiredService<TrackViewModel>();
             LikedSongs.Add(trackVm);
             var track = _mapper.Map<TrackModel>(tracksInfoResponse.Items[i].Track);

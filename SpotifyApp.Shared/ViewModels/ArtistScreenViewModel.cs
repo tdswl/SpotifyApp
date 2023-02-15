@@ -47,6 +47,11 @@ public sealed partial class ArtistScreenViewModel : ObservableRecipient
         var artistResponse = await _artistsClient.GetArtist(id,
             authInfo.AccessToken,
             token);
+        
+        if (token.IsCancellationRequested)
+        {
+            return;
+        }
 
         var artistVm = Ioc.Default.GetRequiredService<ArtistViewModel>();
         var artist = _mapper.Map<ArtistModel>(artistResponse);
@@ -56,6 +61,7 @@ public sealed partial class ArtistScreenViewModel : ObservableRecipient
 
     protected override void OnDeactivated()
     {
+        GetArtistCommand.Cancel();
         Artist?.Dispose();
         Artist = null;
     }

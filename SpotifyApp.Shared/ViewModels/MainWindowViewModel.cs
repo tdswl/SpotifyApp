@@ -9,8 +9,11 @@ using SpotifyApp.Shared.Services;
 
 namespace SpotifyApp.Shared.ViewModels;
 
-public sealed partial class MainWindowViewModel : ObservableRecipient, IRecipient<NavigateMessage>
+public sealed partial class MainWindowViewModel : ObservableRecipient, 
+    IRecipient<NavigateMessage>,
+    IDisposable
 {
+    private readonly CancellationTokenSource cts = new();
     private readonly INavigationService _navigationService;
     private readonly IAuthService _authService;
 
@@ -62,5 +65,10 @@ public sealed partial class MainWindowViewModel : ObservableRecipient, IRecipien
     public void Receive(NavigateMessage message)
     {
         NavigateWithParams(message.Type, message.NavigateParams);
+    }
+
+    public void Dispose()
+    {
+        cts.Dispose();
     }
 }

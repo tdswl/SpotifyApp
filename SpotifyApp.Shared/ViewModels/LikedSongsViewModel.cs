@@ -35,10 +35,16 @@ public sealed partial class LikedSongsViewModel : ObservableRecipient
         _authService = authService;
         _tracksClient = tracksClient;
         _mapper = mapper;
+        IsActive = true;
+    }
 
+    protected override void OnActivated()
+    {
+        base.OnActivated();
+        
         GetTracksCommand.ExecuteAsync(null);
     }
-    
+
     [RelayCommand(IncludeCancelCommand = true)]
     private async Task GetTracksAsync(CancellationToken token)
     {
@@ -66,5 +72,16 @@ public sealed partial class LikedSongsViewModel : ObservableRecipient
             track.Index = currentItemsCount + i + 1;
             trackVm.Item = track;
         }
+    }
+
+    protected override void OnDeactivated()
+    {
+        Playlist?.Dispose();
+        Playlist = null;
+        foreach (var song in LikedSongs)
+        {
+            song.Dispose();
+        }
+        LikedSongs.Clear();
     }
 }

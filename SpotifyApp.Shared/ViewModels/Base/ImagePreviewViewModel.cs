@@ -50,7 +50,7 @@ public abstract partial class ImagePreviewViewModel : ObservableRecipient,
         var previewImage = (Item?.Images).MaxBy(a => a.Width);
         if (previewImage != null)
         {
-            var imagePath = await _imageCache.GetImage(previewImage.Url, token);
+            var imagePath = await _imageCache.GetCachedImagePath(previewImage.Url, token);
 
             await using (var fileStream = File.OpenRead(imagePath))
             {

@@ -1,6 +1,7 @@
 using Avalonia.Media.Imaging;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using SpotifyApp.Shared.Enums;
 using SpotifyApp.Shared.Models;
 using SpotifyApp.Shared.Services;
 
@@ -16,6 +17,9 @@ public abstract partial class ImagePreviewViewModel : ObservableRecipient,
     [ObservableProperty]
     [NotifyCanExecuteChangedFor(nameof(LoadAdditionalInfoCommand))]
     private ISpotifyItem? _item;
+    
+    [ObservableProperty]
+    private PreviewSize _previewSize = PreviewSize.Medium;
 
     [ObservableProperty]
     private IBitmap? _preview;
@@ -47,7 +51,13 @@ public abstract partial class ImagePreviewViewModel : ObservableRecipient,
 
     private async Task LoadPreview(CancellationToken token)
     {
-        var previewImage = (Item?.Images).MaxBy(a => a.Width);
+        var previewImage = Item?.Images.Count switch
+        {
+            0 => null,
+            1 => Item?.Images.First(),
+            _ => GetSizedBySize()
+        };
+
         if (previewImage != null)
         {
             var imagePath = await _imageCache.GetCachedImagePath(previewImage.Url, token);
@@ -58,6 +68,22 @@ public abstract partial class ImagePreviewViewModel : ObservableRecipient,
                 Preview = await Task.Run(() => Bitmap.DecodeToWidth(fileStream, width), token);
             }
         }
+    }
+
+    private ImageModel? GetSizedBySize()
+    {
+        if (Item == null)
+        {
+            return null;
+        }
+
+        return PreviewSize switch
+        {
+            PreviewSize.Small => Item.Images.MinBy(a => a.Width),
+            PreviewSize.Medium => Item.Images.OrderBy(a => a.Width).ToArray()[Item.Images.Count / 2],
+            PreviewSize.Large => Item.Images.MaxBy(a => a.Width),
+            _ => Item.Images.First()
+        };
     }
 
     public void Dispose()
@@ -79,4 +105,6 @@ public abstract partial class ImagePreviewViewModel : ObservableRecipient,
             }
         }
     }
+
+    public PreviewSize ImageSize { get; set; }
 }

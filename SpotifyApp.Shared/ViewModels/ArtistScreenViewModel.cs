@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.DependencyInjection;
 using CommunityToolkit.Mvvm.Input;
 using SpotifyApp.Api.Client.Artists;
+using SpotifyApp.Shared.Enums;
 using SpotifyApp.Shared.Models;
 using SpotifyApp.Shared.Services;
 using SpotifyApp.Shared.ViewModels.Items;
@@ -55,6 +56,7 @@ public sealed partial class ArtistScreenViewModel : ObservableRecipient
 
         var artistVm = Ioc.Default.GetRequiredService<ArtistViewModel>();
         var artist = _mapper.Map<ArtistModel>(artistResponse);
+        artistVm.PreviewSize = PreviewSize.Large;
         artistVm.Item = artist;
         Artist = artistVm;
     }

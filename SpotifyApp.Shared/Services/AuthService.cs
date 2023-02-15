@@ -1,9 +1,6 @@
-using IdentityModel.Jwk;
-using IdentityModel.OidcClient;
-using IdentityModel.OidcClient.Browser;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
-using Microsoft.Extensions.Logging;
+using SpotifyApp.Api.Client.Auth;
 using SpotifyApp.Shared.Constants;
 using SpotifyApp.Shared.Models;
 using SpotifyApp.Storage;
@@ -15,18 +12,15 @@ internal class AuthService : IAuthService
 {
     private readonly IApplicationContext _applicationContext;
     private readonly IMemoryCache _memoryCache;
-    private readonly IBrowser _browser;
-    private readonly ILoggerFactory _loggerFactory;
+    private readonly IAuthClient _authClient;
     
     public AuthService(IApplicationContext applicationContext,
         IMemoryCache memoryCache,
-        IBrowser browser,
-        ILoggerFactory loggerFactory)
+        IAuthClient authClient)
     {
         _applicationContext = applicationContext;
         _memoryCache = memoryCache;
-        _browser = browser;
-        _loggerFactory = loggerFactory;
+        _authClient = authClient;
     }
     
     public async Task<AuthorizationInfoModel> Login(CancellationToken token)
@@ -57,28 +51,6 @@ internal class AuthService : IAuthService
         return info;
     }
 
-    private OidcClientOptions GenerateOptions()
-    {
-       return new OidcClientOptions
-        {
-            Authority = ApplicationSettings.Authority,
-            ClientId = ApplicationSettings.ClientId,
-            RedirectUri = ApplicationSettings.RedirectUri,
-            Scope = "user-read-private user-read-email user-library-read user-top-read user-follow-read",
-            Browser = _browser,
-            ProviderInformation = new ProviderInformation
-            {
-                IssuerName = "https://accounts.spotify.com/",
-                AuthorizeEndpoint = "https://accounts.spotify.com/authorize",
-                TokenEndpoint = "https://accounts.spotify.com/api/token",
-                UserInfoEndpoint = "https://api.spotify.com/v1/me",
-                KeySet = new JsonWebKeySet(),
-            },
-            LoadProfile = false,
-            LoggerFactory = _loggerFactory,
-        };
-    }
-
     private AuthorizationInfoModel? GetInfoFromCache()
     {
         if (_memoryCache.TryGetValue(MemoryCacheKeys.AuthorizationInfo, out AuthorizationInfoModel? value))
@@ -107,9 +79,7 @@ internal class AuthService : IAuthService
 
     private async Task<AuthorizationInfoModel> GetInfoByRefreshToken(string refreshToken, CancellationToken token)
     {
-        var options = GenerateOptions();
-        var oidcClient = new OidcClient(options);
-        var result = await oidcClient.RefreshTokenAsync(refreshToken, cancellationToken: token);
+        var result =  await _authClient.Refresh(refreshToken, token);
 
         var info = new AuthorizationInfoModel
         {
@@ -125,9 +95,7 @@ internal class AuthService : IAuthService
 
     private async Task<AuthorizationInfoModel> NewLogin(CancellationToken token)
     {
-        var options = GenerateOptions();
-        var oidcClient = new OidcClient(options);
-        var result = await oidcClient.LoginAsync(cancellationToken: token);
+        var result = await _authClient.Login(token);
         
         var info = new AuthorizationInfoModel
         {

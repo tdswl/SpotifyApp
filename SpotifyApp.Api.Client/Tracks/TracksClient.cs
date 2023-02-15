@@ -11,7 +11,7 @@ internal class TracksClient : ITracksClient
         string accessToken, 
         CancellationToken cancellationToken)
     {
-        var query = "https://api.spotify.com/v1/tracks/"
+        var query = TracksRoutes.GetTrack
             .WithOAuthBearerToken(accessToken)
             .AppendPathSegment(request.Id);
 
@@ -27,7 +27,7 @@ internal class TracksClient : ITracksClient
         string accessToken, 
         CancellationToken cancellationToken)
     {
-        var query = "https://api.spotify.com/v1/tracks"
+        var query = TracksRoutes.GetTrack
             .WithOAuthBearerToken(accessToken)
             .SetQueryParam("ids", request.Ids);
 
@@ -43,7 +43,7 @@ internal class TracksClient : ITracksClient
         string accessToken, 
         CancellationToken cancellationToken)
     {
-        var query = "https://api.spotify.com/v1/me/tracks"
+        var query = TracksRoutes.GetUsersSavedTracks
             .WithOAuthBearerToken(accessToken);
 
         if (request.Limit != null) 
@@ -68,7 +68,7 @@ internal class TracksClient : ITracksClient
         string accessToken, 
         CancellationToken cancellationToken)
     {
-        return "https://api.spotify.com/v1/me/tracks"
+        return TracksRoutes.GetUsersSavedTracks
             .WithOAuthBearerToken(accessToken)
             .SetQueryParam("ids", ids)
             .PutAsync(cancellationToken: cancellationToken);
@@ -78,7 +78,7 @@ internal class TracksClient : ITracksClient
         string accessToken, 
         CancellationToken cancellationToken)
     {
-        return "https://api.spotify.com/v1/me/tracks"
+        return TracksRoutes.GetUsersSavedTracks
             .WithOAuthBearerToken(accessToken)
             .SetQueryParam("ids", ids)
             .DeleteAsync(cancellationToken: cancellationToken);
@@ -88,7 +88,7 @@ internal class TracksClient : ITracksClient
         string accessToken, 
         CancellationToken cancellationToken)
     {
-        return "https://api.spotify.com/v1/me/tracks/contains"
+        return TracksRoutes.CheckUsersSavedTracks
             .WithOAuthBearerToken(accessToken)
             .SetQueryParam("ids", ids)
             .GetJsonAsync<IReadOnlyList<bool>>(cancellationToken: cancellationToken);
@@ -98,7 +98,7 @@ internal class TracksClient : ITracksClient
         string accessToken, 
         CancellationToken cancellationToken)
     {
-        return "https://api.spotify.com/v1/audio-features"
+        return TracksRoutes.GetTracksAudioFeatures
             .WithOAuthBearerToken(accessToken)
             .SetQueryParam("ids", ids)
             .GetJsonAsync<GetTracksAudioFeaturesResponse>(cancellationToken: cancellationToken);
@@ -108,7 +108,7 @@ internal class TracksClient : ITracksClient
         string accessToken, 
         CancellationToken cancellationToken)
     {
-        return "https://api.spotify.com/v1/audio-features"
+        return TracksRoutes.GetTracksAudioFeatures
             .WithOAuthBearerToken(accessToken)
             .AppendPathSegment(id)
             .GetJsonAsync<AudioFeaturesModel>(cancellationToken: cancellationToken);
@@ -118,7 +118,7 @@ internal class TracksClient : ITracksClient
         string accessToken, 
         CancellationToken cancellationToken)
     {
-        return "https://api.spotify.com/v1/audio-analysis"
+        return TracksRoutes.GetTracksAudioAnalysis
             .WithOAuthBearerToken(accessToken)
             .AppendPathSegment(id)
             .GetJsonAsync<GetTracksAudioAnalysisResponse>(cancellationToken: cancellationToken);
@@ -128,7 +128,7 @@ internal class TracksClient : ITracksClient
         string accessToken, 
         CancellationToken cancellationToken)
     {
-        var query = "https://api.spotify.com/v1/recommendations"
+        var query = TracksRoutes.GetRecommendations
             .WithOAuthBearerToken(accessToken)
             .SetQueryParam("seed_artists", request.SeedArtists)
             .SetQueryParam("seed_genres", request.SeedGenres)

@@ -18,7 +18,7 @@ public abstract partial class ImagePreviewViewModel : ObservableRecipient,
     private ISpotifyItem? _item;
 
     [ObservableProperty]
-    private Bitmap? _preview;
+    private IBitmap? _preview;
 
     protected ImagePreviewViewModel(IImageCache imageCache)
     {
@@ -71,6 +71,7 @@ public abstract partial class ImagePreviewViewModel : ObservableRecipient,
         if (disposing)
         {
             IsActive = false;
+            LoadAdditionalInfoCommand.Cancel();
             if (Preview != null)
             {
                 Preview.Dispose();

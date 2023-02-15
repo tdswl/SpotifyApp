@@ -7,5 +7,5 @@ public interface ISpotifyItemViewModel
 {
     ISpotifyItem? Item { get; set; }
     
-    Bitmap? Preview  { get; set; }
+    IBitmap? Preview  { get; set; }
 }

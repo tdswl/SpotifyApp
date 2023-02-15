@@ -75,6 +75,12 @@ public sealed partial class ProfileViewModel : ObservableRecipient
     {
         var authInfo = await _authService.Login(token);
         var userInfo = await _usersClient.GetCurrentUserProfile(authInfo.AccessToken, token);
+        
+        if (token.IsCancellationRequested)
+        {
+            return;
+        }
+        
         var userVm = Ioc.Default.GetRequiredService<UserViewModel>();
         userVm.Item = _mapper.Map<UserModel>(userInfo);
         CurrentUser = userVm;
@@ -92,6 +98,10 @@ public sealed partial class ProfileViewModel : ObservableRecipient
         TopArtists.Clear();
         foreach (var artist in artistsResponse.Items)
         {
+            if (token.IsCancellationRequested)
+            {
+                return;
+            }
             var artistVm = Ioc.Default.GetRequiredService<ArtistViewModel>();
             TopArtists.Add(artistVm);
             artistVm.Item = _mapper.Map<ArtistModel>(artist);
@@ -117,6 +127,10 @@ public sealed partial class ProfileViewModel : ObservableRecipient
         TopTracks.Clear();
         for (var i = 0; i < tracksInfoResponse.Tracks.Count; i++)
         {
+            if (token.IsCancellationRequested)
+            {
+                return;
+            }
             var trackVm = Ioc.Default.GetRequiredService<TrackViewModel>();
             TopTracks.Add(trackVm);
             var track = _mapper.Map<TrackModel>(tracksInfoResponse.Tracks[i]);
@@ -137,6 +151,10 @@ public sealed partial class ProfileViewModel : ObservableRecipient
         FollowingArtists.Clear();
         foreach (var artist in artistsResponse.Artists.Items)
         {
+            if (token.IsCancellationRequested)
+            {
+                return;
+            }
             var artistVm = Ioc.Default.GetRequiredService<ArtistViewModel>();
             FollowingArtists.Add(artistVm);
             artistVm.Item = _mapper.Map<ArtistModel>(artist);
@@ -171,6 +189,10 @@ public sealed partial class ProfileViewModel : ObservableRecipient
 
     protected override void OnDeactivated()
     {
+        GetUserInfoCommand.Cancel();
+        GetArtistsCommand.Cancel();
+        GetTracksCommand.Cancel();
+        GetFollowingArtistsCommand.Cancel();
         CurrentUser?.Dispose();
         CurrentUser = null;
 

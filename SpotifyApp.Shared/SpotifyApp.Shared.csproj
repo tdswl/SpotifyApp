@@ -39,15 +39,4 @@
         <ProjectReference Include="..\SpotifyApp.Api.Client\SpotifyApp.Api.Client.csproj" />
         <ProjectReference Include="..\SpotifyApp.Storage\SpotifyApp.Storage.csproj" />
     </ItemGroup>
-
-    <ItemGroup>
-        <UpToDateCheckInput Remove="DataTemplates\TrackTemplates.axaml" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Compile Update="Views\ArtistScreenView.axaml.cs">
-        <DependentUpon>ArtistScreenView.axaml</DependentUpon>
-        <SubType>Code</SubType>
-      </Compile>
-    </ItemGroup>
 </Project>

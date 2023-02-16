@@ -41,7 +41,7 @@ public abstract partial class ImagePreviewViewModel : ObservableRecipient,
     [RelayCommand(IncludeCancelCommand = true, CanExecute = nameof(LoadAdditionalInfoCanExecute))]
     private Task LoadAdditionalInfoAsync(CancellationToken token)
     {
-        return LoadPreview(token);
+        return LoadPreview(PreviewSize, token);
     }
 
     private bool LoadAdditionalInfoCanExecute()
@@ -49,13 +49,13 @@ public abstract partial class ImagePreviewViewModel : ObservableRecipient,
         return Item != null;
     }
 
-    private async Task LoadPreview(CancellationToken token)
+    private async Task LoadPreview(PreviewSize size, CancellationToken token)
     {
         var previewImage = Item?.Images.Count switch
         {
             0 => null,
             1 => Item?.Images.First(),
-            _ => GetSizedBySize()
+            _ => GetImageBySize(size)
         };
 
         if (previewImage != null)
@@ -70,14 +70,14 @@ public abstract partial class ImagePreviewViewModel : ObservableRecipient,
         }
     }
 
-    private ImageModel? GetSizedBySize()
+    private ImageModel? GetImageBySize(PreviewSize size)
     {
         if (Item == null)
         {
             return null;
         }
 
-        return PreviewSize switch
+        return size switch
         {
             PreviewSize.Small => Item.Images.MinBy(a => a.Width),
             PreviewSize.Medium => Item.Images.OrderBy(a => a.Width).ToArray()[Item.Images.Count / 2],
@@ -105,6 +105,4 @@ public abstract partial class ImagePreviewViewModel : ObservableRecipient,
             }
         }
     }
-
-    public PreviewSize ImageSize { get; set; }
 }

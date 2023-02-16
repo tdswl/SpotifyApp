@@ -1,4 +1,6 @@
 using Flurl.Http;
+using SpotifyApp.Api.Contracts.Base.Models;
+using SpotifyApp.Api.Contracts.Base.Requests;
 using SpotifyApp.Api.Contracts.Tracks.Models;
 using SpotifyApp.Api.Contracts.Tracks.Requests;
 using SpotifyApp.Api.Contracts.Tracks.Responses;
@@ -7,7 +9,7 @@ namespace SpotifyApp.Api.Client.Tracks;
 
 internal class TracksClient : ITracksClient
 {
-    Task<GetTrackResponse> ITracksClient.GetTrack(GetTrackRequest request, 
+    Task<TrackApiModel> ITracksClient.GetTrack(IdRequest request, 
         string accessToken, 
         CancellationToken cancellationToken)
     {
@@ -20,10 +22,10 @@ internal class TracksClient : ITracksClient
             query = query.SetQueryParam("market", request.Market);
         }
         
-        return query.GetJsonAsync<GetTrackResponse>(cancellationToken);
+        return query.GetJsonAsync<TrackApiModel>(cancellationToken);
     }
 
-    Task<GetSeveralTracksResponse> ITracksClient.GetSeveralTracks(GetSeveralTracksRequest request, 
+    Task<GetSeveralTracksResponse> ITracksClient.GetSeveralTracks(IdsRequest request, 
         string accessToken, 
         CancellationToken cancellationToken)
     {

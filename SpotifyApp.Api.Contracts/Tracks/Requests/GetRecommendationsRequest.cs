@@ -21,7 +21,7 @@ public sealed class GetRecommendationsRequest
     public int Limit { get; set; }
 
     [JsonProperty("market")]
-    public string Market { get; set; }
+    public string? Market { get; set; }
 
     [JsonProperty("max_acousticness")]
     public double MaxAcousticness { get; set; }

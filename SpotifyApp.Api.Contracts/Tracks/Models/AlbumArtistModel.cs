@@ -1,12 +1,13 @@
 using Newtonsoft.Json;
 using SpotifyApp.Api.Contracts.Base.Enums;
+using SpotifyApp.Api.Contracts.Base.Models;
 using SpotifyApp.Api.Contracts.Users.Models;
 
 namespace SpotifyApp.Api.Contracts.Tracks.Models;
 
 public sealed class AlbumArtistModel
 {
-    /// <inheritdoc cref="Users.Models.ExternalUrls"/>
+    /// <inheritdoc cref="Base.Models.ExternalUrls"/>
     [JsonProperty("external_urls")]
     public ExternalUrls? ExternalUrls { get; set; }
     

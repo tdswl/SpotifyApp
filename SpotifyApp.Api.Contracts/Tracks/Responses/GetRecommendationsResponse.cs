@@ -9,5 +9,5 @@ public sealed class GetRecommendationsResponse
     public IReadOnlyList<SeedsModel> Seeds { get; set; }
     
     [JsonProperty("tracks")]
-    public IReadOnlyList<GetTrackResponse> Tracks { get; set; }
+    public IReadOnlyList<TrackApiModel> Tracks { get; set; }
 }

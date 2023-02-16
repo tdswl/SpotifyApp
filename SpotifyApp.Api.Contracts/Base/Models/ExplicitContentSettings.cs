@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace SpotifyApp.Api.Contracts.Users.Models;
+namespace SpotifyApp.Api.Contracts.Base.Models;
 
 /// <summary>
 ///     The user's explicit content settings.

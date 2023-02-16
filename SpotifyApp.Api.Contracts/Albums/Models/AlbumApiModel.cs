@@ -1,16 +1,17 @@
 using Newtonsoft.Json;
 using SpotifyApp.Api.Contracts.Base.Enums;
 using SpotifyApp.Api.Contracts.Base.Models;
+using SpotifyApp.Api.Contracts.Base.Models.Interfaces;
 using SpotifyApp.Api.Contracts.Tracks.Enums;
-using SpotifyApp.Api.Contracts.Users.Models;
+using SpotifyApp.Api.Contracts.Tracks.Models;
 
-namespace SpotifyApp.Api.Contracts.Tracks.Models;
+namespace SpotifyApp.Api.Contracts.Albums.Models;
 
 /// <summary>
 /// The album on which the track appears. The album object
 /// includes a link in href to full information about the album.
 /// </summary>
-public sealed class AlbumApiModel
+public class AlbumApiModel : IIdModel
 {
     /// <summary>
     /// The type of the album.
@@ -44,9 +45,7 @@ public sealed class AlbumApiModel
     [JsonProperty("href")]
     public required string Href { get; set; }
     
-    /// <summary>
-    /// The Spotify ID for the album.
-    /// </summary>
+    /// <inheritdoc cref="IIdModel.Id"/>
     [JsonProperty("id")]
     public required string Id { get; set; }
     

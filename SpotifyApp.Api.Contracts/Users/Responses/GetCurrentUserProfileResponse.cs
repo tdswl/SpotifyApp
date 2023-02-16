@@ -1,11 +1,13 @@
 using Newtonsoft.Json;
 using SpotifyApp.Api.Contracts.Base.Enums;
 using SpotifyApp.Api.Contracts.Base.Models;
+using SpotifyApp.Api.Contracts.Base.Models.Interfaces;
+using SpotifyApp.Api.Contracts.Base.Requests;
 using SpotifyApp.Api.Contracts.Users.Models;
 
 namespace SpotifyApp.Api.Contracts.Users.Responses;
 
-public sealed class GetCurrentUserProfileResponse
+public sealed class GetCurrentUserProfileResponse : IIdModel
 {
     /// <summary>
     ///     The country of the user, as set in the user's account profile.
@@ -37,11 +39,11 @@ public sealed class GetCurrentUserProfileResponse
     [JsonProperty("explicit_content")]
     public ExplicitContentSettings? ExplicitContent { get; set; }
 
-    /// <inheritdoc cref="Models.ExternalUrls" />
+    /// <inheritdoc cref="Base.Models.ExternalUrls" />
     [JsonProperty("external_urls")]
     public ExternalUrls? ExternalUrls { get; set; }
 
-    /// <inheritdoc cref="Models.Followers" />
+    /// <inheritdoc cref="Base.Models.Followers" />
     [JsonProperty("followers")]
     public Followers? Followers { get; set; }
 
@@ -51,9 +53,7 @@ public sealed class GetCurrentUserProfileResponse
     [JsonProperty("href")]
     public required string Href { get; set; }
 
-    /// <summary>
-    ///     The Spotify user ID for the user.
-    /// </summary>
+    /// <inheritdoc cref="IIdModel.Id"/>
     [JsonProperty("id")]
     public required string Id { get; set; }
 

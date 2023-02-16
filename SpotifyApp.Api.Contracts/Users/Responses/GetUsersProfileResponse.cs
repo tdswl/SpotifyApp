@@ -1,11 +1,13 @@
 using Newtonsoft.Json;
 using SpotifyApp.Api.Contracts.Base.Enums;
 using SpotifyApp.Api.Contracts.Base.Models;
+using SpotifyApp.Api.Contracts.Base.Models.Interfaces;
+using SpotifyApp.Api.Contracts.Base.Requests;
 using SpotifyApp.Api.Contracts.Users.Models;
 
 namespace SpotifyApp.Api.Contracts.Users.Responses;
 
-public sealed class GetUsersProfileResponse
+public sealed class GetUsersProfileResponse : IIdModel
 {
     /// <summary>
     ///     The name displayed on the user's profile. null if not available.
@@ -13,11 +15,11 @@ public sealed class GetUsersProfileResponse
     [JsonProperty("display_name")]
     public string? DisplayName { get; set; }
 
-    /// <inheritdoc cref="Models.ExternalUrls" />
+    /// <inheritdoc cref="Base.Models.ExternalUrls" />
     [JsonProperty("external_urls")]
     public ExternalUrls? ExternalUrls { get; set; }
 
-    /// <inheritdoc cref="Models.Followers" />
+    /// <inheritdoc cref="Base.Models.Followers" />
     [JsonProperty("followers")]
     public Followers? Followers { get; set; }
 
@@ -27,9 +29,7 @@ public sealed class GetUsersProfileResponse
     [JsonProperty("href")]
     public required string Href { get; set; }
 
-    /// <summary>
-    ///     The Spotify user ID for the user.
-    /// </summary>
+    /// <inheritdoc cref="IIdModel.Id"/>
     [JsonProperty("id")]
     public required string Id { get; set; }
 

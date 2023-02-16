@@ -1,4 +1,6 @@
 using Flurl.Http;
+using SpotifyApp.Api.Contracts.Base.Models;
+using SpotifyApp.Api.Contracts.Base.Requests;
 using SpotifyApp.Api.Contracts.Tracks.Models;
 using SpotifyApp.Api.Contracts.Tracks.Requests;
 using SpotifyApp.Api.Contracts.Tracks.Responses;
@@ -20,7 +22,7 @@ public interface ITracksClient
     ///
     /// 429 - The app has exceeded its rate limits.
     /// </exception>
-    Task<GetTrackResponse> GetTrack(GetTrackRequest request,
+    Task<TrackApiModel> GetTrack(IdRequest request,
         string accessToken,
         CancellationToken cancellationToken);
 
@@ -37,7 +39,7 @@ public interface ITracksClient
     ///
     /// 429 - The app has exceeded its rate limits.
     /// </exception>
-    Task<GetSeveralTracksResponse> GetSeveralTracks(GetSeveralTracksRequest request,
+    Task<GetSeveralTracksResponse> GetSeveralTracks(IdsRequest request,
         string accessToken,
         CancellationToken cancellationToken);
 

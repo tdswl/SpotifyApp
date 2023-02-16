@@ -7,7 +7,7 @@ using CommunityToolkit.Mvvm.Messaging;
 using SpotifyApp.Api.Client.Tracks;
 using SpotifyApp.Api.Client.Users;
 using SpotifyApp.Api.Contracts.Base.Enums;
-using SpotifyApp.Api.Contracts.Tracks.Requests;
+using SpotifyApp.Api.Contracts.Base.Requests;
 using SpotifyApp.Api.Contracts.Users.Requests;
 using SpotifyApp.Shared.Enums;
 using SpotifyApp.Shared.Messages;
@@ -120,7 +120,7 @@ public sealed partial class ProfileViewModel : ObservableRecipient
         // 50 - max by api
         var trackIds = string.Join(",", topTracksResponse.Items.Take(50).Select(a => a.Id));
         var tracksInfoResponse = await _tracksClient.GetSeveralTracks(
-            new GetSeveralTracksRequest { Ids = trackIds, },
+            new IdsRequest { Ids = trackIds, },
             authInfo.AccessToken,
             token);
 

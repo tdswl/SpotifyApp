@@ -1,13 +1,11 @@
 using Newtonsoft.Json;
+using SpotifyApp.Api.Contracts.Base.Models.Interfaces;
 
-namespace SpotifyApp.Api.Contracts.Tracks.Requests;
+namespace SpotifyApp.Api.Contracts.Base.Requests;
 
-public sealed class GetTrackRequest
+public sealed class IdRequest : IIdModel
 {
-    /// <summary>
-    /// The Spotify ID for the track.
-    /// Example value:"11dFghVXANMlKmJXsNCbNl"
-    /// </summary>
+    /// <inheritdoc cref="IIdModel.Id"/>
     [JsonProperty("id")]
     public required string Id { get; set; }
     

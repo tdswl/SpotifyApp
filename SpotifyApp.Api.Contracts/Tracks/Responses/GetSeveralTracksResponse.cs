@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using SpotifyApp.Api.Contracts.Tracks.Models;
 
 namespace SpotifyApp.Api.Contracts.Tracks.Responses;
 
@@ -8,5 +9,5 @@ public sealed class GetSeveralTracksResponse
     /// A set of tracks
     /// </summary>
     [JsonProperty("tracks")]
-    public required IReadOnlyList<GetTrackResponse> Tracks { get; set; }
+    public required IReadOnlyList<TrackApiModel> Tracks { get; set; }
 }

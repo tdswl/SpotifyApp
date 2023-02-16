@@ -1,14 +1,13 @@
 using Newtonsoft.Json;
 using SpotifyApp.Api.Contracts.Base.Enums;
+using SpotifyApp.Api.Contracts.Base.Models.Interfaces;
+using SpotifyApp.Api.Contracts.Base.Requests;
 
 namespace SpotifyApp.Api.Contracts.Users.Requests;
 
-public sealed class FollowArtistsOrUsersRequest
+public sealed class FollowArtistsOrUsersRequest : IIdsModel
 {
-    /// <summary>
-    /// A comma-separated list of the artist or the user Spotify IDs. A maximum of 50 IDs can be sent in one request.
-    /// Example value:"2CIMQHirSU0MQqyYHq0eOx,57dN52uHvrHOxijzpIgu3E,1vCWHaC5f2uS3yhpwWbIA6"
-    /// </summary>
+    /// <inheritdoc cref="IIdsModel.Ids"/>
     [JsonProperty("ids")]
     public required string Ids { get; set; }
     

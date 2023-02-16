@@ -1,16 +1,16 @@
 using Newtonsoft.Json;
 using SpotifyApp.Api.Contracts.Base.Enums;
-using SpotifyApp.Api.Contracts.Users.Models;
+using SpotifyApp.Api.Contracts.Base.Models.Interfaces;
 
 namespace SpotifyApp.Api.Contracts.Base.Models;
 
-public sealed class ItemModelApi
+public sealed class ItemModelApi : IIdModel
 {
-    /// <inheritdoc cref="Users.Models.ExternalUrls"/>
+    /// <inheritdoc cref="Models.ExternalUrls"/>
     [JsonProperty("external_urls")]
     public ExternalUrls? ExternalUrls { get; set; }
     
-    /// <inheritdoc cref="Users.Models.Followers"/>
+    /// <inheritdoc cref="Models.Followers"/>
     [JsonProperty("followers")]
     public Followers? Followers { get; set; }
     
@@ -26,9 +26,7 @@ public sealed class ItemModelApi
     [JsonProperty("href")]
     public required string Href { get; set; }
     
-    /// <summary>
-    /// The Spotify ID for the artist.
-    /// </summary>
+    /// <inheritdoc cref="IIdModel.Id"/>
     [JsonProperty("id")]
     public required string Id { get; set; }
     

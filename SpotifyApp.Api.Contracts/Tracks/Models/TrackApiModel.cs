@@ -1,12 +1,12 @@
 using Newtonsoft.Json;
+using SpotifyApp.Api.Contracts.Albums.Models;
 using SpotifyApp.Api.Contracts.Base.Enums;
 using SpotifyApp.Api.Contracts.Base.Models;
-using SpotifyApp.Api.Contracts.Tracks.Models;
 using SpotifyApp.Api.Contracts.Users.Models;
 
-namespace SpotifyApp.Api.Contracts.Tracks.Responses;
+namespace SpotifyApp.Api.Contracts.Tracks.Models;
 
-public sealed class GetTrackResponse
+public sealed class TrackApiModel
 {
     /// <summary>
     /// The album on which the track appears.

@@ -2,6 +2,7 @@ using AutoMapper;
 using AutoMapper.Extensions.EnumMapping;
 using SpotifyApp.Api.Contracts.Base.Enums;
 using SpotifyApp.Api.Contracts.Base.Models;
+using SpotifyApp.Api.Contracts.Tracks.Models;
 using SpotifyApp.Api.Contracts.Tracks.Responses;
 using SpotifyApp.Api.Contracts.Users.Models;
 using SpotifyApp.Api.Contracts.Users.Responses;
@@ -37,7 +38,7 @@ public sealed class ApplicationMapProfile : Profile
         CreateMap<ItemModelApi, ArtistModel>()
             .ValidateMemberList(MemberList.Destination);
 
-        CreateMap<GetTrackResponse, TrackModel>()
+        CreateMap<TrackApiModel, TrackModel>()
             .ForMember(d => d.Images, opt => opt.MapFrom(s => s.Album.Images))
             .ForMember(d => d.ArtistName,
                 opt => opt.MapFrom(s => string.Join(", ", s.Album.Artists.Select(a => a.Name))))

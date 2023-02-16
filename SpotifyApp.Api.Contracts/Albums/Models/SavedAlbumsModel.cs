@@ -1,9 +1,9 @@
 using Newtonsoft.Json;
-using SpotifyApp.Api.Contracts.Tracks.Responses;
+using SpotifyApp.Api.Contracts.Tracks.Models;
 
-namespace SpotifyApp.Api.Contracts.Tracks.Models;
+namespace SpotifyApp.Api.Contracts.Albums.Models;
 
-public sealed class SavedTracksModel
+public sealed class SavedAlbumsModel
 {
     /// <summary>
     /// The date and time the track was saved. Timestamps are returned in ISO 8601
@@ -15,8 +15,8 @@ public sealed class SavedTracksModel
     public required DateTimeOffset AddedAt { get; set; }
     
     /// <summary>
-    /// Information about the track.
+    /// Information about the album.
     /// </summary>
-    [JsonProperty("track")]
-    public required TrackApiModel Track { get; set; }
+    [JsonProperty("album")]
+    public required TrackApiModel Album { get; set; }
 }

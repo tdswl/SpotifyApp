@@ -62,7 +62,7 @@ public sealed partial class PlayerViewModel : ObservableRecipient
         }
         catch (ApiException e) when (e.StatusCode == (int)HttpStatusCode.NoContent)
         {
-            // Nothing - 204 is good code, but Spotify openapi yml say it's mot 
+            // Nothing - 204 is good code, but Spotify openapi yml say it's not 
             CurrentTrack = null;
         }
     }

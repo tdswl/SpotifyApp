@@ -2,6 +2,7 @@ using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 using SpotifyApp.Api.Client.DI;
+using SpotifyApp.Api.Client.OpenApiClient;
 using SpotifyApp.Api.Contracts.Auth;
 using SpotifyApp.Shared.AutoMapper;
 using SpotifyApp.Shared.Configurations;
@@ -37,6 +38,7 @@ public static class AppServiceCollectionExtensions
 
             .AddSingleton<IOidcConfiguration, OidcConfiguration>()
             .AddScoped<IAuthService, AuthService>()
+            .AddScoped<ITokenService, TokenService>()
             .AddSingleton<IImageCache, ImageCache>()
             .AddSingleton<INavigationService, NavigationService>();
     }

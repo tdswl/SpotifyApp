@@ -1,5 +1,6 @@
 using AutoMapper;
 using AutoMapper.Extensions.EnumMapping;
+using SpotifyApp.Api.Client.OpenApiClient;
 using SpotifyApp.Api.Contracts.Albums.Models;
 using SpotifyApp.Api.Contracts.Base.Enums;
 using SpotifyApp.Api.Contracts.Base.Models;
@@ -16,6 +17,22 @@ public sealed class ApplicationMapProfile : Profile
 {
     public ApplicationMapProfile()
     {
+        CreateMap<ImageObject, ImageModel>()
+            .ValidateMemberList(MemberList.Destination);
+        
+        CreateMap<TrackObject, TrackModel>()
+            .ForMember(d => d.Id, opt => opt.MapFrom(s => s.Id))
+            .ForMember(d => d.Explicit, opt => opt.MapFrom(s => s.Explicit))
+            .ForMember(d => d.Name, opt => opt.MapFrom(s => s.Name))
+            .ForMember(d => d.Images, opt => opt.MapFrom(s => s.Album.Images))
+            .ForMember(d => d.ArtistName,
+                opt => opt.MapFrom(s => string.Join(", ", s.Album.Artists.Select(a => a.Name))))
+            .ForMember(d => d.AlbumName, opt => opt.MapFrom(s => string.Join(", ", s.Album.Name)))
+            .ForMember(d => d.DurationMs, 
+                opt => opt.MapFrom(s => TimeSpan.FromMilliseconds(s.Duration_ms).ToString(@"mm\:ss")))
+            .ForMember(d => d.Index, opt => opt.Ignore())
+            .ValidateMemberList(MemberList.Destination);
+
         CreateMap<ItemsTypeApi, ItemType>()
             .ConvertUsingEnumMapping(opt => opt
                 .MapValue(ItemsTypeApi.Artist, ItemType.Artist)

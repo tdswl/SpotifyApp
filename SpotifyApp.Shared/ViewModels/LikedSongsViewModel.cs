@@ -3,19 +3,16 @@ using AutoMapper;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.DependencyInjection;
 using CommunityToolkit.Mvvm.Input;
-using SpotifyApp.Api.Client.Tracks;
-using SpotifyApp.Api.Contracts.Tracks.Requests;
+using SpotifyApp.Api.Client.OpenApiClient;
 using SpotifyApp.Shared.Models;
 using SpotifyApp.Shared.Properties;
-using SpotifyApp.Shared.Services;
 using SpotifyApp.Shared.ViewModels.Items;
 
 namespace SpotifyApp.Shared.ViewModels;
 
 public sealed partial class LikedSongsViewModel : ObservableRecipient
 {
-    private readonly IAuthService _authService;
-    private readonly ITracksClient _tracksClient;
+    private readonly ISpotifyClient _spotifyClient;
     private readonly IMapper _mapper;
 
     [ObservableProperty] 
@@ -29,12 +26,10 @@ public sealed partial class LikedSongsViewModel : ObservableRecipient
         //Designer constructor
     }
     
-    public LikedSongsViewModel(IAuthService authService,
-        ITracksClient tracksClient,
+    public LikedSongsViewModel(ISpotifyClient spotifyClient,
         IMapper mapper)
     {
-        _authService = authService;
-        _tracksClient = tracksClient;
+        _spotifyClient = spotifyClient;
         _mapper = mapper;
         IsActive = true;
     }
@@ -43,19 +38,14 @@ public sealed partial class LikedSongsViewModel : ObservableRecipient
     {
         base.OnActivated();
         
-        GetTracksCommand.ExecuteAsync(null);
+        GetTracksCommand.Execute(null);
     }
 
     [RelayCommand(IncludeCancelCommand = true)]
     private async Task GetTracksAsync(CancellationToken token)
     {
         var currentItemsCount = LikedSongs.Count;
-        var authInfo = await _authService.Login(token);
-        var tracksInfoResponse = await _tracksClient.GetUsersSavedTracks(
-            new GetUsersSavedTracksRequest{Offset = currentItemsCount,},
-            authInfo.AccessToken,
-            token);
-
+        var savedTracks = await _spotifyClient.GetUsersSavedTracksAsync(null, null, currentItemsCount, token);
         var playlistVm = Ioc.Default.GetRequiredService<PlaylistViewModel>();
         playlistVm.Item = new PlaylistModel
         {
@@ -70,8 +60,8 @@ public sealed partial class LikedSongsViewModel : ObservableRecipient
         }
         
         Playlist = playlistVm;
-        
-        for (var i = 0; i < tracksInfoResponse.Items.Count; i++)
+
+        foreach (var savedTrack in savedTracks.Items)
         {
             if (token.IsCancellationRequested)
             {
@@ -80,8 +70,8 @@ public sealed partial class LikedSongsViewModel : ObservableRecipient
             
             var trackVm = Ioc.Default.GetRequiredService<TrackViewModel>();
             LikedSongs.Add(trackVm);
-            var track = _mapper.Map<TrackModel>(tracksInfoResponse.Items[i].Track);
-            track.Index = currentItemsCount + i + 1;
+            var track = _mapper.Map<TrackModel>(savedTrack.Track);
+            track.Index = ++currentItemsCount;
             trackVm.Item = track;
         }
     }

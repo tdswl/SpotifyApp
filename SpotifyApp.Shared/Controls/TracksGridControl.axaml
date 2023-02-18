@@ -78,57 +78,12 @@
                             </DataGridTextColumn.Header>
                         </DataGridTextColumn>
                         <DataGridTemplateColumn MinWidth="150"
-                                                Width="*">
+                                                Width="*"
+                                                CellTemplate="{StaticResource TrackWithImage}">
                             <DataGridTemplateColumn.Header>
                                 <TextBlock Text="{x:Static p:Resources.TrackGridHeaderTitle}"
                                            Foreground="{DynamicResource SystemBaseHighColor}" />
                             </DataGridTemplateColumn.Header>
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <Grid ColumnDefinitions="Auto, Auto, *"
-                                          RowDefinitions="*, *">
-                                        <Border Grid.RowSpan="2"
-                                                ClipToBounds="True"
-                                                Margin="10">
-                                            <Panel Background="Gray"
-                                                   Width="50"
-                                                   Height="50">
-                                                <Image Stretch="Uniform"
-                                                       Source="{Binding Preview}" />
-                                                <!-- <ProgressBar VerticalAlignment="Center" -->
-                                                <!--              IsIndeterminate="True" -->
-                                                <!--              Margin="5" -->
-                                                <!--              IsVisible="{Binding Preview, Converter={x:Static ObjectConverters.IsNull}}" /> -->
-                                            </Panel>
-                                        </Border>
-                                        <TextBlock Grid.Row="0"
-                                                   Grid.Column="1"
-                                                   Grid.ColumnSpan="2"
-                                                   Text="{Binding Item.Name}"
-                                                   TextTrimming="CharacterEllipsis"
-                                                   VerticalAlignment="Bottom" />
-                                        <Border Grid.Row="1"
-                                                Grid.Column="1"
-                                                ClipToBounds="True"
-                                                CornerRadius="2"
-                                                Background="DarkGray"
-                                                Height="20"
-                                                Width="20"
-                                                Margin="0"
-                                                VerticalAlignment="Top"
-                                                IsVisible="{Binding Item.Explicit}">
-                                            <TextBlock Text="E"
-                                                       VerticalAlignment="Center"
-                                                       HorizontalAlignment="Center" />
-                                        </Border>
-                                        <TextBlock Grid.Row="1"
-                                                   Grid.Column="2"
-                                                   Text="{Binding Item.ArtistName}"
-                                                   TextTrimming="CharacterEllipsis"
-                                                   VerticalAlignment="Top" />
-                                    </Grid>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
                         <DataGridTemplateColumn MinWidth="150"
                                                 Width="*">

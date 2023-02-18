@@ -2529,15 +2529,6 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         public ContextObject Context { get; set; }
 
         /// <summary>
-        /// Unix Millisecond Timestamp when data was fetched.
-        /// </summary>
-
-        [System.Text.Json.Serialization.JsonPropertyName("timestamp")]
-
-        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
-        public int Timestamp { get; set; }
-
-        /// <summary>
         /// Progress into the currently playing track or episode. Can be `null`.
         /// </summary>
 

@@ -29,6 +29,7 @@ public static class AppServiceCollectionExtensions
             .AddTransient<ProfileViewModel>()
             .AddTransient<LikedSongsViewModel>()
             .AddTransient<ArtistScreenViewModel>()
+            .AddTransient<PlayerViewModel>()
             
             .AddTransient<TrackViewModel>()
             .AddTransient<UserViewModel>()

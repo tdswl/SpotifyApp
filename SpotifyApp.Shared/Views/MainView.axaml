@@ -38,6 +38,16 @@
             </Grid>
         </SplitView.Pane>
 
-        <TransitioningContentControl Content="{Binding Content}" />
+        <Grid RowDefinitions="*, Auto">
+            <TransitioningContentControl Content="{Binding Content}" />
+
+            <StackPanel Grid.Row="1"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Stretch"
+                        Background="DimGray">
+                <ContentControl Content="{Binding Player.CurrentTrack}"
+                                ContentTemplate="{StaticResource TrackWithImage}" />
+            </StackPanel>
+        </Grid>
     </SplitView>
 </UserControl>

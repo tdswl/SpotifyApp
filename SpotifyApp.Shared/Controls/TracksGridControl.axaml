@@ -70,12 +70,19 @@
                           RowTheme="{StaticResource TracksRow}"
                           VerticalScrollBarVisibility="Disabled">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="#"
-                                            Binding="{Binding Item.Index}"
-                                            Width="Auto" />
-                        <DataGridTemplateColumn Header="{x:Static p:Resources.TrackGridHeaderTitle}"
-                                                MinWidth="150"
+                        <DataGridTextColumn Binding="{Binding Item.Index}"
+                                            Width="Auto">
+                            <DataGridTextColumn.Header>
+                                <TextBlock Text="#"
+                                           Foreground="{DynamicResource SystemBaseHighColor}" />
+                            </DataGridTextColumn.Header>
+                        </DataGridTextColumn>
+                        <DataGridTemplateColumn MinWidth="150"
                                                 Width="*">
+                            <DataGridTemplateColumn.Header>
+                                <TextBlock Text="{x:Static p:Resources.TrackGridHeaderTitle}"
+                                           Foreground="{DynamicResource SystemBaseHighColor}" />
+                            </DataGridTemplateColumn.Header>
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Grid ColumnDefinitions="Auto, Auto, *"
@@ -123,9 +130,12 @@
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTemplateColumn Header="{x:Static p:Resources.TrackGridHeaderAlbum}"
-                                                MinWidth="150"
+                        <DataGridTemplateColumn MinWidth="150"
                                                 Width="*">
+                            <DataGridTemplateColumn.Header>
+                                <TextBlock Text="{x:Static p:Resources.TrackGridHeaderAlbum}"
+                                           Foreground="{DynamicResource SystemBaseHighColor}" />
+                            </DataGridTemplateColumn.Header>
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding Item.AlbumName}"
@@ -135,9 +145,13 @@
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
 
-                        <DataGridTextColumn Header="{x:Static p:Resources.TrackGridHeaderDuration}"
-                                            Binding="{Binding Item.DurationMs}"
-                                            Width="Auto" />
+                        <DataGridTextColumn Binding="{Binding Item.DurationMs}"
+                                            Width="Auto">
+                            <DataGridTextColumn.Header>
+                                <TextBlock Text="{x:Static p:Resources.TrackGridHeaderDuration}"
+                                           Foreground="{DynamicResource SystemBaseHighColor}" />
+                            </DataGridTextColumn.Header>
+                        </DataGridTextColumn>
                     </DataGrid.Columns>
                 </DataGrid>
             </ControlTemplate>

@@ -17,7 +17,7 @@ public class AlbumApiModel : IIdModel
     /// The type of the album.
     /// </summary>
     [JsonProperty("album_type")]
-    public required AlbumTypeApi AlbumType { get; set; }
+    public required AlbumGroupApi AlbumType { get; set; }
     
     /// <summary>
     /// The number of tracks in the album.

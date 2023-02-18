@@ -10,5 +10,11 @@
         <viewModels:ArtistScreenViewModel />
     </Design.DataContext>
     <controls:SpotifyItemDetailsControl Header="{Binding Artist}"
-                                        HeaderTemplate="{StaticResource ArtistItemHeader}" />
+                                        HeaderTemplate="{StaticResource ArtistItemHeader}" >
+        <ItemsControl Items="{Binding Albums}"
+                      ItemTemplate="{StaticResource AlbumItem}"
+                      HorizontalAlignment="Left">
+            
+        </ItemsControl>
+    </controls:SpotifyItemDetailsControl>
 </UserControl>

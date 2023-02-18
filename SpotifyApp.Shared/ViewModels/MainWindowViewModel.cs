@@ -1,5 +1,6 @@
 ﻿using Avalonia.Controls;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.DependencyInjection;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using SpotifyApp.Shared.Enums;
@@ -17,6 +18,9 @@ public sealed partial class MainWindowViewModel : ObservableRecipient,
 
     [ObservableProperty]
     private UserControl? _content;
+    
+    [ObservableProperty]
+    private PlayerViewModel? _player;
     
     public MainWindowViewModel()
     {
@@ -42,6 +46,7 @@ public sealed partial class MainWindowViewModel : ObservableRecipient,
     private async Task LoginAsync(CancellationToken token)
     {
         var loginInfo = await _authService.Login(token);
+        _player = Ioc.Default.GetRequiredService<PlayerViewModel>();
         NavigateToCommand.Execute(PageType.Profile);
     }
     

@@ -93,12 +93,13 @@
                            Source="{Binding Preview}" />
                 </Panel>
             </Border>
-            
+
             <StackPanel Grid.Row="0"
-                         Grid.Column="1"
-                         Spacing="5"
-                         VerticalAlignment="Center">
-                <TextBlock Text="{Binding Item.AlbumType, Converter={x:Static converters:AlbumTypeToTextConverter.Instance}}" />
+                        Grid.Column="1"
+                        Spacing="5"
+                        VerticalAlignment="Center">
+                <TextBlock
+                    Text="{Binding Item.AlbumType, Converter={x:Static converters:AlbumTypeToTextConverter.Instance}}" />
                 <TextBlock Classes="Header"
                            Text="{Binding Item.Name}" />
             </StackPanel>
@@ -154,6 +155,48 @@
             <Separator Grid.Row="2"
                        Grid.Column="0"
                        Grid.ColumnSpan="2" />
+        </Grid>
+    </DataTemplate>
+
+    <DataTemplate x:Key="TrackWithImage"
+                  DataType="{x:Type items:TrackViewModel}">
+        <Grid ColumnDefinitions="Auto, Auto, *"
+              RowDefinitions="*, *">
+            <Border Grid.RowSpan="2"
+                    ClipToBounds="True"
+                    Margin="10">
+                <Panel Background="Gray"
+                       Width="50"
+                       Height="50">
+                    <Image Stretch="Uniform"
+                           Source="{Binding Preview}" />
+                </Panel>
+            </Border>
+            <TextBlock Grid.Row="0"
+                       Grid.Column="1"
+                       Grid.ColumnSpan="2"
+                       Text="{Binding Item.Name}"
+                       TextTrimming="CharacterEllipsis"
+                       VerticalAlignment="Bottom" />
+            <Border Grid.Row="1"
+                    Grid.Column="1"
+                    ClipToBounds="True"
+                    CornerRadius="2"
+                    Background="DarkGray"
+                    Height="20"
+                    Width="20"
+                    Margin="0"
+                    VerticalAlignment="Top"
+                    IsVisible="{Binding Item.Explicit}">
+                <TextBlock Text="E"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center" />
+            </Border>
+            <TextBlock Grid.Row="1"
+                       Grid.Column="2"
+                       Text="{Binding Item.ArtistName}"
+                       TextTrimming="CharacterEllipsis"
+                       VerticalAlignment="Top" />
         </Grid>
     </DataTemplate>
 </ResourceDictionary>

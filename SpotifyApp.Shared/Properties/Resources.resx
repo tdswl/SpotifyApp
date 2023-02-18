@@ -66,4 +66,16 @@
     <data name="ItemTypePlaylist" xml:space="preserve">
         <value>Playlist</value>
     </data>
+    <data name="AlbumGroupAlbum" xml:space="preserve">
+        <value>ALBUM</value>
+    </data>
+    <data name="AlbumGroupSingle" xml:space="preserve">
+        <value>SINGLE</value>
+    </data>
+    <data name="AlbumGroupCompilation" xml:space="preserve">
+        <value>COMPILATION</value>
+    </data>
+    <data name="AlbumGroupAppearsOn" xml:space="preserve">
+        <value>APEARS ON</value>
+    </data>
 </root>

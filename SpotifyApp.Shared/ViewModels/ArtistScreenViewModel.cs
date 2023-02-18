@@ -4,7 +4,6 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.DependencyInjection;
 using CommunityToolkit.Mvvm.Input;
 using SpotifyApp.Api.Client.Artists;
-using SpotifyApp.Api.Contracts.Albums.Models;
 using SpotifyApp.Api.Contracts.Artists.Requests;
 using SpotifyApp.Shared.Enums;
 using SpotifyApp.Shared.Models;
@@ -51,7 +50,7 @@ public sealed partial class ArtistScreenViewModel : ObservableRecipient
     {
         if (value?.Item != null)
         {
-            GetAlbumsCommand.Execute(value.Item.Id);
+            GetAlbumsCommand.ExecuteAsync(value.Item.Id);
         }
     }
 
@@ -100,12 +99,20 @@ public sealed partial class ArtistScreenViewModel : ObservableRecipient
             Albums.Add(albumVm);
             var album = _mapper.Map<AlbumModel>(albumItem);
             albumVm.Item = album;
+            albumVm.GetAlbumTracksCommand.ExecuteAsync(albumVm);
         }
     }
+    
 
     protected override void OnDeactivated()
     {
+        GetAlbumsCommand.Cancel();
         GetArtistCommand.Cancel();
+        foreach (var album in Albums)
+        {
+            album.Dispose();
+        }
+        Albums.Clear();
         Artist?.Dispose();
         Artist = null;
     }

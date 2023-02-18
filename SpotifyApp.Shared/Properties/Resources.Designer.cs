@@ -60,6 +60,42 @@ namespace SpotifyApp.Shared.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ALBUM.
+        /// </summary>
+        public static string AlbumGroupAlbum {
+            get {
+                return ResourceManager.GetString("AlbumGroupAlbum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to APEARS ON.
+        /// </summary>
+        public static string AlbumGroupAppearsOn {
+            get {
+                return ResourceManager.GetString("AlbumGroupAppearsOn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to COMPILATION.
+        /// </summary>
+        public static string AlbumGroupCompilation {
+            get {
+                return ResourceManager.GetString("AlbumGroupCompilation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SINGLE.
+        /// </summary>
+        public static string AlbumGroupSingle {
+            get {
+                return ResourceManager.GetString("AlbumGroupSingle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Following.
         /// </summary>
         public static string Following {

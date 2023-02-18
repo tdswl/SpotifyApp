@@ -8031,15 +8031,6 @@ namespace SpotifyApp.Api.Client.OpenApiClient
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.18.2.0 (NJsonSchema v10.8.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public enum ArtistObjectType
-    {
-
-        [System.Runtime.Serialization.EnumMember(Value = @"artist")]
-        Artist = 0,
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.18.2.0 (NJsonSchema v10.8.0.0 (Newtonsoft.Json v13.0.0.0))")]
     public enum SimplifiedArtistObjectType
     {
 

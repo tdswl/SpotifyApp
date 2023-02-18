@@ -1,9 +1,9 @@
 using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
+using SpotifyApp.Api.Client.Auth;
 using SpotifyApp.Api.Client.DI;
 using SpotifyApp.Api.Client.OpenApiClient;
-using SpotifyApp.Api.Contracts.Auth;
 using SpotifyApp.Shared.AutoMapper;
 using SpotifyApp.Shared.Configurations;
 using SpotifyApp.Shared.Services;

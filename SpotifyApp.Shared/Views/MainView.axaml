@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewModels="clr-namespace:SpotifyApp.Shared.ViewModels"
              xmlns:enums="clr-namespace:SpotifyApp.Shared.Enums"
+             xmlns:p="clr-namespace:SpotifyApp.Shared.Properties"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="SpotifyApp.Shared.Views.MainView">
     <Design.DataContext>
@@ -25,12 +26,12 @@
                 <StackPanel>
                     <Button Classes="MenuCompactButton"
                             Content="⌂"
-                            ToolTip.Tip="Profile"
+                            ToolTip.Tip="{x:Static p:Resources.Profile}"
                             Command="{Binding NavigateToCommand}"
                             CommandParameter="{x:Static enums:PageType.Profile}" />
                     <Button Classes="MenuCompactButton"
                             Content="♡"
-                            ToolTip.Tip="Liked songs"
+                            ToolTip.Tip="{x:Static p:Resources.LikedSongs}"
                             Command="{Binding NavigateToCommand}"
                             CommandParameter="{x:Static enums:PageType.LikedSongs}" />
                 </StackPanel>

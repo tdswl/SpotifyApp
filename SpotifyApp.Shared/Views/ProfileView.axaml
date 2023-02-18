@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewModels="clr-namespace:SpotifyApp.Shared.ViewModels"
              xmlns:controls="clr-namespace:SpotifyApp.Shared.Controls"
+             xmlns:p="clr-namespace:SpotifyApp.Shared.Properties"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="SpotifyApp.Shared.Views.ProfileView">
     <Design.DataContext>
@@ -15,9 +16,9 @@
         <StackPanel Spacing="40">
             <StackPanel Spacing="10">
                 <TextBlock Classes="H1" 
-                           Text="Top artists this month" />
+                           Text="{x:Static p:Resources.TopArtistsThisMonth}" />
                 <TextBlock Classes="Remark" 
-                           Text="Only visible to you" />
+                           Text="{x:Static p:Resources.OnlyVisibleToYou}" />
                 <ListBox Items="{Binding TopArtists}"
                          Background="Transparent"
                          ItemContainerTheme="{StaticResource ArtistCardItem}"
@@ -34,15 +35,15 @@
 
             <StackPanel Spacing="10">
                 <TextBlock Classes="H1" 
-                           Text="Top tracks this month" />
+                           Text="{x:Static p:Resources.TopTracksThisMonth}" />
                 <TextBlock Classes="Remark" 
-                           Text="Only visible to you" />
+                           Text="{x:Static p:Resources.OnlyVisibleToYou}" />
                 <controls:TracksGridControl Items="{Binding TopTracks}" />
             </StackPanel>
 
             <StackPanel Spacing="10">
                 <TextBlock Classes="H1" 
-                           Text="Following" />
+                           Text="{x:Static p:Resources.Following}" />
                 <ListBox Items="{Binding FollowingArtists}"
                          Background="Transparent"
                          ItemContainerTheme="{StaticResource ArtistCardItem}"

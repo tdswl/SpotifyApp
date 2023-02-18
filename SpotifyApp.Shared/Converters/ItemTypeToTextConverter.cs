@@ -2,6 +2,7 @@ using System.Globalization;
 using Avalonia.Data;
 using Avalonia.Data.Converters;
 using SpotifyApp.Shared.Enums;
+using SpotifyApp.Shared.Properties;
 
 namespace SpotifyApp.Shared.Converters;
 
@@ -14,7 +15,19 @@ public class ItemTypeToTextConverter : IValueConverter
         if (value is ItemType sourceItemType && 
             targetType.IsAssignableTo(typeof(string)))
         {
-            return sourceItemType.ToString().ToUpperInvariant();
+            return sourceItemType switch
+            {
+                ItemType.Artist => Resources.ItemTypeArtist.ToUpperInvariant(),
+                ItemType.Track => Resources.ItemTypeTrack.ToUpperInvariant(),
+                ItemType.User => Resources.ItemTypeUser.ToUpperInvariant(),
+                ItemType.Album => Resources.ItemTypeAlbum.ToUpperInvariant(),
+                ItemType.AudioFeatures => Resources.ItemTypeAudioFeatures.ToUpperInvariant(),
+                ItemType.Genre => Resources.ItemTypeGenre.ToUpperInvariant(),
+                ItemType.Playlist => Resources.ItemTypePlaylist.ToUpperInvariant(),
+                _ => throw new ArgumentOutOfRangeException(nameof(sourceItemType),
+                    sourceItemType,
+                    "Unknown value in ItemTypeToTextConverter"),
+            };
         }
         
         // converter used for the wrong type

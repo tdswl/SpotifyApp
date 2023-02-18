@@ -6,6 +6,7 @@ using CommunityToolkit.Mvvm.Input;
 using SpotifyApp.Api.Client.Tracks;
 using SpotifyApp.Api.Contracts.Tracks.Requests;
 using SpotifyApp.Shared.Models;
+using SpotifyApp.Shared.Properties;
 using SpotifyApp.Shared.Services;
 using SpotifyApp.Shared.ViewModels.Items;
 
@@ -60,7 +61,7 @@ public sealed partial class LikedSongsViewModel : ObservableRecipient
         {
             Id = Guid.NewGuid().ToString(),
             Images = new List<ImageModel>(),
-            Name = "Liked Songs",
+            Name = Resources.LikedSongs,
         };
         
         if (token.IsCancellationRequested)

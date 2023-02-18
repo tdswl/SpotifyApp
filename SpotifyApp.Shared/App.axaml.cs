@@ -1,3 +1,4 @@
+using System.Globalization;
 using AutoMapper;
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
@@ -52,7 +53,8 @@ public sealed class App : Application
     {
         RegisterDi();
         CreateDatabase();
-        
+        SetupLocalization();
+
         switch (ApplicationLifetime)
         {
             case IClassicDesktopStyleApplicationLifetime desktop:
@@ -97,6 +99,11 @@ public sealed class App : Application
     private static void AutoMapperConfig(IMapperConfigurationExpression cfg)
     {
         cfg.AddProfile<ApplicationMapProfile>();
+    }
+
+    private static void SetupLocalization()
+    {
+        Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("en-US");
     }
     
     private void CreateDatabase()

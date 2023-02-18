@@ -1,8 +1,9 @@
 using Newtonsoft.Json;
+using SpotifyApp.Api.Contracts.Base.Models.Interfaces;
 
 namespace SpotifyApp.Api.Contracts.Tracks.Requests;
 
-public sealed class GetRecommendationsRequest
+public sealed class GetRecommendationsRequest : IMarketModel
 {
     /// <summary>
     /// A comma separated list of Spotify IDs for seed artists.
@@ -20,6 +21,7 @@ public sealed class GetRecommendationsRequest
     [JsonProperty("limit")]
     public int Limit { get; set; }
 
+    /// <inheritdoc cref="IMarketModel.Market"/>
     [JsonProperty("market")]
     public string? Market { get; set; }
 

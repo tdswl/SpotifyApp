@@ -1,6 +1,4 @@
 using Newtonsoft.Json;
-using SpotifyApp.Api.Contracts.Tracks.Models;
-
 namespace SpotifyApp.Api.Contracts.Albums.Models;
 
 public sealed class SavedAlbumsModel
@@ -18,5 +16,5 @@ public sealed class SavedAlbumsModel
     /// Information about the album.
     /// </summary>
     [JsonProperty("album")]
-    public required TrackApiModel Album { get; set; }
+    public required AlbumApiModel Album { get; set; }
 }

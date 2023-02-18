@@ -98,7 +98,7 @@
                          Grid.Column="1"
                          Spacing="5"
                          VerticalAlignment="Center">
-                <TextBlock Text="{Binding Item.AlbumType, Converter={x:Static converters:AlbumGroupToTextConverter.Instance}}" />
+                <TextBlock Text="{Binding Item.AlbumType, Converter={x:Static converters:AlbumTypeToTextConverter.Instance}}" />
                 <TextBlock Classes="Header"
                            Text="{Binding Item.Name}" />
             </StackPanel>

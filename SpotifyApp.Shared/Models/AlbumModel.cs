@@ -12,5 +12,5 @@ public sealed class AlbumModel : ISpotifyItem
 
     public ItemType Type => ItemType.Album;
     
-    public AlbumGroup AlbumType { get; set; }
+    public AlbumType AlbumType { get; set; }
 }

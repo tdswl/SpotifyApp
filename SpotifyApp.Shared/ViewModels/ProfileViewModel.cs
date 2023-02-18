@@ -4,25 +4,19 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.DependencyInjection;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
-using SpotifyApp.Api.Client.Tracks;
-using SpotifyApp.Api.Client.Users;
-using SpotifyApp.Api.Contracts.Base.Enums;
-using SpotifyApp.Api.Contracts.Base.Requests;
-using SpotifyApp.Api.Contracts.Users.Requests;
+using SpotifyApp.Api.Client.OpenApiClient;
 using SpotifyApp.Shared.Enums;
 using SpotifyApp.Shared.Messages;
 using SpotifyApp.Shared.Models;
 using SpotifyApp.Shared.Models.NavigateParams;
-using SpotifyApp.Shared.Services;
 using SpotifyApp.Shared.ViewModels.Items;
+using Type = SpotifyApp.Api.Client.OpenApiClient.Type;
 
 namespace SpotifyApp.Shared.ViewModels;
 
 public sealed partial class ProfileViewModel : ObservableRecipient
 {
-    private readonly IAuthService _authService;
-    private readonly IUsersClient _usersClient;
-    private readonly ITracksClient _tracksClient;
+    private readonly ISpotifyClient _spotifyClient;
     private readonly IMapper _mapper;
     
     [ObservableProperty]
@@ -48,14 +42,10 @@ public sealed partial class ProfileViewModel : ObservableRecipient
         //Designer constructor
     }
     
-    public ProfileViewModel(IAuthService authService,
-        IUsersClient usersClient,
-        ITracksClient tracksClient,
+    public ProfileViewModel(ISpotifyClient spotifyClient,
         IMapper mapper)
     {
-        _authService = authService;
-        _usersClient = usersClient;
-        _tracksClient = tracksClient;
+        _spotifyClient = spotifyClient;
         _mapper = mapper;
         IsActive = true;
     }
@@ -73,8 +63,7 @@ public sealed partial class ProfileViewModel : ObservableRecipient
     [RelayCommand(IncludeCancelCommand = true)]
     private async Task GetUserInfoAsync(CancellationToken token)
     {
-        var authInfo = await _authService.Login(token);
-        var userInfo = await _usersClient.GetCurrentUserProfile(authInfo.AccessToken, token);
+        var userInfo = await _spotifyClient.GetCurrentUsersProfileAsync(token);
         
         if (token.IsCancellationRequested)
         {
@@ -89,11 +78,8 @@ public sealed partial class ProfileViewModel : ObservableRecipient
     [RelayCommand(IncludeCancelCommand = true)]
     private async Task GetArtistsAsync(CancellationToken token)
     {
-        var authInfo = await _authService.Login(token);
-        var artistsResponse = await _usersClient.GetUsersTopItems(
-            new GetUsersTopItemsRequest { Type = ItemsTypeApi.Artist, },
-            authInfo.AccessToken,
-            token);
+        var artistsResponse = await _spotifyClient
+            .GetUsersTopArtistsAndTracksAsync(Type.Artists, null, null, null, token);
 
         foreach (var artist in artistsResponse.Items)
         {
@@ -111,20 +97,15 @@ public sealed partial class ProfileViewModel : ObservableRecipient
     [RelayCommand(IncludeCancelCommand = true)]
     private async Task GetTracksAsync(CancellationToken token)
     {
-        var authInfo = await _authService.Login(token);
-        var topTracksResponse = await _usersClient.GetUsersTopItems(
-            new GetUsersTopItemsRequest { Type = ItemsTypeApi.Track, Limit = 4, },
-            authInfo.AccessToken,
-            token);
+        var topTracksResponse = await _spotifyClient
+            .GetUsersTopArtistsAndTracksAsync(Type.Tracks, null, 4, null, token);
 
         // 50 - max by api
         var trackIds = string.Join(",", topTracksResponse.Items.Take(50).Select(a => a.Id));
-        var tracksInfoResponse = await _tracksClient.GetSeveralTracks(
-            new IdsRequest { Ids = trackIds, },
-            authInfo.AccessToken,
-            token);
+        var tracksInfoResponse = await _spotifyClient.GetSeveralTracksAsync(null, trackIds, token);
 
-        for (var i = 0; i < tracksInfoResponse.Tracks.Count; i++)
+        var currentItemsCount = 0; 
+        foreach (var trackObject in tracksInfoResponse.Tracks)
         {
             if (token.IsCancellationRequested)
             {
@@ -133,8 +114,8 @@ public sealed partial class ProfileViewModel : ObservableRecipient
             
             var trackVm = Ioc.Default.GetRequiredService<TrackViewModel>();
             TopTracks.Add(trackVm);
-            var track = _mapper.Map<TrackModel>(tracksInfoResponse.Tracks[i]);
-            track.Index = i + 1;
+            var track = _mapper.Map<TrackModel>(trackObject);
+            track.Index = ++currentItemsCount;
             trackVm.Item = track;
         }
     }
@@ -142,11 +123,7 @@ public sealed partial class ProfileViewModel : ObservableRecipient
     [RelayCommand(IncludeCancelCommand = true)]
     private async Task GetFollowingArtistsAsync(CancellationToken token)
     {
-        var authInfo = await _authService.Login(token);
-        var artistsResponse = await _usersClient.GetFollowedArtists(
-            new GetFollowedArtistsRequest { Type = ItemsTypeApi.Artist, },
-            authInfo.AccessToken,
-            token);
+        var artistsResponse = await _spotifyClient.GetFollowedAsync(Type2.Artist, null, null, token);
 
         foreach (var artist in artistsResponse.Artists.Items)
         {

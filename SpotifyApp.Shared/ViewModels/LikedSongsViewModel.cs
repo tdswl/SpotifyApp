@@ -38,7 +38,7 @@ public sealed partial class LikedSongsViewModel : ObservableRecipient
     {
         base.OnActivated();
         
-        GetTracksCommand.Execute(null);
+        GetTracksCommand.ExecuteAsync(null);
     }
 
     [RelayCommand(IncludeCancelCommand = true)]

@@ -1,6 +1,7 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:controls="using:SpotifyApp.Shared.Controls">
+        xmlns:controls="using:SpotifyApp.Shared.Controls"
+        xmlns:p="clr-namespace:SpotifyApp.Shared.Properties">
     <Design.PreviewWith>
         <controls:TracksGridControl />
     </Design.PreviewWith>
@@ -72,7 +73,7 @@
                         <DataGridTextColumn Header="#"
                                             Binding="{Binding Item.Index}"
                                             Width="Auto" />
-                        <DataGridTemplateColumn Header="TITLE"
+                        <DataGridTemplateColumn Header="{x:Static p:Resources.TrackGridHeaderTitle}"
                                                 MinWidth="150"
                                                 Width="*">
                             <DataGridTemplateColumn.CellTemplate>
@@ -122,7 +123,7 @@
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTemplateColumn Header="ALBUM"
+                        <DataGridTemplateColumn Header="{x:Static p:Resources.TrackGridHeaderAlbum}"
                                                 MinWidth="150"
                                                 Width="*">
                             <DataGridTemplateColumn.CellTemplate>
@@ -134,7 +135,7 @@
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
 
-                        <DataGridTextColumn Header="DURATION"
+                        <DataGridTextColumn Header="{x:Static p:Resources.TrackGridHeaderDuration}"
                                             Binding="{Binding Item.DurationMs}"
                                             Width="Auto" />
                     </DataGrid.Columns>

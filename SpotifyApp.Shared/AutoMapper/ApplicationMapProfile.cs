@@ -3,6 +3,7 @@ using AutoMapper.Extensions.EnumMapping;
 using SpotifyApp.Api.Contracts.Albums.Models;
 using SpotifyApp.Api.Contracts.Base.Enums;
 using SpotifyApp.Api.Contracts.Base.Models;
+using SpotifyApp.Api.Contracts.Tracks.Enums;
 using SpotifyApp.Api.Contracts.Tracks.Models;
 using SpotifyApp.Api.Contracts.Users.Responses;
 using SpotifyApp.Shared.Enums;
@@ -24,6 +25,15 @@ public sealed class ApplicationMapProfile : Profile
                 .MapValue(ItemsTypeApi.AudioFeatures, ItemType.AudioFeatures)
                 .MapValue(ItemsTypeApi.Genre, ItemType.Genre)
                 .MapValue(ItemsTypeApi.Playlist, ItemType.Playlist)
+            )
+            .ReverseMap();
+        
+        CreateMap<AlbumGroupApi, AlbumGroup>()
+            .ConvertUsingEnumMapping(opt => opt
+                .MapValue(AlbumGroupApi.AppearsOn, AlbumGroup.AppearsOn)
+                .MapValue(AlbumGroupApi.Compilation, AlbumGroup.Compilation)
+                .MapValue(AlbumGroupApi.Single, AlbumGroup.Single)
+                .MapValue(AlbumGroupApi.Album, AlbumGroup.Album)
             )
             .ReverseMap();
         

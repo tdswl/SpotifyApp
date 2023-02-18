@@ -12,9 +12,7 @@
     <controls:SpotifyItemDetailsControl Header="{Binding Artist}"
                                         HeaderTemplate="{StaticResource ArtistItemHeader}" >
         <ItemsControl Items="{Binding Albums}"
-                      ItemTemplate="{StaticResource AlbumItem}"
-                      HorizontalAlignment="Left">
-            
-        </ItemsControl>
+                      ItemTemplate="{StaticResource AlbumWithTracksItem}"
+                      HorizontalAlignment="Left" />
     </controls:SpotifyItemDetailsControl>
 </UserControl>

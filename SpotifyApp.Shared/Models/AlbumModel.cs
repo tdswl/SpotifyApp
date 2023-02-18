@@ -11,4 +11,6 @@ public sealed class AlbumModel : ISpotifyItem
     public required IReadOnlyCollection<ImageModel> Images { get; set; }
 
     public ItemType Type => ItemType.Album;
+    
+    public AlbumGroup AlbumType { get; set; }
 }

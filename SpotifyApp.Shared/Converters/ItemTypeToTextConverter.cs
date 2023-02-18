@@ -26,7 +26,7 @@ public class ItemTypeToTextConverter : IValueConverter
                 ItemType.Playlist => Resources.ItemTypePlaylist.ToUpperInvariant(),
                 _ => throw new ArgumentOutOfRangeException(nameof(sourceItemType),
                     sourceItemType,
-                    "Unknown value in ItemTypeToTextConverter"),
+                    $"Unknown value in {nameof(ItemTypeToTextConverter)}"),
             };
         }
         

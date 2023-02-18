@@ -2,7 +2,8 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:converters="clr-namespace:SpotifyApp.Shared.Converters"
                     xmlns:items="clr-namespace:SpotifyApp.Shared.ViewModels.Items"
-                    xmlns:base="clr-namespace:SpotifyApp.Shared.ViewModels.Base">
+                    xmlns:base="clr-namespace:SpotifyApp.Shared.ViewModels.Base"
+                    xmlns:p="clr-namespace:SpotifyApp.Shared.Properties">
     <DataTemplate x:Key="DefaultItemHeader"
                   DataType="{x:Type base:ISpotifyItemViewModel}">
         <Grid Grid.Row="0"
@@ -77,11 +78,13 @@
         </StackPanel>
     </DataTemplate>
 
-    <DataTemplate x:Key="AlbumItem"
+    <DataTemplate x:Key="AlbumWithTracksItem"
                   DataType="{x:Type items:AlbumWithTracksViewModel}">
-        <StackPanel Spacing="5"
-                    Orientation="Horizontal">
-            <Border ClipToBounds="True"
+        <Grid RowDefinitions="Auto, *, Auto"
+              ColumnDefinitions="Auto, *">
+            <Border Grid.Column="0"
+                    Grid.Row="0"
+                    ClipToBounds="True"
                     CornerRadius="0"
                     Margin="20">
                 <Panel Background="Gray">
@@ -90,10 +93,67 @@
                            Source="{Binding Preview}" />
                 </Panel>
             </Border>
-            <StackPanel VerticalAlignment="Center">
-                <TextBlock Text="{Binding Item.Name}" />
-                <TextBlock Text="{Binding Item.Type}" />
+            
+            <StackPanel Grid.Row="0"
+                         Grid.Column="1"
+                         Spacing="5"
+                         VerticalAlignment="Center">
+                <TextBlock Text="{Binding Item.AlbumType, Converter={x:Static converters:AlbumGroupToTextConverter.Instance}}" />
+                <TextBlock Classes="Header"
+                           Text="{Binding Item.Name}" />
             </StackPanel>
-        </StackPanel>
+
+            <DataGrid Grid.Row="1"
+                      Grid.Column="0"
+                      Grid.ColumnSpan="2"
+                      Items="{Binding Tracks}"
+                      Background="Transparent"
+                      AutoGenerateColumns="False"
+                      SelectionMode="Single"
+                      CanUserReorderColumns="False"
+                      CanUserResizeColumns="False"
+                      CanUserSortColumns="False"
+                      IsReadOnly="True"
+                      GridLinesVisibility="None"
+                      ColumnHeaderTheme="{StaticResource TracksHeader}"
+                      CellTheme="{StaticResource TracksCell}"
+                      RowTheme="{StaticResource TracksRow}"
+                      VerticalScrollBarVisibility="Disabled">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Item.Index}"
+                                        Width="Auto">
+                        <DataGridTextColumn.Header>
+                            <TextBlock Text="#"
+                                       Foreground="{DynamicResource SystemBaseHighColor}" />
+                        </DataGridTextColumn.Header>
+                    </DataGridTextColumn>
+                    <DataGridTemplateColumn MinWidth="150"
+                                            Width="*">
+                        <DataGridTemplateColumn.Header>
+                            <TextBlock Text="{x:Static p:Resources.TrackGridHeaderTitle}"
+                                       Foreground="{DynamicResource SystemBaseHighColor}" />
+                        </DataGridTemplateColumn.Header>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Item.Name}"
+                                           VerticalAlignment="Center"
+                                           TextTrimming="CharacterEllipsis" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTextColumn Binding="{Binding Item.DurationMs}"
+                                        Width="Auto">
+                        <DataGridTextColumn.Header>
+                            <TextBlock Text="{x:Static p:Resources.TrackGridHeaderDuration}"
+                                       Foreground="{DynamicResource SystemBaseHighColor}" />
+                        </DataGridTextColumn.Header>
+                    </DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Separator Grid.Row="2"
+                       Grid.Column="0"
+                       Grid.ColumnSpan="2" />
+        </Grid>
     </DataTemplate>
 </ResourceDictionary>

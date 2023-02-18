@@ -1,4 +1,4 @@
-using SpotifyApp.Api.Contracts.Auth;
+using SpotifyApp.Api.Client.Auth;
 
 namespace SpotifyApp.Shared.Configurations;
 

@@ -1,4 +1,4 @@
-namespace SpotifyApp.Api.Contracts.Auth
+namespace SpotifyApp.Api.Client.Auth
 {
     public interface IOidcConfiguration
     {

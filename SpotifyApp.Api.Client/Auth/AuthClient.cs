@@ -3,7 +3,6 @@ using IdentityModel.OidcClient;
 using IdentityModel.OidcClient.Browser;
 using IdentityModel.OidcClient.Results;
 using Microsoft.Extensions.Logging;
-using SpotifyApp.Api.Contracts.Auth;
 
 namespace SpotifyApp.Api.Client.Auth;
 

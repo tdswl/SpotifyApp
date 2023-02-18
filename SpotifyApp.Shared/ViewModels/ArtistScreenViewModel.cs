@@ -3,19 +3,16 @@ using AutoMapper;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.DependencyInjection;
 using CommunityToolkit.Mvvm.Input;
-using SpotifyApp.Api.Client.Artists;
-using SpotifyApp.Api.Contracts.Artists.Requests;
+using SpotifyApp.Api.Client.OpenApiClient;
 using SpotifyApp.Shared.Enums;
 using SpotifyApp.Shared.Models;
-using SpotifyApp.Shared.Services;
 using SpotifyApp.Shared.ViewModels.Items;
 
 namespace SpotifyApp.Shared.ViewModels;
 
 public sealed partial class ArtistScreenViewModel : ObservableRecipient
 {
-    private readonly IAuthService _authService;
-    private readonly IArtistsClient _artistsClient;
+    private readonly ISpotifyClient _spotifyClient;
     private readonly IMapper _mapper;
 
     [ObservableProperty] 
@@ -29,12 +26,10 @@ public sealed partial class ArtistScreenViewModel : ObservableRecipient
         //Designer constructor
     }
     
-    public ArtistScreenViewModel(IAuthService authService,
-        IArtistsClient artistsClient,
+    public ArtistScreenViewModel(ISpotifyClient spotifyClient,
         IMapper mapper)
     {
-        _authService = authService;
-        _artistsClient = artistsClient;
+        _spotifyClient = spotifyClient;
         _mapper = mapper;
         IsActive = true;
     }
@@ -42,8 +37,6 @@ public sealed partial class ArtistScreenViewModel : ObservableRecipient
     protected override void OnActivated()
     {
         base.OnActivated();
-        
-        GetArtistCommand.ExecuteAsync(null);
     }
     
     partial void OnArtistChanged(ArtistViewModel? value)
@@ -57,11 +50,8 @@ public sealed partial class ArtistScreenViewModel : ObservableRecipient
     [RelayCommand(IncludeCancelCommand = true)]
     private async Task GetArtistAsync(string id, CancellationToken token)
     {
-        var authInfo = await _authService.Login(token);
-        var artistResponse = await _artistsClient.GetArtist(id,
-            authInfo.AccessToken,
-            token);
-        
+        var artistResponse = await _spotifyClient.GetAnArtistAsync(id, token);
+     
         if (token.IsCancellationRequested)
         {
             return;
@@ -77,11 +67,7 @@ public sealed partial class ArtistScreenViewModel : ObservableRecipient
     [RelayCommand(IncludeCancelCommand = true)]
     private async Task GetAlbumsAsync(string artistId, CancellationToken token)
     {
-        var authInfo = await _authService.Login(token);
-        var albumsResponse = await _artistsClient.GetArtistsAlbums(artistId,
-            new GetArtistsAlbumsRequest(),
-            authInfo.AccessToken,
-            token);
+        var albumsResponse = await _spotifyClient.GetAnArtistsAlbumsAsync(artistId, null, null, null, null, token);
         
         if (token.IsCancellationRequested)
         {

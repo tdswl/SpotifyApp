@@ -59,16 +59,13 @@
     <data name="ItemTypeUser" xml:space="preserve">
         <value>Пользователь</value>
     </data>
-    <data name="AlbumGroupAlbum" xml:space="preserve">
+    <data name="AlbumTypeAlbum" xml:space="preserve">
         <value>АЛЬБОМ</value>
     </data>
-    <data name="AlbumGroupSingle" xml:space="preserve">
+    <data name="AlbumTypeSingle" xml:space="preserve">
         <value>СИНГЛ</value>
     </data>
-    <data name="AlbumGroupCompilation" xml:space="preserve">
+    <data name="AlbumTypeCompilation" xml:space="preserve">
         <value>СБОРНИК</value>
-    </data>
-    <data name="AlbumGroupAppearsOn" xml:space="preserve">
-        <value>APEARS ON</value>
     </data>
 </root>

@@ -1,7 +1,5 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyApp.Api.Contracts", "SpotifyApp.Api.Contracts\SpotifyApp.Api.Contracts.csproj", "{17A4B577-2AC2-4BDB-A78B-4B49B794E490}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".sln", ".sln", "{8CC09CC7-6A09-45F5-A751-753AAADE5953}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
@@ -28,10 +26,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{17A4B577-2AC2-4BDB-A78B-4B49B794E490}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{17A4B577-2AC2-4BDB-A78B-4B49B794E490}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{17A4B577-2AC2-4BDB-A78B-4B49B794E490}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{17A4B577-2AC2-4BDB-A78B-4B49B794E490}.Release|Any CPU.Build.0 = Release|Any CPU
 		{483A3B49-CC1C-401D-9C28-16BCEE8EB383}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{483A3B49-CC1C-401D-9C28-16BCEE8EB383}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{483A3B49-CC1C-401D-9C28-16BCEE8EB383}.Release|Any CPU.ActiveCfg = Release|Any CPU

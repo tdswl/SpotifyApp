@@ -7,4 +7,6 @@ public static class AuthRoutes
     public const string AuthorizeEndpoint = "https://accounts.spotify.com/authorize";
 
     public const string TokenEndpoint = "https://accounts.spotify.com/api/token";
+    
+    public const string GetCurrentUserProfile = "https://api.spotify.com/v1/me";
 }

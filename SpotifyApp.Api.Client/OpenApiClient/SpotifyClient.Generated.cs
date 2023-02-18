@@ -14650,12 +14650,6 @@ namespace SpotifyApp.Api.Client.OpenApiClient
     public partial class CursorObject
     {
         /// <summary>
-        /// The cursor to use as key to find the next page of items.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty("after", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string After { get; set; }
-
-        /// <summary>
         /// The cursor to use as key to find the previous page of items.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("before", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -14686,12 +14680,6 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// </summary>
         [Newtonsoft.Json.JsonProperty("limit", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int Limit { get; set; }
-
-        /// <summary>
-        /// URL to the next page of items. ( `null` if none)
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty("next", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Next { get; set; }
 
         /// <summary>
         /// The cursors used to find the next set of items.
@@ -17891,15 +17879,6 @@ namespace SpotifyApp.Api.Client.OpenApiClient
 
         [System.Runtime.Serialization.EnumMember(Value = @"explicit")]
         Explicit = 2,
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.18.2.0 (NJsonSchema v10.8.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public enum ArtistObjectType
-    {
-
-        [System.Runtime.Serialization.EnumMember(Value = @"artist")]
-        Artist = 0,
 
     }
 

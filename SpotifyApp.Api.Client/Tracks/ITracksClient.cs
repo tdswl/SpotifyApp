@@ -1,5 +1,4 @@
 using Flurl.Http;
-using SpotifyApp.Api.Contracts.Base.Models;
 using SpotifyApp.Api.Contracts.Base.Requests;
 using SpotifyApp.Api.Contracts.Tracks.Models;
 using SpotifyApp.Api.Contracts.Tracks.Requests;

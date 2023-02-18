@@ -1,9 +1,6 @@
-using SpotifyApp.Api.Contracts.Albums.Models;
 using SpotifyApp.Api.Contracts.Albums.Requests;
 using SpotifyApp.Api.Contracts.Albums.Responses;
 using SpotifyApp.Api.Contracts.Base.Requests;
-using SpotifyApp.Api.Contracts.Base.Responses;
-using SpotifyApp.Api.Contracts.Tracks.Models;
 
 namespace SpotifyApp.Api.Client.Albums;
 
@@ -26,13 +23,13 @@ public interface IAlbumsClient
     /// Optional parameters can be used to limit the number of tracks returned.
     /// https://developer.spotify.com/documentation/web-api/reference/#/operations/get-an-albums-tracks
     /// </summary>
-    public Task<PagedResponse<TrackApiModel>> GetAlbumTracks(GetAlbumTracksRequest request, CancellationToken token);
+    public Task<GetAlbumTracksResponse> GetAlbumTracks(GetAlbumTracksRequest request, CancellationToken token);
     
     /// <summary>
     /// Get a list of the albums saved in the current Spotify user's 'Your Music' library.
     /// https://developer.spotify.com/documentation/web-api/reference/#/operations/get-users-saved-albums
     /// </summary>
-    public Task<PagedResponse<SavedAlbumsModel>> GetUsersSavedAlbums(GetUsersSavedAlbumsRequest request,
+    public Task<GetUsersSavedAlbumsResponse> GetUsersSavedAlbums(GetUsersSavedAlbumsRequest request,
         CancellationToken token);
 
     /// <summary>

@@ -1,5 +1,5 @@
 using Flurl.Http;
-using SpotifyApp.Api.Contracts.Base.Models;
+using SpotifyApp.Api.Client.Extensions;
 using SpotifyApp.Api.Contracts.Base.Requests;
 using SpotifyApp.Api.Contracts.Tracks.Models;
 using SpotifyApp.Api.Contracts.Tracks.Requests;
@@ -46,17 +46,8 @@ internal class TracksClient : ITracksClient
         CancellationToken cancellationToken)
     {
         var query = TracksRoutes.GetUsersSavedTracks
-            .WithOAuthBearerToken(accessToken);
-
-        if (request.Limit != null) 
-        {
-            query = query.SetQueryParam("limit", request.Limit);
-        }
-        
-        if (request.Offset != null)
-        {
-            query = query.SetQueryParam("offset", request.Offset);
-        }
+            .WithOAuthBearerToken(accessToken)
+            .SetPagedQueryParams(request);
         
         if (request.Market != null)
         {

@@ -1,4 +1,6 @@
 using Flurl.Http;
+using SpotifyApp.Api.Contracts.Artists.Requests;
+using SpotifyApp.Api.Contracts.Artists.Responses;
 using SpotifyApp.Api.Contracts.Base.Models;
 
 namespace SpotifyApp.Api.Client.Artists;
@@ -19,6 +21,15 @@ public interface IArtistsClient
     /// 429 - The app has exceeded its rate limits.
     /// </exception>
     Task<ItemModelApi> GetArtist(string id,
+        string accessToken,
+        CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Get Spotify catalog information about an artist's albums.
+    /// https://developer.spotify.com/documentation/web-api/reference/#/operations/get-an-artists-albums
+    /// </summary>
+    Task<GetArtistsAlbumsResponse> GetArtistsAlbums(string artistId,
+        GetArtistsAlbumsRequest request,
         string accessToken,
         CancellationToken cancellationToken);
 }

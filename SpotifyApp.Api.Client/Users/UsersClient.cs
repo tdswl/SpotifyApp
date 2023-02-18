@@ -1,5 +1,6 @@
 using SpotifyApp.Api.Contracts.Users.Responses;
 using Flurl.Http;
+using SpotifyApp.Api.Client.Extensions;
 using SpotifyApp.Api.Contracts.Users.Requests;
 
 namespace SpotifyApp.Api.Client.Users;
@@ -20,17 +21,8 @@ internal class UsersClient : IUsersClient
     {
         var query = UserRoutes.GetUsersTopItems
             .WithOAuthBearerToken(accessToken)
-            .AppendPathSegment($"{request.Type.ToString().ToLower()}s");
-
-        if (request.Limit != null)
-        {
-            query = query.SetQueryParam("limit", request.Limit);
-        }
-        
-        if (request.Offset != null)
-        {
-            query = query.SetQueryParam("offset", request.Offset);
-        }
+            .AppendPathSegment($"{request.Type.ToString().ToLower()}s")
+            .SetPagedQueryParams(request);
         
         if (request.TimeRange != null)
         {

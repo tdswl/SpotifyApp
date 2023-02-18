@@ -1,10 +1,9 @@
 using AutoMapper;
 using AutoMapper.Extensions.EnumMapping;
+using SpotifyApp.Api.Contracts.Albums.Models;
 using SpotifyApp.Api.Contracts.Base.Enums;
 using SpotifyApp.Api.Contracts.Base.Models;
 using SpotifyApp.Api.Contracts.Tracks.Models;
-using SpotifyApp.Api.Contracts.Tracks.Responses;
-using SpotifyApp.Api.Contracts.Users.Models;
 using SpotifyApp.Api.Contracts.Users.Responses;
 using SpotifyApp.Shared.Enums;
 using SpotifyApp.Shared.Models;
@@ -46,6 +45,9 @@ public sealed class ApplicationMapProfile : Profile
             .ForMember(d => d.DurationMs, 
                 opt => opt.MapFrom(s => TimeSpan.FromMilliseconds(s.DurationMs).ToString(@"mm\:ss")))
             .ForMember(d => d.Index, opt => opt.Ignore())
+            .ValidateMemberList(MemberList.Destination);
+        
+        CreateMap<AlbumApiModel, AlbumModel>()
             .ValidateMemberList(MemberList.Destination);
     }
 }

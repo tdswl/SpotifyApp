@@ -10,7 +10,7 @@ namespace SpotifyApp.Shared.Services;
 
 internal class AuthService : IAuthService
 {
-    private static SemaphoreSlim _semaphore = new(1, 1);
+    private static readonly SemaphoreSlim Semaphore = new(1, 1);
     
     private readonly IApplicationContext _applicationContext;
     private readonly IMemoryCache _memoryCache;
@@ -28,7 +28,7 @@ internal class AuthService : IAuthService
     public async Task<AuthorizationInfoModel> Login(CancellationToken token)
     {
         // lock to prevent many login requests to Spotify
-        await _semaphore.WaitAsync(token).ConfigureAwait(false);
+        await Semaphore.WaitAsync(token).ConfigureAwait(false);
 
         try
         {
@@ -51,7 +51,7 @@ internal class AuthService : IAuthService
         }
         finally
         {
-            _semaphore.Release();
+            Semaphore.Release();
         }
     }
 

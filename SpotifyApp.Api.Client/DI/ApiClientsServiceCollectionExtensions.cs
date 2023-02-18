@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using SpotifyApp.Api.Client.Albums;
 using SpotifyApp.Api.Client.Artists;
 using SpotifyApp.Api.Client.Auth;
+using SpotifyApp.Api.Client.OpenApiClient;
 using SpotifyApp.Api.Client.Tracks;
 using SpotifyApp.Api.Client.Users;
 
@@ -23,6 +24,9 @@ public static class ApiClientsServiceCollectionExtensions
         services.TryAdd(ServiceDescriptor.Singleton<IArtistsClient, ArtistsClient>());
         services.TryAdd(ServiceDescriptor.Singleton<IAuthClient, AuthClient>());
         services.TryAdd(ServiceDescriptor.Singleton<IAlbumsClient, AlbumsClient>());
+        
+        services.AddHttpClient();
+        services.TryAdd(ServiceDescriptor.Singleton<ISpotifyClient, SpotifyClient>());
         
         return services;
     }

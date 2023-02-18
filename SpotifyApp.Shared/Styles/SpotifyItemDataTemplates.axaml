@@ -31,7 +31,7 @@
             </StackPanel>
         </Grid>
     </DataTemplate>
-    
+
     <DataTemplate x:Key="ArtistItemHeader"
                   DataType="{x:Type items:ArtistViewModel}">
         <Grid>
@@ -39,18 +39,20 @@
                    VerticalAlignment="Stretch"
                    Stretch="UniformToFill"
                    Source="{Binding Preview}" />
-        
-            <StackPanel Spacing="5" 
+
+            <StackPanel Spacing="5"
                         Margin="40 20 0 20"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center">
-                <TextBlock Text="{Binding Item.Type, Converter={x:Static converters:ItemTypeToTextConverter.Instance}}" />
-                <TextBlock Classes="Header"
+                <TextBlock Foreground="White"
+                           Text="{Binding Item.Type, Converter={x:Static converters:ItemTypeToTextConverter.Instance}}" />
+                <TextBlock Foreground="White"
+                           Classes="Header"
                            Text="{Binding Item.Name}" />
             </StackPanel>
         </Grid>
     </DataTemplate>
-    
+
     <DataTemplate x:Key="ArtistCard"
                   DataType="{x:Type items:ArtistViewModel}">
         <StackPanel Spacing="5"

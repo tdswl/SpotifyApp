@@ -1,4 +1,5 @@
 using Flurl.Http;
+using SpotifyApp.Api.Contracts.Base.Models.Interfaces;
 using SpotifyApp.Api.Contracts.Base.Requests;
 
 namespace SpotifyApp.Api.Client.Extensions;
@@ -17,6 +18,16 @@ public static class RequestExtensions
             flurlRequest = flurlRequest.SetQueryParam("offset", request.Offset);
         }
         
+        return flurlRequest;
+    }
+    
+    public static IFlurlRequest SetMarketParams(this IFlurlRequest flurlRequest, IMarketModel request)
+    {
+        if (request.Market != null)
+        {
+            flurlRequest = flurlRequest.SetQueryParam("market", request.Market);
+        }
+
         return flurlRequest;
     }
 }

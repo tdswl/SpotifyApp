@@ -25,12 +25,8 @@ internal class ArtistsClient : IArtistsClient
     {
         var query = string.Format(ArtistsRoutes.GetArtistsAlbums, artistId)
             .WithOAuthBearerToken(accessToken)
-            .SetPagedQueryParams(request);
-        
-        if (request.Market != null)
-        {
-            query = query.SetQueryParam("market", request.Market);
-        }
+            .SetPagedQueryParams(request)
+            .SetMarketParams(request);
         
         if (request.IncludeGroups != null && request.IncludeGroups.Any())
         {

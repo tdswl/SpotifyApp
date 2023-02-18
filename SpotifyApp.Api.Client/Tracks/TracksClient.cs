@@ -13,48 +13,33 @@ internal class TracksClient : ITracksClient
         string accessToken, 
         CancellationToken cancellationToken)
     {
-        var query = TracksRoutes.GetTrack
+        return TracksRoutes.GetTrack
             .WithOAuthBearerToken(accessToken)
-            .AppendPathSegment(request.Id);
-
-        if (request.Market != null)
-        {
-            query = query.SetQueryParam("market", request.Market);
-        }
-        
-        return query.GetJsonAsync<TrackApiModel>(cancellationToken);
+            .AppendPathSegment(request.Id)
+            .SetMarketParams(request)
+            .GetJsonAsync<TrackApiModel>(cancellationToken);
     }
 
     Task<GetSeveralTracksResponse> ITracksClient.GetSeveralTracks(IdsRequest request, 
         string accessToken, 
         CancellationToken cancellationToken)
     {
-        var query = TracksRoutes.GetTrack
+        return TracksRoutes.GetTrack
             .WithOAuthBearerToken(accessToken)
-            .SetQueryParam("ids", request.Ids);
-
-        if (request.Market != null)
-        {
-            query = query.SetQueryParam("market", request.Market);
-        }
-        
-        return query.GetJsonAsync<GetSeveralTracksResponse>(cancellationToken);
+            .SetQueryParam("ids", request.Ids)
+            .SetMarketParams(request)
+            .GetJsonAsync<GetSeveralTracksResponse>(cancellationToken);
     }
 
     Task<GetUsersSavedTracksResponse> ITracksClient.GetUsersSavedTracks(GetUsersSavedTracksRequest request,
         string accessToken, 
         CancellationToken cancellationToken)
     {
-        var query = TracksRoutes.GetUsersSavedTracks
+        return TracksRoutes.GetUsersSavedTracks
             .WithOAuthBearerToken(accessToken)
-            .SetPagedQueryParams(request);
-        
-        if (request.Market != null)
-        {
-            query = query.SetQueryParam("market", request.Market);
-        }
-        
-        return query.GetJsonAsync<GetUsersSavedTracksResponse>(cancellationToken);
+            .SetPagedQueryParams(request)
+            .SetMarketParams(request)
+            .GetJsonAsync<GetUsersSavedTracksResponse>(cancellationToken);
     }
 
     Task ITracksClient.SaveTracksForCurrentUser(string ids, 

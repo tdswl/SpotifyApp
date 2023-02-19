@@ -11,4 +11,6 @@ public sealed class UserModel : ISpotifyItem
     public required IReadOnlyCollection<ImageModel> Images { get; set; }
 
     public ItemType Type => ItemType.User;
+    
+    public ProductType Product { get; set; }
 }

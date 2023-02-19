@@ -5,6 +5,7 @@ using SpotifyApp.Api.Client.Auth;
 using SpotifyApp.Api.Client.DI;
 using SpotifyApp.Api.Client.OpenApiClient;
 using SpotifyApp.Shared.AutoMapper;
+using SpotifyApp.Shared.AutoMapper.Resolvers;
 using SpotifyApp.Shared.Configurations;
 using SpotifyApp.Shared.Services;
 using SpotifyApp.Shared.ViewModels;
@@ -41,7 +42,9 @@ public static class AppServiceCollectionExtensions
             .AddScoped<IAuthService, AuthService>()
             .AddScoped<ITokenService, TokenService>()
             .AddSingleton<IImageCache, ImageCache>()
-            .AddSingleton<INavigationService, NavigationService>();
+            .AddSingleton<INavigationService, NavigationService>()
+            
+            .AddSingleton<ProductToEnumResolver>();
     }
 
     private static void AutoMapperConfig(IMapperConfigurationExpression cfg)

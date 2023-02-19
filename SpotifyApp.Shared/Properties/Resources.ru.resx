@@ -68,4 +68,16 @@
     <data name="AlbumTypeCompilation" xml:space="preserve">
         <value>СБОРНИК</value>
     </data>
+    <data name="PlayerShuffle" xml:space="preserve">
+        <value>Перемешать</value>
+    </data>
+    <data name="PlayerPrevious" xml:space="preserve">
+        <value>Предыдущий трек</value>
+    </data>
+    <data name="PlayerPlay" xml:space="preserve">
+        <value>Играть</value>
+    </data>
+    <data name="PlayerNext" xml:space="preserve">
+        <value>Следующий трек</value>
+    </data>
 </root>

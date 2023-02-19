@@ -75,4 +75,16 @@
     <data name="AlbumTypeCompilation" xml:space="preserve">
         <value>COMPILATION</value>
     </data>
+    <data name="PlayerShuffle" xml:space="preserve">
+        <value>Shuffle</value>
+    </data>
+    <data name="PlayerPrevious" xml:space="preserve">
+        <value>Previous</value>
+    </data>
+    <data name="PlayerPlay" xml:space="preserve">
+        <value>Play</value>
+    </data>
+    <data name="PlayerNext" xml:space="preserve">
+        <value>Next</value>
+    </data>
 </root>

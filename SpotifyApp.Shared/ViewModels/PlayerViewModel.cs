@@ -15,6 +15,12 @@ public sealed partial class PlayerViewModel : ObservableRecipient
     private readonly IMapper _mapper;
 
     [ObservableProperty] 
+    private bool _isShuffleEnabled;
+    
+    [ObservableProperty] 
+    private bool _isPlaying;
+    
+    [ObservableProperty] 
     private TrackViewModel? _currentTrack;
     
     public PlayerViewModel()
@@ -39,7 +45,7 @@ public sealed partial class PlayerViewModel : ObservableRecipient
     {
         base.OnActivated();
 
-        GetCurrentPlaybackCommand.Execute(null);
+        GetCurrentPlaybackCommand.ExecuteAsync(null);
     }
 
     [RelayCommand(IncludeCancelCommand = true)]
@@ -54,6 +60,9 @@ public sealed partial class PlayerViewModel : ObservableRecipient
             {
                 return;
             }
+
+            IsShuffleEnabled = playbackResponse.Shuffle_state;
+            IsPlaying = playbackResponse.Is_playing;
             
             var trackVm = Ioc.Default.GetRequiredService<TrackViewModel>();
             var track = _mapper.Map<TrackModel>(playbackResponse.Item);
@@ -65,6 +74,42 @@ public sealed partial class PlayerViewModel : ObservableRecipient
             // Nothing - 204 is good code, but Spotify openapi yml say it's not 
             CurrentTrack = null;
         }
+    }
+    
+    [RelayCommand(IncludeCancelCommand = true)]
+    private async Task ShuffleAsync(CancellationToken token)
+    {
+        await _spotifyClient.ToggleShuffleForUsersPlaybackAsync(!IsShuffleEnabled, null, token);
+        IsShuffleEnabled = !IsShuffleEnabled;
+    }
+    
+    [RelayCommand(IncludeCancelCommand = true)]
+    private async Task PreviousAsync(CancellationToken token)
+    {
+        await _spotifyClient.SkipUsersPlaybackToPreviousTrackAsync(null, token);
+        GetCurrentPlaybackCommand.ExecuteAsync(null);
+    }
+
+    [RelayCommand(IncludeCancelCommand = true)]
+    private async Task PlayPauseAsync(CancellationToken token)
+    {
+        if (IsPlaying)
+        {
+            await _spotifyClient.PauseAUsersPlaybackAsync(null, token);
+        }
+        else
+        {
+            await _spotifyClient.StartAUsersPlaybackAsync(null, null, token);
+        }
+
+        IsPlaying = !IsPlaying;
+    }
+    
+    [RelayCommand(IncludeCancelCommand = true)]
+    private async Task NextAsync(CancellationToken token)
+    {
+        await _spotifyClient.SkipUsersPlaybackToNextTrackAsync(null, token);
+        GetCurrentPlaybackCommand.ExecuteAsync(null);
     }
 
     protected override void OnDeactivated()

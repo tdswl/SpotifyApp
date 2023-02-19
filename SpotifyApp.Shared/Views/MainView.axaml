@@ -41,13 +41,42 @@
         <Grid RowDefinitions="*, Auto">
             <TransitioningContentControl Content="{Binding Content}" />
 
-            <StackPanel Grid.Row="1"
-                        Orientation="Horizontal"
-                        HorizontalAlignment="Stretch"
-                        Background="DimGray">
-                <ContentControl Content="{Binding Player.CurrentTrack}"
+            <Grid Grid.Row="1"
+                  ColumnDefinitions="Auto, *"
+                  HorizontalAlignment="Stretch"
+                  Background="DimGray"
+                  DataContext="{Binding Player}">
+                <ContentControl Content="{Binding CurrentTrack}"
                                 ContentTemplate="{StaticResource TrackWithImage}" />
-            </StackPanel>
+                
+                <StackPanel Grid.Column="1"
+                            HorizontalAlignment="Center"
+                            Orientation="Horizontal">
+                    <Button Classes="MenuCompactButton"
+                            Content="⮀"
+                            ToolTip.Tip="{x:Static p:Resources.PlayerShuffle}"
+                            Command="{Binding ShuffleCommand}" />
+                    
+                    <Button Classes="MenuCompactButton"
+                            Content="«"
+                            ToolTip.Tip="{x:Static p:Resources.PlayerPrevious}"
+                            Command="{Binding PreviousCommand}" />
+                    
+                    <Button Classes="MenuCompactButton"
+                            ToolTip.Tip="{x:Static p:Resources.PlayerPlay}"
+                            Command="{Binding PlayPauseCommand}">
+                        <Panel>
+                            <TextBlock Text="▶" IsVisible="{Binding !IsPlaying}" />
+                            <TextBlock Text="∥" IsVisible="{Binding IsPlaying}" />
+                        </Panel>
+                    </Button>
+                    
+                    <Button Classes="MenuCompactButton"
+                            Content="»"
+                            ToolTip.Tip="{x:Static p:Resources.PlayerNext}"
+                            Command="{Binding NextCommand}" />
+                </StackPanel>
+            </Grid>
         </Grid>
     </SplitView>
 </UserControl>

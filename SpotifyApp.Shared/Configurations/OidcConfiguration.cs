@@ -20,6 +20,9 @@ public sealed class OidcConfiguration : IOidcConfiguration
         "user-read-currently-playing",
         "user-read-recently-played",
         "user-read-playback-state",
-        "user-read-playback-position"
+        "user-read-playback-position",
+        
+        // write
+        "user-modify-playback-state",
     });
 }

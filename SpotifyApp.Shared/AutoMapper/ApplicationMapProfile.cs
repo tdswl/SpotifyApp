@@ -1,6 +1,7 @@
 using AutoMapper;
 using AutoMapper.Extensions.EnumMapping;
 using SpotifyApp.Api.Client.OpenApiClient;
+using SpotifyApp.Shared.AutoMapper.Resolvers;
 using SpotifyApp.Shared.Enums;
 using SpotifyApp.Shared.Models;
 using ArtistModel = SpotifyApp.Shared.Models.ArtistModel;
@@ -37,6 +38,7 @@ public sealed class ApplicationMapProfile : Profile
         
         CreateMap<PrivateUserObject, UserModel>()
             .ForMember(d => d.Name, opt => opt.MapFrom(s => s.Display_name))
+            .ForMember(d => d.Product, opt => opt.MapFrom<ProductToEnumResolver>())
             .ValidateMemberList(MemberList.Destination);
         
         CreateMap<ArtistObject, ArtistModel>()

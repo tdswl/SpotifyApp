@@ -1,5 +1,6 @@
 using System.Net;
 using AutoMapper;
+using Avalonia.Threading;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.DependencyInjection;
 using CommunityToolkit.Mvvm.Input;
@@ -11,6 +12,8 @@ namespace SpotifyApp.Shared.ViewModels;
 
 public sealed partial class PlayerViewModel : ObservableRecipient
 {
+    private DispatcherTimer? _updateTimer;
+    
     private readonly ISpotifyClient _spotifyClient;
     private readonly IMapper _mapper;
 
@@ -44,8 +47,8 @@ public sealed partial class PlayerViewModel : ObservableRecipient
     protected override void OnActivated()
     {
         base.OnActivated();
-
-        GetCurrentPlaybackCommand.ExecuteAsync(null);
+        
+        StartTimer();
     }
 
     [RelayCommand(IncludeCancelCommand = true)]
@@ -111,9 +114,33 @@ public sealed partial class PlayerViewModel : ObservableRecipient
         await _spotifyClient.SkipUsersPlaybackToNextTrackAsync(null, token);
         GetCurrentPlaybackCommand.ExecuteAsync(null);
     }
+    
+    private void StartTimer()
+    {
+        if (_updateTimer == null)
+        {
+            _updateTimer = new DispatcherTimer();
+            _updateTimer.Tick += UpdateTimerOnTick;
+        }
+
+        if (_updateTimer.IsEnabled)
+        {
+            return;
+        }
+
+        _updateTimer.Interval = TimeSpan.FromSeconds(5);
+        _updateTimer.Start();
+    }
+
+    private void UpdateTimerOnTick(object? sender, EventArgs e)
+    {
+        GetCurrentPlaybackCommand.ExecuteAsync(null);
+    }
 
     protected override void OnDeactivated()
     {
+        _updateTimer.Stop();
+        _updateTimer.Tick -= UpdateTimerOnTick;
         GetCurrentPlaybackCommand.Cancel();
         CurrentTrack?.Dispose();
         CurrentTrack = null;

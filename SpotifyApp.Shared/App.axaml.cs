@@ -5,7 +5,6 @@ using Avalonia.Markup.Xaml;
 using CommunityToolkit.Mvvm.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using SpotifyApp.Api.Client.DI;
 using SpotifyApp.Shared.DI;
 using SpotifyApp.Storage;
 using MainView = SpotifyApp.Shared.Views.MainView;

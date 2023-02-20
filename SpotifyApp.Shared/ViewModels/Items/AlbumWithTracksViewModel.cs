@@ -26,19 +26,11 @@ public sealed partial class AlbumWithTracksViewModel : ImagePreviewViewModel
         _mapper = mapper;
         IsActive = true;
     }
-    
-    protected override void OnActivated()
-    {
-        base.OnActivated();
 
-        GetAlbumTracksCommand.ExecuteAsync(null);
-    }
-    
-    
     [RelayCommand(IncludeCancelCommand = true)]
-    private async Task GetAlbumTracksAsync(AlbumWithTracksViewModel album, CancellationToken token)
+    private async Task GetAlbumTracksAsync(string albumId, CancellationToken token)
     {
-        var albumTracksResponse = await _spotifyClient.GetAnAlbumsTracksAsync(album.Item.Id, null, null, null, token);
+        var albumTracksResponse = await _spotifyClient.GetAnAlbumsTracksAsync(albumId, null, null, null, token);
       
         if (token.IsCancellationRequested)
         {
@@ -54,7 +46,7 @@ public sealed partial class AlbumWithTracksViewModel : ImagePreviewViewModel
             }
             
             var trackVm = Ioc.Default.GetRequiredService<TrackViewModel>();
-            album.Tracks.Add(trackVm);
+            Tracks.Add(trackVm);
             var track = _mapper.Map<TrackModel>(trackObject);
             track.Index = ++currentItemsCount;
             trackVm.Item = track;

@@ -9,5 +9,6 @@ public sealed class TrackViewModel : ImagePreviewViewModel
     public TrackViewModel(IImageCache imageCache) : base(imageCache)
     {
         PreviewSize = PreviewSize.Small;
+        IsActive = true;
     }
 }

@@ -7,5 +7,6 @@ public sealed class ArtistViewModel : ImagePreviewViewModel
 {
     public ArtistViewModel(IImageCache imageCache) : base(imageCache)
     {
+        IsActive = true;
     }
 }

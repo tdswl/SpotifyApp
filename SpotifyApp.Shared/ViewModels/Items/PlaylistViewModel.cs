@@ -7,5 +7,6 @@ public sealed class PlaylistViewModel : ImagePreviewViewModel
 {
     public PlaylistViewModel(IImageCache imageCache) : base(imageCache)
     {
+        IsActive = true;
     }
 }

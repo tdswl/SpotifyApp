@@ -24,27 +24,39 @@ public static class AppServiceCollectionExtensions
         return services.AddLogging(builder => builder.AddSerilog())
             .AddMemoryCache()
             .AddDatabase()
-            .AddAutoMapper(AutoMapperConfig)
+            .AddAutomapper()
             .AddApiClients()
-            .AddTransient<MainWindowViewModel>()
+            
+            // Models shared across component - register as singleton
+            .AddSingleton<MainWindowViewModel>()
+            .AddSingleton<CurrentUserViewModel>()
+            .AddSingleton<PlayerViewModel>()
+            
+            // Page models
             .AddTransient<ProfileViewModel>()
             .AddTransient<LikedSongsViewModel>()
             .AddTransient<ArtistScreenViewModel>()
-            .AddTransient<PlayerViewModel>()
             
+            // Item models
             .AddTransient<TrackViewModel>()
             .AddTransient<UserViewModel>()
             .AddTransient<ArtistViewModel>()
             .AddTransient<PlaylistViewModel>()
             .AddTransient<AlbumWithTracksViewModel>()
-
-            .AddSingleton<IOidcConfiguration, OidcConfiguration>()
+            
             .AddScoped<IAuthService, AuthService>()
             .AddScoped<ITokenService, TokenService>()
+            .AddSingleton<IOidcConfiguration, OidcConfiguration>()
             .AddSingleton<IImageCache, ImageCache>()
-            .AddSingleton<INavigationService, NavigationService>()
-            
+            .AddSingleton<INavigationService, NavigationService>();
+    }
+
+    private static IServiceCollection AddAutomapper(this IServiceCollection services)
+    {
+        services = services.AddAutoMapper(AutoMapperConfig)
             .AddSingleton<ProductToEnumResolver>();
+
+        return services;
     }
 
     private static void AutoMapperConfig(IMapperConfigurationExpression cfg)

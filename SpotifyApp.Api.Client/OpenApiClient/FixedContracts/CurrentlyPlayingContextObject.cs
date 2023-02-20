@@ -5,6 +5,9 @@ public partial class CurrentlyPlayingContextObject
     /// <summary>
     /// Unix Millisecond Timestamp when data was fetched.
     /// </summary>
+    /// <remarks>
+    /// 'int' in generated model
+    /// </remarks>
 
     [System.Text.Json.Serialization.JsonPropertyName("timestamp")]
 

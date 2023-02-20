@@ -7,5 +7,6 @@ public sealed class UserViewModel : ImagePreviewViewModel
 {
     public UserViewModel(IImageCache imageCache) : base(imageCache)
     {
+        IsActive = true;
     }
 }

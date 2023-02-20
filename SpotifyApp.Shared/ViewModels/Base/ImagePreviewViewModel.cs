@@ -27,7 +27,6 @@ public abstract partial class ImagePreviewViewModel : ObservableRecipient,
     protected ImagePreviewViewModel(IImageCache imageCache)
     {
         _imageCache = imageCache;
-        IsActive = true;
     }
     
     partial void OnItemChanged(ISpotifyItem? value)

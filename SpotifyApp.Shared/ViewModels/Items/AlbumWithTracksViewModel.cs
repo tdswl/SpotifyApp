@@ -24,6 +24,14 @@ public sealed partial class AlbumWithTracksViewModel : ImagePreviewViewModel
     {
         _spotifyClient = spotifyClient;
         _mapper = mapper;
+        IsActive = true;
+    }
+    
+    protected override void OnActivated()
+    {
+        base.OnActivated();
+
+        GetAlbumTracksCommand.ExecuteAsync(null);
     }
     
     

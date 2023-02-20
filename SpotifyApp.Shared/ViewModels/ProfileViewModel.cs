@@ -20,7 +20,7 @@ public sealed partial class ProfileViewModel : ObservableRecipient
     private readonly IMapper _mapper;
     
     [ObservableProperty]
-    private UserViewModel? _currentUser;
+    private CurrentUserViewModel? _currentUser;
 
     [ObservableProperty] 
     private ArtistViewModel? _selectedTopArtist;
@@ -54,25 +54,16 @@ public sealed partial class ProfileViewModel : ObservableRecipient
     {
         base.OnActivated();
 
-        GetUserInfoCommand.ExecuteAsync(null);
+        GetUserInfoCommand.Execute(null);
         GetArtistsCommand.ExecuteAsync(null);
         GetTracksCommand.ExecuteAsync(null);
         GetFollowingArtistsCommand.ExecuteAsync(null);
     }
 
-    [RelayCommand(IncludeCancelCommand = true)]
-    private async Task GetUserInfoAsync(CancellationToken token)
+    [RelayCommand]
+    private void GetUserInfo()
     {
-        var userInfo = await _spotifyClient.GetCurrentUsersProfileAsync(token);
-        
-        if (token.IsCancellationRequested)
-        {
-            return;
-        }
-        
-        var userVm = Ioc.Default.GetRequiredService<UserViewModel>();
-        userVm.Item = _mapper.Map<UserModel>(userInfo);
-        CurrentUser = userVm;
+        CurrentUser = Ioc.Default.GetRequiredService<CurrentUserViewModel>();
     }
     
     [RelayCommand(IncludeCancelCommand = true)]
@@ -165,11 +156,9 @@ public sealed partial class ProfileViewModel : ObservableRecipient
 
     protected override void OnDeactivated()
     {
-        GetUserInfoCommand.Cancel();
         GetArtistsCommand.Cancel();
         GetTracksCommand.Cancel();
         GetFollowingArtistsCommand.Cancel();
-        CurrentUser?.Dispose();
         CurrentUser = null;
 
         foreach (var track in TopTracks)

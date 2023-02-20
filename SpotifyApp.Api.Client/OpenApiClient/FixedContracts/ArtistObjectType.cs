@@ -9,6 +9,9 @@ public enum ArtistObjectType
     [System.Runtime.Serialization.EnumMember(Value = @"artist")]
     Artist = 0,
     
+    /// <summary>
+    /// Not contains in generated model
+    /// </summary>
     [System.Runtime.Serialization.EnumMember(Value = @"track")]
     Track = 1,
 }

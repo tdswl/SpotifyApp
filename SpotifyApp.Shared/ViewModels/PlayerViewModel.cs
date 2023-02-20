@@ -66,11 +66,14 @@ public sealed partial class PlayerViewModel : ObservableRecipient
 
             IsShuffleEnabled = playbackResponse.Shuffle_state;
             IsPlaying = playbackResponse.Is_playing;
-            
-            var trackVm = Ioc.Default.GetRequiredService<TrackViewModel>();
-            var track = _mapper.Map<TrackModel>(playbackResponse.Item);
-            trackVm.Item = track;
-            CurrentTrack = trackVm;
+
+            if (CurrentTrack?.Item?.Id != playbackResponse.Item.Id)
+            {
+                var trackVm = Ioc.Default.GetRequiredService<TrackViewModel>();
+                var track = _mapper.Map<TrackModel>(playbackResponse.Item);
+                trackVm.Item = track;
+                CurrentTrack = trackVm;
+            }
         }
         catch (ApiException e) when (e.StatusCode == (int)HttpStatusCode.NoContent)
         {

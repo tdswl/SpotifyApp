@@ -49,33 +49,33 @@
                 <ContentControl Content="{Binding CurrentTrack}"
                                 ContentTemplate="{StaticResource TrackWithImage}" />
                 
-                <StackPanel Grid.Column="1"
-                            HorizontalAlignment="Center"
-                            Orientation="Horizontal">
-                    <Button Classes="MenuCompactButton"
-                            Content="⮀"
-                            ToolTip.Tip="{x:Static p:Resources.PlayerShuffle}"
-                            Command="{Binding ShuffleCommand}" />
-                    
-                    <Button Classes="MenuCompactButton"
-                            Content="«"
-                            ToolTip.Tip="{x:Static p:Resources.PlayerPrevious}"
-                            Command="{Binding PreviousCommand}" />
-                    
-                    <Button Classes="MenuCompactButton"
-                            ToolTip.Tip="{x:Static p:Resources.PlayerPlay}"
-                            Command="{Binding PlayPauseCommand}">
-                        <Panel>
-                            <TextBlock Text="▶" IsVisible="{Binding !IsPlaying}" />
-                            <TextBlock Text="∥" IsVisible="{Binding IsPlaying}" />
-                        </Panel>
-                    </Button>
-                    
-                    <Button Classes="MenuCompactButton"
-                            Content="»"
-                            ToolTip.Tip="{x:Static p:Resources.PlayerNext}"
-                            Command="{Binding NextCommand}" />
-                </StackPanel>
+                <!-- <StackPanel Grid.Column="1" -->
+                <!--             HorizontalAlignment="Center" -->
+                <!--             Orientation="Horizontal"> -->
+                <!--     <Button Classes="MenuCompactButton" -->
+                <!--             Content="⮀" -->
+                <!--             ToolTip.Tip="{x:Static p:Resources.PlayerShuffle}" -->
+                <!--             Command="{Binding ShuffleCommand}" /> -->
+                <!--      -->
+                <!--     <Button Classes="MenuCompactButton" -->
+                <!--             Content="«" -->
+                <!--             ToolTip.Tip="{x:Static p:Resources.PlayerPrevious}" -->
+                <!--             Command="{Binding PreviousCommand}" /> -->
+                <!--      -->
+                <!--     <Button Classes="MenuCompactButton" -->
+                <!--             ToolTip.Tip="{x:Static p:Resources.PlayerPlay}" -->
+                <!--             Command="{Binding PlayPauseCommand}"> -->
+                <!--         <Panel> -->
+                <!--             <TextBlock Text="▶" IsVisible="{Binding !IsPlaying}" /> -->
+                <!--             <TextBlock Text="∥" IsVisible="{Binding IsPlaying}" /> -->
+                <!--         </Panel> -->
+                <!--     </Button> -->
+                <!--      -->
+                <!--     <Button Classes="MenuCompactButton" -->
+                <!--             Content="»" -->
+                <!--             ToolTip.Tip="{x:Static p:Resources.PlayerNext}" -->
+                <!--             Command="{Binding NextCommand}" /> -->
+                <!-- </StackPanel> -->
             </Grid>
         </Grid>
     </SplitView>

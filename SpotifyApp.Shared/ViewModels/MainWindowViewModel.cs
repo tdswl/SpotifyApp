@@ -80,6 +80,7 @@ public sealed partial class MainWindowViewModel : ObservableRecipient,
         var userVm = Ioc.Default.GetRequiredService<UserViewModel>();
         userVm.Item = _mapper.Map<UserModel>(userInfo);
         CurrentUser = userVm;
+        Player = Ioc.Default.GetRequiredService<PlayerViewModel>();
         NavigateToCommand.Execute(PageType.Profile);
     }
 

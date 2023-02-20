@@ -10,3 +10,5 @@ How to update nswag api client:
 3. Install nodejs: https://nodejs.org/en/
 3. Install https://www.npmjs.com/package/nswag ```npm install nswag -g```
 4. Run ```nswag run SpotifyApp.Api.Client/OpenApiClient/nswag.json```
+
+Official openapi schema contains errors. So I created a folder FixedContracts where I fix some models witch working not as expected

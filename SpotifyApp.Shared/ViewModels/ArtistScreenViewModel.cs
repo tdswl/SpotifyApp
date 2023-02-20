@@ -85,7 +85,6 @@ public sealed partial class ArtistScreenViewModel : ObservableRecipient
             Albums.Add(albumVm);
             var album = _mapper.Map<AlbumModel>(albumItem);
             albumVm.Item = album;
-            albumVm.GetAlbumTracksCommand.ExecuteAsync(albumVm);
         }
     }
     

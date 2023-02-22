@@ -34,11 +34,6 @@ public sealed partial class ArtistScreenViewModel : ObservableRecipient
         IsActive = true;
     }
 
-    protected override void OnActivated()
-    {
-        base.OnActivated();
-    }
-    
     partial void OnArtistChanged(ArtistViewModel? value)
     {
         if (value?.Item != null)

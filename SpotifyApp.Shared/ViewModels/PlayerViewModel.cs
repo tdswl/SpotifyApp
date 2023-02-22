@@ -93,7 +93,7 @@ public sealed partial class PlayerViewModel : ObservableRecipient
     private async Task PreviousAsync(CancellationToken token)
     {
         await _spotifyClient.SkipUsersPlaybackToPreviousTrackAsync(null, token);
-        GetCurrentPlaybackCommand.ExecuteAsync(null);
+        await GetCurrentPlaybackCommand.ExecuteAsync(null);
     }
 
     [RelayCommand(IncludeCancelCommand = true)]
@@ -115,7 +115,7 @@ public sealed partial class PlayerViewModel : ObservableRecipient
     private async Task NextAsync(CancellationToken token)
     {
         await _spotifyClient.SkipUsersPlaybackToNextTrackAsync(null, token);
-        GetCurrentPlaybackCommand.ExecuteAsync(null);
+        await GetCurrentPlaybackCommand.ExecuteAsync(null);
     }
     
     private void StartTimer()
@@ -142,8 +142,11 @@ public sealed partial class PlayerViewModel : ObservableRecipient
 
     protected override void OnDeactivated()
     {
-        _updateTimer.Stop();
-        _updateTimer.Tick -= UpdateTimerOnTick;
+        if (_updateTimer != null)
+        {
+            _updateTimer.Stop();
+            _updateTimer.Tick -= UpdateTimerOnTick;
+        }
         GetCurrentPlaybackCommand.Cancel();
         CurrentTrack?.Dispose();
         CurrentTrack = null;

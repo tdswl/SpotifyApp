@@ -86,5 +86,6 @@ public sealed partial class LikedSongsViewModel : ObservableRecipient
             song.Dispose();
         }
         LikedSongs.Clear();
+        base.OnDeactivated();
     }
 }

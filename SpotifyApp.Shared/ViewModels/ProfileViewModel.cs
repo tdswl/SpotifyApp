@@ -178,5 +178,6 @@ public sealed partial class ProfileViewModel : ObservableRecipient
             followingArtist.Dispose();
         }
         FollowingArtists.Clear();
+        base.OnDeactivated();
     }
 }

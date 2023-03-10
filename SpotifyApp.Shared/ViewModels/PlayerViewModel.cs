@@ -12,7 +12,7 @@ namespace SpotifyApp.Shared.ViewModels;
 
 public sealed partial class PlayerViewModel : ObservableRecipient
 {
-    private DispatcherTimer? _updateTimer;
+    private readonly DispatcherTimer? _updateTimer = new();
     
     private readonly ISpotifyClient _spotifyClient;
     private readonly IMapper _mapper;
@@ -36,6 +36,7 @@ public sealed partial class PlayerViewModel : ObservableRecipient
     {
         _spotifyClient = spotifyClient;
         _mapper = mapper;
+        _updateTimer.Tick += UpdateTimerOnTick;
         IsActive = true;
     }
 
@@ -120,12 +121,6 @@ public sealed partial class PlayerViewModel : ObservableRecipient
     
     private void StartTimer()
     {
-        if (_updateTimer == null)
-        {
-            _updateTimer = new DispatcherTimer();
-            _updateTimer.Tick += UpdateTimerOnTick;
-        }
-
         if (_updateTimer.IsEnabled)
         {
             return;
@@ -150,5 +145,6 @@ public sealed partial class PlayerViewModel : ObservableRecipient
         GetCurrentPlaybackCommand.Cancel();
         CurrentTrack?.Dispose();
         CurrentTrack = null;
+        base.OnDeactivated();
     }
 }

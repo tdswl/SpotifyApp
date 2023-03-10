@@ -96,5 +96,6 @@ public sealed partial class ArtistScreenViewModel : ObservableRecipient
         Albums.Clear();
         Artist?.Dispose();
         Artist = null;
+        base.OnDeactivated();
     }
 }

@@ -19,6 +19,9 @@ public sealed partial class MainWindowViewModel : ObservableRecipient,
     private UserControl? _content;
     
     [ObservableProperty]
+    private SearchViewModel? _search;
+    
+    [ObservableProperty]
     private PlayerViewModel? _player;
     
     public MainWindowViewModel()
@@ -37,6 +40,7 @@ public sealed partial class MainWindowViewModel : ObservableRecipient,
         base.OnActivated();
 
         Player = Ioc.Default.GetRequiredService<PlayerViewModel>();
+        Search = Ioc.Default.GetRequiredService<SearchViewModel>();
         NavigateToCommand.Execute(PageType.Profile);
     }
     

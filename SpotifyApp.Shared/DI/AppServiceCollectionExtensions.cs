@@ -31,6 +31,7 @@ public static class AppServiceCollectionExtensions
             .AddSingleton<MainWindowViewModel>()
             .AddSingleton<CurrentUserViewModel>()
             .AddSingleton<PlayerViewModel>()
+            .AddSingleton<SearchViewModel>()
             
             // Page models
             .AddTransient<ProfileViewModel>()
@@ -41,7 +42,8 @@ public static class AppServiceCollectionExtensions
             .AddTransient<TrackViewModel>()
             .AddTransient<UserViewModel>()
             .AddTransient<ArtistViewModel>()
-            .AddTransient<PlaylistViewModel>()
+            .AddTransient<PlaylistViewModel>()    
+            .AddTransient<AlbumViewModel>()
             .AddTransient<AlbumWithTracksViewModel>()
             
             .AddScoped<IAuthService, AuthService>()

@@ -11,15 +11,7 @@
         <viewModels:MainWindowViewModel />
     </Design.DataContext>
 
-    <SplitView Classes="MenuWide">
-        <Interaction.Behaviors>
-            <AdaptiveBehavior>
-                <AdaptiveClassSetter MinWidth="0" MaxWidth="500" ClassName="MenuSmall" />
-                <AdaptiveClassSetter MinWidth="500" MaxWidth="900" ClassName="MenuMedium" />
-                <AdaptiveClassSetter MinWidth="900" MaxWidth="Infinity" ClassName="MenuWide" />
-            </AdaptiveBehavior>
-        </Interaction.Behaviors>
-
+    <SplitView Classes="Menu">
         <SplitView.Pane>
             <Grid VerticalAlignment="Stretch"
                   RowDefinitions="Auto, *, Auto">

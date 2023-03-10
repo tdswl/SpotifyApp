@@ -19,7 +19,7 @@
 
     <ItemGroup>
         <PackageReference Include="AsyncKeyedLock" />
-        <PackageReference Include="AutoMapper"  />
+        <PackageReference Include="AutoMapper" />
         <PackageReference Include="AutoMapper.Extensions.EnumMapping" />
         <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" />
         <PackageReference Include="Avalonia" />
@@ -27,7 +27,6 @@
         <PackageReference Include="Avalonia.Themes.Fluent" />
         <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
         <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" />
-        <PackageReference Include="Avalonia.Xaml.Interactions.Responsive" />
         <PackageReference Include="CommunityToolkit.Mvvm" />
         <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
         <PackageReference Include="Serilog" />

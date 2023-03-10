@@ -3,39 +3,7 @@
     <Design.PreviewWith>
         <Border Padding="20">
             <StackPanel>
-                <SplitView Classes="MenuSmall">
-                    <SplitView.Pane>
-                        <Grid VerticalAlignment="Stretch"
-                              RowDefinitions="Auto, *, Auto">
-                            <StackPanel>
-                                <Button Content="Test" />
-                            </StackPanel>    
-                        </Grid>
-                    </SplitView.Pane>
-                    <Border BorderThickness="1" 
-                            BorderBrush="Black"
-                            HorizontalAlignment="Stretch"
-                            VerticalAlignment="Stretch">
-                        <TextBlock Text="Content" />
-                    </Border>
-                </SplitView>
-                <SplitView Classes="MenuMedium">
-                    <SplitView.Pane>
-                        <Grid VerticalAlignment="Stretch"
-                              RowDefinitions="Auto, *, Auto">
-                            <StackPanel>
-                                <Button Content="Test" />
-                            </StackPanel>    
-                        </Grid>
-                    </SplitView.Pane>
-                    <Border BorderThickness="1" 
-                            BorderBrush="Black"
-                            HorizontalAlignment="Stretch"
-                            VerticalAlignment="Stretch">
-                        <TextBlock Text="Content" />
-                    </Border>
-                </SplitView>
-                <SplitView Classes="MenuWide">
+                <SplitView Classes="Menu">
                     <SplitView.Pane>
                         <Grid VerticalAlignment="Stretch"
                               RowDefinitions="Auto, *, Auto">
@@ -55,13 +23,7 @@
         </Border>
     </Design.PreviewWith>
 
-    <Style Selector="SplitView.MenuSmall">
-        <Setter Property="DisplayMode" Value="CompactInline" />
-    </Style>
-    <Style Selector="SplitView.MenuMedium">
-        <Setter Property="DisplayMode" Value="CompactInline" />
-    </Style>
-    <Style Selector="SplitView.MenuWide">
+    <Style Selector="SplitView.Menu">
         <Setter Property="DisplayMode" Value="CompactInline" />
     </Style>
 </Styles>

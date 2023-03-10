@@ -21,7 +21,7 @@
                            Text="{x:Static p:Resources.OnlyVisibleToYou}" />
                 <ListBox Items="{Binding TopArtists}"
                          Background="Transparent"
-                         ItemContainerTheme="{StaticResource ArtistCardItem}"
+                         ItemContainerTheme="{StaticResource CardItem}"
                          ItemTemplate="{StaticResource ArtistCard}"
                          SelectedItem="{Binding SelectedTopArtist}">
                     <ListBox.ItemsPanel>
@@ -46,7 +46,7 @@
                            Text="{x:Static p:Resources.Following}" />
                 <ListBox Items="{Binding FollowingArtists}"
                          Background="Transparent"
-                         ItemContainerTheme="{StaticResource ArtistCardItem}"
+                         ItemContainerTheme="{StaticResource CardItem}"
                          ItemTemplate="{StaticResource ArtistCard}"
                          SelectedItem="{Binding SelectedFollowingArtist}">
                     <ListBox.ItemsPanel>

@@ -22,7 +22,7 @@
                     <Image Stretch="UniformToFill"
                            Width="200"
                            Height="200"
-                           Source="{Binding}" />
+                           Source="{Binding Preview}" />
                 </Panel>
             </Border>
             <StackPanel Grid.Column="2"

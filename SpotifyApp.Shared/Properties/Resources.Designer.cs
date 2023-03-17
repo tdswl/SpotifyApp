@@ -222,6 +222,15 @@ namespace SpotifyApp.Shared.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Search.
+        /// </summary>
+        public static string SearchWatermark {
+            get {
+                return ResourceManager.GetString("SearchWatermark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Top artists this month.
         /// </summary>
         public static string TopArtistsThisMonth {

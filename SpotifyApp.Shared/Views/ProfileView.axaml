@@ -22,7 +22,7 @@
                 <ListBox Items="{Binding TopArtists}"
                          Background="Transparent"
                          ItemContainerTheme="{StaticResource CardItem}"
-                         ItemTemplate="{StaticResource ArtistCard}"
+                         ItemTemplate="{StaticResource ImagePreviewCard}"
                          SelectedItem="{Binding SelectedTopArtist}">
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
@@ -47,7 +47,7 @@
                 <ListBox Items="{Binding FollowingArtists}"
                          Background="Transparent"
                          ItemContainerTheme="{StaticResource CardItem}"
-                         ItemTemplate="{StaticResource ArtistCard}"
+                         ItemTemplate="{StaticResource ImagePreviewCard}"
                          SelectedItem="{Binding SelectedFollowingArtist}">
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>

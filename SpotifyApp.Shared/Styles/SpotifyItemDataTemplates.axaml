@@ -66,9 +66,6 @@
                     <Image Width="200"
                            Stretch="Uniform"
                            Source="{Binding Preview}" />
-                    <!-- <ProgressBar VerticalAlignment="Center" -->
-                    <!--              IsIndeterminate="True" -->
-                    <!--              IsVisible="{Binding Preview, Converter={x:Static ObjectConverters.IsNull}}" /> -->
                 </Panel>
             </Border>
             <TextBlock Text="{Binding Item.Name}"
@@ -90,9 +87,27 @@
                     <Image Width="200"
                            Stretch="Uniform"
                            Source="{Binding Preview}" />
-                    <!-- <ProgressBar VerticalAlignment="Center" -->
-                    <!--              IsIndeterminate="True" -->
-                    <!--              IsVisible="{Binding Preview, Converter={x:Static ObjectConverters.IsNull}}" /> -->
+                </Panel>
+            </Border>
+            <TextBlock Text="{Binding Item.Name}"
+                       HorizontalAlignment="Center" />
+            <TextBlock Text="{Binding Item.Type}"
+                       HorizontalAlignment="Center" />
+        </StackPanel>
+    </DataTemplate>
+    
+    <DataTemplate x:Key="TrackCard"
+                  DataType="{x:Type items:TrackViewModel}">
+        <StackPanel Spacing="5"
+                    Width="240"
+                    Height="335">
+            <Border ClipToBounds="True"
+                    CornerRadius="180"
+                    Margin="20">
+                <Panel Background="Gray">
+                    <Image Width="200"
+                           Stretch="Uniform"
+                           Source="{Binding Preview}" />
                 </Panel>
             </Border>
             <TextBlock Text="{Binding Item.Name}"

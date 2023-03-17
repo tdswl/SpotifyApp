@@ -4,6 +4,7 @@
                     xmlns:items="clr-namespace:SpotifyApp.Shared.ViewModels.Items"
                     xmlns:base="clr-namespace:SpotifyApp.Shared.ViewModels.Base"
                     xmlns:p="clr-namespace:SpotifyApp.Shared.Properties">
+
     <DataTemplate x:Key="DefaultItemHeader"
                   DataType="{x:Type base:ISpotifyItemViewModel}">
         <Grid Grid.Row="0"
@@ -18,9 +19,10 @@
                                HorizontalAlignment="Center"
                                FontSize="50"
                                Text="-" />
-                    <Image Width="200"
-                           Stretch="Uniform"
-                           Source="{Binding Preview}" />
+                    <Image Stretch="UniformToFill"
+                           Width="200"
+                           Height="200"
+                           Source="{Binding}" />
                 </Panel>
             </Border>
             <StackPanel Grid.Column="2"
@@ -40,7 +42,6 @@
                    VerticalAlignment="Stretch"
                    Stretch="UniformToFill"
                    Source="{Binding Preview}" />
-
             <StackPanel Spacing="5"
                         Margin="40 20 0 20"
                         HorizontalAlignment="Left"
@@ -54,8 +55,8 @@
         </Grid>
     </DataTemplate>
 
-    <DataTemplate x:Key="ArtistCard"
-                  DataType="{x:Type items:ArtistViewModel}">
+    <DataTemplate x:Key="ImagePreviewCard"
+                  DataType="{x:Type base:ImagePreviewViewModel}">
         <StackPanel Spacing="5"
                     Width="240"
                     Height="335">
@@ -63,50 +64,13 @@
                     CornerRadius="180"
                     Margin="20">
                 <Panel Background="Gray">
-                    <Image Width="200"
-                           Stretch="Uniform"
-                           Source="{Binding Preview}" />
-                </Panel>
-            </Border>
-            <TextBlock Text="{Binding Item.Name}"
-                       HorizontalAlignment="Center" />
-            <TextBlock Text="{Binding Item.Type}"
-                       HorizontalAlignment="Center" />
-        </StackPanel>
-    </DataTemplate>
-    
-    <DataTemplate x:Key="AlbumCard"
-                  DataType="{x:Type items:AlbumViewModel}">
-        <StackPanel Spacing="5"
-                    Width="240"
-                    Height="335">
-            <Border ClipToBounds="True"
-                    CornerRadius="180"
-                    Margin="20">
-                <Panel Background="Gray">
-                    <Image Width="200"
-                           Stretch="Uniform"
-                           Source="{Binding Preview}" />
-                </Panel>
-            </Border>
-            <TextBlock Text="{Binding Item.Name}"
-                       HorizontalAlignment="Center" />
-            <TextBlock Text="{Binding Item.Type}"
-                       HorizontalAlignment="Center" />
-        </StackPanel>
-    </DataTemplate>
-    
-    <DataTemplate x:Key="TrackCard"
-                  DataType="{x:Type items:TrackViewModel}">
-        <StackPanel Spacing="5"
-                    Width="240"
-                    Height="335">
-            <Border ClipToBounds="True"
-                    CornerRadius="180"
-                    Margin="20">
-                <Panel Background="Gray">
-                    <Image Width="200"
-                           Stretch="Uniform"
+                    <TextBlock VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               FontSize="50"
+                               Text="-" />
+                    <Image Stretch="UniformToFill"
+                           Width="200"
+                           Height="200"
                            Source="{Binding Preview}" />
                 </Panel>
             </Border>
@@ -127,8 +91,9 @@
                     CornerRadius="0"
                     Margin="20">
                 <Panel Background="Gray">
-                    <Image Width="200"
-                           Stretch="Uniform"
+                    <Image Stretch="UniformToFill"
+                           Width="200"
+                           Height="200"
                            Source="{Binding Preview}" />
                 </Panel>
             </Border>

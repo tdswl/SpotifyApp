@@ -10,66 +10,75 @@
         <viewModels:SearchViewModel />
     </Design.DataContext>
 
-    <ScrollViewer HorizontalScrollBarVisibility="Disabled"
-                  VerticalScrollBarVisibility="Auto"
-                  IsVisible="{Binding SearchString, Converter={x:Static StringConverters.IsNotNullOrEmpty}}">
-        <StackPanel Spacing="40"
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Stretch"
-                    Background="DimGray">
-            <StackPanel Spacing="10">
-                <TextBlock Classes="H1"
-                           Text="{x:Static p:Resources.AlbumTypeAlbum}" />
+    <Grid>
+        <ScrollViewer HorizontalScrollBarVisibility="Disabled"
+                      VerticalScrollBarVisibility="Auto"
+                      Background="DimGray"
+                      IsVisible="{Binding SearchString, Converter={x:Static StringConverters.IsNotNullOrEmpty}}">
+            <StackPanel Spacing="40"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Margin="40 50 0 20">
+                <StackPanel Spacing="10">
+                    <TextBlock Classes="H1"
+                               Text="{x:Static p:Resources.AlbumTypeAlbum}" />
 
-                <ListBox Items="{Binding Albums}"
-                         Background="Transparent"
-                         VerticalAlignment="Top"
-                         ItemContainerTheme="{StaticResource CardItem}"
-                         ItemTemplate="{StaticResource AlbumCard}">
-                    <ListBox.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <StackPanel Orientation="Horizontal"
-                                        Spacing="30" />
-                        </ItemsPanelTemplate>
-                    </ListBox.ItemsPanel>
-                </ListBox>
+                    <ListBox Items="{Binding Albums}"
+                             Background="Transparent"
+                             VerticalAlignment="Top"
+                             ItemContainerTheme="{StaticResource CardItem}"
+                             ItemTemplate="{StaticResource ImagePreviewCard}">
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal"
+                                            Spacing="30" />
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                    </ListBox>
+                </StackPanel>
+
+                <StackPanel Spacing="10">
+                    <TextBlock Classes="H1"
+                               Text="{x:Static p:Resources.ItemTypeArtist}" />
+
+                    <ListBox Items="{Binding Artists}"
+                             Background="Transparent"
+                             VerticalAlignment="Top"
+                             ItemContainerTheme="{StaticResource CardItem}"
+                             ItemTemplate="{StaticResource ImagePreviewCard}">
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal"
+                                            Spacing="30" />
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                    </ListBox>
+                </StackPanel>
+
+                <StackPanel Spacing="10">
+                    <TextBlock Classes="H1"
+                               Text="{x:Static p:Resources.ItemTypeTrack}" />
+
+                    <ListBox Items="{Binding Tracks}"
+                             Background="Transparent"
+                             VerticalAlignment="Top"
+                             ItemContainerTheme="{StaticResource CardItem}"
+                             ItemTemplate="{StaticResource ImagePreviewCard}">
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal"
+                                            Spacing="30" />
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                    </ListBox>
+                </StackPanel>
             </StackPanel>
+        </ScrollViewer>
 
-            <StackPanel Spacing="10">
-                <TextBlock Classes="H1"
-                           Text="{x:Static p:Resources.ItemTypeArtist}" />
-
-                <ListBox Items="{Binding Artists}"
-                         Background="Transparent"
-                         VerticalAlignment="Top"
-                         ItemContainerTheme="{StaticResource CardItem}"
-                         ItemTemplate="{StaticResource ArtistCard}">
-                    <ListBox.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <StackPanel Orientation="Horizontal"
-                                        Spacing="30" />
-                        </ItemsPanelTemplate>
-                    </ListBox.ItemsPanel>
-                </ListBox>
-            </StackPanel>
-
-            <StackPanel Spacing="10">
-                <TextBlock Classes="H1"
-                           Text="{x:Static p:Resources.ItemTypeTrack}" />
-
-                <ListBox Items="{Binding Tracks}"
-                         Background="Transparent"
-                         VerticalAlignment="Top"
-                         ItemContainerTheme="{StaticResource CardItem}"
-                         ItemTemplate="{StaticResource TrackCard}">
-                    <ListBox.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <StackPanel Orientation="Horizontal"
-                                        Spacing="30" />
-                        </ItemsPanelTemplate>
-                    </ListBox.ItemsPanel>
-                </ListBox>
-            </StackPanel>
-        </StackPanel>
-    </ScrollViewer>
+        <TextBox Grid.Row="0"
+                 Watermark="Search"
+                 Text="{Binding SearchString}"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Top" />
+    </Grid>
 </UserControl>

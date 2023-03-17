@@ -37,12 +37,6 @@
             <views:SearchView Grid.Row="0"
                               DataContext="{Binding Search}" />
 
-            <TextBox Grid.Row="0"
-                     Watermark="Search"
-                     Text="{Binding Search.SearchString}"
-                     HorizontalAlignment="Left"
-                     VerticalAlignment="Top" />
-
             <Grid Grid.Row="1"
                   ColumnDefinitions="Auto, *"
                   HorizontalAlignment="Stretch"

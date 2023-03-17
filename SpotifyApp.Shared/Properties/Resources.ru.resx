@@ -80,4 +80,7 @@
     <data name="PlayerNext" xml:space="preserve">
         <value>Следующий трек</value>
     </data>
+    <data name="SearchWatermark" xml:space="preserve">
+        <value>Поиск</value>
+    </data>
 </root>

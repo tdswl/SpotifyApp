@@ -21,7 +21,7 @@
                         Margin="40 50 0 20">
                 <StackPanel Spacing="10">
                     <TextBlock Classes="H1"
-                               Text="{x:Static p:Resources.AlbumTypeAlbum}" />
+                               Text="{x:Static p:Resources.ItemTypeAlbum}" />
 
                     <ListBox Items="{Binding Albums}"
                              Background="Transparent"
@@ -76,7 +76,8 @@
         </ScrollViewer>
 
         <TextBox Grid.Row="0"
-                 Watermark="Search"
+                 Margin="40, 10, 0, 10"
+                 Watermark="{x:Static p:Resources.SearchWatermark}"
                  Text="{Binding SearchString}"
                  HorizontalAlignment="Left"
                  VerticalAlignment="Top" />

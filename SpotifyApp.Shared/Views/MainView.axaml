@@ -32,7 +32,8 @@
         </SplitView.Pane>
 
         <Grid RowDefinitions="*, Auto">
-            <TransitioningContentControl Content="{Binding Content}" />
+            <TransitioningContentControl Content="{Binding Content}"
+                                         Padding="0, 50, 0, 0"/>
 
             <views:SearchView Grid.Row="0"
                               DataContext="{Binding Search}" />

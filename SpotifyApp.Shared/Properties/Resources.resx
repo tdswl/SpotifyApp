@@ -87,4 +87,7 @@
     <data name="PlayerNext" xml:space="preserve">
         <value>Next</value>
     </data>
+    <data name="SearchWatermark" xml:space="preserve">
+        <value>Search</value>
+    </data>
 </root>

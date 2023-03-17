@@ -5,6 +5,7 @@
              xmlns:viewModels="clr-namespace:SpotifyApp.Shared.ViewModels"
              xmlns:enums="clr-namespace:SpotifyApp.Shared.Enums"
              xmlns:p="clr-namespace:SpotifyApp.Shared.Properties"
+             xmlns:views="clr-namespace:SpotifyApp.Shared.Views"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="SpotifyApp.Shared.Views.MainView">
     <Design.DataContext>
@@ -32,33 +33,15 @@
 
         <Grid RowDefinitions="*, Auto">
             <TransitioningContentControl Content="{Binding Content}" />
-            
-            <Grid Grid.Row="0"
-                  RowDefinitions="*"
-                  HorizontalAlignment="Stretch"
-                  VerticalAlignment="Stretch"
-                  DataContext="{Binding Search}"
-                  Background="DimGray"
-                  IsVisible="{Binding SearchString, Converter={x:Static StringConverters.IsNotNullOrEmpty}}">
-                <ListBox Items="{Binding Albums}"
-                         Background="Transparent"
-                         VerticalAlignment="Top"
-                         ItemContainerTheme="{StaticResource CardItem}"
-                         ItemTemplate="{StaticResource AlbumCard}">
-                    <ListBox.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <StackPanel Orientation="Horizontal"
-                                        Spacing="30" />
-                        </ItemsPanelTemplate>
-                    </ListBox.ItemsPanel>
-                </ListBox>
-            </Grid>
-            
-            <TextBox  Grid.Row="0"
-                      Watermark="Search"
-                      Text="{Binding Search.SearchString}"
-                      HorizontalAlignment="Left"
-                      VerticalAlignment="Top"/>
+
+            <views:SearchView Grid.Row="0"
+                              DataContext="{Binding Search}" />
+
+            <TextBox Grid.Row="0"
+                     Watermark="Search"
+                     Text="{Binding Search.SearchString}"
+                     HorizontalAlignment="Left"
+                     VerticalAlignment="Top" />
 
             <Grid Grid.Row="1"
                   ColumnDefinitions="Auto, *"
@@ -67,7 +50,7 @@
                   DataContext="{Binding Player}">
                 <ContentControl Content="{Binding CurrentTrack}"
                                 ContentTemplate="{StaticResource TrackWithImage}" />
-                
+
                 <!-- <StackPanel Grid.Column="1" -->
                 <!--             HorizontalAlignment="Center" -->
                 <!--             Orientation="Horizontal"> -->

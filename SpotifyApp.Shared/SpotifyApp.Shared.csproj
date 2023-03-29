@@ -31,7 +31,6 @@
         <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
         <PackageReference Include="Serilog" />
         <PackageReference Include="Serilog.Extensions.Logging" />
-        <PackageReference Include="XamlNameReferenceGenerator" />
     </ItemGroup>
 
     <ItemGroup>

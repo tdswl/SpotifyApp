@@ -13,7 +13,6 @@
     <PackageVersion Include="CommunityToolkit.Mvvm" Version="8.1.0" />
     <PackageVersion Include="Serilog" Version="2.12.0" />
     <PackageVersion Include="Serilog.Extensions.Logging" Version="3.1.0" />
-    <PackageVersion Include="XamlNameReferenceGenerator" Version="1.6.1" />
     <PackageVersion Include="SQLitePCLRaw.bundle_e_sqlcipher" Version="2.1.4" />
     <PackageVersion Include="FluentAssertions" Version="6.10.0" />
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.5.0" />
@@ -24,17 +23,17 @@
     <PackageVersion Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
     <PackageVersion Include="Microsoft.Extensions.Http" Version="7.0.0" />
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
-    <PackageVersion Include="Microsoft.Data.Sqlite.Core" Version="7.0.3" />
-    <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.3" />
-    <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite.Core" Version="7.0.3" />
+    <PackageVersion Include="Microsoft.Data.Sqlite.Core" Version="7.0.4" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.4" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite.Core" Version="7.0.4" />
     <!-- https://github.com/xunit/xunit/issues/2470 -->
     <PackageVersion Include="System.Net.Http" Version="4.3.4" />
     <PackageVersion Include="System.Text.RegularExpressions" Version="4.3.1" />
-    <PackageVersion Include="Avalonia.Desktop" Version="11.0.0-preview5" />
-    <PackageVersion Include="Avalonia" Version="11.0.0-preview5" />
-    <PackageVersion Include="Avalonia.Controls.DataGrid" Version="11.0.0-preview5" />
-    <PackageVersion Include="Avalonia.Themes.Fluent" Version="11.0.0-preview5" />
-    <PackageVersion Include="Avalonia.Diagnostics" Version="11.0.0-preview5" />
+    <PackageVersion Include="Avalonia.Desktop" Version="11.0.0-preview6" />
+    <PackageVersion Include="Avalonia" Version="11.0.0-preview6" />
+    <PackageVersion Include="Avalonia.Controls.DataGrid" Version="11.0.0-preview6" />
+    <PackageVersion Include="Avalonia.Themes.Fluent" Version="11.0.0-preview6" />
+    <PackageVersion Include="Avalonia.Diagnostics" Version="11.0.0-preview6" />
   </ItemGroup>
   <ItemGroup Condition=" '$(SignAssembly)' != 'True'">
     <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">

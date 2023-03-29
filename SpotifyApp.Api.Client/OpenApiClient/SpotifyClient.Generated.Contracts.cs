@@ -925,7 +925,8 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// Get User's Saved Episodes
         /// </summary>
         /// <remarks>
-        /// Get a list of the episodes saved in the current Spotify user's library.
+        /// Get a list of the episodes saved in the current Spotify user's library.&lt;br/&gt;
+        /// <br/>This API endpoint is in __beta__ and could change without warning. Please share any feedback that you have, or issues that you discover, in our [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer).
         /// </remarks>
         /// <returns>Pages of episodes</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -936,7 +937,8 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// Get User's Saved Episodes
         /// </summary>
         /// <remarks>
-        /// Get a list of the episodes saved in the current Spotify user's library.
+        /// Get a list of the episodes saved in the current Spotify user's library.&lt;br/&gt;
+        /// <br/>This API endpoint is in __beta__ and could change without warning. Please share any feedback that you have, or issues that you discover, in our [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer).
         /// </remarks>
         /// <returns>Pages of episodes</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -946,7 +948,8 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// Save Episodes for Current User
         /// </summary>
         /// <remarks>
-        /// Save one or more episodes to the current user's library.
+        /// Save one or more episodes to the current user's library.&lt;br/&gt;
+        /// <br/>This API endpoint is in __beta__ and could change without warning. Please share any feedback that you have, or issues that you discover, in our [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer).
         /// </remarks>
         /// <returns>Episode saved</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -957,7 +960,8 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// Save Episodes for Current User
         /// </summary>
         /// <remarks>
-        /// Save one or more episodes to the current user's library.
+        /// Save one or more episodes to the current user's library.&lt;br/&gt;
+        /// <br/>This API endpoint is in __beta__ and could change without warning. Please share any feedback that you have, or issues that you discover, in our [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer).
         /// </remarks>
         /// <returns>Episode saved</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -967,7 +971,8 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// Remove User's Saved Episodes
         /// </summary>
         /// <remarks>
-        /// Remove one or more episodes from the current user's library.
+        /// Remove one or more episodes from the current user's library.&lt;br/&gt;
+        /// <br/>This API endpoint is in __beta__ and could change without warning. Please share any feedback that you have, or issues that you discover, in our [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer).
         /// </remarks>
         /// <returns>Episode removed</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -978,7 +983,8 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// Remove User's Saved Episodes
         /// </summary>
         /// <remarks>
-        /// Remove one or more episodes from the current user's library.
+        /// Remove one or more episodes from the current user's library.&lt;br/&gt;
+        /// <br/>This API endpoint is in __beta__ and could change without warning. Please share any feedback that you have, or issues that you discover, in our [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer).
         /// </remarks>
         /// <returns>Episode removed</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -988,7 +994,8 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// Check User's Saved Episodes
         /// </summary>
         /// <remarks>
-        /// Check if one or more episodes is already saved in the current Spotify user's 'Your Episodes' library.
+        /// Check if one or more episodes is already saved in the current Spotify user's 'Your Episodes' library.&lt;br/&gt;
+        /// <br/>This API endpoint is in __beta__ and could change without warning. Please share any feedback that you have, or issues that you discover, in our [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer)..
         /// </remarks>
         /// <returns>Array of booleans</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -999,7 +1006,8 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// Check User's Saved Episodes
         /// </summary>
         /// <remarks>
-        /// Check if one or more episodes is already saved in the current Spotify user's 'Your Episodes' library.
+        /// Check if one or more episodes is already saved in the current Spotify user's 'Your Episodes' library.&lt;br/&gt;
+        /// <br/>This API endpoint is in __beta__ and could change without warning. Please share any feedback that you have, or issues that you discover, in our [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer)..
         /// </remarks>
         /// <returns>Array of booleans</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -1157,7 +1165,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// </summary>
         /// <remarks>
         /// Create a playlist for a Spotify user. (The playlist will be empty until
-        /// <br/>you [add tracks](/documentation/web-api/reference/#/operations/add-tracks-to-playlist).)
+        /// <br/>you [add tracks](/documentation/web-api/reference/add-tracks-to-playlist).)
         /// </remarks>
         /// <returns>A playlist</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -1169,7 +1177,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// </summary>
         /// <remarks>
         /// Create a playlist for a Spotify user. (The playlist will be empty until
-        /// <br/>you [add tracks](/documentation/web-api/reference/#/operations/add-tracks-to-playlist).)
+        /// <br/>you [add tracks](/documentation/web-api/reference/add-tracks-to-playlist).)
         /// </remarks>
         /// <returns>A playlist</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -1563,7 +1571,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// Get Available Genre Seeds
         /// </summary>
         /// <remarks>
-        /// Retrieve a list of available genres seed parameter values for [recommendations](/documentation/web-api/reference/#/operations/get-recommendations).
+        /// Retrieve a list of available genres seed parameter values for [recommendations](/documentation/web-api/reference/get-recommendations).
         /// </remarks>
         /// <returns>A set of genres</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -1574,7 +1582,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// Get Available Genre Seeds
         /// </summary>
         /// <remarks>
-        /// Retrieve a list of available genres seed parameter values for [recommendations](/documentation/web-api/reference/#/operations/get-recommendations).
+        /// Retrieve a list of available genres seed parameter values for [recommendations](/documentation/web-api/reference/get-recommendations).
         /// </remarks>
         /// <returns>A set of genres</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -1946,7 +1954,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         public string Href { get; set; }
 
         /// <summary>
-        /// The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) for the track.
+        /// The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the track.
         /// <br/>
         /// </summary>
 
@@ -1966,7 +1974,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         public string Type { get; set; }
 
         /// <summary>
-        /// The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the track.
+        /// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the track.
         /// <br/>
         /// </summary>
 
@@ -2147,7 +2155,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         public string Href { get; set; }
 
         /// <summary>
-        /// The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) for the artist.
+        /// The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the artist.
         /// <br/>
         /// </summary>
 
@@ -2198,7 +2206,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         public ArtistObjectType Type { get; set; }
 
         /// <summary>
-        /// The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the artist.
+        /// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the artist.
         /// <br/>
         /// </summary>
 
@@ -2242,7 +2250,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         public string Href { get; set; }
 
         /// <summary>
-        /// The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) for the artist.
+        /// The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the artist.
         /// <br/>
         /// </summary>
 
@@ -2273,7 +2281,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         public SimplifiedArtistObjectType Type { get; set; }
 
         /// <summary>
-        /// The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the artist.
+        /// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the artist.
         /// <br/>
         /// </summary>
 
@@ -2358,7 +2366,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         public PlaylistUserObject Added_by { get; set; }
 
         /// <summary>
-        /// Whether this track or episode is a [local file](https://developer.spotify.com/web-api/local-files-spotify-playlists/) or not.
+        /// Whether this track or episode is a [local file](/documentation/web-api/concepts/playlists/#local-files) or not.
         /// <br/>
         /// </summary>
 
@@ -2694,7 +2702,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
     public partial class ErrorObject
     {
         /// <summary>
-        /// The HTTP status code (also returned in the response header; see [Response Status Codes](/documentation/web-api/#response-status-codes) for more information).
+        /// The HTTP status code (also returned in the response header; see [Response Status Codes](/documentation/web-api/concepts/api-calls#response-status-codes) for more information).
         /// <br/>
         /// </summary>
 
@@ -2851,7 +2859,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
     public partial class PrivateUserObject
     {
         /// <summary>
-        /// The country of the user, as set in the user's account profile. An [ISO 3166-1 alpha-2 country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). _This field is only available when the current user has granted access to the [user-read-private](/documentation/general/guides/authorization-guide/#list-of-scopes) scope._
+        /// The country of the user, as set in the user's account profile. An [ISO 3166-1 alpha-2 country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). _This field is only available when the current user has granted access to the [user-read-private](/documentation/web-api/concepts/scopes/#list-of-scopes) scope._
         /// <br/>
         /// </summary>
 
@@ -2871,7 +2879,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         public string Display_name { get; set; }
 
         /// <summary>
-        /// The user's email address, as entered by the user when creating their account. _**Important!** This email address is unverified; there is no proof that it actually belongs to the user._ _This field is only available when the current user has granted access to the [user-read-email](/documentation/general/guides/authorization-guide/#list-of-scopes) scope._
+        /// The user's email address, as entered by the user when creating their account. _**Important!** This email address is unverified; there is no proof that it actually belongs to the user._ _This field is only available when the current user has granted access to the [user-read-email](/documentation/web-api/concepts/scopes/#list-of-scopes) scope._
         /// <br/>
         /// </summary>
 
@@ -2881,7 +2889,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         public string Email { get; set; }
 
         /// <summary>
-        /// The user's explicit content settings. _This field is only available when the current user has granted access to the [user-read-private](/documentation/general/guides/authorization-guide/#list-of-scopes) scope._
+        /// The user's explicit content settings. _This field is only available when the current user has granted access to the [user-read-private](/documentation/web-api/concepts/scopes/#list-of-scopes) scope._
         /// <br/>
         /// </summary>
 
@@ -2919,7 +2927,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         public string Href { get; set; }
 
         /// <summary>
-        /// The [Spotify user ID](/documentation/web-api/#spotify-uris-and-ids) for the user.
+        /// The [Spotify user ID](/documentation/web-api/concepts/spotify-uris-ids) for the user.
         /// <br/>
         /// </summary>
 
@@ -2938,7 +2946,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         public System.Collections.Generic.ICollection<ImageObject> Images { get; set; }
 
         /// <summary>
-        /// The user's Spotify subscription level: "premium", "free", etc. (The subscription level "open" can be considered the same as "free".) _This field is only available when the current user has granted access to the [user-read-private](/documentation/general/guides/authorization-guide/#list-of-scopes) scope._
+        /// The user's Spotify subscription level: "premium", "free", etc. (The subscription level "open" can be considered the same as "free".) _This field is only available when the current user has granted access to the [user-read-private](/documentation/web-api/concepts/scopes/#list-of-scopes) scope._
         /// <br/>
         /// </summary>
 
@@ -2958,7 +2966,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         public string Type { get; set; }
 
         /// <summary>
-        /// The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the user.
+        /// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the user.
         /// <br/>
         /// </summary>
 
@@ -3022,7 +3030,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         public string Href { get; set; }
 
         /// <summary>
-        /// The [Spotify user ID](/documentation/web-api/#spotify-uris-and-ids) for this user.
+        /// The [Spotify user ID](/documentation/web-api/concepts/spotify-uris-ids) for this user.
         /// <br/>
         /// </summary>
 
@@ -3053,7 +3061,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         public PublicUserObjectType Type { get; set; }
 
         /// <summary>
-        /// The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for this user.
+        /// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for this user.
         /// <br/>
         /// </summary>
 
@@ -3660,7 +3668,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         public string Href { get; set; }
 
         /// <summary>
-        /// The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) for the track.
+        /// The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the track.
         /// <br/>
         /// </summary>
 
@@ -3670,7 +3678,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         public string Id { get; set; }
 
         /// <summary>
-        /// Part of the response when [Track Relinking](/documentation/general/guides/track-relinking-guide/) is applied. If `true`, the track is playable in the given market. Otherwise `false`.
+        /// Part of the response when [Track Relinking](/documentation/web-api/concepts/track-relinking/) is applied. If `true`, the track is playable in the given market. Otherwise `false`.
         /// <br/>
         /// </summary>
 
@@ -3680,7 +3688,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         public bool Is_playable { get; set; }
 
         /// <summary>
-        /// Part of the response when [Track Relinking](/documentation/general/guides/track-relinking-guide/) is applied and is only part of the response if the track linking, in fact, exists. The requested track has been replaced with a different track. The track in the `linked_from` object contains information about the originally requested track.
+        /// Part of the response when [Track Relinking](/documentation/web-api/concepts/track-relinking/) is applied and is only part of the response if the track linking, in fact, exists. The requested track has been replaced with a different track. The track in the `linked_from` object contains information about the originally requested track.
         /// </summary>
 
         [System.Text.Json.Serialization.JsonPropertyName("linked_from")]
@@ -3738,7 +3746,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         public string Type { get; set; }
 
         /// <summary>
-        /// The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the track.
+        /// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the track.
         /// <br/>
         /// </summary>
 
@@ -4576,7 +4584,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         public int Mode { get; set; }
 
         /// <summary>
-        /// The popularity of the track. The value will be between 0 and 100, with 100 being the most popular. The popularity is calculated by algorithm and is based, in the most part, on the total number of plays the track has had and how recent those plays are. _**Note**: When applying track relinking via the `market` parameter, it is expected to find relinked tracks with popularities that do not match `min_*`, `max_*`and `target_*` popularities. These relinked tracks are accurate replacements for unplayable tracks with the expected popularity scores. Original, non-relinked tracks are available via the `linked_from` attribute of the [relinked track response](/documentation/general/guides/track-relinking-guide)._
+        /// The popularity of the track. The value will be between 0 and 100, with 100 being the most popular. The popularity is calculated by algorithm and is based, in the most part, on the total number of plays the track has had and how recent those plays are. _**Note**: When applying track relinking via the `market` parameter, it is expected to find relinked tracks with popularities that do not match `min_*`, `max_*`and `target_*` popularities. These relinked tracks are accurate replacements for unplayable tracks with the expected popularity scores. Original, non-relinked tracks are available via the `linked_from` attribute of the [relinked track response](/documentation/web-api/concepts/track-relinking)._
         /// <br/>
         /// </summary>
 
@@ -4680,7 +4688,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         public string Href { get; set; }
 
         /// <summary>
-        /// The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) for the playlist.
+        /// The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the playlist.
         /// <br/>
         /// </summary>
 
@@ -4690,7 +4698,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         public string Id { get; set; }
 
         /// <summary>
-        /// Images for the playlist. The array may be empty or contain up to three images. The images are returned by size in descending order. See [Working with Playlists](/documentation/general/guides/working-with-playlists/). _**Note**: If returned, the source URL for the image (`url`) is temporary and will expire in less than a day._
+        /// Images for the playlist. The array may be empty or contain up to three images. The images are returned by size in descending order. See [Working with Playlists](/documentation/web-api/concepts/playlists). _**Note**: If returned, the source URL for the image (`url`) is temporary and will expire in less than a day._
         /// <br/>
         /// </summary>
 
@@ -4720,7 +4728,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         public PlaylistOwnerObject Owner { get; set; }
 
         /// <summary>
-        /// The playlist's public/private status: `true` the playlist is public, `false` the playlist is private, `null` the playlist status is not relevant. For more about public/private status, see [Working with Playlists](/documentation/general/guides/working-with-playlists/)
+        /// The playlist's public/private status: `true` the playlist is public, `false` the playlist is private, `null` the playlist status is not relevant. For more about public/private status, see [Working with Playlists](/documentation/web-api/concepts/playlists)
         /// <br/>
         /// </summary>
 
@@ -4760,7 +4768,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         public string Type { get; set; }
 
         /// <summary>
-        /// The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the playlist.
+        /// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the playlist.
         /// <br/>
         /// </summary>
 
@@ -4824,7 +4832,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         public string Href { get; set; }
 
         /// <summary>
-        /// The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) for the playlist.
+        /// The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the playlist.
         /// <br/>
         /// </summary>
 
@@ -4834,7 +4842,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         public string Id { get; set; }
 
         /// <summary>
-        /// Images for the playlist. The array may be empty or contain up to three images. The images are returned by size in descending order. See [Working with Playlists](/documentation/general/guides/working-with-playlists/). _**Note**: If returned, the source URL for the image (`url`) is temporary and will expire in less than a day._
+        /// Images for the playlist. The array may be empty or contain up to three images. The images are returned by size in descending order. See [Working with Playlists](/documentation/web-api/concepts/playlists). _**Note**: If returned, the source URL for the image (`url`) is temporary and will expire in less than a day._
         /// <br/>
         /// </summary>
 
@@ -4864,7 +4872,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         public PlaylistOwnerObject Owner { get; set; }
 
         /// <summary>
-        /// The playlist's public/private status: `true` the playlist is public, `false` the playlist is private, `null` the playlist status is not relevant. For more about public/private status, see [Working with Playlists](/documentation/general/guides/working-with-playlists/)
+        /// The playlist's public/private status: `true` the playlist is public, `false` the playlist is private, `null` the playlist status is not relevant. For more about public/private status, see [Working with Playlists](/documentation/web-api/concepts/playlists)
         /// <br/>
         /// </summary>
 
@@ -4904,7 +4912,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         public string Type { get; set; }
 
         /// <summary>
-        /// The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the playlist.
+        /// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the playlist.
         /// <br/>
         /// </summary>
 
@@ -4992,7 +5000,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         public string Href { get; set; }
 
         /// <summary>
-        /// The [Spotify user ID](/documentation/web-api/#spotify-uris-and-ids) for this user.
+        /// The [Spotify user ID](/documentation/web-api/concepts/spotify-uris-ids) for this user.
         /// <br/>
         /// </summary>
 
@@ -5013,7 +5021,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         public PlaylistUserObjectType Type { get; set; }
 
         /// <summary>
-        /// The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for this user.
+        /// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for this user.
         /// <br/>
         /// </summary>
 
@@ -5074,7 +5082,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         public System.Collections.Generic.ICollection<ImageObject> Icons { get; set; } = new System.Collections.ObjectModel.Collection<ImageObject>();
 
         /// <summary>
-        /// The [Spotify category ID](/documentation/web-api/#spotify-uris-and-ids) of the category.
+        /// The [Spotify category ID](/documentation/web-api/concepts/spotify-uris-ids) of the category.
         /// <br/>
         /// </summary>
 
@@ -5200,7 +5208,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         public string Href { get; set; }
 
         /// <summary>
-        /// The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) for the track.
+        /// The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the track.
         /// <br/>
         /// </summary>
 
@@ -5210,7 +5218,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         public string Id { get; set; }
 
         /// <summary>
-        /// Part of the response when [Track Relinking](/documentation/general/guides/track-relinking-guide/) is applied. If `true`, the track is playable in the given market. Otherwise `false`.
+        /// Part of the response when [Track Relinking](/documentation/web-api/concepts/track-relinking) is applied. If `true`, the track is playable in the given market. Otherwise `false`.
         /// <br/>
         /// </summary>
 
@@ -5220,7 +5228,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         public bool Is_playable { get; set; }
 
         /// <summary>
-        /// Part of the response when [Track Relinking](/documentation/general/guides/track-relinking-guide/) is applied, and the requested track has been replaced with different track. The track in the `linked_from` object contains information about the originally requested track.
+        /// Part of the response when [Track Relinking](/documentation/web-api/concepts/track-relinking) is applied, and the requested track has been replaced with different track. The track in the `linked_from` object contains information about the originally requested track.
         /// <br/>
         /// </summary>
 
@@ -5291,7 +5299,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         public TrackObjectType Type { get; set; }
 
         /// <summary>
-        /// The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the track.
+        /// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the track.
         /// <br/>
         /// </summary>
 
@@ -5422,7 +5430,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         public string Href { get; set; }
 
         /// <summary>
-        /// The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) for the episode.
+        /// The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the episode.
         /// <br/>
         /// </summary>
 
@@ -5543,7 +5551,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         public EpisodeBaseType Type { get; set; }
 
         /// <summary>
-        /// The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the episode.
+        /// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the episode.
         /// <br/>
         /// </summary>
 
@@ -5688,7 +5696,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         public string Href { get; set; }
 
         /// <summary>
-        /// The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) for the show.
+        /// The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the show.
         /// <br/>
         /// </summary>
 
@@ -5776,7 +5784,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         public ShowBaseType Type { get; set; }
 
         /// <summary>
-        /// The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the show.
+        /// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the show.
         /// <br/>
         /// </summary>
 
@@ -5930,7 +5938,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         public string Href { get; set; }
 
         /// <summary>
-        /// The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) for the audiobook.
+        /// The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the audiobook.
         /// <br/>
         /// </summary>
 
@@ -6019,7 +6027,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         public AudiobookBaseType Type { get; set; }
 
         /// <summary>
-        /// The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the audiobook.
+        /// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the audiobook.
         /// <br/>
         /// </summary>
 
@@ -6130,7 +6138,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         public string Href { get; set; }
 
         /// <summary>
-        /// The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) for the album.
+        /// The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the album.
         /// <br/>
         /// </summary>
 
@@ -6208,7 +6216,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         public AlbumBaseType Type { get; set; }
 
         /// <summary>
-        /// The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the album.
+        /// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the album.
         /// <br/>
         /// </summary>
 
@@ -6427,7 +6435,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         public string Href { get; set; }
 
         /// <summary>
-        /// The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) for the episode.
+        /// The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the episode.
         /// <br/>
         /// </summary>
 
@@ -6527,7 +6535,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         public ChapterBaseType Type { get; set; }
 
         /// <summary>
-        /// The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the episode.
+        /// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the episode.
         /// <br/>
         /// </summary>
 
@@ -6615,7 +6623,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         public ExternalUrlObject External_urls { get; set; }
 
         /// <summary>
-        /// The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the context.
+        /// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the context.
         /// <br/>
         /// </summary>
 
@@ -6765,7 +6773,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
     public partial class ExternalUrlObject
     {
         /// <summary>
-        /// The [Spotify URL](/documentation/web-api/#spotify-uris-and-ids) for the object.
+        /// The [Spotify URL](/documentation/web-api/concepts/spotify-uris-ids) for the object.
         /// <br/>
         /// </summary>
 
@@ -6998,7 +7006,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
     public partial class Body2
     {
         /// <summary>
-        /// A JSON array of the [Spotify URIs](/documentation/web-api/#spotify-uris-and-ids) to add. For example: `{"uris": ["spotify:track:4iV5W9uYEdYUVa79Axb7Rh","spotify:track:1301WleyT98MSxVHPZCA6M", "spotify:episode:512ojhOuo1ktJprKbVcKyQ"]}`&lt;br/&gt;A maximum of 100 items can be added in one request. _**Note**: if the `uris` parameter is present in the query string, any URIs listed here in the body will be ignored._
+        /// A JSON array of the [Spotify URIs](/documentation/web-api/concepts/spotify-uris-ids) to add. For example: `{"uris": ["spotify:track:4iV5W9uYEdYUVa79Axb7Rh","spotify:track:1301WleyT98MSxVHPZCA6M", "spotify:episode:512ojhOuo1ktJprKbVcKyQ"]}`&lt;br/&gt;A maximum of 100 items can be added in one request. _**Note**: if the `uris` parameter is present in the query string, any URIs listed here in the body will be ignored._
         /// <br/>
         /// </summary>
 
@@ -7092,7 +7100,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
     public partial class Body4
     {
         /// <summary>
-        /// An array of objects containing [Spotify URIs](https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids) of the tracks or episodes to remove.
+        /// An array of objects containing [Spotify URIs](/documentation/web-api/concepts/spotify-uris-ids) of the tracks or episodes to remove.
         /// <br/>For example: `{ "tracks": [{ "uri": "spotify:track:4iV5W9uYEdYUVa79Axb7Rh" },{ "uri": "spotify:track:1301WleyT98MSxVHPZCA6M" }] }`. A maximum of 100 objects can be sent at once.
         /// <br/>
         /// </summary>
@@ -7130,7 +7138,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
     public partial class Body5
     {
         /// <summary>
-        /// A JSON array of the [Spotify IDs](/documentation/web-api/#spotify-uris-and-ids). For example: `["4iV5W9uYEdYUVa79Axb7Rh", "1301WleyT98MSxVHPZCA6M"]`&lt;br/&gt;A maximum of 50 items can be specified in one request. _**Note**: if the `ids` parameter is present in the query string, any IDs listed here in the body will be ignored._
+        /// A JSON array of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). For example: `["4iV5W9uYEdYUVa79Axb7Rh", "1301WleyT98MSxVHPZCA6M"]`&lt;br/&gt;A maximum of 50 items can be specified in one request. _**Note**: if the `ids` parameter is present in the query string, any IDs listed here in the body will be ignored._
         /// <br/>
         /// </summary>
 
@@ -7154,7 +7162,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
     public partial class Body6
     {
         /// <summary>
-        /// A JSON array of the [Spotify IDs](/documentation/web-api/#spotify-uris-and-ids). For example: `["4iV5W9uYEdYUVa79Axb7Rh", "1301WleyT98MSxVHPZCA6M"]`&lt;br/&gt;A maximum of 50 items can be specified in one request. _**Note**: if the `ids` parameter is present in the query string, any IDs listed here in the body will be ignored._
+        /// A JSON array of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). For example: `["4iV5W9uYEdYUVa79Axb7Rh", "1301WleyT98MSxVHPZCA6M"]`&lt;br/&gt;A maximum of 50 items can be specified in one request. _**Note**: if the `ids` parameter is present in the query string, any IDs listed here in the body will be ignored._
         /// <br/>
         /// </summary>
 
@@ -7178,7 +7186,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
     public partial class Body7
     {
         /// <summary>
-        /// A JSON array of the [Spotify IDs](/documentation/web-api/#spotify-uris-and-ids). For example: `["4iV5W9uYEdYUVa79Axb7Rh", "1301WleyT98MSxVHPZCA6M"]`&lt;br/&gt;A maximum of 50 items can be specified in one request. _**Note**: if the `ids` parameter is present in the query string, any IDs listed here in the body will be ignored._
+        /// A JSON array of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). For example: `["4iV5W9uYEdYUVa79Axb7Rh", "1301WleyT98MSxVHPZCA6M"]`&lt;br/&gt;A maximum of 50 items can be specified in one request. _**Note**: if the `ids` parameter is present in the query string, any IDs listed here in the body will be ignored._
         /// <br/>
         /// </summary>
 
@@ -7202,7 +7210,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
     public partial class Body8
     {
         /// <summary>
-        /// A JSON array of the [Spotify IDs](/documentation/web-api/#spotify-uris-and-ids). For example: `["4iV5W9uYEdYUVa79Axb7Rh", "1301WleyT98MSxVHPZCA6M"]`&lt;br/&gt;A maximum of 50 items can be specified in one request. _**Note**: if the `ids` parameter is present in the query string, any IDs listed here in the body will be ignored._
+        /// A JSON array of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). For example: `["4iV5W9uYEdYUVa79Axb7Rh", "1301WleyT98MSxVHPZCA6M"]`&lt;br/&gt;A maximum of 50 items can be specified in one request. _**Note**: if the `ids` parameter is present in the query string, any IDs listed here in the body will be ignored._
         /// <br/>
         /// </summary>
 
@@ -7226,7 +7234,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
     public partial class Body9
     {
         /// <summary>
-        /// A JSON array of the [Spotify IDs](/documentation/web-api/#spotify-uris-and-ids). &lt;br/&gt;A maximum of 50 items can be specified in one request. _**Note**: if the `ids` parameter is present in the query string, any IDs listed here in the body will be ignored._
+        /// A JSON array of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). &lt;br/&gt;A maximum of 50 items can be specified in one request. _**Note**: if the `ids` parameter is present in the query string, any IDs listed here in the body will be ignored._
         /// <br/>
         /// </summary>
 
@@ -7250,7 +7258,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
     public partial class Body10
     {
         /// <summary>
-        /// A JSON array of the [Spotify IDs](/documentation/web-api/#spotify-uris-and-ids). &lt;br/&gt;A maximum of 50 items can be specified in one request. _**Note**: if the `ids` parameter is present in the query string, any IDs listed here in the body will be ignored._
+        /// A JSON array of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). &lt;br/&gt;A maximum of 50 items can be specified in one request. _**Note**: if the `ids` parameter is present in the query string, any IDs listed here in the body will be ignored._
         /// <br/>
         /// </summary>
 
@@ -7301,7 +7309,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         public string Name { get; set; }
 
         /// <summary>
-        /// Defaults to `true`. If `true` the playlist will be public, if `false` it will be private. To be able to create private playlists, the user must have granted the `playlist-modify-private` [scope](/documentation/general/guides/authorization-guide/#list-of-scopes)
+        /// Defaults to `true`. If `true` the playlist will be public, if `false` it will be private. To be able to create private playlists, the user must have granted the `playlist-modify-private` [scope](/documentation/web-api/concepts/scopes/#list-of-scopes)
         /// <br/>
         /// </summary>
 
@@ -7311,7 +7319,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         public bool Public { get; set; }
 
         /// <summary>
-        /// Defaults to `false`. If `true` the playlist will be collaborative. _**Note**: to create a collaborative playlist you must also set `public` to `false`. To create collaborative playlists you must have granted `playlist-modify-private` and `playlist-modify-public` [scopes](/documentation/general/guides/authorization-guide/#list-of-scopes)._
+        /// Defaults to `false`. If `true` the playlist will be collaborative. _**Note**: to create a collaborative playlist you must also set `public` to `false`. To create collaborative playlists you must have granted `playlist-modify-private` and `playlist-modify-public` [scopes](/documentation/web-api/concepts/scopes/#list-of-scopes)._
         /// <br/>
         /// </summary>
 
@@ -7398,7 +7406,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
     public partial class Body13
     {
         /// <summary>
-        /// A JSON array of the artist or user [Spotify IDs](/documentation/web-api/#spotify-uris-and-ids).
+        /// A JSON array of the artist or user [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids).
         /// <br/>For example: `{ids:["74ASZWbe4lXaubB36ztrGX", "08td7MxkoHQkXnWAYD8d6Q"]}`. A maximum of 50 IDs can be sent in one request. _**Note**: if the `ids` parameter is present in the query string, any IDs listed here in the body will be ignored._
         /// <br/>
         /// </summary>
@@ -7440,7 +7448,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
     public partial class Body14
     {
         /// <summary>
-        /// A JSON array of the artist or user [Spotify IDs](/documentation/web-api/#spotify-uris-and-ids). For example: `{ids:["74ASZWbe4lXaubB36ztrGX", "08td7MxkoHQkXnWAYD8d6Q"]}`. A maximum of 50 IDs can be sent in one request. _**Note**: if the `ids` parameter is present in the query string, any IDs listed here in the body will be ignored._
+        /// A JSON array of the artist or user [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). For example: `{ids:["74ASZWbe4lXaubB36ztrGX", "08td7MxkoHQkXnWAYD8d6Q"]}`. A maximum of 50 IDs can be sent in one request. _**Note**: if the `ids` parameter is present in the query string, any IDs listed here in the body will be ignored._
         /// <br/>
         /// </summary>
 

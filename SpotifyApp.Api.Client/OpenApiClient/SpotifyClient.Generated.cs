@@ -5098,7 +5098,8 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// Get User's Saved Episodes
         /// </summary>
         /// <remarks>
-        /// Get a list of the episodes saved in the current Spotify user's library.
+        /// Get a list of the episodes saved in the current Spotify user's library.&lt;br/&gt;
+        /// <br/>This API endpoint is in __beta__ and could change without warning. Please share any feedback that you have, or issues that you discover, in our [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer).
         /// </remarks>
         /// <returns>Pages of episodes</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -5112,7 +5113,8 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// Get User's Saved Episodes
         /// </summary>
         /// <remarks>
-        /// Get a list of the episodes saved in the current Spotify user's library.
+        /// Get a list of the episodes saved in the current Spotify user's library.&lt;br/&gt;
+        /// <br/>This API endpoint is in __beta__ and could change without warning. Please share any feedback that you have, or issues that you discover, in our [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer).
         /// </remarks>
         /// <returns>Pages of episodes</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -5227,7 +5229,8 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// Save Episodes for Current User
         /// </summary>
         /// <remarks>
-        /// Save one or more episodes to the current user's library.
+        /// Save one or more episodes to the current user's library.&lt;br/&gt;
+        /// <br/>This API endpoint is in __beta__ and could change without warning. Please share any feedback that you have, or issues that you discover, in our [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer).
         /// </remarks>
         /// <returns>Episode saved</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -5241,7 +5244,8 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// Save Episodes for Current User
         /// </summary>
         /// <remarks>
-        /// Save one or more episodes to the current user's library.
+        /// Save one or more episodes to the current user's library.&lt;br/&gt;
+        /// <br/>This API endpoint is in __beta__ and could change without warning. Please share any feedback that you have, or issues that you discover, in our [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer).
         /// </remarks>
         /// <returns>Episode saved</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -5346,7 +5350,8 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// Remove User's Saved Episodes
         /// </summary>
         /// <remarks>
-        /// Remove one or more episodes from the current user's library.
+        /// Remove one or more episodes from the current user's library.&lt;br/&gt;
+        /// <br/>This API endpoint is in __beta__ and could change without warning. Please share any feedback that you have, or issues that you discover, in our [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer).
         /// </remarks>
         /// <returns>Episode removed</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -5360,7 +5365,8 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// Remove User's Saved Episodes
         /// </summary>
         /// <remarks>
-        /// Remove one or more episodes from the current user's library.
+        /// Remove one or more episodes from the current user's library.&lt;br/&gt;
+        /// <br/>This API endpoint is in __beta__ and could change without warning. Please share any feedback that you have, or issues that you discover, in our [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer).
         /// </remarks>
         /// <returns>Episode removed</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -5465,7 +5471,8 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// Check User's Saved Episodes
         /// </summary>
         /// <remarks>
-        /// Check if one or more episodes is already saved in the current Spotify user's 'Your Episodes' library.
+        /// Check if one or more episodes is already saved in the current Spotify user's 'Your Episodes' library.&lt;br/&gt;
+        /// <br/>This API endpoint is in __beta__ and could change without warning. Please share any feedback that you have, or issues that you discover, in our [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer)..
         /// </remarks>
         /// <returns>Array of booleans</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -5479,7 +5486,8 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// Check User's Saved Episodes
         /// </summary>
         /// <remarks>
-        /// Check if one or more episodes is already saved in the current Spotify user's 'Your Episodes' library.
+        /// Check if one or more episodes is already saved in the current Spotify user's 'Your Episodes' library.&lt;br/&gt;
+        /// <br/>This API endpoint is in __beta__ and could change without warning. Please share any feedback that you have, or issues that you discover, in our [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer)..
         /// </remarks>
         /// <returns>Array of booleans</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -6450,7 +6458,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// </summary>
         /// <remarks>
         /// Create a playlist for a Spotify user. (The playlist will be empty until
-        /// <br/>you [add tracks](/documentation/web-api/reference/#/operations/add-tracks-to-playlist).)
+        /// <br/>you [add tracks](/documentation/web-api/reference/add-tracks-to-playlist).)
         /// </remarks>
         /// <returns>A playlist</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -6465,7 +6473,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// </summary>
         /// <remarks>
         /// Create a playlist for a Spotify user. (The playlist will be empty until
-        /// <br/>you [add tracks](/documentation/web-api/reference/#/operations/add-tracks-to-playlist).)
+        /// <br/>you [add tracks](/documentation/web-api/reference/add-tracks-to-playlist).)
         /// </remarks>
         /// <returns>A playlist</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -9000,7 +9008,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// Get Available Genre Seeds
         /// </summary>
         /// <remarks>
-        /// Retrieve a list of available genres seed parameter values for [recommendations](/documentation/web-api/reference/#/operations/get-recommendations).
+        /// Retrieve a list of available genres seed parameter values for [recommendations](/documentation/web-api/reference/get-recommendations).
         /// </remarks>
         /// <returns>A set of genres</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -9014,7 +9022,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// Get Available Genre Seeds
         /// </summary>
         /// <remarks>
-        /// Retrieve a list of available genres seed parameter values for [recommendations](/documentation/web-api/reference/#/operations/get-recommendations).
+        /// Retrieve a list of available genres seed parameter values for [recommendations](/documentation/web-api/reference/get-recommendations).
         /// </remarks>
         /// <returns>A set of genres</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>

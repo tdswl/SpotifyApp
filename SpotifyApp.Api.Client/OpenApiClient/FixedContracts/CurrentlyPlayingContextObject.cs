@@ -1,3 +1,4 @@
+// ReSharper disable CheckNamespace
 namespace SpotifyApp.Api.Client.OpenApiClient;
 
 public partial class CurrentlyPlayingContextObject

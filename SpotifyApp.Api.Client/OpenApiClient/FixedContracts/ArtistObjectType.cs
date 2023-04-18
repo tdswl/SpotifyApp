@@ -1,3 +1,4 @@
+// ReSharper disable CheckNamespace
 #nullable disable
 namespace SpotifyApp.Api.Client.OpenApiClient;
 

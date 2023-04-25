@@ -35,6 +35,7 @@
     <PackageVersion Include="Avalonia.Controls.DataGrid" Version="11.0.0-preview7" />
     <PackageVersion Include="Avalonia.Themes.Fluent" Version="11.0.0-preview7" />
     <PackageVersion Include="Avalonia.Diagnostics" Version="11.0.0-preview7" />
+    <PackageVersion Include="Avalonia.Xaml.Behaviors" Version="11.0.0-preview7" />
   </ItemGroup>
   <ItemGroup Condition=" '$(SignAssembly)' != 'True'">
     <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">

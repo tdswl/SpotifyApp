@@ -3,7 +3,42 @@
     <Design.PreviewWith>
         <Border Padding="20">
             <StackPanel>
-                <SplitView Classes="Menu">
+                <SplitView Classes="Menu Small"
+                           IsPaneOpen="False">
+                    <SplitView.Pane>
+                        <Grid VerticalAlignment="Stretch"
+                              RowDefinitions="Auto, *, Auto">
+                            <StackPanel>
+                                <Button Content="Test" />
+                            </StackPanel>    
+                        </Grid>
+                    </SplitView.Pane>
+                    <Border BorderThickness="1" 
+                            BorderBrush="Black"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch">
+                        <TextBlock Text="Content" />
+                    </Border>
+                </SplitView>
+                <SplitView Classes="Menu Medium"
+                           IsPaneOpen="False">
+                    <SplitView.Pane>
+                        <Grid VerticalAlignment="Stretch"
+                              RowDefinitions="Auto, *, Auto">
+                            <StackPanel>
+                                <Button Content="Test" />
+                            </StackPanel>    
+                        </Grid>
+                    </SplitView.Pane>
+                    <Border BorderThickness="1" 
+                            BorderBrush="Black"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch">
+                        <TextBlock Text="Content" />
+                    </Border>
+                </SplitView>
+                <SplitView Classes="Menu Wide"
+                           IsPaneOpen="True">
                     <SplitView.Pane>
                         <Grid VerticalAlignment="Stretch"
                               RowDefinitions="Auto, *, Auto">
@@ -22,8 +57,22 @@
             </StackPanel>
         </Border>
     </Design.PreviewWith>
-
+   
     <Style Selector="SplitView.Menu">
+        <Setter Property="PanePlacement" Value="Left" />
+        <Setter Property="IsPaneOpen" Value="False" />
+        <Setter Property="DisplayMode" Value="Inline" />
+    </Style>
+    <Style Selector="SplitView.Small">
+        <Setter Property="IsPaneOpen" Value="False" />
+        <Setter Property="DisplayMode" Value="Inline" />
+    </Style>
+    <Style Selector="SplitView.Medium">
+        <Setter Property="IsPaneOpen" Value="False" />
         <Setter Property="DisplayMode" Value="CompactInline" />
+    </Style>
+    <Style Selector="SplitView.Wide">
+        <Setter Property="IsPaneOpen" Value="True" />
+        <Setter Property="DisplayMode" Value="Inline" />
     </Style>
 </Styles>

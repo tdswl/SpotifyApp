@@ -13,6 +13,14 @@
     </Design.DataContext>
 
     <SplitView Classes="Menu">
+        <Interaction.Behaviors>
+            <AdaptiveBehavior>
+                <AdaptiveClassSetter MinWidth="0" MaxWidth="500" ClassName="Small" />
+                <AdaptiveClassSetter MinWidth="500" MaxWidth="900" ClassName="Medium" />
+                <AdaptiveClassSetter MinWidth="900" MaxWidth="Infinity" ClassName="Wide" />
+            </AdaptiveBehavior>
+        </Interaction.Behaviors>
+        
         <SplitView.Pane>
             <Grid VerticalAlignment="Stretch"
                   RowDefinitions="Auto, *, Auto">

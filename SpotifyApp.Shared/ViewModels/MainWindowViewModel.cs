@@ -1,23 +1,13 @@
-﻿using Avalonia.Controls;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.DependencyInjection;
-using CommunityToolkit.Mvvm.Input;
-using CommunityToolkit.Mvvm.Messaging;
-using SpotifyApp.Shared.Enums;
-using SpotifyApp.Shared.Messages;
-using SpotifyApp.Shared.Models.NavigateParams;
-using SpotifyApp.Shared.Services;
 
 namespace SpotifyApp.Shared.ViewModels;
 
-public sealed partial class MainWindowViewModel : ObservableRecipient, 
-    IRecipient<NavigateMessage>
+public sealed partial class MainWindowViewModel : ObservableRecipient
 {
-    private readonly INavigationService _navigationService;
-    
-    [ObservableProperty]
-    private UserControl? _content;
-    
+    [ObservableProperty] 
+    private NavigateViewModel? _navigate;
+   
     [ObservableProperty]
     private SearchViewModel? _search;
     
@@ -27,11 +17,6 @@ public sealed partial class MainWindowViewModel : ObservableRecipient,
     public MainWindowViewModel()
     {
         //Designer constructor
-    }
-
-    public MainWindowViewModel(INavigationService navigationService)
-    {
-        _navigationService = navigationService;
         IsActive = true;
     }
 
@@ -39,29 +24,8 @@ public sealed partial class MainWindowViewModel : ObservableRecipient,
     {
         base.OnActivated();
 
+        Navigate = Ioc.Default.GetRequiredService<NavigateViewModel>();
         Player = Ioc.Default.GetRequiredService<PlayerViewModel>();
         Search = Ioc.Default.GetRequiredService<SearchViewModel>();
-        NavigateToCommand.Execute(PageType.Profile);
-    }
-    
-    [RelayCommand]
-    private void NavigateTo(PageType type)
-    {
-        NavigateWithParams(type, null);
-    }
-    
-    private void NavigateWithParams(PageType pageType, INavigateParams? navigateParams)
-    {
-        if (Content?.DataContext is ObservableRecipient previous)
-        {
-            
-            previous.IsActive = false;
-        }
-        Content = _navigationService.NavigateTo(pageType, navigateParams);
-    }
-
-    public void Receive(NavigateMessage message)
-    {
-        NavigateWithParams(message.Type, message.NavigateParams);
     }
 }

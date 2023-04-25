@@ -29,6 +29,7 @@ public static class AppServiceCollectionExtensions
             
             // Models shared across component - register as singleton
             .AddSingleton<MainWindowViewModel>()
+            .AddSingleton<NavigateViewModel>()
             .AddSingleton<CurrentUserViewModel>()
             .AddSingleton<PlayerViewModel>()
             .AddSingleton<SearchViewModel>()

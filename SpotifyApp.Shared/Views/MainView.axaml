@@ -16,7 +16,7 @@
         <SplitView.Pane>
             <Grid VerticalAlignment="Stretch"
                   RowDefinitions="Auto, *, Auto">
-                <StackPanel>
+                <StackPanel DataContext="{Binding Navigate}">
                     <Button Classes="MenuCompactButton"
                             Content="⌂"
                             ToolTip.Tip="{x:Static p:Resources.Profile}"
@@ -32,7 +32,7 @@
         </SplitView.Pane>
 
         <Grid RowDefinitions="*, Auto">
-            <TransitioningContentControl Content="{Binding Content}"
+            <TransitioningContentControl Content="{Binding Navigate.Content}"
                                          Padding="0, 50, 0, 0"/>
 
             <views:SearchView Grid.Row="0"

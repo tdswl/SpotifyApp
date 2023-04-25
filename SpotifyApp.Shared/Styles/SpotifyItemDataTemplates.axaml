@@ -111,7 +111,7 @@
             <DataGrid Grid.Row="1"
                       Grid.Column="0"
                       Grid.ColumnSpan="2"
-                      Items="{Binding Tracks}"
+                      ItemsSource="{Binding Tracks}"
                       Background="Transparent"
                       AutoGenerateColumns="False"
                       SelectionMode="Single"

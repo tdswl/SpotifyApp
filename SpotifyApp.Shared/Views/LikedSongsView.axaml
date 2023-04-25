@@ -11,7 +11,7 @@
     </Design.DataContext>
     <controls:SpotifyItemDetailsControl Header="{Binding Playlist}"
                                         HeaderTemplate="{StaticResource DefaultItemHeader}">
-        <controls:TracksGridControl Items="{Binding LikedSongs}"
+        <controls:TracksGridControl ItemsSource="{Binding LikedSongs}"
                                     LoadMoreCommand="{Binding GetTracksCommand}"/>
     </controls:SpotifyItemDetailsControl>
 </UserControl>

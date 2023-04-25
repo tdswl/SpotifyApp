@@ -11,7 +11,7 @@
     </Design.DataContext>
     <controls:SpotifyItemDetailsControl Header="{Binding Artist}"
                                         HeaderTemplate="{StaticResource ArtistItemHeader}" >
-        <ItemsControl Items="{Binding Albums}"
+        <ItemsControl ItemsSource="{Binding Albums}"
                       ItemTemplate="{StaticResource AlbumWithTracksItem}"
                       HorizontalAlignment="Left" />
     </controls:SpotifyItemDetailsControl>

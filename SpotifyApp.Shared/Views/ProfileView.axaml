@@ -19,7 +19,7 @@
                            Text="{x:Static p:Resources.TopArtistsThisMonth}" />
                 <TextBlock Classes="Remark" 
                            Text="{x:Static p:Resources.OnlyVisibleToYou}" />
-                <ListBox Items="{Binding TopArtists}"
+                <ListBox ItemsSource="{Binding TopArtists}"
                          Background="Transparent"
                          ItemContainerTheme="{StaticResource CardItem}"
                          ItemTemplate="{StaticResource ImagePreviewCard}"
@@ -38,13 +38,13 @@
                            Text="{x:Static p:Resources.TopTracksThisMonth}" />
                 <TextBlock Classes="Remark" 
                            Text="{x:Static p:Resources.OnlyVisibleToYou}" />
-                <controls:TracksGridControl Items="{Binding TopTracks}" />
+                <controls:TracksGridControl ItemsSource="{Binding TopTracks}" />
             </StackPanel>
 
             <StackPanel Spacing="10">
                 <TextBlock Classes="H1" 
                            Text="{x:Static p:Resources.Following}" />
-                <ListBox Items="{Binding FollowingArtists}"
+                <ListBox ItemsSource="{Binding FollowingArtists}"
                          Background="Transparent"
                          ItemContainerTheme="{StaticResource CardItem}"
                          ItemTemplate="{StaticResource ImagePreviewCard}"

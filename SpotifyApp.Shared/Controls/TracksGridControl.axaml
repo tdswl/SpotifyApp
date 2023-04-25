@@ -56,7 +56,7 @@
         <Setter Property="Template">
             <ControlTemplate>
                 <DataGrid x:Name="TracksGrid"
-                          Items="{TemplateBinding Items}"
+                          ItemsSource="{TemplateBinding ItemsSource}"
                           Background="Transparent"
                           AutoGenerateColumns="False"
                           SelectionMode="Single"

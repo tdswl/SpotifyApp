@@ -26,7 +26,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         private System.Net.Http.HttpClient _httpClient;
         private System.Lazy<System.Text.Json.JsonSerializerOptions> _settings;
 
-        public SpotifyClient(System.Net.Http.HttpClient httpClient)
+        internal SpotifyClient(System.Net.Http.HttpClient httpClient)
         {
             _httpClient = httpClient;
             _settings = new System.Lazy<System.Text.Json.JsonSerializerOptions>(CreateSerializerSettings);

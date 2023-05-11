@@ -6,6 +6,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".sln", ".sln", "{8CC09CC7-6
 		Directory.Build.props = Directory.Build.props
 		README.md = README.md
 		License.md = License.md
+		nuget.config = nuget.config
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyApp.Api.Client", "SpotifyApp.Api.Client\SpotifyApp.Api.Client.csproj", "{483A3B49-CC1C-401D-9C28-16BCEE8EB383}"

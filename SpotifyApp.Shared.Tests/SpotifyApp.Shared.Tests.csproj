@@ -10,4 +10,8 @@
         <ProjectReference Include="..\SpotifyApp.Shared\SpotifyApp.Shared.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageVersion Update="Microsoft.NET.Test.Sdk" Version="17.6.0" />
+    </ItemGroup>
+
 </Project>

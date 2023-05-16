@@ -10,4 +10,8 @@
         <ProjectReference Include="..\SpotifyApp.Storage\SpotifyApp.Storage.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageVersion Update="Microsoft.NET.Test.Sdk" Version="17.6.0" />
+    </ItemGroup>
+
 </Project>

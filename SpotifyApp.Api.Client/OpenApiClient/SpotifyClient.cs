@@ -69,7 +69,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         [SuppressMessage("ReSharper", "MethodSupportsCancellation")]
         [SuppressMessage("ReSharper", "MergeIntoPattern")]
         [SuppressMessage("ReSharper", "ConvertToUsingDeclaration")]
-        public virtual async System.Threading.Tasks.Task<Response8> SearchAsync(string q, 
+        public async System.Threading.Tasks.Task<Response8> SearchAsync(string q, 
             System.Collections.Generic.IEnumerable<Anonymous> type, 
             string market, 
             int? limit, 

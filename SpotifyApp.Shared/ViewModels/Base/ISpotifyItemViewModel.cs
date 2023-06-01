@@ -10,5 +10,5 @@ public interface ISpotifyItemViewModel
     
     PreviewSize PreviewSize { get; set; }
     
-    IBitmap? Preview  { get; set; }
+    Bitmap? Preview  { get; set; }
 }

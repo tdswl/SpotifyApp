@@ -22,7 +22,7 @@ public abstract partial class ImagePreviewViewModel : ObservableRecipient,
     private PreviewSize _previewSize = PreviewSize.Medium;
 
     [ObservableProperty]
-    private IBitmap? _preview;
+    private Bitmap? _preview;
 
     protected ImagePreviewViewModel(IImageCache imageCache)
     {

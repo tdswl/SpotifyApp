@@ -8,7 +8,7 @@ using SpotifyApp.Storage.Entities;
 
 namespace SpotifyApp.Shared.Services;
 
-internal class AuthService : IAuthService
+internal sealed class AuthService : IAuthService
 {
     private static readonly SemaphoreSlim Semaphore = new(1, 1);
     

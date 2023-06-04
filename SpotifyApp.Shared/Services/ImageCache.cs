@@ -2,7 +2,7 @@ using AsyncKeyedLock;
 
 namespace SpotifyApp.Shared.Services;
 
-internal class ImageCache : IImageCache 
+internal sealed class ImageCache : IImageCache 
 {
     private const string CacheFolder = "Cache";
     private readonly HttpClient _httpClient;

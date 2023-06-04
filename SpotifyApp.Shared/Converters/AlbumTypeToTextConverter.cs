@@ -6,7 +6,7 @@ using SpotifyApp.Shared.Properties;
 
 namespace SpotifyApp.Shared.Converters;
 
-public class AlbumTypeToTextConverter : IValueConverter
+public sealed class AlbumTypeToTextConverter : IValueConverter
 {
     public static readonly AlbumTypeToTextConverter Instance = new();
 

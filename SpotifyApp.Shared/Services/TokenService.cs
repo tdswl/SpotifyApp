@@ -2,7 +2,7 @@ using SpotifyApp.Api.Client.OpenApiClient;
 
 namespace SpotifyApp.Shared.Services;
 
-public class TokenService : ITokenService
+public sealed class TokenService : ITokenService
 {
     private readonly IAuthService _authService;
 

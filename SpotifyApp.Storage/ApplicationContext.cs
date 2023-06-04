@@ -4,7 +4,7 @@ using SpotifyApp.Storage.OptionsFactories;
 
 namespace SpotifyApp.Storage;
 
-public sealed class ApplicationContext : DbContext, IApplicationContext
+internal sealed class ApplicationContext : DbContext, IApplicationContext
 {
     public ApplicationContext(IContextOptionsFactory optionsFactory)
         : base(optionsFactory.CreateOptions())

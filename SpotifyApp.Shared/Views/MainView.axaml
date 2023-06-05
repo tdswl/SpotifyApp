@@ -20,28 +20,43 @@
                 <AdaptiveClassSetter MinWidth="900" MaxWidth="Infinity" ClassName="Wide" />
             </AdaptiveBehavior>
         </Interaction.Behaviors>
-        
+
         <SplitView.Pane>
             <Grid VerticalAlignment="Stretch"
                   RowDefinitions="Auto, *, Auto">
                 <StackPanel DataContext="{Binding Navigate}">
-                    <Button Classes="MenuCompactButton"
-                            Content="⌂"
+                    <Button Classes="MenuButton"
                             ToolTip.Tip="{x:Static p:Resources.Profile}"
                             Command="{Binding NavigateToCommand}"
-                            CommandParameter="{x:Static enums:PageType.Profile}" />
-                    <Button Classes="MenuCompactButton"
-                            Content="♡"
+                            CommandParameter="{x:Static enums:PageType.Profile}">
+                        <Grid ColumnDefinitions="35, *"
+                              HorizontalAlignment="Stretch">
+                            <TextBlock Text="⌂"
+                                       HorizontalAlignment="Center" />
+                            <TextBlock Grid.Column="1"
+                                       Text="{x:Static p:Resources.Profile}" />
+                        </Grid>
+                    </Button>
+
+                    <Button Classes="MenuButton"
                             ToolTip.Tip="{x:Static p:Resources.LikedSongs}"
                             Command="{Binding NavigateToCommand}"
-                            CommandParameter="{x:Static enums:PageType.LikedSongs}" />
+                            CommandParameter="{x:Static enums:PageType.LikedSongs}">
+                        <Grid ColumnDefinitions="35, *"
+                              HorizontalAlignment="Stretch">
+                            <TextBlock Text="♡"
+                                       HorizontalAlignment="Center"/>
+                            <TextBlock Grid.Column="1"
+                                       Text="{x:Static p:Resources.LikedSongs}" />
+                        </Grid>
+                    </Button>
                 </StackPanel>
             </Grid>
         </SplitView.Pane>
 
         <Grid RowDefinitions="*, Auto">
             <TransitioningContentControl Content="{Binding Navigate.Content}"
-                                         Padding="0, 50, 0, 0"/>
+                                         Padding="0, 50, 0, 0" />
 
             <views:SearchView Grid.Row="0"
                               DataContext="{Binding Search}" />

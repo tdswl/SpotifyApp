@@ -3,18 +3,18 @@
     <Design.PreviewWith>
         <Border Padding="20"
                 Width="88">
-            <Button Classes="MenuCompactButton"
+            <Button Classes="MenuButton"
                     Content="⌂" />
         </Border>
     </Design.PreviewWith>
 
-    <Style Selector="Button.MenuCompactButton">
+    <Style Selector="Button.MenuButton">
         <Setter Property="Height" Value="48" />
         <Setter Property="CornerRadius" Value="0" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="FontSize" Value="25" />
     </Style>
 </Styles>

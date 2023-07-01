@@ -2,6 +2,7 @@ using System.Windows.Input;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
+using Avalonia.Interactivity;
 
 namespace SpotifyApp.Shared.Controls;
 
@@ -40,14 +41,14 @@ public class TracksGridControl : ItemsControl
         base.OnApplyTemplate(e);
     }
 
-    protected override void OnUnloaded()
+    protected override void OnUnloaded(RoutedEventArgs e)
     {
         if (_tracksGrid != null)
         {
             //_tracksGrid.VerticalScroll -= TracksGridOnVerticalScroll;
         }
         
-        base.OnUnloaded();
+        base.OnUnloaded(e);
     }
 
     // Worked only when drag thumb by mouse

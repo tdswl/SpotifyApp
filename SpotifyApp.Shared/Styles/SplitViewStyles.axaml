@@ -59,6 +59,8 @@
     </Design.PreviewWith>
    
     <Style Selector="SplitView.Menu">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="PaneBackground" Value="Transparent" />
         <Setter Property="PanePlacement" Value="Left" />
         <Setter Property="IsPaneOpen" Value="False" />
         <Setter Property="DisplayMode" Value="Inline" />

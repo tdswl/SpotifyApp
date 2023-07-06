@@ -1,10 +1,11 @@
 <Styles xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="clr-namespace:SpotifyApp.Shared.Controls">
     <Design.PreviewWith>
         <StackPanel>
-            <Button Classes="MenuButton"
-                    Content="⌂" />
-            
+            <controls:IconButton Icon="⌂"
+                                 Text="Test" />
+
             <Button Classes="DesktopMenuButton"
                     Background="Gray"
                     Content="..." />
@@ -12,19 +13,31 @@
     </Design.PreviewWith>
 
     <Style Selector="Button.MenuButton">
-        <Setter Property="Height" Value="48" />
         <Setter Property="CornerRadius" Value="0" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="FontWeight" Value="Bold" />
+    </Style>
+
+    <Style Selector="Button.MenuButton TextBlock#PART_Icon">
+        <Setter Property="VerticalAlignment" Value="Center" /> 
+        <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="FontSize" Value="25" />
     </Style>
     
+    <Style Selector="Button.MenuButton TextBlock#PART_Text">
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="FontSize" Value="15" />
+    </Style>
+
     <Style Selector="Button.DesktopMenuButton">
         <Setter Property="Width" Value="60" />
         <Setter Property="Height" Value="40" />
-        <Setter Property="Padding" Value="0 -26 0 0"></Setter>
+        <Setter Property="Padding" Value="0 -26 0 0" />
+        <Setter Property="Margin" Value="10 0 0 0" />
         <Setter Property="CornerRadius" Value="0" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="HorizontalAlignment" Value="Left" />

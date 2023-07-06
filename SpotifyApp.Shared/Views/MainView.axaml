@@ -5,98 +5,88 @@
              xmlns:viewModels="clr-namespace:SpotifyApp.Shared.ViewModels"
              xmlns:enums="clr-namespace:SpotifyApp.Shared.Enums"
              xmlns:p="clr-namespace:SpotifyApp.Shared.Properties"
-             xmlns:views="clr-namespace:SpotifyApp.Shared.Views"
+             xmlns:controls="clr-namespace:SpotifyApp.Shared.Controls"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="SpotifyApp.Shared.Views.MainView">
     <Design.DataContext>
         <viewModels:MainWindowViewModel />
     </Design.DataContext>
 
-    <SplitView Classes="Menu">
-        <Interaction.Behaviors>
-            <AdaptiveBehavior>
-                <AdaptiveClassSetter MinWidth="0" MaxWidth="500" ClassName="Small" />
-                <AdaptiveClassSetter MinWidth="500" MaxWidth="900" ClassName="Medium" />
-                <AdaptiveClassSetter MinWidth="900" MaxWidth="Infinity" ClassName="Wide" />
-            </AdaptiveBehavior>
-        </Interaction.Behaviors>
+    <Grid RowDefinitions="*, Auto">
+        <SplitView Classes="Menu">
+            <Interaction.Behaviors>
+                <AdaptiveBehavior>
+                    <AdaptiveClassSetter MinWidth="0" MaxWidth="500" ClassName="Small" />
+                    <AdaptiveClassSetter MinWidth="500" MaxWidth="900" ClassName="Medium" />
+                    <AdaptiveClassSetter MinWidth="900" MaxWidth="Infinity" ClassName="Wide" />
+                </AdaptiveBehavior>
+            </Interaction.Behaviors>
 
-        <SplitView.Pane>
-            <Grid VerticalAlignment="Stretch"
-                  RowDefinitions="Auto, *, Auto">
-                <StackPanel DataContext="{Binding Navigate}">
-                    <Button Classes="MenuButton"
-                            ToolTip.Tip="{x:Static p:Resources.Profile}"
-                            Command="{Binding NavigateToCommand}"
-                            CommandParameter="{x:Static enums:PageType.Profile}">
-                        <Grid ColumnDefinitions="35, *"
-                              HorizontalAlignment="Stretch">
-                            <TextBlock Text="⌂"
-                                       HorizontalAlignment="Center" />
-                            <TextBlock Grid.Column="1"
-                                       Text="{x:Static p:Resources.Profile}" />
-                        </Grid>
-                    </Button>
+            <SplitView.Pane>
+                <Grid VerticalAlignment="Stretch"
+                      RowDefinitions="Auto, *">
+                    <Border Classes="Block Top">
+                        <StackPanel DataContext="{Binding Navigate}">
+                            <controls:IconButton Icon="⌂"
+                                                 Text="{x:Static p:Resources.NavigationHome}"
+                                                 ToolTip.Tip="{x:Static p:Resources.NavigationHome}"
+                                                 Command="{Binding NavigateToCommand}"
+                                                 CommandParameter="{x:Static enums:PageType.Home}" />
 
-                    <Button Classes="MenuButton"
-                            ToolTip.Tip="{x:Static p:Resources.LikedSongs}"
-                            Command="{Binding NavigateToCommand}"
-                            CommandParameter="{x:Static enums:PageType.LikedSongs}">
-                        <Grid ColumnDefinitions="35, *"
-                              HorizontalAlignment="Stretch">
-                            <TextBlock Text="♡"
-                                       HorizontalAlignment="Center"/>
-                            <TextBlock Grid.Column="1"
-                                       Text="{x:Static p:Resources.LikedSongs}" />
-                        </Grid>
-                    </Button>
-                </StackPanel>
-            </Grid>
-        </SplitView.Pane>
+                            <controls:IconButton Icon="🔍"
+                                                 Text="{x:Static p:Resources.NavigationSearch}"
+                                                 ToolTip.Tip="{x:Static p:Resources.NavigationSearch}"
+                                                 Command="{Binding NavigateToCommand}"
+                                                 CommandParameter="{x:Static enums:PageType.Search}" />
+                        </StackPanel>
+                    </Border>
 
-        <Grid RowDefinitions="*, Auto">
-            <TransitioningContentControl Content="{Binding Navigate.Content}"
-                                         Padding="0, 50, 0, 0" />
+                    <Border Grid.Row="1"
+                            Classes="Block"
+                            VerticalAlignment="Stretch" />
+                </Grid>
+            </SplitView.Pane>
 
-            <views:SearchView Grid.Row="0"
-                              DataContext="{Binding Search}" />
+            <Border Classes="Block Top">
+                <TransitioningContentControl Content="{Binding Navigate.Content}" />
+            </Border>
+        </SplitView>
 
-            <Grid Grid.Row="1"
-                  ColumnDefinitions="Auto, *"
-                  HorizontalAlignment="Stretch"
-                  Background="DimGray"
-                  DataContext="{Binding Player}">
-                <ContentControl Content="{Binding CurrentTrack}"
-                                ContentTemplate="{StaticResource TrackWithImage}" />
+        <Grid Grid.Row="1"
+              ColumnDefinitions="Auto, *"
+              HorizontalAlignment="Stretch"
+              Background="Transparent"
+              DataContext="{Binding Player}">
+            <ContentControl Content="{Binding CurrentTrack}"
+                            ContentTemplate="{StaticResource TrackWithImage}" />
 
-                <!-- <StackPanel Grid.Column="1" -->
-                <!--             HorizontalAlignment="Center" -->
-                <!--             Orientation="Horizontal"> -->
-                <!--     <Button Classes="MenuCompactButton" -->
-                <!--             Content="⮀" -->
-                <!--             ToolTip.Tip="{x:Static p:Resources.PlayerShuffle}" -->
-                <!--             Command="{Binding ShuffleCommand}" /> -->
-                <!--      -->
-                <!--     <Button Classes="MenuCompactButton" -->
-                <!--             Content="«" -->
-                <!--             ToolTip.Tip="{x:Static p:Resources.PlayerPrevious}" -->
-                <!--             Command="{Binding PreviousCommand}" /> -->
-                <!--      -->
-                <!--     <Button Classes="MenuCompactButton" -->
-                <!--             ToolTip.Tip="{x:Static p:Resources.PlayerPlay}" -->
-                <!--             Command="{Binding PlayPauseCommand}"> -->
-                <!--         <Panel> -->
-                <!--             <TextBlock Text="▶" IsVisible="{Binding !IsPlaying}" /> -->
-                <!--             <TextBlock Text="∥" IsVisible="{Binding IsPlaying}" /> -->
-                <!--         </Panel> -->
-                <!--     </Button> -->
-                <!--      -->
-                <!--     <Button Classes="MenuCompactButton" -->
-                <!--             Content="»" -->
-                <!--             ToolTip.Tip="{x:Static p:Resources.PlayerNext}" -->
-                <!--             Command="{Binding NextCommand}" /> -->
-                <!-- </StackPanel> -->
-            </Grid>
+            <!-- <StackPanel Grid.Column="1" -->
+            <!--             HorizontalAlignment="Center" -->
+            <!--             Orientation="Horizontal"> -->
+            <!--     <Button Classes="MenuCompactButton" -->
+            <!--             Content="⮀" -->
+            <!--             ToolTip.Tip="{x:Static p:Resources.PlayerShuffle}" -->
+            <!--             Command="{Binding ShuffleCommand}" /> -->
+            <!--      -->
+            <!--     <Button Classes="MenuCompactButton" -->
+            <!--             Content="«" -->
+            <!--             ToolTip.Tip="{x:Static p:Resources.PlayerPrevious}" -->
+            <!--             Command="{Binding PreviousCommand}" /> -->
+            <!--      -->
+            <!--     <Button Classes="MenuCompactButton" -->
+            <!--             ToolTip.Tip="{x:Static p:Resources.PlayerPlay}" -->
+            <!--             Command="{Binding PlayPauseCommand}"> -->
+            <!--         <Panel> -->
+            <!--             <TextBlock Text="▶" IsVisible="{Binding !IsPlaying}" /> -->
+            <!--             <TextBlock Text="∥" IsVisible="{Binding IsPlaying}" /> -->
+            <!--         </Panel> -->
+            <!--     </Button> -->
+            <!--      -->
+            <!--     <Button Classes="MenuCompactButton" -->
+            <!--             Content="»" -->
+            <!--             ToolTip.Tip="{x:Static p:Resources.PlayerNext}" -->
+            <!--             Command="{Binding NextCommand}" /> -->
+            <!-- </StackPanel> -->
         </Grid>
-    </SplitView>
+    </Grid>
 </UserControl>

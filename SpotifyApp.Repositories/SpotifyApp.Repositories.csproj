@@ -7,12 +7,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\SpotifyApp.Repositories.Contracts\SpotifyApp.Repositories.Contracts.csproj" />
+        <ProjectReference Include="..\SpotifyApp.Repositories.Contracts\SpotifyApp.Repositories.Contracts.csproj"/>
     </ItemGroup>
 
     <ItemGroup><!--TODO: remove Microsoft.EntityFrameworkCore from repository 'cuz repositories meant to work not only with EF Core and SQL, but with any storage-->
-    
-      <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite.Core" />
+
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite.Core"/>
     </ItemGroup>
 
 </Project>

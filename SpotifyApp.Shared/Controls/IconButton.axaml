@@ -1,0 +1,27 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:SpotifyApp.Shared.Controls">
+    <Design.PreviewWith>
+        <controls:IconButton />
+    </Design.PreviewWith>
+
+    <Style Selector="controls|IconButton">
+        <!-- Set Defaults -->
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Button Classes="MenuButton"
+                        Command="{TemplateBinding Command}"
+                        CommandParameter="{TemplateBinding CommandParameter}">
+                    <Grid ColumnDefinitions="32, 10, *"
+                          HorizontalAlignment="Stretch">
+                        <TextBlock Name="PART_Icon" 
+                                   Text="{TemplateBinding Icon}" />
+                        <TextBlock Grid.Column="2"
+                                   Name="PART_Text"
+                                   Text="{TemplateBinding Text}" />
+                    </Grid>
+                </Button>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+</Styles>

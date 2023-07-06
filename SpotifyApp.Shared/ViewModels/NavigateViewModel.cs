@@ -32,7 +32,7 @@ public sealed partial class NavigateViewModel : ObservableRecipient,
     {
         base.OnActivated();
 
-        NavigateToCommand.Execute(PageType.Profile);
+        NavigateToCommand.Execute(PageType.Home);
     }
     
     [RelayCommand]

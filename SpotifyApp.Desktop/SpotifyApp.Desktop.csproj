@@ -9,12 +9,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <FrameworkReference Include="Microsoft.AspNetCore.App" />
-        <PackageReference Include="Avalonia.Desktop" />
+        <FrameworkReference Include="Microsoft.AspNetCore.App"/>
+        <PackageReference Include="Avalonia.Desktop"/>
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\SpotifyApp.Shared\SpotifyApp.Shared.csproj" />
-        <ProjectReference Include="..\SpotifyApp.Storage.SQLite\SpotifyApp.Storage.SQLite.csproj" />
+        <ProjectReference Include="..\SpotifyApp.Shared\SpotifyApp.Shared.csproj"/>
+        <ProjectReference Include="..\SpotifyApp.Storage.SQLite\SpotifyApp.Storage.SQLite.csproj"/>
     </ItemGroup>
 </Project>

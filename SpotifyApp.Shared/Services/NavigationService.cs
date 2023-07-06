@@ -15,7 +15,7 @@ internal sealed class NavigationService : INavigationService
     {
         switch (pageType)
         {
-            case PageType.Profile:
+            case PageType.Home:
                 return new ProfileView { DataContext = Ioc.Default.GetRequiredService<ProfileViewModel>(), };
             case PageType.LikedSongs:
                 return new LikedSongsView { DataContext = Ioc.Default.GetRequiredService<LikedSongsViewModel>(), };
@@ -26,6 +26,8 @@ internal sealed class NavigationService : INavigationService
                     vm.GetArtistCommand.ExecuteAsync(artistParams.Id);
                 }
                 return new ArtistScreenView { DataContext = vm, };
+            case PageType.Search:
+                return new SearchView { DataContext = Ioc.Default.GetRequiredService<SearchViewModel>(), };
             default:
                 throw new ArgumentOutOfRangeException(nameof(pageType), pageType, null);
         }

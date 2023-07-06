@@ -222,6 +222,24 @@ namespace SpotifyApp.Shared.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Home.
+        /// </summary>
+        public static string NavigationHome {
+            get {
+                return ResourceManager.GetString("NavigationHome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search.
+        /// </summary>
+        public static string NavigationSearch {
+            get {
+                return ResourceManager.GetString("NavigationSearch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Only visible to you.
         /// </summary>
         public static string OnlyVisibleToYou {

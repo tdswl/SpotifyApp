@@ -10,15 +10,21 @@
         <viewModels:SearchViewModel />
     </Design.DataContext>
 
-    <Grid>
-        <ScrollViewer HorizontalScrollBarVisibility="Disabled"
+    <Grid RowDefinitions="Auto, *">
+        <TextBox Grid.Row="0"
+                 Watermark="{x:Static p:Resources.SearchWatermark}"
+                 Text="{Binding SearchString}"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Top" />
+        
+        <ScrollViewer Grid.Row="1"
+                      HorizontalScrollBarVisibility="Disabled"
                       VerticalScrollBarVisibility="Auto"
-                      Background="DimGray"
-                      IsVisible="{Binding SearchString, Converter={x:Static StringConverters.IsNotNullOrEmpty}}">
+                      Background="Transparent">
             <StackPanel Spacing="40"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Stretch"
-                        Margin="40 50 0 20">
+                        Margin="40 20 0 20">
                 <StackPanel Spacing="10">
                     <TextBlock Classes="H1"
                                Text="{x:Static p:Resources.ItemTypeAlbum}" />
@@ -74,12 +80,5 @@
                 </StackPanel>
             </StackPanel>
         </ScrollViewer>
-
-        <TextBox Grid.Row="0"
-                 Margin="40, 10, 0, 10"
-                 Watermark="{x:Static p:Resources.SearchWatermark}"
-                 Text="{Binding SearchString}"
-                 HorizontalAlignment="Left"
-                 VerticalAlignment="Top" />
     </Grid>
 </UserControl>

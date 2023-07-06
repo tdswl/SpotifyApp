@@ -60,5 +60,19 @@ public sealed class ApplicationMapProfile : Profile
         CreateMap<SimplifiedAlbumObject, AlbumModel>()
             .ForMember(d => d.AlbumType, opt => opt.MapFrom(s => s.Album_type))
             .ValidateMemberList(MemberList.Destination);
+
+        CreateMap<SimplifiedPlaylistObject, PlaylistModel>()
+            .ForMember(d => d.Id, opt => opt.MapFrom(s => s.Id))
+            .ForMember(d => d.Name, opt => opt.MapFrom(s => s.Name))
+            .ForMember(d => d.Images, opt => opt.MapFrom(s => s.Images))
+            .ForMember(d => d.Type, opt => opt.MapFrom(s => s.Type))
+            .ValidateMemberList(MemberList.Destination);
+        
+        CreateMap<SavedAlbumObject, AlbumModel>()
+            .ForMember(d => d.Id, opt => opt.MapFrom(s => s.Album.Id))
+            .ForMember(d => d.Name, opt => opt.MapFrom(s => s.Album.Name))
+            .ForMember(d => d.Images, opt => opt.MapFrom(s => s.Album.Images))
+            .ForMember(d => d.Type, opt => opt.MapFrom(s => s.Album.Type))
+            .ValidateMemberList(MemberList.Destination);
     }
 }

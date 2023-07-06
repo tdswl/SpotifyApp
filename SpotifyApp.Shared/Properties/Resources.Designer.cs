@@ -231,6 +231,15 @@ namespace SpotifyApp.Shared.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your Library.
+        /// </summary>
+        public static string NavigationLibrary {
+            get {
+                return ResourceManager.GetString("NavigationLibrary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Search.
         /// </summary>
         public static string NavigationSearch {

@@ -119,4 +119,7 @@
     <data name="NavigationSearch" xml:space="preserve">
         <value>Search</value>
     </data>
+    <data name="NavigationLibrary" xml:space="preserve">
+        <value>Your Library</value>
+    </data>
 </root>

@@ -32,12 +32,13 @@ public static class AppServiceCollectionExtensions
             .AddSingleton<NavigateViewModel>()
             .AddSingleton<CurrentUserViewModel>()
             .AddSingleton<PlayerViewModel>()
-            .AddSingleton<SearchViewModel>()
+            .AddSingleton<LibraryViewModel>()
             
             // Page models
             .AddTransient<ProfileViewModel>()
             .AddTransient<LikedSongsViewModel>()
             .AddTransient<ArtistScreenViewModel>()
+            .AddTransient<SearchViewModel>()
             
             // Item models
             .AddTransient<TrackViewModel>()

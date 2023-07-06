@@ -4,7 +4,7 @@ using SpotifyApp.Shared.Models;
 
 namespace SpotifyApp.Shared.ViewModels.Base;
 
-public interface ISpotifyItemViewModel
+public interface ISpotifyItemViewModel : IDisposable
 {
     ISpotifyItem? Item { get; set; }
     

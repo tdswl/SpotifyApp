@@ -111,4 +111,7 @@
     <data name="NavigationSearch" xml:space="preserve">
         <value>Поиск</value>
     </data>
+    <data name="NavigationLibrary" xml:space="preserve">
+        <value>Библиотека</value>
+    </data>
 </root>

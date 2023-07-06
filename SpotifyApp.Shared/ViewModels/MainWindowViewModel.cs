@@ -7,13 +7,13 @@ public sealed partial class MainWindowViewModel : ObservableRecipient
 {
     [ObservableProperty] 
     private NavigateViewModel? _navigate;
-   
-    [ObservableProperty]
-    private SearchViewModel? _search;
     
     [ObservableProperty]
     private PlayerViewModel? _player;
     
+    [ObservableProperty]
+    private LibraryViewModel? _library;
+
     public MainWindowViewModel()
     {
         //Designer constructor
@@ -26,6 +26,6 @@ public sealed partial class MainWindowViewModel : ObservableRecipient
 
         Navigate = Ioc.Default.GetRequiredService<NavigateViewModel>();
         Player = Ioc.Default.GetRequiredService<PlayerViewModel>();
-        Search = Ioc.Default.GetRequiredService<SearchViewModel>();
+        Library = Ioc.Default.GetRequiredService<LibraryViewModel>();
     }
 }

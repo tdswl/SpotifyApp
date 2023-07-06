@@ -6,6 +6,7 @@
              xmlns:enums="clr-namespace:SpotifyApp.Shared.Enums"
              xmlns:p="clr-namespace:SpotifyApp.Shared.Properties"
              xmlns:controls="clr-namespace:SpotifyApp.Shared.Controls"
+             xmlns:base="clr-namespace:SpotifyApp.Shared.ViewModels.Base"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="SpotifyApp.Shared.Views.MainView">
     <Design.DataContext>
@@ -43,12 +44,50 @@
 
                     <Border Grid.Row="1"
                             Classes="Block"
-                            VerticalAlignment="Stretch" />
+                            VerticalAlignment="Stretch">
+                        <Grid RowDefinitions="Auto, *">
+                            <controls:IconButton Icon="🕮"
+                                                 Text="{x:Static p:Resources.NavigationLibrary}"
+                                                 ToolTip.Tip="{x:Static p:Resources.NavigationLibrary}"/>
+                            
+                            <ListBox Grid.Row="1"
+                                     ItemsSource="{Binding Library.Items}"
+                                     HorizontalAlignment="Stretch"
+                                     Background="Transparent">
+                                <ListBox.DataTemplates>
+                                    <DataTemplate DataType="{x:Type base:ISpotifyItemViewModel}">
+                                        <Grid ColumnDefinitions="Auto, *"
+                                              RowDefinitions="*, *">
+                                            <Border Grid.RowSpan="2"
+                                                    ClipToBounds="True">
+                                                <Panel Background="Gray"
+                                                       Width="50"
+                                                       Height="50">
+                                                    <Image Stretch="Uniform"
+                                                           Source="{Binding Preview}" />
+                                                </Panel>
+                                            </Border>
+                                            <TextBlock Grid.Row="0"
+                                                       Grid.Column="1"
+                                                       Text="{Binding Item.Name}"
+                                                       TextTrimming="CharacterEllipsis"
+                                                       VerticalAlignment="Bottom" />
+                                            <TextBlock Grid.Row="1"
+                                                       Grid.Column="1"
+                                                       Text="{Binding Item.Type}"
+                                                       TextTrimming="CharacterEllipsis"
+                                                       VerticalAlignment="Top" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListBox.DataTemplates>
+                            </ListBox>
+                        </Grid>
+                    </Border>
                 </Grid>
             </SplitView.Pane>
 
             <Border Classes="Block Top">
-                <TransitioningContentControl Content="{Binding Navigate.Content}" />
+                <TransitioningContentControl Content="{Binding Navigate.Content}" Margin="0 0 3 0" />
             </Border>
         </SplitView>
 

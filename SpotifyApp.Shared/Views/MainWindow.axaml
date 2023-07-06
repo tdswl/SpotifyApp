@@ -3,23 +3,34 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:views="clr-namespace:SpotifyApp.Shared.Views"
+        xmlns:p="clr-namespace:SpotifyApp.Shared.Properties"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="SpotifyApp.Shared.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
         Title="SpotifyApp Desktop"
-        TransparencyLevelHint="AcrylicBlur"
-        Background="Transparent"
-        ExtendClientAreaToDecorationsHint="False">
+        ExtendClientAreaToDecorationsHint="True">
     <Panel>
-        <ExperimentalAcrylicBorder IsHitTestVisible="False">
-            <ExperimentalAcrylicBorder.Material>
-                <ExperimentalAcrylicMaterial
-                    BackgroundSource="Digger"
-                    TintColor="{DynamicResource SystemChromeLowColor}"
-                    TintOpacity="1"
-                    MaterialOpacity="0.80" />
-            </ExperimentalAcrylicBorder.Material>
-        </ExperimentalAcrylicBorder>
-        <views:MainView />
+        <DockPanel>
+            <Button Classes="DesktopMenuButton"
+                    Content="..."
+                    DockPanel.Dock="Top">
+                <Button.Flyout>
+                    <MenuFlyout>
+                        <MenuItem Header="{x:Static p:Resources.MenuFile}">
+                            <MenuItem Header="{x:Static p:Resources.MenuNewPlaylist}"/>
+                            <MenuItem Header="{x:Static p:Resources.MenuNewPlaylistFolder}"/>
+                            <Separator/>
+                            <MenuItem Header="{x:Static p:Resources.MenuPrivateSession}"/>
+                            <Separator/>
+                            <MenuItem Header="{x:Static p:Resources.MenuLogOut}"/>
+                            <Separator/>
+                            <MenuItem Header="{x:Static p:Resources.MenuExit}"/>
+                        </MenuItem>    
+                    </MenuFlyout>
+                </Button.Flyout>
+                
+            </Button>
+            <views:MainView />
+        </DockPanel>
     </Panel>
 </Window>

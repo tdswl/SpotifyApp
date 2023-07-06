@@ -1,9 +1,10 @@
 <Application xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             x:Class="SpotifyApp.Shared.App">
+             x:Class="SpotifyApp.Shared.App"
+             RequestedThemeVariant="Default">
 
     <Application.Styles>
-        <FluentTheme />
+        <FluentTheme  />
         <StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Fluent.xaml"/>
         <StyleInclude Source="/Styles/ButtonStyles.axaml" />
         <StyleInclude Source="/Styles/SplitViewStyles.axaml" /> 

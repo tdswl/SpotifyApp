@@ -1,11 +1,14 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Design.PreviewWith>
-        <Border Padding="20"
-                Width="88">
+        <StackPanel>
             <Button Classes="MenuButton"
                     Content="⌂" />
-        </Border>
+            
+            <Button Classes="DesktopMenuButton"
+                    Background="Gray"
+                    Content="..." />
+        </StackPanel>
     </Design.PreviewWith>
 
     <Style Selector="Button.MenuButton">
@@ -16,5 +19,17 @@
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="FontSize" Value="25" />
+    </Style>
+    
+    <Style Selector="Button.DesktopMenuButton">
+        <Setter Property="Width" Value="60" />
+        <Setter Property="Height" Value="40" />
+        <Setter Property="Padding" Value="0 -26 0 0"></Setter>
+        <Setter Property="CornerRadius" Value="0" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Top" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="FontSize" Value="45" />
     </Style>
 </Styles>

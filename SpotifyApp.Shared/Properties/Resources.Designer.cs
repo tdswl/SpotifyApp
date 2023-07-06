@@ -168,6 +168,60 @@ namespace SpotifyApp.Shared.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Exit.
+        /// </summary>
+        public static string MenuExit {
+            get {
+                return ResourceManager.GetString("MenuExit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to File.
+        /// </summary>
+        public static string MenuFile {
+            get {
+                return ResourceManager.GetString("MenuFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Log Out.
+        /// </summary>
+        public static string MenuLogOut {
+            get {
+                return ResourceManager.GetString("MenuLogOut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Playlist.
+        /// </summary>
+        public static string MenuNewPlaylist {
+            get {
+                return ResourceManager.GetString("MenuNewPlaylist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Playlist Folder.
+        /// </summary>
+        public static string MenuNewPlaylistFolder {
+            get {
+                return ResourceManager.GetString("MenuNewPlaylistFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Private Session.
+        /// </summary>
+        public static string MenuPrivateSession {
+            get {
+                return ResourceManager.GetString("MenuPrivateSession", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Only visible to you.
         /// </summary>
         public static string OnlyVisibleToYou {

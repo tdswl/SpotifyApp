@@ -14,6 +14,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\SpotifyApp.Shared\SpotifyApp.Shared.csproj"/>
+        <ProjectReference Include="..\SpotifyApp.Shared\SpotifyApp.Shared.csproj" />
+        <ProjectReference Include="..\SpotifyApp.Storage.SQLite\SpotifyApp.Storage.SQLite.csproj" />
     </ItemGroup>
 </Project>

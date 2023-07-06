@@ -3,10 +3,9 @@ using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using CommunityToolkit.Mvvm.DependencyInjection;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using SpotifyApp.Shared.DI;
-using SpotifyApp.Storage;
+using SpotifyApp.Storage.Contracts.Interfaces;
 using MainView = SpotifyApp.Shared.Views.MainView;
 using MainWindow = SpotifyApp.Shared.Views.MainWindow;
 
@@ -41,7 +40,7 @@ public sealed class App : Application
     public override void OnFrameworkInitializationCompleted()
     {
         RegisterDi();
-        CreateDatabase();
+        InitializeStorage();
         SetupLocalization();
 
         switch (ApplicationLifetime)
@@ -70,13 +69,8 @@ public sealed class App : Application
         Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("en-US");
     }
     
-    private void CreateDatabase()
+    private void InitializeStorage()
     {
-        if (_serviceProvider?.GetRequiredService<IApplicationContext>() is DbContext context)
-        {
-            context.Database.OpenConnection();
-            context.Database.EnsureCreated();
-            context.Database.CloseConnection();
-        }
+        _serviceProvider?.GetRequiredService<IStorageInitialization>().InitializeStorage();
     }
 }

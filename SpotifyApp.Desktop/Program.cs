@@ -3,6 +3,7 @@ using System;
 using Microsoft.Extensions.DependencyInjection;
 using SpotifyApp.Desktop.DI;
 using SpotifyApp.Shared;
+using SpotifyApp.Storage.Sqlite.DI;
 
 namespace SpotifyApp.Desktop;
 
@@ -25,6 +26,7 @@ class Program
     {
         var serviceCollection = new ServiceCollection();
         serviceCollection.AddDesktopBrowser();
+        serviceCollection.AddDatabase();
         return new App(serviceCollection);
     }
 }

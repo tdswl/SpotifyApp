@@ -1,8 +1,9 @@
-using FluentAssertions;
-using SpotifyApp.Storage.Entities;
-using SpotifyApp.Storage.Tests.Fixtures;
+﻿using FluentAssertions;
+using SpotifyApp.Storage.Contracts.Models;
+using SpotifyApp.Storage.Sqlite;
+using SpotifyApp.Storage.SQLite.Tests.Fixtures;
 
-namespace SpotifyApp.Storage.Tests.Tests;
+namespace SpotifyApp.Storage.SQLite.Tests.Tests;
 
 [Collection(nameof(StorageCollection))]
 public sealed class UserSettingsTests : IDisposable

@@ -1,11 +1,13 @@
-namespace SpotifyApp.Storage.Entities;
+using SpotifyApp.Storage.Contracts.Interfaces;
+
+namespace SpotifyApp.Storage.Contracts.Models;
 
 /// <summary>
 /// Application user
 /// </summary>
-public sealed class UserSettings
+public sealed class UserSettings : IStorageEntity
 {
-    public required Guid Id { get; set; }
+    public Guid Id { get; set; }
     
     public string? AccessToken { get; set; }
     

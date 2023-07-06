@@ -16,7 +16,7 @@
     <PackageVersion Include="Serilog.Extensions.Logging" Version="7.0.0" />
     <PackageVersion Include="SQLitePCLRaw.bundle_e_sqlcipher" Version="2.1.5" />
     <PackageVersion Include="FluentAssertions" Version="6.11.0" />
-    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.5.0" />
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.6.3" />
     <PackageVersion Include="xunit" Version="2.4.2" />
     <PackageVersion Include="xunit.runner.visualstudio" Version="2.4.5" />
     <PackageVersion Include="coverlet.collector" Version="6.0.0" />
@@ -24,9 +24,9 @@
     <PackageVersion Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
     <PackageVersion Include="Microsoft.Extensions.Http" Version="7.0.0" />
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
-    <PackageVersion Include="Microsoft.Data.Sqlite.Core" Version="7.0.4" />
-    <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.4" />
-    <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite.Core" Version="7.0.4" />
+    <PackageVersion Include="Microsoft.Data.Sqlite.Core" Version="7.0.8" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.8" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite.Core" Version="7.0.8" />
     <!-- https://github.com/xunit/xunit/issues/2470 -->
     <PackageVersion Include="System.Net.Http" Version="4.3.4" />
     <PackageVersion Include="System.Text.RegularExpressions" Version="4.3.1" />
@@ -48,7 +48,7 @@
   <Choose>
     <When Condition=" $(MSBuildProjectName.EndsWith('Tests')) ">
       <ItemGroup>
-        <PackageReference Include="FluentAssertions" />
+        <PackageReference Include="FluentAssertions" Version="6.11.0" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" />
         <PackageReference Include="xunit" />
         <PackageReference Include="xunit.runner.visualstudio">

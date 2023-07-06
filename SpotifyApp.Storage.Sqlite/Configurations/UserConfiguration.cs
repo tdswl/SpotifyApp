@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using SpotifyApp.Storage.Entities;
+using SpotifyApp.Storage.Contracts.Models;
 
-namespace SpotifyApp.Storage.Configurations;
+namespace SpotifyApp.Storage.Sqlite.Configurations;
 
 public sealed class UserConfiguration : IEntityTypeConfiguration<UserSettings>
 {

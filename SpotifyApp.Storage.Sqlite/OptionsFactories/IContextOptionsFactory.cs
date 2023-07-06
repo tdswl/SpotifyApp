@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace SpotifyApp.Storage.OptionsFactories;
+namespace SpotifyApp.Storage.Sqlite.OptionsFactories;
 
 public interface IContextOptionsFactory
 {

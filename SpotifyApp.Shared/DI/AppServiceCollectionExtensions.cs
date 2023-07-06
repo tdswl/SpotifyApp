@@ -4,13 +4,13 @@ using Serilog;
 using SpotifyApp.Api.Client.Auth;
 using SpotifyApp.Api.Client.DI;
 using SpotifyApp.Api.Client.OpenApiClient;
+using SpotifyApp.Repositories.DI;
 using SpotifyApp.Shared.AutoMapper;
 using SpotifyApp.Shared.AutoMapper.Resolvers;
 using SpotifyApp.Shared.Configurations;
 using SpotifyApp.Shared.Services;
 using SpotifyApp.Shared.ViewModels;
 using SpotifyApp.Shared.ViewModels.Items;
-using SpotifyApp.Storage.DI;
 
 namespace SpotifyApp.Shared.DI;
 
@@ -23,9 +23,9 @@ public static class AppServiceCollectionExtensions
     {
         return services.AddLogging(builder => builder.AddSerilog())
             .AddMemoryCache()
-            .AddDatabase()
             .AddAutomapper()
             .AddApiClients()
+            .AddRepositories()
             
             // Models shared across component - register as singleton
             .AddSingleton<MainWindowViewModel>()

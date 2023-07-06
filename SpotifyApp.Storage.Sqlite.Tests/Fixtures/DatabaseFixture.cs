@@ -1,7 +1,8 @@
-using Microsoft.EntityFrameworkCore;
-using SpotifyApp.Storage.OptionsFactories;
+﻿using Microsoft.EntityFrameworkCore;
+using SpotifyApp.Storage.Sqlite;
+using SpotifyApp.Storage.Sqlite.OptionsFactories;
 
-namespace SpotifyApp.Storage.Tests.Fixtures;
+namespace SpotifyApp.Storage.SQLite.Tests.Fixtures;
 
 public sealed class DatabaseFixture : IAsyncLifetime
 {

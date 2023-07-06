@@ -1,10 +1,9 @@
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
 using SpotifyApp.Api.Client.Auth;
+using SpotifyApp.Repositories.Contracts;
 using SpotifyApp.Shared.Constants;
 using SpotifyApp.Shared.Models;
-using SpotifyApp.Storage;
-using SpotifyApp.Storage.Entities;
+using SpotifyApp.Storage.Contracts.Models;
 
 namespace SpotifyApp.Shared.Services;
 
@@ -12,17 +11,20 @@ internal sealed class AuthService : IAuthService
 {
     private static readonly SemaphoreSlim Semaphore = new(1, 1);
     
-    private readonly IApplicationContext _applicationContext;
+    private readonly IUserSettingsReadRepository _userSettingsReadRepository;
+    private readonly IUserSettingsWriteRepository _userSettingsWriteRepository;
     private readonly IMemoryCache _memoryCache;
     private readonly IAuthClient _authClient;
     
-    public AuthService(IApplicationContext applicationContext,
-        IMemoryCache memoryCache,
-        IAuthClient authClient)
+    public AuthService(IMemoryCache memoryCache,
+        IAuthClient authClient, 
+        IUserSettingsReadRepository userSettingsReadRepository, 
+        IUserSettingsWriteRepository userSettingsWriteRepository)
     {
-        _applicationContext = applicationContext;
         _memoryCache = memoryCache;
         _authClient = authClient;
+        _userSettingsReadRepository = userSettingsReadRepository;
+        _userSettingsWriteRepository = userSettingsWriteRepository;
     }
     
     public async Task<AuthorizationInfoModel> Login(CancellationToken token)
@@ -67,7 +69,7 @@ internal sealed class AuthService : IAuthService
     
     private async Task<AuthorizationInfoModel?> GetInfoFromDatabase(CancellationToken cancellationToken)
     {
-        var latestUser = await _applicationContext.UserSettings.FirstOrDefaultAsync(cancellationToken);
+        var latestUser = await _userSettingsReadRepository.GetUserSettings(cancellationToken);
         if (latestUser == null)
         {
             return null;
@@ -116,7 +118,7 @@ internal sealed class AuthService : IAuthService
   
     private async Task AddOrUpdateInfoInStorage(AuthorizationInfoModel infoModel, CancellationToken token)
     {
-        var userSettings = await _applicationContext.UserSettings.FirstOrDefaultAsync(token);
+        var userSettings = await _userSettingsReadRepository.GetUserSettings(token);
         if (userSettings != null)
         {
             userSettings.AuthenticationTime = infoModel.AuthenticationTime;
@@ -124,8 +126,8 @@ internal sealed class AuthService : IAuthService
             userSettings.RefreshToken = infoModel.RefreshToken;
             userSettings.AccessTokenExpiration = infoModel.AccessTokenExpiration;
             
-            _applicationContext.UserSettings.Update(userSettings);
-            await _applicationContext.SaveChangesAsync(token);
+            _userSettingsWriteRepository.Update(userSettings);
+            await _userSettingsWriteRepository.SaveChangesAsync(token);
         }
         else
         {
@@ -138,8 +140,8 @@ internal sealed class AuthService : IAuthService
                 AuthenticationTime = infoModel.AuthenticationTime
             };
             
-            await _applicationContext.UserSettings.AddAsync(userSettings, token);
-            await _applicationContext.SaveChangesAsync(token);
+            _userSettingsWriteRepository.Add(userSettings);
+            await _userSettingsWriteRepository.SaveChangesAsync(token);
         }
     }
 }

@@ -36,7 +36,7 @@
 
     <ItemGroup>
         <ProjectReference Include="..\SpotifyApp.Api.Client\SpotifyApp.Api.Client.csproj" />
-        <ProjectReference Include="..\SpotifyApp.Storage\SpotifyApp.Storage.csproj" />
+        <ProjectReference Include="..\SpotifyApp.Repositories\SpotifyApp.Repositories.csproj" />
     </ItemGroup>
 
     <ItemGroup>

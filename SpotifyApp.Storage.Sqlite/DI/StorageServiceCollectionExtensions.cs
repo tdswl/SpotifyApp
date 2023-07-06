@@ -16,4 +16,14 @@ public static class StorageServiceCollectionExtensions
 
         return services;
     }
+    
+    public static IServiceCollection AddDatabaseInMemory(this IServiceCollection services)
+    {
+        services.TryAdd(ServiceDescriptor.Singleton<IContextOptionsFactory, SqliteInMemoryContextOptionsFactory>());
+        services.TryAdd(ServiceDescriptor.Scoped<IStorageReader, ApplicationContext>());
+        services.TryAdd(ServiceDescriptor.Scoped<IStorageWriter, ApplicationContext>());
+        services.TryAdd(ServiceDescriptor.Scoped<IStorageInitialization, ApplicationContext>());
+
+        return services;
+    }
 }

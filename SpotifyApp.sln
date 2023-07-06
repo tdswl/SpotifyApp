@@ -28,6 +28,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyApp.Storage.SQLite",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyApp.Storage.SQLite.Tests", "SpotifyApp.Storage.SQLite.Tests\SpotifyApp.Storage.SQLite.Tests.csproj", "{E06C4DCF-DE02-415E-8772-28CC867A96F5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyApp.Browser", "SpotifyApp.Browser\SpotifyApp.Browser.csproj", "{85ED8561-A72E-4B0A-BB0E-6217751B3225}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -70,5 +72,9 @@ Global
 		{E06C4DCF-DE02-415E-8772-28CC867A96F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E06C4DCF-DE02-415E-8772-28CC867A96F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E06C4DCF-DE02-415E-8772-28CC867A96F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{85ED8561-A72E-4B0A-BB0E-6217751B3225}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85ED8561-A72E-4B0A-BB0E-6217751B3225}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85ED8561-A72E-4B0A-BB0E-6217751B3225}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85ED8561-A72E-4B0A-BB0E-6217751B3225}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

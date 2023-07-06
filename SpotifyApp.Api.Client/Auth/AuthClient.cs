@@ -21,14 +21,14 @@ internal class AuthClient : IAuthClient
         _oidcConfiguration = oidcConfiguration;
     }
     
-    public Task<LoginResult> Login(CancellationToken token)
+    Task<LoginResult> IAuthClient.Login(CancellationToken token)
     {
         var options = GenerateClientOptions();
         var oidcClient = new OidcClient(options);
         return oidcClient.LoginAsync(cancellationToken: token);
     }
 
-    public Task<RefreshTokenResult> Refresh(string refreshToken, CancellationToken token)
+    Task<RefreshTokenResult> IAuthClient.Refresh(string refreshToken, CancellationToken token)
     {
         var options = GenerateClientOptions();
         var oidcClient = new OidcClient(options);

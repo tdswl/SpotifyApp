@@ -3,11 +3,10 @@ using System;
 using Microsoft.Extensions.DependencyInjection;
 using SpotifyApp.Desktop.DI;
 using SpotifyApp.Shared;
-using SpotifyApp.Storage.Sqlite.DI;
 
 namespace SpotifyApp.Desktop;
 
-class Program
+internal class Program
 {
     // Initialization code. Don't use any Avalonia, third-party APIs or any
     // SynchronizationContext-reliant code before AppMain is called: things aren't initialized
@@ -25,8 +24,7 @@ class Program
     private static App AppFactory()
     {
         var serviceCollection = new ServiceCollection();
-        serviceCollection.AddDesktopBrowser();
-        serviceCollection.AddDatabase();
+        serviceCollection.AddDesktop();
         return new App(serviceCollection);
     }
 }

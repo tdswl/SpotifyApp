@@ -14,7 +14,7 @@ internal class UserSettingsReadRepository : IUserSettingsReadRepository
         _reader = reader;
     }
 
-    public Task<UserSettings?> GetUserSettings(CancellationToken cancellationToken)
+    Task<UserSettings?> IUserSettingsReadRepository.GetUserSettings(CancellationToken cancellationToken)
     {
         return _reader.Read<UserSettings>().FirstOrDefaultAsync(cancellationToken);
     }

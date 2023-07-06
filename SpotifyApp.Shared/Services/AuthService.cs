@@ -27,7 +27,7 @@ internal sealed class AuthService : IAuthService
         _userSettingsWriteRepository = userSettingsWriteRepository;
     }
     
-    public async Task<AuthorizationInfoModel> Login(CancellationToken token)
+    async Task<AuthorizationInfoModel> IAuthService.Login(CancellationToken token)
     {
         // lock to prevent many login requests to Spotify
         await Semaphore.WaitAsync(token).ConfigureAwait(false);

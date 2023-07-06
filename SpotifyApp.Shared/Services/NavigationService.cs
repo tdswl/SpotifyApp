@@ -11,7 +11,7 @@ namespace SpotifyApp.Shared.Services;
 
 internal sealed class NavigationService : INavigationService
 {
-    public UserControl NavigateTo(PageType pageType, INavigateParams? navigateParams = null)
+    UserControl INavigationService.NavigateTo(PageType pageType, INavigateParams? navigateParams)
     {
         switch (pageType)
         {

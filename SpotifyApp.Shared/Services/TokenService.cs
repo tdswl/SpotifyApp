@@ -2,7 +2,7 @@ using SpotifyApp.Api.Client.OpenApiClient;
 
 namespace SpotifyApp.Shared.Services;
 
-public sealed class TokenService : ITokenService
+internal sealed class TokenService : ITokenService
 {
     private readonly IAuthService _authService;
 
@@ -11,7 +11,7 @@ public sealed class TokenService : ITokenService
         _authService = authService;
     }
     
-    public async Task<string> GetAccessToken(CancellationToken token)
+    async Task<string> ITokenService.GetAccessToken(CancellationToken token)
     {
         var loginInfo = await _authService.Login(token);
         return loginInfo.AccessToken;

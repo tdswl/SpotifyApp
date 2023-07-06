@@ -1,3 +1,4 @@
+using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using SpotifyApp.Storage.Contracts.Interfaces;
 using SpotifyApp.Storage.Contracts.Models;
@@ -11,7 +12,23 @@ internal sealed class ApplicationContext : DbContext, IApplicationContext
         : base(optionsFactory.CreateOptions())
     {
     }
-    
+
+    // Uncomment to generate migrations
+    // public ApplicationContext()
+    // {
+    // }
+    //
+    // protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    // {
+    //     var connectionString = new SqliteConnectionStringBuilder("Data Source=App.db")
+    //     {
+    //         Mode = SqliteOpenMode.ReadWriteCreate,
+    //         Password = "test",
+    //     }.ToString();
+    //    optionsBuilder.UseSqlite(connectionString);
+    //    base.OnConfiguring(optionsBuilder);
+    // }
+
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
@@ -41,14 +58,14 @@ internal sealed class ApplicationContext : DbContext, IApplicationContext
         Entry(entity).State = EntityState.Deleted;
     }
 
-    public async Task InitializeStorageAsync(CancellationToken cancellationToken)
+    async Task IStorageInitialization.InitializeStorageAsync(CancellationToken cancellationToken)
     {
         await Database.OpenConnectionAsync(cancellationToken);
         await Database.EnsureCreatedAsync(cancellationToken);
         await Database.CloseConnectionAsync();
     }
 
-    public void InitializeStorage()
+    void IStorageInitialization.InitializeStorage()
     {
         Database.OpenConnection();
         Database.EnsureCreated();

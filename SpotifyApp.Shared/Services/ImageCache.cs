@@ -17,7 +17,7 @@ internal sealed class ImageCache : IImageCache
         _httpClient = httpClientFactory.CreateClient();
     }
     
-    public async Task<string> GetCachedImagePath(string webPath, CancellationToken cancellationToken)
+    async Task<string> IImageCache.GetCachedImagePath(string webPath, CancellationToken cancellationToken)
     {
         using (await AsyncKeyedLocker.LockAsync(webPath, cancellationToken))
         {

@@ -20,6 +20,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceInclude Source="/Styles/ListBoxItemStyles.axaml" />
                 <ResourceInclude Source="/Styles/SpotifyItemDataTemplates.axaml" />
+                <ResourceInclude Source="/Styles/Icons.axaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

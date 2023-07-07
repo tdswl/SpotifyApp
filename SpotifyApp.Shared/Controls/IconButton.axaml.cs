@@ -1,5 +1,6 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Media;
 
 namespace SpotifyApp.Shared.Controls;
 
@@ -8,13 +9,13 @@ public class IconButton : Button
     /// <summary>
     /// Defines the <see cref="Icon"/> property.
     /// </summary>
-    public static readonly StyledProperty<string?> IconProperty =
-        AvaloniaProperty.Register<IconButton, string?>(nameof(Icon));
+    public static readonly StyledProperty<Geometry?> IconProperty =
+        AvaloniaProperty.Register<IconButton, Geometry?>(nameof(Icon));
     
     /// <summary>
     /// Gets or sets the content of header to display.
     /// </summary>
-    public string? Icon
+    public Geometry? Icon
     {
         get => GetValue(IconProperty);
         set => SetValue(IconProperty, value);

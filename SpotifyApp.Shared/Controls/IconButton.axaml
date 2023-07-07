@@ -14,8 +14,9 @@
                         CommandParameter="{TemplateBinding CommandParameter}">
                     <Grid ColumnDefinitions="32, 10, *"
                           HorizontalAlignment="Stretch">
-                        <TextBlock Name="PART_Icon" 
-                                   Text="{TemplateBinding Icon}" />
+                        <PathIcon Height="32" 
+                                  Width="32"        
+                                  Data="{TemplateBinding Icon}" />
                         <TextBlock Grid.Column="2"
                                    Name="PART_Text"
                                    Text="{TemplateBinding Text}" />

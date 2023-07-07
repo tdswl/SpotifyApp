@@ -28,13 +28,13 @@
                       RowDefinitions="Auto, *">
                     <Border Classes="Block Top">
                         <StackPanel DataContext="{Binding Navigate}">
-                            <controls:IconButton Icon="⌂"
+                            <controls:IconButton Icon="{StaticResource home_regular}"
                                                  Text="{x:Static p:Resources.NavigationHome}"
                                                  ToolTip.Tip="{x:Static p:Resources.NavigationHome}"
                                                  Command="{Binding NavigateToCommand}"
                                                  CommandParameter="{x:Static enums:PageType.Home}" />
 
-                            <controls:IconButton Icon="🔍"
+                            <controls:IconButton Icon="{StaticResource search_regular}"
                                                  Text="{x:Static p:Resources.NavigationSearch}"
                                                  ToolTip.Tip="{x:Static p:Resources.NavigationSearch}"
                                                  Command="{Binding NavigateToCommand}"
@@ -46,7 +46,7 @@
                             Classes="Block"
                             VerticalAlignment="Stretch">
                         <Grid RowDefinitions="Auto, *">
-                            <controls:IconButton Icon="🕮"
+                            <controls:IconButton Icon="{StaticResource book_regular}"
                                                  Text="{x:Static p:Resources.NavigationLibrary}"
                                                  ToolTip.Tip="{x:Static p:Resources.NavigationLibrary}"/>
                             

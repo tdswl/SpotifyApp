@@ -7,7 +7,7 @@ using SpotifyApp.Storage.Sqlite;
 
 #nullable disable
 
-namespace SpotifyApp.Storage.SQLite.Migrations
+namespace SpotifyApp.Storage.Sqlite.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
     partial class ApplicationContextModelSnapshot : ModelSnapshot

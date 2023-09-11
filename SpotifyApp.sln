@@ -24,9 +24,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyApp.Storage.Contract
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyApp.Repositories.Contracts", "SpotifyApp.Repositories.Contracts\SpotifyApp.Repositories.Contracts.csproj", "{8584B6A5-9D58-48C9-8BB8-6C40CB1BC2BF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyApp.Storage.SQLite", "SpotifyApp.Storage.SQLite\SpotifyApp.Storage.SQLite.csproj", "{D4ED143C-B775-48D6-BDF2-129EB721AA82}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyApp.Storage.Sqlite", "SpotifyApp.Storage.Sqlite\SpotifyApp.Storage.Sqlite.csproj", "{D4ED143C-B775-48D6-BDF2-129EB721AA82}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyApp.Storage.SQLite.Tests", "SpotifyApp.Storage.SQLite.Tests\SpotifyApp.Storage.SQLite.Tests.csproj", "{E06C4DCF-DE02-415E-8772-28CC867A96F5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyApp.Storage.Sqlite.Tests", "SpotifyApp.Storage.Sqlite.Tests\SpotifyApp.Storage.Sqlite.Tests.csproj", "{E06C4DCF-DE02-415E-8772-28CC867A96F5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyApp.Browser", "SpotifyApp.Browser\SpotifyApp.Browser.csproj", "{85ED8561-A72E-4B0A-BB0E-6217751B3225}"
 EndProject

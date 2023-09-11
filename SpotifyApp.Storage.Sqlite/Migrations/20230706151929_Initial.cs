@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace SpotifyApp.Storage.SQLite.Migrations
+namespace SpotifyApp.Storage.Sqlite.Migrations
 {
     /// <inheritdoc />
     public partial class Initial : Migration

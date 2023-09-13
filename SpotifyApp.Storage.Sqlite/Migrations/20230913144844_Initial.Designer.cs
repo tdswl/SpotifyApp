@@ -11,14 +11,14 @@ using SpotifyApp.Storage.Sqlite;
 namespace SpotifyApp.Storage.Sqlite.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20230706151929_Initial")]
+    [Migration("20230913144844_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "7.0.8");
+            modelBuilder.HasAnnotation("ProductVersion", "7.0.10");
 
             modelBuilder.Entity("SpotifyApp.Storage.Contracts.Models.UserSettings", b =>
                 {

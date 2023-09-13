@@ -14,10 +14,16 @@
         </PackageReference>
         <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite.Core"/>
         <PackageReference Include="SQLitePCLRaw.bundle_e_sqlcipher"/>
+        <PackageReference Include="Microsoft.Extensions.Logging.Console" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Json" />
     </ItemGroup>
 
     <ItemGroup>
         <ProjectReference Include="..\SpotifyApp.Storage.Contracts\SpotifyApp.Storage.Contracts.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Migrations\" />
     </ItemGroup>
 
 </Project>

@@ -137,7 +137,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// </remarks>
         /// <returns>Pages of albums</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PagingSimplifiedAlbumObject> GetAnArtistsAlbumsAsync(string id, string include_groups, string market, int? limit, int? offset);
+        System.Threading.Tasks.Task<PagingArtistDiscographyAlbumObject> GetAnArtistsAlbumsAsync(string id, string include_groups, string market, int? limit, int? offset);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -148,7 +148,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// </remarks>
         /// <returns>Pages of albums</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PagingSimplifiedAlbumObject> GetAnArtistsAlbumsAsync(string id, string include_groups, string market, int? limit, int? offset, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<PagingArtistDiscographyAlbumObject> GetAnArtistsAlbumsAsync(string id, string include_groups, string market, int? limit, int? offset, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get Artist's Top Tracks
@@ -1168,6 +1168,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// <remarks>
         /// Create a playlist for a Spotify user. (The playlist will be empty until
         /// <br/>you [add tracks](/documentation/web-api/reference/add-tracks-to-playlist).)
+        /// <br/>Each user is generally limited to a maximum of 11000 playlists.
         /// </remarks>
         /// <returns>A playlist</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -1180,6 +1181,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// <remarks>
         /// Create a playlist for a Spotify user. (The playlist will be empty until
         /// <br/>you [add tracks](/documentation/web-api/reference/add-tracks-to-playlist).)
+        /// <br/>Each user is generally limited to a maximum of 11000 playlists.
         /// </remarks>
         /// <returns>A playlist</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -2398,75 +2400,6 @@ namespace SpotifyApp.Api.Client.OpenApiClient
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.20.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class CurrentlyPlayingObject
-    {
-        /// <summary>
-        /// A Context Object. Can be `null`.
-        /// </summary>
-
-        [System.Text.Json.Serialization.JsonPropertyName("context")]
-
-        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
-        public ContextObject Context { get; set; }
-
-        /// <summary>
-        /// Unix Millisecond Timestamp when data was fetched
-        /// </summary>
-
-        [System.Text.Json.Serialization.JsonPropertyName("timestamp")]
-
-        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
-        public int Timestamp { get; set; }
-
-        /// <summary>
-        /// Progress into the currently playing track or episode. Can be `null`.
-        /// </summary>
-
-        [System.Text.Json.Serialization.JsonPropertyName("progress_ms")]
-
-        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
-        public int Progress_ms { get; set; }
-
-        /// <summary>
-        /// If something is currently playing, return `true`.
-        /// </summary>
-
-        [System.Text.Json.Serialization.JsonPropertyName("is_playing")]
-
-        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
-        public bool Is_playing { get; set; }
-
-        /// <summary>
-        /// The currently playing track or episode. Can be `null`.
-        /// </summary>
-
-        [System.Text.Json.Serialization.JsonPropertyName("item")]
-
-        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
-        public TrackObject Item { get; set; }
-
-        /// <summary>
-        /// The object type of the currently playing item. Can be one of `track`, `episode`, `ad` or `unknown`.
-        /// <br/>
-        /// </summary>
-
-        [System.Text.Json.Serialization.JsonPropertyName("currently_playing_type")]
-
-        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
-        public string Currently_playing_type { get; set; }
-
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
-
-        [System.Text.Json.Serialization.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties ?? (_additionalProperties = new System.Collections.Generic.Dictionary<string, object>()); }
-            set { _additionalProperties = value; }
-        }
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.20.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class QueueObject
     {
         /// <summary>
@@ -2733,127 +2666,6 @@ namespace SpotifyApp.Api.Client.OpenApiClient
             get { return _additionalProperties ?? (_additionalProperties = new System.Collections.Generic.Dictionary<string, object>()); }
             set { _additionalProperties = value; }
         }
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.20.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class PlayerErrorObject
-    {
-        /// <summary>
-        /// The HTTP status code. Either `404 NOT FOUND` or `403 FORBIDDEN`.  Also returned in the response header.
-        /// <br/>
-        /// </summary>
-
-        [System.Text.Json.Serialization.JsonPropertyName("status")]
-
-        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
-        public int Status { get; set; }
-
-        /// <summary>
-        /// A short description of the cause of the error.
-        /// <br/>
-        /// </summary>
-
-        [System.Text.Json.Serialization.JsonPropertyName("message")]
-
-        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
-        public string Message { get; set; }
-
-        [System.Text.Json.Serialization.JsonPropertyName("reason")]
-
-        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
-        [System.Text.Json.Serialization.JsonConverter(typeof(System.Text.Json.Serialization.JsonStringEnumConverter))]
-        public PlayerErrorReasons Reason { get; set; }
-
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
-
-        [System.Text.Json.Serialization.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties ?? (_additionalProperties = new System.Collections.Generic.Dictionary<string, object>()); }
-            set { _additionalProperties = value; }
-        }
-
-    }
-
-    /// <summary>
-    /// * `NO_PREV_TRACK` - The command requires a previous track, but there is none in the context.
-    /// <br/>* `NO_NEXT_TRACK` - The command requires a next track, but there is none in the context.
-    /// <br/>* `NO_SPECIFIC_TRACK` - The requested track does not exist.
-    /// <br/>* `ALREADY_PAUSED` - The command requires playback to not be paused.
-    /// <br/>* `NOT_PAUSED` - The command requires playback to be paused.
-    /// <br/>* `NOT_PLAYING_LOCALLY` - The command requires playback on the local device.
-    /// <br/>* `NOT_PLAYING_TRACK` - The command requires that a track is currently playing.
-    /// <br/>* `NOT_PLAYING_CONTEXT` - The command requires that a context is currently playing.
-    /// <br/>* `ENDLESS_CONTEXT` - The shuffle command cannot be applied on an endless context.
-    /// <br/>* `CONTEXT_DISALLOW` - The command could not be performed on the context.
-    /// <br/>* `ALREADY_PLAYING` - The track should not be restarted if the same track and context is already playing, and there is a resume point.
-    /// <br/>* `RATE_LIMITED` - The user is rate limited due to too frequent track play, also known as cat-on-the-keyboard spamming.
-    /// <br/>* `REMOTE_CONTROL_DISALLOW` - The context cannot be remote-controlled.
-    /// <br/>* `DEVICE_NOT_CONTROLLABLE` - Not possible to remote control the device.
-    /// <br/>* `VOLUME_CONTROL_DISALLOW` - Not possible to remote control the device's volume.
-    /// <br/>* `NO_ACTIVE_DEVICE` - Requires an active device and the user has none.
-    /// <br/>* `PREMIUM_REQUIRED` - The request is prohibited for non-premium users.
-    /// <br/>* `UNKNOWN` - Certain actions are restricted because of unknown reasons.
-    /// <br/>
-    /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.20.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public enum PlayerErrorReasons
-    {
-
-        [System.Runtime.Serialization.EnumMember(Value = @"NO_PREV_TRACK")]
-        NO_PREV_TRACK = 0,
-
-        [System.Runtime.Serialization.EnumMember(Value = @"NO_NEXT_TRACK")]
-        NO_NEXT_TRACK = 1,
-
-        [System.Runtime.Serialization.EnumMember(Value = @"NO_SPECIFIC_TRACK")]
-        NO_SPECIFIC_TRACK = 2,
-
-        [System.Runtime.Serialization.EnumMember(Value = @"ALREADY_PAUSED")]
-        ALREADY_PAUSED = 3,
-
-        [System.Runtime.Serialization.EnumMember(Value = @"NOT_PAUSED")]
-        NOT_PAUSED = 4,
-
-        [System.Runtime.Serialization.EnumMember(Value = @"NOT_PLAYING_LOCALLY")]
-        NOT_PLAYING_LOCALLY = 5,
-
-        [System.Runtime.Serialization.EnumMember(Value = @"NOT_PLAYING_TRACK")]
-        NOT_PLAYING_TRACK = 6,
-
-        [System.Runtime.Serialization.EnumMember(Value = @"NOT_PLAYING_CONTEXT")]
-        NOT_PLAYING_CONTEXT = 7,
-
-        [System.Runtime.Serialization.EnumMember(Value = @"ENDLESS_CONTEXT")]
-        ENDLESS_CONTEXT = 8,
-
-        [System.Runtime.Serialization.EnumMember(Value = @"CONTEXT_DISALLOW")]
-        CONTEXT_DISALLOW = 9,
-
-        [System.Runtime.Serialization.EnumMember(Value = @"ALREADY_PLAYING")]
-        ALREADY_PLAYING = 10,
-
-        [System.Runtime.Serialization.EnumMember(Value = @"RATE_LIMITED")]
-        RATE_LIMITED = 11,
-
-        [System.Runtime.Serialization.EnumMember(Value = @"REMOTE_CONTROL_DISALLOW")]
-        REMOTE_CONTROL_DISALLOW = 12,
-
-        [System.Runtime.Serialization.EnumMember(Value = @"DEVICE_NOT_CONTROLLABLE")]
-        DEVICE_NOT_CONTROLLABLE = 13,
-
-        [System.Runtime.Serialization.EnumMember(Value = @"VOLUME_CONTROL_DISALLOW")]
-        VOLUME_CONTROL_DISALLOW = 14,
-
-        [System.Runtime.Serialization.EnumMember(Value = @"NO_ACTIVE_DEVICE")]
-        NO_ACTIVE_DEVICE = 15,
-
-        [System.Runtime.Serialization.EnumMember(Value = @"PREMIUM_REQUIRED")]
-        PREMIUM_REQUIRED = 16,
-
-        [System.Runtime.Serialization.EnumMember(Value = @"UNKNOWN")]
-        UNKNOWN = 17,
 
     }
 
@@ -3779,29 +3591,6 @@ namespace SpotifyApp.Api.Client.OpenApiClient
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.20.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class DevicesObject
-    {
-        /// <summary>
-        /// A list of 0..n Device objects
-        /// </summary>
-
-        [System.Text.Json.Serialization.JsonPropertyName("devices")]
-
-        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
-        public System.Collections.Generic.ICollection<DeviceObject> Devices { get; set; }
-
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
-
-        [System.Text.Json.Serialization.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties ?? (_additionalProperties = new System.Collections.Generic.Dictionary<string, object>()); }
-            set { _additionalProperties = value; }
-        }
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.20.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class DeviceObject
     {
         /// <summary>
@@ -3867,6 +3656,15 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
         [System.ComponentModel.DataAnnotations.Range(0, 100)]
         public int? Volume_percent { get; set; }
+
+        /// <summary>
+        /// If this device can be used to set the volume.
+        /// </summary>
+
+        [System.Text.Json.Serialization.JsonPropertyName("supports_volume")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
+        public bool Supports_volume { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
 
@@ -4104,6 +3902,17 @@ namespace SpotifyApp.Api.Client.OpenApiClient
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.20.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class PagingArtistDiscographyAlbumObject : PagingObject
+    {
+
+        [System.Text.Json.Serialization.JsonPropertyName("items")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
+        public System.Collections.Generic.ICollection<ArtistDiscographyAlbumObject> Items { get; set; }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.20.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class PagingSimplifiedAlbumObject : PagingObject
     {
 
@@ -4221,17 +4030,6 @@ namespace SpotifyApp.Api.Client.OpenApiClient
 
         [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
         public System.Collections.Generic.ICollection<SimplifiedAudiobookObject> Items { get; set; }
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.20.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class PagingSimplifiedArtistObject : PagingObject
-    {
-
-        [System.Text.Json.Serialization.JsonPropertyName("items")]
-
-        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
-        public System.Collections.Generic.ICollection<SimplifiedArtistObject> Items { get; set; }
 
     }
 
@@ -4494,137 +4292,6 @@ namespace SpotifyApp.Api.Client.OpenApiClient
 
         [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
         public SimplifiedShowObject Show { get; set; }
-
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
-
-        [System.Text.Json.Serialization.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties ?? (_additionalProperties = new System.Collections.Generic.Dictionary<string, object>()); }
-            set { _additionalProperties = value; }
-        }
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.20.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class TuneableTrackObject
-    {
-        /// <summary>
-        /// A confidence measure from 0.0 to 1.0 of whether the track is acoustic. 1.0 represents high confidence the track is acoustic.
-        /// <br/>
-        /// </summary>
-
-        [System.Text.Json.Serialization.JsonPropertyName("acousticness")]
-
-        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
-        public float Acousticness { get; set; }
-
-        /// <summary>
-        /// Danceability describes how suitable a track is for dancing based on a combination of musical elements including tempo, rhythm stability, beat strength, and overall regularity. A value of 0.0 is least danceable and 1.0 is most danceable.
-        /// <br/>
-        /// </summary>
-
-        [System.Text.Json.Serialization.JsonPropertyName("danceability")]
-
-        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
-        public float Danceability { get; set; }
-
-        /// <summary>
-        /// The duration of the track in milliseconds.
-        /// <br/>
-        /// </summary>
-
-        [System.Text.Json.Serialization.JsonPropertyName("duration_ms")]
-
-        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
-        public int Duration_ms { get; set; }
-
-        /// <summary>
-        /// Energy is a measure from 0.0 to 1.0 and represents a perceptual measure of intensity and activity. Typically, energetic tracks feel fast, loud, and noisy. For example, death metal has high energy, while a Bach prelude scores low on the scale. Perceptual features contributing to this attribute include dynamic range, perceived loudness, timbre, onset rate, and general entropy.
-        /// <br/>
-        /// </summary>
-
-        [System.Text.Json.Serialization.JsonPropertyName("energy")]
-
-        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
-        public float Energy { get; set; }
-
-        /// <summary>
-        /// Predicts whether a track contains no vocals. "Ooh" and "aah" sounds are treated as instrumental in this context. Rap or spoken word tracks are clearly "vocal". The closer the instrumentalness value is to 1.0, the greater likelihood the track contains no vocal content. Values above 0.5 are intended to represent instrumental tracks, but confidence is higher as the value approaches 1.0.
-        /// <br/>
-        /// </summary>
-
-        [System.Text.Json.Serialization.JsonPropertyName("instrumentalness")]
-
-        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
-        public float Instrumentalness { get; set; }
-
-        [System.Text.Json.Serialization.JsonPropertyName("key")]
-
-        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
-        [System.ComponentModel.DataAnnotations.Range(-1, 11)]
-        public int Key { get; set; }
-
-        /// <summary>
-        /// Detects the presence of an audience in the recording. Higher liveness values represent an increased probability that the track was performed live. A value above 0.8 provides strong likelihood that the track is live.
-        /// <br/>
-        /// </summary>
-
-        [System.Text.Json.Serialization.JsonPropertyName("liveness")]
-
-        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
-        public float Liveness { get; set; }
-
-        [System.Text.Json.Serialization.JsonPropertyName("loudness")]
-
-        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
-        public float Loudness { get; set; }
-
-        [System.Text.Json.Serialization.JsonPropertyName("mode")]
-
-        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
-        public int Mode { get; set; }
-
-        /// <summary>
-        /// The popularity of the track. The value will be between 0 and 100, with 100 being the most popular. The popularity is calculated by algorithm and is based, in the most part, on the total number of plays the track has had and how recent those plays are. _**Note**: When applying track relinking via the `market` parameter, it is expected to find relinked tracks with popularities that do not match `min_*`, `max_*`and `target_*` popularities. These relinked tracks are accurate replacements for unplayable tracks with the expected popularity scores. Original, non-relinked tracks are available via the `linked_from` attribute of the [relinked track response](/documentation/web-api/concepts/track-relinking)._
-        /// <br/>
-        /// </summary>
-
-        [System.Text.Json.Serialization.JsonPropertyName("popularity")]
-
-        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
-        public float Popularity { get; set; }
-
-        /// <summary>
-        /// Speechiness detects the presence of spoken words in a track. The more exclusively speech-like the recording (e.g. talk show, audio book, poetry), the closer to 1.0 the attribute value. Values above 0.66 describe tracks that are probably made entirely of spoken words. Values between 0.33 and 0.66 describe tracks that may contain both music and speech, either in sections or layered, including such cases as rap music. Values below 0.33 most likely represent music and other non-speech-like tracks.
-        /// <br/>
-        /// </summary>
-
-        [System.Text.Json.Serialization.JsonPropertyName("speechiness")]
-
-        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
-        public float Speechiness { get; set; }
-
-        [System.Text.Json.Serialization.JsonPropertyName("tempo")]
-
-        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
-        public float Tempo { get; set; }
-
-        [System.Text.Json.Serialization.JsonPropertyName("time_signature")]
-
-        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
-        [System.ComponentModel.DataAnnotations.Range(3, 7)]
-        public int Time_signature { get; set; }
-
-        /// <summary>
-        /// A measure from 0.0 to 1.0 describing the musical positiveness conveyed by a track. Tracks with high valence sound more positive (e.g. happy, cheerful, euphoric), while tracks with low valence sound more negative (e.g. sad, depressed, angry).
-        /// <br/>
-        /// </summary>
-
-        [System.Text.Json.Serialization.JsonPropertyName("valence")]
-
-        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
-        public float Valence { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
 
@@ -5342,7 +5009,6 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         [System.Text.Json.Serialization.JsonPropertyName("show")]
 
         [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.Never)]   
-        [System.ComponentModel.DataAnnotations.Required]
         public SimplifiedShowObject Show { get; set; }
 
     }
@@ -5364,7 +5030,6 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         [System.Text.Json.Serialization.JsonPropertyName("audio_preview_url")]
 
         [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.Never)]   
-        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
         public string Audio_preview_url { get; set; }
 
         /// <summary>
@@ -6228,56 +5893,6 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
         public string Uri { get; set; }
 
-        /// <summary>
-        /// The copyright statements of the album.
-        /// <br/>
-        /// </summary>
-
-        [System.Text.Json.Serialization.JsonPropertyName("copyrights")]
-
-        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
-        public System.Collections.Generic.ICollection<CopyrightObject> Copyrights { get; set; }
-
-        /// <summary>
-        /// Known external IDs for the album.
-        /// <br/>
-        /// </summary>
-
-        [System.Text.Json.Serialization.JsonPropertyName("external_ids")]
-
-        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
-        public ExternalIdObject External_ids { get; set; }
-
-        /// <summary>
-        /// A list of the genres the album is associated with. If not yet classified, the array is empty.
-        /// <br/>
-        /// </summary>
-
-        [System.Text.Json.Serialization.JsonPropertyName("genres")]
-
-        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
-        public System.Collections.Generic.ICollection<string> Genres { get; set; }
-
-        /// <summary>
-        /// The label associated with the album.
-        /// <br/>
-        /// </summary>
-
-        [System.Text.Json.Serialization.JsonPropertyName("label")]
-
-        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
-        public string Label { get; set; }
-
-        /// <summary>
-        /// The popularity of the album. The value will be between 0 and 100, with 100 being the most popular.
-        /// <br/>
-        /// </summary>
-
-        [System.Text.Json.Serialization.JsonPropertyName("popularity")]
-
-        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
-        public int Popularity { get; set; }
-
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
@@ -6293,17 +5908,6 @@ namespace SpotifyApp.Api.Client.OpenApiClient
     public partial class SimplifiedAlbumObject : AlbumBase
     {
         /// <summary>
-        /// The field is present when getting an artist's albums. Compare to album_type this field represents relationship between the artist and the album.
-        /// <br/>
-        /// </summary>
-
-        [System.Text.Json.Serialization.JsonPropertyName("album_group")]
-
-        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
-        [System.Text.Json.Serialization.JsonConverter(typeof(System.Text.Json.Serialization.JsonStringEnumConverter))]
-        public SimplifiedAlbumObjectAlbum_group Album_group { get; set; }
-
-        /// <summary>
         /// The artists of the album. Each artist object includes a link in `href` to more detailed information about the artist.
         /// <br/>
         /// </summary>
@@ -6313,6 +5917,23 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.Never)]   
         [System.ComponentModel.DataAnnotations.Required]
         public System.Collections.Generic.ICollection<SimplifiedArtistObject> Artists { get; set; } = new System.Collections.ObjectModel.Collection<SimplifiedArtistObject>();
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.20.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class ArtistDiscographyAlbumObject : SimplifiedAlbumObject
+    {
+        /// <summary>
+        /// This field describes the relationship between the artist and the album.
+        /// <br/>
+        /// </summary>
+
+        [System.Text.Json.Serialization.JsonPropertyName("album_group")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.Never)]   
+        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        [System.Text.Json.Serialization.JsonConverter(typeof(System.Text.Json.Serialization.JsonStringEnumConverter))]
+        public ArtistDiscographyAlbumObjectAlbum_group Album_group { get; set; }
 
     }
 
@@ -6327,7 +5948,6 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         [System.Text.Json.Serialization.JsonPropertyName("audiobook")]
 
         [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.Never)]   
-        [System.ComponentModel.DataAnnotations.Required]
         public SimplifiedAudiobookObject Audiobook { get; set; }
 
     }
@@ -6349,7 +5969,6 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         [System.Text.Json.Serialization.JsonPropertyName("audio_preview_url")]
 
         [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.Never)]   
-        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
         public string Audio_preview_url { get; set; }
 
         /// <summary>
@@ -6579,7 +6198,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         [System.Text.Json.Serialization.JsonPropertyName("artists")]
 
         [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
-        public System.Collections.Generic.ICollection<ArtistObject> Artists { get; set; }
+        public System.Collections.Generic.ICollection<SimplifiedArtistObject> Artists { get; set; }
 
         /// <summary>
         /// The tracks of the album.
@@ -6590,6 +6209,56 @@ namespace SpotifyApp.Api.Client.OpenApiClient
 
         [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
         public PagingSimplifiedTrackObject Tracks { get; set; }
+
+        /// <summary>
+        /// The copyright statements of the album.
+        /// <br/>
+        /// </summary>
+
+        [System.Text.Json.Serialization.JsonPropertyName("copyrights")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
+        public System.Collections.Generic.ICollection<CopyrightObject> Copyrights { get; set; }
+
+        /// <summary>
+        /// Known external IDs for the album.
+        /// <br/>
+        /// </summary>
+
+        [System.Text.Json.Serialization.JsonPropertyName("external_ids")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
+        public ExternalIdObject External_ids { get; set; }
+
+        /// <summary>
+        /// A list of the genres the album is associated with. If not yet classified, the array is empty.
+        /// <br/>
+        /// </summary>
+
+        [System.Text.Json.Serialization.JsonPropertyName("genres")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
+        public System.Collections.Generic.ICollection<string> Genres { get; set; }
+
+        /// <summary>
+        /// The label associated with the album.
+        /// <br/>
+        /// </summary>
+
+        [System.Text.Json.Serialization.JsonPropertyName("label")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
+        public string Label { get; set; }
+
+        /// <summary>
+        /// The popularity of the album. The value will be between 0 and 100, with 100 being the most popular.
+        /// <br/>
+        /// </summary>
+
+        [System.Text.Json.Serialization.JsonPropertyName("popularity")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]   
+        public int Popularity { get; set; }
 
     }
 
@@ -8529,7 +8198,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.20.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public enum SimplifiedAlbumObjectAlbum_group
+    public enum ArtistDiscographyAlbumObjectAlbum_group
     {
 
         [System.Runtime.Serialization.EnumMember(Value = @"album")]

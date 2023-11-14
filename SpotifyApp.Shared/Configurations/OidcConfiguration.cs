@@ -7,7 +7,7 @@ public sealed class OidcConfiguration : IOidcConfiguration
     public string ClientId => "";
     public string RedirectUri => "http://127.0.0.1:7890";
 
-    public string Scope => string.Join(" ", new List<string>
+    string IOidcConfiguration.Scope => string.Join(" ", new List<string>
     {
         // read
         "user-read-private",

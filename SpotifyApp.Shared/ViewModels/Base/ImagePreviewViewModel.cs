@@ -61,8 +61,7 @@ public abstract partial class ImagePreviewViewModel : ObservableRecipient, ISpot
 
             await using (var fileStream = File.OpenRead(imagePath))
             {
-                var width = previewImage.Width ?? DefaultImageWidth;
-                Preview = await Task.Run(() => Bitmap.DecodeToWidth(fileStream, width), token);
+                Preview = new Bitmap(fileStream);
             }
         }
     }

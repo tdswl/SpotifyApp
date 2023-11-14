@@ -2,7 +2,4 @@
 
 namespace SpotifyApp.Repositories.Contracts;
 
-public interface IUserSettingsWriteRepository : IWriteRepository<UserSettings>
-{
-    
-}
+public interface IUserSettingsWriteRepository : IWriteRepository<UserSettings>;

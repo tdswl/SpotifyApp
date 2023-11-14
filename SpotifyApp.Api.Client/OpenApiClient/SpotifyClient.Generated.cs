@@ -685,7 +685,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// </remarks>
         /// <returns>Pages of albums</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<PagingSimplifiedAlbumObject> GetAnArtistsAlbumsAsync(string id, string include_groups, string market, int? limit, int? offset)
+        public virtual System.Threading.Tasks.Task<PagingArtistDiscographyAlbumObject> GetAnArtistsAlbumsAsync(string id, string include_groups, string market, int? limit, int? offset)
         {
             return GetAnArtistsAlbumsAsync(id, include_groups, market, limit, offset, System.Threading.CancellationToken.None);
         }
@@ -699,7 +699,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// </remarks>
         /// <returns>Pages of albums</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<PagingSimplifiedAlbumObject> GetAnArtistsAlbumsAsync(string id, string include_groups, string market, int? limit, int? offset, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<PagingArtistDiscographyAlbumObject> GetAnArtistsAlbumsAsync(string id, string include_groups, string market, int? limit, int? offset, System.Threading.CancellationToken cancellationToken)
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -757,7 +757,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<PagingSimplifiedAlbumObject>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            var objectResponse_ = await ReadObjectResponseAsync<PagingArtistDiscographyAlbumObject>(response_, headers_, cancellationToken).ConfigureAwait(false);
                             if (objectResponse_.Object == null)
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
@@ -6481,6 +6481,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// <remarks>
         /// Create a playlist for a Spotify user. (The playlist will be empty until
         /// <br/>you [add tracks](/documentation/web-api/reference/add-tracks-to-playlist).)
+        /// <br/>Each user is generally limited to a maximum of 11000 playlists.
         /// </remarks>
         /// <returns>A playlist</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -6496,6 +6497,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// <remarks>
         /// Create a playlist for a Spotify user. (The playlist will be empty until
         /// <br/>you [add tracks](/documentation/web-api/reference/add-tracks-to-playlist).)
+        /// <br/>Each user is generally limited to a maximum of 11000 playlists.
         /// </remarks>
         /// <returns>A playlist</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>

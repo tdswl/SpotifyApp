@@ -1,7 +1,6 @@
-﻿namespace SpotifyApp.Api.Client.OpenApiClient
+﻿namespace SpotifyApp.Api.Client.OpenApiClient;
+
+public interface ITokenService
 {
-    public interface ITokenService
-    {
-        Task<string> GetAccessToken(CancellationToken token);
-    }
+    Task<string> GetAccessToken(CancellationToken token);
 }

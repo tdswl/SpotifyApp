@@ -1700,8 +1700,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// Get an Audiobook
         /// </summary>
         /// <remarks>
-        /// Get Spotify catalog information for a single audiobook.&lt;br /&gt;
-        /// <br/>**Note: Audiobooks are only available for the US, UK, Ireland, New Zealand and Australia markets.**
+        /// Get Spotify catalog information for a single audiobook. Audiobooks are only available within the US, UK, Canada, Ireland, New Zealand and Australia markets.
         /// </remarks>
         /// <returns>An Audiobook</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -1715,8 +1714,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// Get an Audiobook
         /// </summary>
         /// <remarks>
-        /// Get Spotify catalog information for a single audiobook.&lt;br /&gt;
-        /// <br/>**Note: Audiobooks are only available for the US, UK, Ireland, New Zealand and Australia markets.**
+        /// Get Spotify catalog information for a single audiobook. Audiobooks are only available within the US, UK, Canada, Ireland, New Zealand and Australia markets.
         /// </remarks>
         /// <returns>An Audiobook</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -1847,10 +1845,9 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// Get Several Audiobooks
         /// </summary>
         /// <remarks>
-        /// Get Spotify catalog information for several audiobooks identified by their Spotify IDs.&lt;br /&gt;
-        /// <br/>**Note: Audiobooks are only available for the US, UK, Ireland, New Zealand and Australia markets.**
+        /// Get Spotify catalog information for several audiobooks identified by their Spotify IDs. Audiobooks are only available within the US, UK, Canada, Ireland, New Zealand and Australia markets.
         /// </remarks>
-        /// <returns>A set of audiobooks</returns>
+        /// <returns>A set of audiobooks. If one of the requested audiobooks is unavailable then you'll find a `null` item in the `audiobooks` array where the audiobook object would otherwise be.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         public virtual System.Threading.Tasks.Task<Response6> GetMultipleAudiobooksAsync(string ids, string market)
         {
@@ -1862,10 +1859,9 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// Get Several Audiobooks
         /// </summary>
         /// <remarks>
-        /// Get Spotify catalog information for several audiobooks identified by their Spotify IDs.&lt;br /&gt;
-        /// <br/>**Note: Audiobooks are only available for the US, UK, Ireland, New Zealand and Australia markets.**
+        /// Get Spotify catalog information for several audiobooks identified by their Spotify IDs. Audiobooks are only available within the US, UK, Canada, Ireland, New Zealand and Australia markets.
         /// </remarks>
-        /// <returns>A set of audiobooks</returns>
+        /// <returns>A set of audiobooks. If one of the requested audiobooks is unavailable then you'll find a `null` item in the `audiobooks` array where the audiobook object would otherwise be.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         public virtual async System.Threading.Tasks.Task<Response6> GetMultipleAudiobooksAsync(string ids, string market, System.Threading.CancellationToken cancellationToken)
         {
@@ -1974,8 +1970,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// Get Audiobook Chapters
         /// </summary>
         /// <remarks>
-        /// Get Spotify catalog information about an audiobook's chapters.&lt;br /&gt;
-        /// <br/>**Note: Audiobooks are only available for the US, UK, Ireland, New Zealand and Australia markets.**
+        /// Get Spotify catalog information about an audiobook's chapters. Audiobooks are only available within the US, UK, Canada, Ireland, New Zealand and Australia markets.
         /// </remarks>
         /// <returns>Pages of chapters</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -1989,8 +1984,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// Get Audiobook Chapters
         /// </summary>
         /// <remarks>
-        /// Get Spotify catalog information about an audiobook's chapters.&lt;br /&gt;
-        /// <br/>**Note: Audiobooks are only available for the US, UK, Ireland, New Zealand and Australia markets.**
+        /// Get Spotify catalog information about an audiobook's chapters. Audiobooks are only available within the US, UK, Canada, Ireland, New Zealand and Australia markets.
         /// </remarks>
         /// <returns>Pages of chapters</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -2586,8 +2580,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// Get a Chapter
         /// </summary>
         /// <remarks>
-        /// Get Spotify catalog information for a single chapter.&lt;br /&gt;
-        /// <br/>**Note: Chapters are only available for the US, UK, Ireland, New Zealand and Australia markets.**
+        /// Get Spotify catalog information for a single audiobook chapter. Chapters are only available within the US, UK, Canada, Ireland, New Zealand and Australia markets.
         /// </remarks>
         /// <returns>A Chapter</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -2601,8 +2594,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// Get a Chapter
         /// </summary>
         /// <remarks>
-        /// Get Spotify catalog information for a single chapter.&lt;br /&gt;
-        /// <br/>**Note: Chapters are only available for the US, UK, Ireland, New Zealand and Australia markets.**
+        /// Get Spotify catalog information for a single audiobook chapter. Chapters are only available within the US, UK, Canada, Ireland, New Zealand and Australia markets.
         /// </remarks>
         /// <returns>A Chapter</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -2713,8 +2705,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// Get Several Chapters
         /// </summary>
         /// <remarks>
-        /// Get Spotify catalog information for several chapters identified by their Spotify IDs.&lt;br /&gt;
-        /// <br/>**Note: Chapters are only available for the US, UK, Ireland, New Zealand and Australia markets.**
+        /// Get Spotify catalog information for several audiobook chapters identified by their Spotify IDs. Chapters are only available within the US, UK, Canada, Ireland, New Zealand and Australia markets.
         /// </remarks>
         /// <returns>A set of chapters</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -2728,8 +2719,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// Get Several Chapters
         /// </summary>
         /// <remarks>
-        /// Get Spotify catalog information for several chapters identified by their Spotify IDs.&lt;br /&gt;
-        /// <br/>**Note: Chapters are only available for the US, UK, Ireland, New Zealand and Australia markets.**
+        /// Get Spotify catalog information for several audiobook chapters identified by their Spotify IDs. Chapters are only available within the US, UK, Canada, Ireland, New Zealand and Australia markets.
         /// </remarks>
         /// <returns>A set of chapters</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -3093,8 +3083,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// </summary>
         /// <remarks>
         /// Get Spotify catalog information about albums, artists, playlists, tracks, shows, episodes or audiobooks
-        /// <br/>that match a keyword string.&lt;br /&gt;
-        /// <br/>**Note: Audiobooks are only available for the US, UK, Ireland, New Zealand and Australia markets.**
+        /// <br/>that match a keyword string. Audiobooks are only available within the US, UK, Canada, Ireland, New Zealand and Australia markets.
         /// </remarks>
         /// <returns>Search response</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -9279,7 +9268,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// Transfer Playback
         /// </summary>
         /// <remarks>
-        /// Transfer playback to a new device and determine if it should start playing.
+        /// Transfer playback to a new device and optionally begin playback. This API only works for users who have Spotify Premium. The order of execution is not guaranteed when you use this API with other Player API endpoints.
         /// </remarks>
         /// <returns>Playback transferred</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -9293,7 +9282,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// Transfer Playback
         /// </summary>
         /// <remarks>
-        /// Transfer playback to a new device and determine if it should start playing.
+        /// Transfer playback to a new device and optionally begin playback. This API only works for users who have Spotify Premium. The order of execution is not guaranteed when you use this API with other Player API endpoints.
         /// </remarks>
         /// <returns>Playback transferred</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -9393,7 +9382,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// Get Available Devices
         /// </summary>
         /// <remarks>
-        /// Get information about a user’s available devices.
+        /// Get information about a user’s available Spotify Connect devices. Some device models are not supported and will not be listed in the API response.
         /// </remarks>
         /// <returns>A set of devices</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -9407,7 +9396,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// Get Available Devices
         /// </summary>
         /// <remarks>
-        /// Get information about a user’s available devices.
+        /// Get information about a user’s available Spotify Connect devices. Some device models are not supported and will not be listed in the API response.
         /// </remarks>
         /// <returns>A set of devices</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -9634,7 +9623,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// Start/Resume Playback
         /// </summary>
         /// <remarks>
-        /// Start a new context or resume current playback on the user's active device.
+        /// Start a new context or resume current playback on the user's active device. This API only works for users who have Spotify Premium. The order of execution is not guaranteed when you use this API with other Player API endpoints.
         /// </remarks>
         /// <returns>Playback started</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -9648,7 +9637,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// Start/Resume Playback
         /// </summary>
         /// <remarks>
-        /// Start a new context or resume current playback on the user's active device.
+        /// Start a new context or resume current playback on the user's active device. This API only works for users who have Spotify Premium. The order of execution is not guaranteed when you use this API with other Player API endpoints.
         /// </remarks>
         /// <returns>Playback started</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -9753,7 +9742,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// Pause Playback
         /// </summary>
         /// <remarks>
-        /// Pause playback on the user's account.
+        /// Pause playback on the user's account. This API only works for users who have Spotify Premium. The order of execution is not guaranteed when you use this API with other Player API endpoints.
         /// </remarks>
         /// <returns>Playback paused</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -9767,7 +9756,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// Pause Playback
         /// </summary>
         /// <remarks>
-        /// Pause playback on the user's account.
+        /// Pause playback on the user's account. This API only works for users who have Spotify Premium. The order of execution is not guaranteed when you use this API with other Player API endpoints.
         /// </remarks>
         /// <returns>Playback paused</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -9869,7 +9858,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// Skip To Next
         /// </summary>
         /// <remarks>
-        /// Skips to next track in the user’s queue.
+        /// Skips to next track in the user’s queue. This API only works for users who have Spotify Premium. The order of execution is not guaranteed when you use this API with other Player API endpoints.
         /// </remarks>
         /// <returns>Command sent</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -9883,7 +9872,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// Skip To Next
         /// </summary>
         /// <remarks>
-        /// Skips to next track in the user’s queue.
+        /// Skips to next track in the user’s queue. This API only works for users who have Spotify Premium. The order of execution is not guaranteed when you use this API with other Player API endpoints.
         /// </remarks>
         /// <returns>Command sent</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -9985,7 +9974,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// Skip To Previous
         /// </summary>
         /// <remarks>
-        /// Skips to previous track in the user’s queue.
+        /// Skips to previous track in the user’s queue. This API only works for users who have Spotify Premium. The order of execution is not guaranteed when you use this API with other Player API endpoints.
         /// </remarks>
         /// <returns>Command sent</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -9999,7 +9988,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// Skip To Previous
         /// </summary>
         /// <remarks>
-        /// Skips to previous track in the user’s queue.
+        /// Skips to previous track in the user’s queue. This API only works for users who have Spotify Premium. The order of execution is not guaranteed when you use this API with other Player API endpoints.
         /// </remarks>
         /// <returns>Command sent</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -10101,7 +10090,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// Seek To Position
         /// </summary>
         /// <remarks>
-        /// Seeks to the given position in the user’s currently playing track.
+        /// Seeks to the given position in the user’s currently playing track. This API only works for users who have Spotify Premium. The order of execution is not guaranteed when you use this API with other Player API endpoints.
         /// </remarks>
         /// <returns>Command sent</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -10115,7 +10104,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// Seek To Position
         /// </summary>
         /// <remarks>
-        /// Seeks to the given position in the user’s currently playing track.
+        /// Seeks to the given position in the user’s currently playing track. This API only works for users who have Spotify Premium. The order of execution is not guaranteed when you use this API with other Player API endpoints.
         /// </remarks>
         /// <returns>Command sent</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -10221,8 +10210,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// Set Repeat Mode
         /// </summary>
         /// <remarks>
-        /// Set the repeat mode for the user's playback. Options are repeat-track,
-        /// <br/>repeat-context, and off.
+        /// Set the repeat mode for the user's playback. This API only works for users who have Spotify Premium. The order of execution is not guaranteed when you use this API with other Player API endpoints.
         /// </remarks>
         /// <returns>Command sent</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -10236,8 +10224,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// Set Repeat Mode
         /// </summary>
         /// <remarks>
-        /// Set the repeat mode for the user's playback. Options are repeat-track,
-        /// <br/>repeat-context, and off.
+        /// Set the repeat mode for the user's playback. This API only works for users who have Spotify Premium. The order of execution is not guaranteed when you use this API with other Player API endpoints.
         /// </remarks>
         /// <returns>Command sent</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -10343,7 +10330,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// Set Playback Volume
         /// </summary>
         /// <remarks>
-        /// Set the volume for the user’s current playback device.
+        /// Set the volume for the user’s current playback device. This API only works for users who have Spotify Premium. The order of execution is not guaranteed when you use this API with other Player API endpoints.
         /// </remarks>
         /// <returns>Command sent</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -10357,7 +10344,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// Set Playback Volume
         /// </summary>
         /// <remarks>
-        /// Set the volume for the user’s current playback device.
+        /// Set the volume for the user’s current playback device. This API only works for users who have Spotify Premium. The order of execution is not guaranteed when you use this API with other Player API endpoints.
         /// </remarks>
         /// <returns>Command sent</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -10463,7 +10450,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// Toggle Playback Shuffle
         /// </summary>
         /// <remarks>
-        /// Toggle shuffle on or off for user’s playback.
+        /// Toggle shuffle on or off for user’s playback. This API only works for users who have Spotify Premium. The order of execution is not guaranteed when you use this API with other Player API endpoints.
         /// </remarks>
         /// <returns>Command sent</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -10477,7 +10464,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// Toggle Playback Shuffle
         /// </summary>
         /// <remarks>
-        /// Toggle shuffle on or off for user’s playback.
+        /// Toggle shuffle on or off for user’s playback. This API only works for users who have Spotify Premium. The order of execution is not guaranteed when you use this API with other Player API endpoints.
         /// </remarks>
         /// <returns>Command sent</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -10830,7 +10817,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// Add Item to Playback Queue
         /// </summary>
         /// <remarks>
-        /// Add an item to the end of the user's current playback queue.
+        /// Add an item to the end of the user's current playback queue. This API only works for users who have Spotify Premium. The order of execution is not guaranteed when you use this API with other Player API endpoints.
         /// </remarks>
         /// <returns>Command received</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -10844,7 +10831,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// Add Item to Playback Queue
         /// </summary>
         /// <remarks>
-        /// Add an item to the end of the user's current playback queue.
+        /// Add an item to the end of the user's current playback queue. This API only works for users who have Spotify Premium. The order of execution is not guaranteed when you use this API with other Player API endpoints.
         /// </remarks>
         /// <returns>Command received</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>

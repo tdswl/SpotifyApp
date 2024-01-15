@@ -1,3 +1,4 @@
+using AsyncKeyedLock;
 using Microsoft.Extensions.Caching.Memory;
 using SpotifyApp.Api.Client.Auth;
 using SpotifyApp.Repositories.Contracts;
@@ -9,7 +10,7 @@ namespace SpotifyApp.Shared.Services;
 
 internal sealed class AuthService : IAuthService
 {
-    private static readonly SemaphoreSlim Semaphore = new(1, 1);
+    private static readonly AsyncNonKeyedLocker Semaphore = new(1);
     
     private readonly IUserSettingsReadRepository _userSettingsReadRepository;
     private readonly IUserSettingsWriteRepository _userSettingsWriteRepository;
@@ -30,9 +31,7 @@ internal sealed class AuthService : IAuthService
     async Task<AuthorizationInfoModel> IAuthService.Login(CancellationToken token)
     {
         // lock to prevent many login requests to Spotify
-        await Semaphore.WaitAsync(token).ConfigureAwait(false);
-
-        try
+        using (await Semaphore.LockAsync(token).ConfigureAwait(false))
         {
             // Get from cache or database
             var info = GetInfoFromCache() ?? await GetInfoFromDatabase(token);
@@ -50,10 +49,6 @@ internal sealed class AuthService : IAuthService
             _memoryCache.Set(MemoryCacheKeys.AuthorizationInfo, info);
 
             return info;
-        }
-        finally
-        {
-            Semaphore.Release();
         }
     }
 

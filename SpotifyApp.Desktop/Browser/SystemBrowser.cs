@@ -66,30 +66,21 @@ internal sealed class SystemBrowser : IBrowser
 
     private static void OpenBrowser(string url)
     {
-        try
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
         {
-            Process.Start(url);
+            Process.Start(new ProcessStartInfo
+            {
+                FileName = url,
+                UseShellExecute = true,
+            });
         }
-        catch
+        else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
         {
-            // hack because of this: https://github.com/dotnet/corefx/issues/10361
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                url = url.Replace("&", "^&");
-                Process.Start(new ProcessStartInfo("cmd", $"/c start {url}") { CreateNoWindow = true });
-            }
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-            {
-                Process.Start("xdg-open", url);
-            }
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-            {
-                Process.Start("open", url);
-            }
-            else
-            {
-                throw;
-            }
+            Process.Start("xdg-open", url);
+        }
+        else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+        {
+            Process.Start("open", url);
         }
     }
 }

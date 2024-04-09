@@ -3,7 +3,7 @@
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
   </PropertyGroup>
   <ItemGroup>
-    <PackageVersion Include="IdentityModel.OidcClient" Version="5.2.1" />
+    <PackageVersion Include="IdentityModel.OidcClient" Version="6.0.0-preview.3" />
     <PackageVersion Include="AsyncKeyedLock" Version="6.3.4" />
     <PackageVersion Include="AutoMapper" Version="13.0.1" />
     <PackageVersion Include="AutoMapper.Extensions.EnumMapping" Version="3.2.0" />

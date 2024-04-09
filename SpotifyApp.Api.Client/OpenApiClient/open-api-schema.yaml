@@ -154,7 +154,7 @@ paths:
           schema:
             title: Spotify Artist IDs
             description: |
-              A comma-separated list of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids) for the artists. Maximum: 50 IDs.
+              A comma-separated list of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids) for the artists. Maximum: 100 IDs.
             example: 2CIMQHirSU0MQqyYHq0eOx,57dN52uHvrHOxijzpIgu3E,1vCWHaC5f2uS3yhpwWbIA6
             type: string
       responses:
@@ -673,7 +673,15 @@ paths:
         Get Spotify catalog information for multiple tracks based on their Spotify IDs.
       parameters:
         - $ref: '#/components/parameters/QueryMarket'
-        - $ref: '#/components/parameters/QueryTrackIds'
+        - name: ids
+          required: true
+          in: query
+          schema:
+            title: Spotify Track IDs
+            description: |
+              A comma-separated list of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). For example: `ids=4iV5W9uYEdYUVa79Axb7Rh,1301WleyT98MSxVHPZCA6M`. Maximum: 100 IDs.
+            example: 7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B
+            type: string
       responses:
         '200':
           $ref: '#/components/responses/ManyTracks'
@@ -1679,7 +1687,7 @@ paths:
           schema:
             title: Time Range
             description: |
-              Over what time frame the affinities are computed. Valid values: `long_term` (calculated from several years of data and including all new data as it becomes available), `medium_term` (approximately last 6 months), `short_term` (approximately last 4 weeks). Default: `medium_term`
+              Over what time frame the affinities are computed. Valid values: `long_term` (calculated from ~1 year of data and including all new data as it becomes available), `medium_term` (approximately last 6 months), `short_term` (approximately last 4 weeks). Default: `medium_term`
             default: medium_term
             example: medium_term
             type: string
@@ -1886,33 +1894,14 @@ paths:
       description: |
         Get a list of Spotify featured playlists (shown, for example, on a Spotify player's 'Browse' tab).
       parameters:
-        - name: country
-          required: false
-          in: query
-          schema:
-            title: Country
-            description: |
-              A country: an [ISO 3166-1 alpha-2 country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Provide this parameter if you want the list of returned items to be relevant to a particular country. If omitted, the returned items will be relevant to all countries.
-            example: SE
-            type: string
         - name: locale
           required: false
           in: query
           schema:
             title: Locale
             description: |
-              The desired language, consisting of a lowercase [ISO 639-1 language code](http://en.wikipedia.org/wiki/ISO_639-1) and an uppercase [ISO 3166-1 alpha-2 country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2), joined by an underscore. For example: `es_MX`, meaning "Spanish (Mexico)". Provide this parameter if you want the results returned in a particular language (where available). <br/>
-              _**Note**: if `locale` is not supplied, or if the specified language is not available, all strings will be returned in the Spotify default language (American English). The `locale` parameter, combined with the `country` parameter, may give odd results if not carefully matched. For example `country=SE&locale=de_DE` will return a list of categories relevant to Sweden but as German language strings._
+              The desired language, consisting of an [ISO 639-1](http://en.wikipedia.org/wiki/ISO_639-1) language code and an [ISO 3166-1 alpha-2 country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2), joined by an underscore. For example: `es_MX`, meaning &quot;Spanish (Mexico)&quot;. Provide this parameter if you want the category strings returned in a particular language.<br/> _**Note**: if `locale` is not supplied, or if the specified language is not available, the category strings returned will be in the Spotify default language (American English)._
             example: sv_SE
-            type: string
-        - name: timestamp
-          required: false
-          in: query
-          schema:
-            title: Timestamp
-            description: |
-              A timestamp in [ISO 8601 format](http://en.wikipedia.org/wiki/ISO_8601): `yyyy-MM-ddTHH:mm:ss`. Use this parameter to specify the user's local time to get results tailored for that specific date and time in the day. If not provided, the response defaults to the current UTC time. Example: "2014-10-23T09:00:00" for a user whose local time is 9AM. If there were no featured playlists (or there is no data) at the specified time, the response will revert to the current UTC time.
-            example: '2014-10-23T09:00:00'
             type: string
         - $ref: '#/components/parameters/QueryLimit'
         - $ref: '#/components/parameters/QueryOffset'
@@ -1937,23 +1926,13 @@ paths:
       description: |
         Get a list of categories used to tag items in Spotify (on, for example, the Spotify player’s “Browse” tab).
       parameters:
-        - name: country
-          required: false
-          in: query
-          schema:
-            title: Country
-            description: |
-              A country: an [ISO 3166-1 alpha-2 country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Provide this parameter if you want to narrow the list of returned categories to those relevant to a particular country. If omitted, the returned items will be globally relevant.
-            example: SE
-            type: string
         - name: locale
           required: false
           in: query
           schema:
             title: Locale
             description: |
-              The desired language, consisting of an [ISO 639-1](http://en.wikipedia.org/wiki/ISO_639-1) language code and an [ISO 3166-1 alpha-2 country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2), joined by an underscore. For example: `es_MX`, meaning "Spanish (Mexico)". Provide this parameter if you want the category metadata returned in a particular language. <br/>
-              _**Note**: if `locale` is not supplied, or if the specified language is not available, all strings will be returned in the Spotify default language (American English). The `locale` parameter, combined with the `country` parameter, may give odd results if not carefully matched. For example `country=SE&locale=de_DE` will return a list of categories relevant to Sweden but as German language strings._
+              The desired language, consisting of an [ISO 639-1](http://en.wikipedia.org/wiki/ISO_639-1) language code and an [ISO 3166-1 alpha-2 country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2), joined by an underscore. For example: `es_MX`, meaning &quot;Spanish (Mexico)&quot;. Provide this parameter if you want the category strings returned in a particular language.<br/> _**Note**: if `locale` is not supplied, or if the specified language is not available, the category strings returned will be in the Spotify default language (American English)._
             example: sv_SE
             type: string
         - $ref: '#/components/parameters/QueryLimit'
@@ -1987,15 +1966,6 @@ paths:
             description: |
               The [Spotify category ID](/documentation/web-api/concepts/spotify-uris-ids) for the category.
             example: dinner
-            type: string
-        - name: country
-          required: false
-          in: query
-          schema:
-            title: Country
-            description: |
-              A country: an [ISO 3166-1 alpha-2 country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Provide this parameter to ensure that the category exists for a particular country.
-            example: SE
             type: string
         - name: locale
           required: false
@@ -2036,15 +2006,6 @@ paths:
             description: |
               The [Spotify category ID](/documentation/web-api/concepts/spotify-uris-ids) for the category.
             example: dinner
-            type: string
-        - name: country
-          required: false
-          in: query
-          schema:
-            title: Country
-            description: |
-              A country: an [ISO 3166-1 alpha-2 country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Provide this parameter to ensure that the category exists for a particular country.
-            example: SE
             type: string
         - $ref: '#/components/parameters/QueryLimit'
         - $ref: '#/components/parameters/QueryOffset'
@@ -2119,15 +2080,6 @@ paths:
       description: |
         Get a list of new album releases featured in Spotify (shown, for example, on a Spotify player’s “Browse” tab).
       parameters:
-        - name: country
-          required: false
-          in: query
-          schema:
-            title: Country
-            description: |
-              A country: an [ISO 3166-1 alpha-2 country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Provide this parameter if you want the list of returned items to be relevant to a particular country. If omitted, the returned items will be relevant to all countries.
-            example: SE
-            type: string
         - $ref: '#/components/parameters/QueryLimit'
         - $ref: '#/components/parameters/QueryOffset'
       responses:
@@ -2401,7 +2353,7 @@ paths:
       x-spotify-policy-list:
         - $ref: '#/components/x-spotify-policy/policies/MachineLearning'
       summary: |
-        Get Tracks' Audio Features
+        Get Several Tracks' Audio Features
       description: |
         Get audio features for multiple tracks based on their Spotify IDs.
       parameters:
@@ -3814,7 +3766,15 @@ components:
               - categories
             properties:
               categories:
-                $ref: '#/components/schemas/PagingObject'
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/PagingObject'
+                  - type: object
+                    properties:
+                      items:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/CategoryObject'
 
     CursorPagedArtists:
       description: A paged set of artists
@@ -4442,7 +4402,6 @@ components:
           description: A Context Object. Can be `null`.
         timestamp:
           type: integer
-          format: int64
           description: Unix Millisecond Timestamp when data was fetched.
         progress_ms:
           type: integer
@@ -5292,6 +5251,9 @@ components:
       properties:
         message:
           type: string
+          description: |
+            The localized message of a playlist.
+          example: Popular Playlists
         playlists:
           $ref: '#/components/schemas/PagingPlaylistObject'
 
@@ -5932,7 +5894,6 @@ components:
         - name
         - release_date
         - release_date_precision
-        - resume_point
         - type
         - uri
       properties:
@@ -6468,7 +6429,6 @@ components:
         - name
         - release_date
         - release_date_precision
-        - resume_point
         - type
         - uri
       properties:

@@ -21,7 +21,6 @@
         <PackageReference Include="AsyncKeyedLock" />
         <PackageReference Include="AutoMapper" />
         <PackageReference Include="AutoMapper.Extensions.EnumMapping" />
-        <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" />
         <PackageReference Include="Avalonia" />
         <PackageReference Include="Avalonia.Controls.DataGrid" />
         <PackageReference Include="Avalonia.Themes.Fluent" />

@@ -1332,7 +1332,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// </remarks>
         /// <returns>Image uploaded</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task UploadCustomPlaylistCoverAsync(string playlist_id);
+        System.Threading.Tasks.Task UploadCustomPlaylistCoverAsync(string playlist_id, byte[] body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1343,7 +1343,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// </remarks>
         /// <returns>Image uploaded</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task UploadCustomPlaylistCoverAsync(string playlist_id, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task UploadCustomPlaylistCoverAsync(string playlist_id, byte[] body, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get New Releases
@@ -1451,23 +1451,23 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         System.Threading.Tasks.Task<System.Collections.Generic.ICollection<bool>> CheckCurrentUserFollowsAsync(Type5 type, string ids, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
-        /// Check if Users Follow Playlist
+        /// Check if Current User Follows Playlist
         /// </summary>
         /// <remarks>
-        /// Check to see if one or more Spotify users are following a specified playlist.
+        /// Check to see if the current user is following a specified playlist.
         /// </remarks>
-        /// <returns>Array of booleans</returns>
+        /// <returns>Array of boolean, containing a single boolean</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<System.Collections.Generic.ICollection<bool>> CheckIfUserFollowsPlaylistAsync(string playlist_id, string ids);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Check if Users Follow Playlist
+        /// Check if Current User Follows Playlist
         /// </summary>
         /// <remarks>
-        /// Check to see if one or more Spotify users are following a specified playlist.
+        /// Check to see if the current user is following a specified playlist.
         /// </remarks>
-        /// <returns>Array of booleans</returns>
+        /// <returns>Array of boolean, containing a single boolean</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<System.Collections.Generic.ICollection<bool>> CheckIfUserFollowsPlaylistAsync(string playlist_id, string ids, System.Threading.CancellationToken cancellationToken);
 
@@ -2384,7 +2384,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         public ContextObject Context { get; set; }
 
         /// <summary>
-        /// Unix Millisecond Timestamp when data was fetched.
+        /// Unix Millisecond Timestamp when playback state was last changed (play, pause, skip, scrub, new song, etc.).
         /// </summary>
 
         [System.Text.Json.Serialization.JsonPropertyName("timestamp")]
@@ -3984,7 +3984,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         public PlaylistOwnerObject Owner { get; set; }
 
         /// <summary>
-        /// The playlist's public/private status: `true` the playlist is public, `false` the playlist is private, `null` the playlist status is not relevant. For more about public/private status, see [Working with Playlists](/documentation/web-api/concepts/playlists)
+        /// The playlist's public/private status (if it is added to the user's profile): `true` the playlist is public, `false` the playlist is private, `null` the playlist status is not relevant. For more about public/private status, see [Working with Playlists](/documentation/web-api/concepts/playlists)
         /// <br/>
         /// </summary>
 
@@ -4102,7 +4102,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         public PlaylistOwnerObject Owner { get; set; }
 
         /// <summary>
-        /// The playlist's public/private status: `true` the playlist is public, `false` the playlist is private, `null` the playlist status is not relevant. For more about public/private status, see [Working with Playlists](/documentation/web-api/concepts/playlists)
+        /// The playlist's public/private status (if it is added to the user's profile): `true` the playlist is public, `false` the playlist is private, `null` the playlist status is not relevant. For more about public/private status, see [Working with Playlists](/documentation/web-api/concepts/playlists)
         /// <br/>
         /// </summary>
 
@@ -4325,7 +4325,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// </summary>
 
         [System.Text.Json.Serialization.JsonPropertyName("artists")]
-        public System.Collections.Generic.ICollection<ArtistObject> Artists { get; set; }
+        public System.Collections.Generic.ICollection<SimplifiedArtistObject> Artists { get; set; }
 
         /// <summary>
         /// A list of the countries in which the track can be played, identified by their [ISO 3166-1 alpha-2](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code.
@@ -5867,7 +5867,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         public string Name { get; set; }
 
         /// <summary>
-        /// If `true` the playlist will be public, if `false` it will be private.
+        /// The playlist's public/private status (if it should be added to the user's profile or not): `true` the playlist will be public, `false` the playlist will be private, `null` the playlist status is not relevant. For more about public/private status, see [Working with Playlists](/documentation/web-api/concepts/playlists)
         /// <br/>
         /// </summary>
 
@@ -6177,7 +6177,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         public string Name { get; set; }
 
         /// <summary>
-        /// Defaults to `true`. If `true` the playlist will be public, if `false` it will be private. To be able to create private playlists, the user must have granted the `playlist-modify-private` [scope](/documentation/web-api/concepts/scopes/#list-of-scopes)
+        /// Defaults to `true`. The playlist's public/private status (if it should be added to the user's profile or not): `true` the playlist will be public, `false` the playlist will be private. To be able to create private playlists, the user must have granted the `playlist-modify-private` [scope](/documentation/web-api/concepts/scopes/#list-of-scopes). For more about public/private status, see [Working with Playlists](/documentation/web-api/concepts/playlists)
         /// <br/>
         /// </summary>
 
@@ -6215,7 +6215,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
     public partial class Body12
     {
         /// <summary>
-        /// Defaults to `true`. If `true` the playlist will be included in user's public playlists, if `false` it will remain private.
+        /// Defaults to `true`. If `true` the playlist will be included in user's public playlists (added to profile), if `false` it will remain private. For more about public/private status, see [Working with Playlists](/documentation/web-api/concepts/playlists)
         /// <br/>
         /// </summary>
 

@@ -7777,9 +7777,9 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// </remarks>
         /// <returns>Image uploaded</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task UploadCustomPlaylistCoverAsync(string playlist_id)
+        public virtual System.Threading.Tasks.Task UploadCustomPlaylistCoverAsync(string playlist_id, byte[] body)
         {
-            return UploadCustomPlaylistCoverAsync(playlist_id, System.Threading.CancellationToken.None);
+            return UploadCustomPlaylistCoverAsync(playlist_id, body, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -7791,7 +7791,7 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         /// </remarks>
         /// <returns>Image uploaded</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task UploadCustomPlaylistCoverAsync(string playlist_id, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task UploadCustomPlaylistCoverAsync(string playlist_id, byte[] body, System.Threading.CancellationToken cancellationToken)
         {
             if (playlist_id == null)
                 throw new System.ArgumentNullException("playlist_id");
@@ -7802,7 +7802,10 @@ namespace SpotifyApp.Api.Client.OpenApiClient
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
-                    request_.Content = new System.Net.Http.StringContent(string.Empty, System.Text.Encoding.UTF8, "application/json");
+                    var json_ = System.Text.Json.JsonSerializer.SerializeToUtf8Bytes(body, _settings.Value);
+                    var content_ = new System.Net.Http.ByteArrayContent(json_);
+                    content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("image/jpeg");
+                    request_.Content = content_;
                     request_.Method = new System.Net.Http.HttpMethod("PUT");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
@@ -8540,12 +8543,12 @@ namespace SpotifyApp.Api.Client.OpenApiClient
         }
 
         /// <summary>
-        /// Check if Users Follow Playlist
+        /// Check if Current User Follows Playlist
         /// </summary>
         /// <remarks>
-        /// Check to see if one or more Spotify users are following a specified playlist.
+        /// Check to see if the current user is following a specified playlist.
         /// </remarks>
-        /// <returns>Array of booleans</returns>
+        /// <returns>Array of boolean, containing a single boolean</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         public virtual System.Threading.Tasks.Task<System.Collections.Generic.ICollection<bool>> CheckIfUserFollowsPlaylistAsync(string playlist_id, string ids)
         {
@@ -8554,20 +8557,17 @@ namespace SpotifyApp.Api.Client.OpenApiClient
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
-        /// Check if Users Follow Playlist
+        /// Check if Current User Follows Playlist
         /// </summary>
         /// <remarks>
-        /// Check to see if one or more Spotify users are following a specified playlist.
+        /// Check to see if the current user is following a specified playlist.
         /// </remarks>
-        /// <returns>Array of booleans</returns>
+        /// <returns>Array of boolean, containing a single boolean</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<bool>> CheckIfUserFollowsPlaylistAsync(string playlist_id, string ids, System.Threading.CancellationToken cancellationToken)
         {
             if (playlist_id == null)
                 throw new System.ArgumentNullException("playlist_id");
-
-            if (ids == null)
-                throw new System.ArgumentNullException("ids");
 
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -8585,7 +8585,10 @@ namespace SpotifyApp.Api.Client.OpenApiClient
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(playlist_id, System.Globalization.CultureInfo.InvariantCulture)));
                     urlBuilder_.Append("/followers/contains");
                     urlBuilder_.Append('?');
-                    urlBuilder_.Append(System.Uri.EscapeDataString("ids")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(ids, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    if (ids != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("ids")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(ids, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
                     urlBuilder_.Length--;
 
                     await PrepareRequestAsync(client_, request_, urlBuilder_, cancellationToken).ConfigureAwait(false);

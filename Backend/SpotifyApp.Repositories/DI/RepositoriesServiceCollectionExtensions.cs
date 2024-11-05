@@ -8,8 +8,8 @@ public static class RepositoriesServiceCollectionExtensions
 {
     public static IServiceCollection AddRepositories(this IServiceCollection services)
     {
-        services.TryAdd(ServiceDescriptor.Scoped<IOAuthTokenWriteRepository, IoAuthTokenWriteRepository>());
-        services.TryAdd(ServiceDescriptor.Scoped<IOAuthTokenReadRepository, IoAuthTokenReadRepository>());
+        services.TryAdd(ServiceDescriptor.Scoped<Contracts.IOAuthTokenWriteRepository, OAuthTokenWriteRepository>());
+        services.TryAdd(ServiceDescriptor.Scoped<Contracts.IOAuthTokenReadRepository, OAuthTokenReadRepository>());
 
         return services;
     }

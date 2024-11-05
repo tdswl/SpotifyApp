@@ -5,16 +5,16 @@ using SpotifyApp.Storage.Contracts.Models;
 
 namespace SpotifyApp.Repositories;
 
-internal class IoAuthTokenReadRepository : IOAuthTokenReadRepository
+internal sealed class OAuthTokenReadRepository : IOAuthTokenReadRepository
 {
     private readonly IStorageReader _reader;
 
-    public IoAuthTokenReadRepository(IStorageReader reader)
+    public OAuthTokenReadRepository(IStorageReader reader)
     {
         _reader = reader;
     }
 
-    Task<OAuthToken?> IOAuthTokenReadRepository.GetLatestUserToken(CancellationToken cancellationToken)
+    Task<OAuthToken?> Contracts.IOAuthTokenReadRepository.GetLatestUserToken(CancellationToken cancellationToken)
     {
         return _reader.Read<OAuthToken>()
             .OrderByDescending(a => a.AuthenticationTime)

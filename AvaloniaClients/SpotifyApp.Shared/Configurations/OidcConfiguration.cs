@@ -4,7 +4,7 @@ namespace SpotifyApp.Shared.Configurations;
 
 public sealed class OidcConfiguration : IOidcConfiguration
 {
-    public string ClientId => "dc85176373ba428e932b0ade686664bf";
+    public string ClientId => "";
     public string RedirectUri => "http://127.0.0.1:7890";
 
     string IOidcConfiguration.Scope => string.Join(" ", new List<string>

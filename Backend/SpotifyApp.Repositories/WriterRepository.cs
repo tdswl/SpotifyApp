@@ -3,7 +3,7 @@ using SpotifyApp.Storage.Contracts.Interfaces;
 
 namespace SpotifyApp.Repositories;
 
-internal class WriterRepository<T> : IWriteRepository<T> where T : class, IStorageEntity 
+internal abstract class WriterRepository<T> : IWriteRepository<T> where T : class, IStorageEntity 
 {
     private readonly IStorageWriter _writer;
 

@@ -10,25 +10,29 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".sln", ".sln", "{8CC09CC7-6
 		Directory.Packages.props = Directory.Packages.props
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyApp.Api.Client", "SpotifyApp.Api.Client\SpotifyApp.Api.Client.csproj", "{483A3B49-CC1C-401D-9C28-16BCEE8EB383}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyApp.Api.Client", "Backend\SpotifyApp.Api.Client\SpotifyApp.Api.Client.csproj", "{483A3B49-CC1C-401D-9C28-16BCEE8EB383}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyApp.Desktop", "SpotifyApp.Desktop\SpotifyApp.Desktop.csproj", "{F478E2CC-A3E5-47B6-8755-5473FD3B223C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyApp.Desktop", "AvaloniaClients\SpotifyApp.Desktop\SpotifyApp.Desktop.csproj", "{F478E2CC-A3E5-47B6-8755-5473FD3B223C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyApp.Shared", "SpotifyApp.Shared\SpotifyApp.Shared.csproj", "{B1B74E56-A9AB-499C-91D1-62072C434187}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyApp.Shared", "AvaloniaClients\SpotifyApp.Shared\SpotifyApp.Shared.csproj", "{B1B74E56-A9AB-499C-91D1-62072C434187}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyApp.Shared.Tests", "SpotifyApp.Shared.Tests\SpotifyApp.Shared.Tests.csproj", "{59283190-160D-4929-A700-95A10612D22B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyApp.Shared.Tests", "AvaloniaClients\SpotifyApp.Shared.Tests\SpotifyApp.Shared.Tests.csproj", "{59283190-160D-4929-A700-95A10612D22B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyApp.Repositories", "SpotifyApp.Repositories\SpotifyApp.Repositories.csproj", "{EA15E341-A355-45FF-A7A1-506180D1D5C6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyApp.Repositories", "Backend\SpotifyApp.Repositories\SpotifyApp.Repositories.csproj", "{EA15E341-A355-45FF-A7A1-506180D1D5C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyApp.Storage.Contracts", "SpotifyApp.Storage.Contracts\SpotifyApp.Storage.Contracts.csproj", "{8E7C10DF-8026-4BE9-8730-F003E0E02D23}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyApp.Storage.Contracts", "Backend\SpotifyApp.Storage.Contracts\SpotifyApp.Storage.Contracts.csproj", "{8E7C10DF-8026-4BE9-8730-F003E0E02D23}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyApp.Repositories.Contracts", "SpotifyApp.Repositories.Contracts\SpotifyApp.Repositories.Contracts.csproj", "{8584B6A5-9D58-48C9-8BB8-6C40CB1BC2BF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyApp.Repositories.Contracts", "Backend\SpotifyApp.Repositories.Contracts\SpotifyApp.Repositories.Contracts.csproj", "{8584B6A5-9D58-48C9-8BB8-6C40CB1BC2BF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyApp.Storage.Sqlite", "SpotifyApp.Storage.Sqlite\SpotifyApp.Storage.Sqlite.csproj", "{D4ED143C-B775-48D6-BDF2-129EB721AA82}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyApp.Storage.Sqlite", "Backend\SpotifyApp.Storage.Sqlite\SpotifyApp.Storage.Sqlite.csproj", "{D4ED143C-B775-48D6-BDF2-129EB721AA82}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyApp.Storage.Sqlite.Tests", "SpotifyApp.Storage.Sqlite.Tests\SpotifyApp.Storage.Sqlite.Tests.csproj", "{E06C4DCF-DE02-415E-8772-28CC867A96F5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyApp.Storage.Sqlite.Tests", "Backend\SpotifyApp.Storage.Sqlite.Tests\SpotifyApp.Storage.Sqlite.Tests.csproj", "{E06C4DCF-DE02-415E-8772-28CC867A96F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyApp.Browser", "SpotifyApp.Browser\SpotifyApp.Browser.csproj", "{85ED8561-A72E-4B0A-BB0E-6217751B3225}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyApp.Browser", "AvaloniaClients\SpotifyApp.Browser\SpotifyApp.Browser.csproj", "{85ED8561-A72E-4B0A-BB0E-6217751B3225}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{47C408E5-6ED0-461C-B44B-517562546254}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AvaloniaClients", "AvaloniaClients", "{4066951B-1323-4687-BCFD-51831F0670FB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,5 +79,17 @@ Global
 		{85ED8561-A72E-4B0A-BB0E-6217751B3225}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{85ED8561-A72E-4B0A-BB0E-6217751B3225}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{85ED8561-A72E-4B0A-BB0E-6217751B3225}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E06C4DCF-DE02-415E-8772-28CC867A96F5} = {47C408E5-6ED0-461C-B44B-517562546254}
+		{D4ED143C-B775-48D6-BDF2-129EB721AA82} = {47C408E5-6ED0-461C-B44B-517562546254}
+		{8E7C10DF-8026-4BE9-8730-F003E0E02D23} = {47C408E5-6ED0-461C-B44B-517562546254}
+		{8584B6A5-9D58-48C9-8BB8-6C40CB1BC2BF} = {47C408E5-6ED0-461C-B44B-517562546254}
+		{EA15E341-A355-45FF-A7A1-506180D1D5C6} = {47C408E5-6ED0-461C-B44B-517562546254}
+		{483A3B49-CC1C-401D-9C28-16BCEE8EB383} = {47C408E5-6ED0-461C-B44B-517562546254}
+		{85ED8561-A72E-4B0A-BB0E-6217751B3225} = {4066951B-1323-4687-BCFD-51831F0670FB}
+		{F478E2CC-A3E5-47B6-8755-5473FD3B223C} = {4066951B-1323-4687-BCFD-51831F0670FB}
+		{B1B74E56-A9AB-499C-91D1-62072C434187} = {4066951B-1323-4687-BCFD-51831F0670FB}
+		{59283190-160D-4929-A700-95A10612D22B} = {4066951B-1323-4687-BCFD-51831F0670FB}
 	EndGlobalSection
 EndGlobal

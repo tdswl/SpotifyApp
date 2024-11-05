@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <RuntimeIdentifier>browser-wasm</RuntimeIdentifier>
+        <WasmMainJSPath>AppBundle\main.js</WasmMainJSPath>
+        <OutputType>Exe</OutputType>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <WasmExtraFilesToDeploy Include="AppBundle\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Avalonia.Browser" />
+    </ItemGroup>
+
+    <ItemGroup>
+        
+        <ProjectReference Include="..\SpotifyApp.Shared\SpotifyApp.Shared.csproj" />
+        <ProjectReference Include="..\..\Backend\SpotifyApp.Storage.Sqlite\SpotifyApp.Storage.Sqlite.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="AppBundle\" />
+    </ItemGroup>
+
+</Project>

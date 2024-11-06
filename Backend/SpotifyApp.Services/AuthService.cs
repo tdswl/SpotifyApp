@@ -2,11 +2,12 @@ using AsyncKeyedLock;
 using Microsoft.Extensions.Caching.Memory;
 using SpotifyApp.Api.Client.Auth;
 using SpotifyApp.Repositories.Contracts;
-using SpotifyApp.Shared.Constants;
-using SpotifyApp.Shared.Models;
+using SpotifyApp.Services.Constants;
+using SpotifyApp.Services.Contracts;
+using SpotifyApp.Services.Contracts.Models;
 using SpotifyApp.Storage.Contracts.Models;
 
-namespace SpotifyApp.Shared.Services;
+namespace SpotifyApp.Services;
 
 internal sealed class AuthService : IAuthService
 {

@@ -1,4 +1,4 @@
-namespace SpotifyApp.Shared.Models;
+namespace SpotifyApp.Services.Contracts.Models;
 
 /// <summary>
 /// Authorization information for requests

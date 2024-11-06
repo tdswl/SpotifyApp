@@ -1,4 +1,4 @@
-namespace SpotifyApp.Shared.Services;
+namespace SpotifyApp.Services.Contracts;
 
 public interface IImageCache
 {

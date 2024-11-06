@@ -11,7 +11,7 @@ using SpotifyApp.Storage.Sqlite;
 namespace SpotifyApp.Storage.Sqlite.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20241105205534_Initial")]
+    [Migration("20241106210825_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -29,11 +29,11 @@ namespace SpotifyApp.Storage.Sqlite.Migrations
                     b.Property<string>("AccessToken")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTimeOffset?>("AccessTokenExpiration")
-                        .HasColumnType("TEXT");
+                    b.Property<long?>("AccessTokenExpiration")
+                        .HasColumnType("INTEGER");
 
-                    b.Property<DateTimeOffset?>("AuthenticationTime")
-                        .HasColumnType("TEXT");
+                    b.Property<long?>("AuthenticationTime")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("RefreshToken")
                         .HasColumnType("TEXT");

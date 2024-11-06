@@ -14,7 +14,7 @@ internal sealed class OAuthTokenReadRepository : IOAuthTokenReadRepository
         _reader = reader;
     }
 
-    Task<OAuthToken?> Contracts.IOAuthTokenReadRepository.GetLatestUserToken(CancellationToken cancellationToken)
+    Task<OAuthToken?> IOAuthTokenReadRepository.GetLatestUserToken(CancellationToken cancellationToken)
     {
         return _reader.Read<OAuthToken>()
             .OrderByDescending(a => a.AuthenticationTime)

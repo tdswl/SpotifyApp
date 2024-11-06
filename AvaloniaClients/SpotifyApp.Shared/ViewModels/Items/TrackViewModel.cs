@@ -1,5 +1,5 @@
+using SpotifyApp.Services.Contracts;
 using SpotifyApp.Shared.Enums;
-using SpotifyApp.Shared.Services;
 using SpotifyApp.Shared.ViewModels.Base;
 
 namespace SpotifyApp.Shared.ViewModels.Items;

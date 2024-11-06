@@ -5,6 +5,7 @@ using SpotifyApp.Api.Client.Auth;
 using SpotifyApp.Api.Client.DI;
 using SpotifyApp.Api.Client.OpenApiClient;
 using SpotifyApp.Repositories.DI;
+using SpotifyApp.Services.DI;
 using SpotifyApp.Shared.AutoMapper;
 using SpotifyApp.Shared.AutoMapper.Resolvers;
 using SpotifyApp.Shared.Configurations;
@@ -21,11 +22,11 @@ public static class AppServiceCollectionExtensions
 {
     public static IServiceCollection AddAppDi(this IServiceCollection services)
     {
-        return services.AddLogging(builder => builder.AddSerilog())
+        return services
+            .AddLogging(builder => builder.AddSerilog())
             .AddMemoryCache()
             .AddAutomapper()
-            .AddApiClients()
-            .AddRepositories()
+            .AddServices()
             
             // Models shared across component - register as singleton
             .AddSingleton<MainWindowViewModel>()
@@ -48,10 +49,7 @@ public static class AppServiceCollectionExtensions
             .AddTransient<AlbumViewModel>()
             .AddTransient<AlbumWithTracksViewModel>()
             
-            .AddScoped<IAuthService, AuthService>()
-            .AddScoped<ITokenService, TokenService>()
             .AddSingleton<IOidcConfiguration, OidcConfiguration>()
-            .AddSingleton<IImageCache, ImageCache>()
             .AddSingleton<INavigationService, NavigationService>();
     }
 

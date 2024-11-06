@@ -1,6 +1,6 @@
-using SpotifyApp.Shared.Models;
+using SpotifyApp.Services.Contracts.Models;
 
-namespace SpotifyApp.Shared.Services;
+namespace SpotifyApp.Services.Contracts;
 
 public interface IAuthService
 {

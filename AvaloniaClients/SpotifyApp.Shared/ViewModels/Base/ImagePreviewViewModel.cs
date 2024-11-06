@@ -1,9 +1,9 @@
 using Avalonia.Media.Imaging;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using SpotifyApp.Services.Contracts;
 using SpotifyApp.Shared.Enums;
 using SpotifyApp.Shared.Models;
-using SpotifyApp.Shared.Services;
 
 namespace SpotifyApp.Shared.ViewModels.Base;
 

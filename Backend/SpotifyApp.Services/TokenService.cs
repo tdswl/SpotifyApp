@@ -1,6 +1,7 @@
 using SpotifyApp.Api.Client.OpenApiClient;
+using SpotifyApp.Services.Contracts;
 
-namespace SpotifyApp.Shared.Services;
+namespace SpotifyApp.Services;
 
 internal sealed class TokenService : ITokenService
 {

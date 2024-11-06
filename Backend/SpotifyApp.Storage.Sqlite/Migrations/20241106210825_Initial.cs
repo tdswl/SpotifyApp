@@ -18,8 +18,8 @@ namespace SpotifyApp.Storage.Sqlite.Migrations
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
                     AccessToken = table.Column<string>(type: "TEXT", nullable: true),
                     RefreshToken = table.Column<string>(type: "TEXT", nullable: true),
-                    AccessTokenExpiration = table.Column<DateTimeOffset>(type: "TEXT", nullable: true),
-                    AuthenticationTime = table.Column<DateTimeOffset>(type: "TEXT", nullable: true)
+                    AccessTokenExpiration = table.Column<long>(type: "INTEGER", nullable: true),
+                    AuthenticationTime = table.Column<long>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {

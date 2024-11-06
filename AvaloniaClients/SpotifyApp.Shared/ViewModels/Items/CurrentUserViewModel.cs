@@ -1,8 +1,8 @@
 using AutoMapper;
 using CommunityToolkit.Mvvm.Input;
 using SpotifyApp.Api.Client.OpenApiClient;
+using SpotifyApp.Services.Contracts;
 using SpotifyApp.Shared.Models;
-using SpotifyApp.Shared.Services;
 using SpotifyApp.Shared.ViewModels.Base;
 
 namespace SpotifyApp.Shared.ViewModels.Items;

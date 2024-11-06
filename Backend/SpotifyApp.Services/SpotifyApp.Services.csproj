@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\SpotifyApp.Api.Client\SpotifyApp.Api.Client.csproj" />
+      <ProjectReference Include="..\SpotifyApp.Repositories.Contracts\SpotifyApp.Repositories.Contracts.csproj" />
+      <ProjectReference Include="..\SpotifyApp.Repositories\SpotifyApp.Repositories.csproj" />
+      <ProjectReference Include="..\SpotifyApp.Services.Contracts\SpotifyApp.Services.Contracts.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="AsyncKeyedLock" />
+      <PackageReference Include="Microsoft.Extensions.Caching.Abstractions" />
+    </ItemGroup>
+
+</Project>

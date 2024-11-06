@@ -1,6 +1,7 @@
 using AsyncKeyedLock;
+using SpotifyApp.Services.Contracts;
 
-namespace SpotifyApp.Shared.Services;
+namespace SpotifyApp.Services;
 
 internal sealed class ImageCache : IImageCache 
 {

@@ -26,11 +26,11 @@ namespace SpotifyApp.Storage.Sqlite.Migrations
                     b.Property<string>("AccessToken")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTimeOffset?>("AccessTokenExpiration")
-                        .HasColumnType("TEXT");
+                    b.Property<long?>("AccessTokenExpiration")
+                        .HasColumnType("INTEGER");
 
-                    b.Property<DateTimeOffset?>("AuthenticationTime")
-                        .HasColumnType("TEXT");
+                    b.Property<long?>("AuthenticationTime")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("RefreshToken")
                         .HasColumnType("TEXT");

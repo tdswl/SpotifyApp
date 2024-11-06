@@ -18,7 +18,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="AsyncKeyedLock" />
         <PackageReference Include="AutoMapper" />
         <PackageReference Include="AutoMapper.Extensions.EnumMapping" />
         <PackageReference Include="Avalonia" />
@@ -37,6 +36,7 @@
     <ItemGroup>
         <ProjectReference Include="..\..\Backend\SpotifyApp.Api.Client\SpotifyApp.Api.Client.csproj" />
         <ProjectReference Include="..\..\Backend\SpotifyApp.Repositories\SpotifyApp.Repositories.csproj" />
+        <ProjectReference Include="..\..\Backend\SpotifyApp.Services\SpotifyApp.Services.csproj" />
     </ItemGroup>
 
     <ItemGroup>

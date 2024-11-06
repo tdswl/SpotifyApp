@@ -11,7 +11,8 @@ using Type = SpotifyApp.Api.Client.OpenApiClient.Type;
 
 namespace SpotifyApp.Shared.ViewModels;
 
-public sealed partial class LibraryViewModel : ObservableRecipient
+public sealed partial class 
+    LibraryViewModel : ObservableRecipient
 {
     private readonly ISpotifyClient _spotifyClient;
     private readonly IMapper _mapper;

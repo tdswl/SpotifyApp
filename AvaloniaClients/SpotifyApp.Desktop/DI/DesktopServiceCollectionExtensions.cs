@@ -17,7 +17,7 @@ public static class DesktopServiceCollectionExtensions
     public static IServiceCollection AddDesktop(this IServiceCollection services)
     {
         services.TryAdd(ServiceDescriptor.Scoped<IBrowser, SystemBrowser>());
-        services.AddDatabase();
+        services.AddSqliteStorage();
 
         return services;
     }

@@ -7,7 +7,7 @@ namespace SpotifyApp.Storage.Sqlite.DI;
 
 public static class StorageServiceCollectionExtensions
 {
-    public static IServiceCollection AddDatabase(this IServiceCollection services)
+    public static IServiceCollection AddSqliteStorage(this IServiceCollection services)
     {
         services.TryAdd(ServiceDescriptor.Singleton<IContextOptionsFactory, SqliteContextOptionsFactory>());
         services.TryAdd(ServiceDescriptor.Scoped<IStorageReader, ApplicationContext>());
@@ -17,7 +17,7 @@ public static class StorageServiceCollectionExtensions
         return services;
     }
     
-    public static IServiceCollection AddDatabaseInMemory(this IServiceCollection services)
+    public static IServiceCollection AddSqliteInMemoryStorage(this IServiceCollection services)
     {
         services.TryAdd(ServiceDescriptor.Singleton<IContextOptionsFactory, SqliteInMemoryContextOptionsFactory>());
         services.TryAdd(ServiceDescriptor.Scoped<IStorageReader, ApplicationContext>());

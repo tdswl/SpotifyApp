@@ -17,7 +17,7 @@ public static class BrowserServiceCollectionExtensions
     public static IServiceCollection AddBrowser(this IServiceCollection services)
     {
         services.TryAdd(ServiceDescriptor.Scoped<IBrowser, SystemBrowser>());
-        services.AddDatabaseInMemory();
+        services.AddSqliteInMemoryStorage();
 
         return services;
     }

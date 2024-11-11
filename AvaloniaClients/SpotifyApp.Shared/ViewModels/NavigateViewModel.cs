@@ -45,7 +45,6 @@ public sealed partial class NavigateViewModel : ObservableRecipient,
     {
         if (Content?.DataContext is ObservableRecipient previous)
         {
-            
             previous.IsActive = false;
         }
         Content = _navigationService.NavigateTo(pageType, navigateParams);

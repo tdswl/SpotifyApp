@@ -8,6 +8,10 @@
         </StackPanel>
     </Design.PreviewWith>
     
+    <Style Selector="Border.Header">
+        <Setter Property="Height" Value="65" />
+    </Style>
+    
     <Style Selector="Border.Block">
         <Setter Property="CornerRadius" Value="5" />
         <Setter Property="Background" Value="{DynamicResource SystemChromeLowColor}" />

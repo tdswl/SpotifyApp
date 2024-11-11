@@ -87,24 +87,6 @@
     <data name="SearchWatermark" xml:space="preserve">
         <value>Поиск</value>
     </data>
-    <data name="MenuFile" xml:space="preserve">
-        <value>Файл</value>
-    </data>
-    <data name="MenuLogOut" xml:space="preserve">
-        <value>Выйти</value>
-    </data>
-    <data name="MenuExit" xml:space="preserve">
-        <value>Закрыть</value>
-    </data>
-    <data name="MenuNewPlaylist" xml:space="preserve">
-        <value>Новый плейлист</value>
-    </data>
-    <data name="MenuNewPlaylistFolder" xml:space="preserve">
-        <value>Новый папка</value>
-    </data>
-    <data name="MenuPrivateSession" xml:space="preserve">
-        <value>Приватная сессия</value>
-    </data>
     <data name="NavigationHome" xml:space="preserve">
         <value>Главная</value>
     </data>

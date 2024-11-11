@@ -7,12 +7,6 @@ public sealed partial class MainWindowViewModel : ObservableRecipient
 {
     [ObservableProperty] 
     private NavigateViewModel? _navigate;
-    
-    [ObservableProperty]
-    private PlayerViewModel? _player;
-    
-    [ObservableProperty]
-    private LibraryViewModel? _library;
 
     public MainWindowViewModel()
     {
@@ -25,7 +19,5 @@ public sealed partial class MainWindowViewModel : ObservableRecipient
         base.OnActivated();
 
         Navigate = Ioc.Default.GetRequiredService<NavigateViewModel>();
-        Player = Ioc.Default.GetRequiredService<PlayerViewModel>();
-        Library = Ioc.Default.GetRequiredService<LibraryViewModel>();
     }
 }

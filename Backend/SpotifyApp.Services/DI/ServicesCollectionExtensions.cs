@@ -16,7 +16,10 @@ public static class ServicesCollectionExtensions
 
             .AddScoped<IAuthService, AuthService>()
             .AddScoped<ITokenService, TokenService>()
-            .AddSingleton<IImageCache, ImageCache>();
+            .AddSingleton<IImageCache, ImageCache>()
+            
+            // Spotify logic services
+            .AddScoped<IProfileService, ProfileService>();
 
         return services;
     }

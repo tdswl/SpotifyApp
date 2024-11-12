@@ -25,10 +25,11 @@
             </Interaction.Behaviors>
 
             <SplitView.Pane>
-                
+                <Border Classes="Block Left">
+                </Border>
             </SplitView.Pane>
 
-            <Border Classes="Block Top">
+            <Border Classes="Block">
                 <TransitioningContentControl Content="{Binding Navigate.Content, FallbackValue=null}" Margin="0 0 3 0" />
             </Border>
         </SplitView>

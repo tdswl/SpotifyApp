@@ -19,7 +19,7 @@ public sealed partial class NavigateViewModel : ObservableRecipient,
     
     public NavigateViewModel()
     {
-        //Designer constructor
+        // Designer constructor
     }
 
     public NavigateViewModel(INavigationService navigationService)

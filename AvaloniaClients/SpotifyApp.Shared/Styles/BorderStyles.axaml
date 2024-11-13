@@ -10,6 +10,7 @@
     
     <Style Selector="Border.Header">
         <Setter Property="Height" Value="65" />
+        <Setter Property="Margin" Value="8 8 8 0" />
     </Style>
     
     <Style Selector="Border.Block">

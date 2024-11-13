@@ -29,7 +29,10 @@ public static class AppServiceCollectionExtensions
            
             // App services
             .AddSingleton<IOidcConfiguration, OidcConfiguration>()
-            .AddSingleton<INavigationService, NavigationService>();
+            .AddSingleton<INavigationService, NavigationService>()
+            
+            // Controls VMs
+            .AddSingleton<ProfileViewModel>();
     }
 
     private static IServiceCollection AddAutomapper(this IServiceCollection services)

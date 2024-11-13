@@ -3,21 +3,17 @@ using CommunityToolkit.Mvvm.DependencyInjection;
 
 namespace SpotifyApp.Shared.ViewModels;
 
-public sealed partial class MainWindowViewModel : ObservableRecipient
+public sealed partial class MainWindowViewModel : ObservableObject
 {
     [ObservableProperty] 
     private NavigateViewModel? _navigate;
 
+    [ObservableProperty] 
+    private ProfileViewModel? _profile;
+
     public MainWindowViewModel()
     {
-        //Designer constructor
-        IsActive = true;
-    }
-
-    protected override void OnActivated()
-    {
-        base.OnActivated();
-
         Navigate = Ioc.Default.GetRequiredService<NavigateViewModel>();
+        Profile = Ioc.Default.GetRequiredService<ProfileViewModel>();
     }
 }

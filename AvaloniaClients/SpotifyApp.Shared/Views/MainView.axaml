@@ -3,6 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewModels="clr-namespace:SpotifyApp.Shared.ViewModels"
+             xmlns:behaviors="clr-namespace:SpotifyApp.Shared.Behaviors"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="SpotifyApp.Shared.Views.MainView">
     <Design.DataContext>
@@ -11,7 +12,28 @@
 
     <Grid RowDefinitions="Auto, *, Auto">
         <Border Classes="Header">
-            
+            <RelativePanel VerticalAlignment="Center">
+                <Button DataContext="{Binding Profile}"
+                        RelativePanel.AlignRightWithPanel="True"
+                        CornerRadius="45"
+                        Width="50" 
+                        Height="50"
+                        Padding="5"
+                        ToolTip.Tip="{Binding UserName}">
+                    <Interaction.Behaviors>
+                        <EventTriggerBehavior EventName="Loaded">
+                            <InvokeCommandAction Command="{Binding InitializeCommand}"/>
+                        </EventTriggerBehavior>
+                        <EventTriggerBehavior EventName="Unloaded">
+                            <InvokeCommandAction Command="{Binding DeactivateCommand}"/>
+                        </EventTriggerBehavior>
+                    </Interaction.Behaviors>
+                    <Border ClipToBounds="True"
+                            CornerRadius="45">
+                        <Image Source="{Binding Image}" Stretch="UniformToFill" />
+                    </Border>
+                </Button>
+            </RelativePanel>
         </Border>
         
         <SplitView Classes="Menu"

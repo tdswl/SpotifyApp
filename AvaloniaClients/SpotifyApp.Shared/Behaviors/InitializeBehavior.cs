@@ -5,7 +5,7 @@ using SpotifyApp.Shared.ViewModels.Base;
 
 namespace SpotifyApp.Shared.Behaviors;
 
-public class InitializeBehavior : AvaloniaObject
+public sealed class InitializeBehavior : AvaloniaObject
 {
     public static readonly AttachedProperty<bool> IsEnabledProperty = 
         AvaloniaProperty.RegisterAttached<InitializeBehavior, Control, bool>("IsEnabled");
@@ -22,6 +22,11 @@ public class InitializeBehavior : AvaloniaObject
     
     static InitializeBehavior()
     {
+        if (Design.IsDesignMode)
+        {
+            return;
+        }
+            
         IsEnabledProperty.Changed.AddClassHandler<Control>(Action);
     }
 
@@ -31,13 +36,7 @@ public class InitializeBehavior : AvaloniaObject
         {
             control.AddHandler(Control.LoadedEvent, LoadedHandler);
             control.AddHandler(Control.UnloadedEvent, UnloadedHandler);
-            control.DataContextChanged += ControlOnDataContextChanged;
         }
-    }
-
-    private static void ControlOnDataContextChanged(object? sender, EventArgs e)
-    {
-        Initialize(sender);
     }
 
     private static void LoadedHandler(object? sender, RoutedEventArgs e)
@@ -51,7 +50,6 @@ public class InitializeBehavior : AvaloniaObject
         {
             control.RemoveHandler(Control.LoadedEvent, LoadedHandler);
             control.RemoveHandler(Control.UnloadedEvent, UnloadedHandler);
-            control.DataContextChanged -= ControlOnDataContextChanged;
 
             if (control.DataContext is ViewModelWithInitialization viewModel)
             {

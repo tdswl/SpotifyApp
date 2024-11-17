@@ -19,18 +19,17 @@
                         Width="50" 
                         Height="50"
                         Padding="5"
-                        ToolTip.Tip="{Binding UserName}">
-                    <Interaction.Behaviors>
-                        <EventTriggerBehavior EventName="Loaded">
-                            <InvokeCommandAction Command="{Binding InitializeCommand}"/>
-                        </EventTriggerBehavior>
-                        <EventTriggerBehavior EventName="Unloaded">
-                            <InvokeCommandAction Command="{Binding DeactivateCommand}"/>
-                        </EventTriggerBehavior>
-                    </Interaction.Behaviors>
+                        ToolTip.Tip="{Binding UserName}"
+                        behaviors:InitializeBehavior.IsEnabled="True">
                     <Border ClipToBounds="True"
                             CornerRadius="45">
-                        <Image Source="{Binding Image}" Stretch="UniformToFill" />
+                        <Grid>
+                            <Image Name="ProfImg"
+                                   Stretch="UniformToFill"
+                                   behaviors:WebImageBehavior.WebUrl="{Binding WebImageUrl}"/>
+                            <ProgressBar IsIndeterminate="True"
+                                         IsVisible="{Binding #ProfImg.Source, Converter={x:Static ObjectConverters.IsNull}}"/>
+                        </Grid>
                     </Border>
                 </Button>
             </RelativePanel>

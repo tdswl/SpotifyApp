@@ -16,10 +16,10 @@ public abstract partial class ViewModelWithInitialization : ObservableObject
         if (!_isInitialized)
         {
             IsLoading = true;
-            
+
             await Initialize(token);
             _isInitialized = true;
-            
+
             IsLoading = false;
         }
     }
@@ -30,10 +30,10 @@ public abstract partial class ViewModelWithInitialization : ObservableObject
         if (_isInitialized)
         {
             IsLoading = true;
-            
+
             await Deactivate(token);
             _isInitialized = false;
-            
+
             IsLoading = false;
         }
     }

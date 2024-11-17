@@ -1,44 +1,54 @@
-﻿using Avalonia.Media.Imaging;
-using CommunityToolkit.Mvvm.ComponentModel;
-using SpotifyApp.Services.Contracts;
-using SpotifyApp.Shared.Helpers;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using SpotifyApp.Api.Client.OpenApiClient;
+using SpotifyApp.Shared.ViewModels.Base;
 
 namespace SpotifyApp.Shared.ViewModels;
 
-public sealed partial class ProfileViewModel : Base.ViewModelWithInitialization
+public sealed partial class ProfileViewModel : ViewModelWithInitialization
 {
-    private readonly IProfileService _profileService;
+    private readonly ISpotifyClient _spotifyClient;
 
     [ObservableProperty] 
     private string? _userName;
     
     [ObservableProperty] 
-    private Bitmap? _image;
+    private string? _webImageUrl;
 
     public ProfileViewModel()
     {
         // Designer constructor
     }
     
-    public ProfileViewModel(IProfileService profileService)
+    public ProfileViewModel(ISpotifyClient spotifyClient)
     {
-        _profileService = profileService;
+        _spotifyClient = spotifyClient;
     }
 
     protected override async Task Initialize(CancellationToken cancellationToken = default)
     {
-        var profile = await _profileService.GetCurrentUserProfile(cancellationToken);
+        var profile = await _spotifyClient.GetCurrentUsersProfileAsync(cancellationToken);
         
-        UserName = profile.UserName;
-        if (profile.ProfileImageUrl != null)
+        UserName = profile.Display_name;
+
+        var image = GetImage(profile.Images);
+        if (image != null)
         {
-            Image = ImageHelper.LoadFromFile(profile.ProfileImageUrl);
+            WebImageUrl = image.Url;
         }
     }
 
     protected override Task Deactivate(CancellationToken cancellationToken = default)
     {
-        Image?.Dispose();
         return Task.CompletedTask;
+    }
+    
+    private static ImageObject? GetImage(ICollection<ImageObject> images)
+    {
+        return (images.Count switch
+        {
+            0 => null,
+            1 => images.First(),
+            _ => images.OrderBy(a => a.Width).ToList()[images.Count / 2]
+        })!;
     }
 }

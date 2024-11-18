@@ -41,7 +41,10 @@ public static class AppServiceCollectionExtensions
             
             // Controls VMs
             .AddSingleton<ProfileViewModel>()
-            .AddSingleton<YourLibraryViewModel>();
+            .AddSingleton<YourLibraryViewModel>()
+            
+            // Pages
+            .AddTransient<PlaylistDetailsViewModel>();
     }
 
     private static IServiceCollection AddAutomapper(this IServiceCollection services)

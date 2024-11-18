@@ -4,6 +4,7 @@ using CommunityToolkit.Mvvm.DependencyInjection;
 using CommunityToolkit.Mvvm.Input;
 using SpotifyApp.Api.Client.OpenApiClient;
 using SpotifyApp.Services.Contracts;
+using SpotifyApp.Shared.Enums;
 
 namespace SpotifyApp.Shared.ViewModels.Base;
 
@@ -11,14 +12,17 @@ public sealed partial class ImageViewModel : ObservableObject, IDisposable
 {
     private readonly IImageCache _imageCache;
     private readonly ICollection<ImageObject>? _spotifyImages;
+    private readonly ImageSize _imageSize;
 
     [ObservableProperty] 
     private Bitmap? _image;
 
-    public ImageViewModel(ICollection<ImageObject>? spotifyImages)
+    public ImageViewModel(ICollection<ImageObject>? spotifyImages,
+        ImageSize imageSize)
     {
         _imageCache = Ioc.Default.GetRequiredService<IImageCache>();
         _spotifyImages = spotifyImages;
+        _imageSize = imageSize;
     }
     
     [RelayCommand(IncludeCancelCommand = true)]
@@ -26,10 +30,10 @@ public sealed partial class ImageViewModel : ObservableObject, IDisposable
     {
         if (_spotifyImages is { Count: > 0 })
         {
-            var imageWebUrl = GetImage(_spotifyImages)?.Url;
+            var imageWebUrl = GetImage(_spotifyImages, _imageSize).Url;
             var cachedUrl = await _imageCache.GetCachedImagePath(imageWebUrl, token);
             // Cleanup old image if it exists
-            CleanupCommand.Execute(null);
+            Dispose();
             // Set new one
             Image = new Bitmap(cachedUrl);
         }
@@ -41,13 +45,14 @@ public sealed partial class ImageViewModel : ObservableObject, IDisposable
         Dispose();
     }
     
-    private static ImageObject? GetImage(ICollection<ImageObject> images)
+    private static ImageObject GetImage(ICollection<ImageObject> images, ImageSize imageSize)
     {
-        return images.Count switch
+        var orderedImages = images.OrderBy(x => x.Width).ToList();
+        return imageSize switch
         {
-            0 => null,
-            1 => images.First(),
-            _ => images.OrderBy(a => a.Width).ToList()[images.Count / 2]
+            ImageSize.Small => orderedImages.First(),
+            ImageSize.Large => orderedImages.Last(),
+            _ => orderedImages[images.Count / 2]
         };
     }
 

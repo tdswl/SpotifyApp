@@ -51,7 +51,8 @@
                 <Border Classes="Block Left">
                     <ListBox DataContext="{Binding YourLibrary}" 
                              ItemsSource="{Binding Playlists}"
-                             Background="Transparent">
+                             Background="Transparent"
+                             SelectedItem="{Binding SelectedPlaylist}">
                         <Interaction.Behaviors>
                             <EventTriggerBehavior EventName="Loaded">
                                 <InvokeCommandAction Command="{Binding InitializeCommand}"/>

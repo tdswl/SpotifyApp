@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using SpotifyApp.Api.Client.OpenApiClient;
+using SpotifyApp.Shared.Enums;
 using SpotifyApp.Shared.ViewModels.Base;
 
 namespace SpotifyApp.Shared.ViewModels;
@@ -29,7 +30,7 @@ public sealed partial class ProfileViewModel : ViewModelWithInitialization
         var profile = await _spotifyClient.GetCurrentUsersProfileAsync(cancellationToken);
         
         UserName = profile.Display_name;
-        Image = new ImageViewModel(profile.Images);
+        Image = new ImageViewModel(profile.Images, ImageSize.Small);
     }
 
     protected override Task Deactivate(CancellationToken cancellationToken = default)

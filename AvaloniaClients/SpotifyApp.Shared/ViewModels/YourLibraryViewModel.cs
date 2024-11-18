@@ -1,6 +1,10 @@
 ﻿using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Messaging;
 using SpotifyApp.Api.Client.OpenApiClient;
+using SpotifyApp.Shared.Enums;
+using SpotifyApp.Shared.Messages;
+using SpotifyApp.Shared.Models.NavigateParams;
 using SpotifyApp.Shared.Properties;
 using SpotifyApp.Shared.ViewModels.Base;
 using SpotifyApp.Shared.ViewModels.SpotifyItems;
@@ -11,6 +15,9 @@ public sealed partial class YourLibraryViewModel : ViewModelWithInitialization
 {
     private readonly ISpotifyClient _spotifyClient;
    
+    [ObservableProperty] 
+    private PlaylistViewModel? _selectedPlaylist;
+    
     [ObservableProperty] 
     private ObservableCollection<PlaylistViewModel> _playlists = [];
 
@@ -61,6 +68,9 @@ public sealed partial class YourLibraryViewModel : ViewModelWithInitialization
             var pagedSavedTracks = await _spotifyClient.GetUsersSavedTracksAsync(market, limit, skip, cancellationToken);
             savedTracks.AddRange(pagedSavedTracks.Items);
             playlistViewModel.Author = $"{savedTracks.Count} songs";
+            
+            // TODO: remove break. Only take first 50 for test purpose 
+            break;
 
             if (pagedSavedTracks.Items.Count < limit)
             {
@@ -69,5 +79,19 @@ public sealed partial class YourLibraryViewModel : ViewModelWithInitialization
             
             skip += limit;
         }
+    }
+
+    partial void OnSelectedPlaylistChanged(PlaylistViewModel? value)
+    {
+        if (value == null)
+        {
+            return;
+        }
+        
+        WeakReferenceMessenger.Default.Send(new NavigateMessage
+        {
+            Type = PageType.PlaylistDetails,
+            NavigateParams = new PlaylistParams { Id = value.Id, },
+        });
     }
 }

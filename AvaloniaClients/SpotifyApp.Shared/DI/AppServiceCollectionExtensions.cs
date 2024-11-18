@@ -18,7 +18,15 @@ public static class AppServiceCollectionExtensions
     public static IServiceCollection AddAppDi(this IServiceCollection services)
     {
         return services
-            .AddLogging(builder => builder.AddSerilog())
+            .AddLogging(builder =>
+            {
+                var logger = new LoggerConfiguration()
+                    .MinimumLevel.Debug()
+                    .WriteTo.Console()
+                    .CreateLogger();
+                
+                builder.AddSerilog(logger);
+            })
             .AddMemoryCache()
             .AddAutomapper()
             .AddServices()
@@ -32,7 +40,8 @@ public static class AppServiceCollectionExtensions
             .AddSingleton<INavigationService, NavigationService>()
             
             // Controls VMs
-            .AddSingleton<ProfileViewModel>();
+            .AddSingleton<ProfileViewModel>()
+            .AddSingleton<YourLibraryViewModel>();
     }
 
     private static IServiceCollection AddAutomapper(this IServiceCollection services)

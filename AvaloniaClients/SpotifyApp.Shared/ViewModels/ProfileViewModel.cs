@@ -12,7 +12,7 @@ public sealed partial class ProfileViewModel : ViewModelWithInitialization
     private string? _userName;
     
     [ObservableProperty] 
-    private string? _webImageUrl;
+    private ImageViewModel _image;
 
     public ProfileViewModel()
     {
@@ -29,26 +29,11 @@ public sealed partial class ProfileViewModel : ViewModelWithInitialization
         var profile = await _spotifyClient.GetCurrentUsersProfileAsync(cancellationToken);
         
         UserName = profile.Display_name;
-
-        var image = GetImage(profile.Images);
-        if (image != null)
-        {
-            WebImageUrl = image.Url;
-        }
+        Image = new ImageViewModel(profile.Images);
     }
 
     protected override Task Deactivate(CancellationToken cancellationToken = default)
     {
         return Task.CompletedTask;
-    }
-    
-    private static ImageObject? GetImage(ICollection<ImageObject> images)
-    {
-        return (images.Count switch
-        {
-            0 => null,
-            1 => images.First(),
-            _ => images.OrderBy(a => a.Width).ToList()[images.Count / 2]
-        })!;
     }
 }

@@ -6,10 +6,12 @@ namespace SpotifyApp.Storage.Sqlite.OptionsFactories;
 
 internal sealed class SqliteContextOptionsFactory : IContextOptionsFactory
 {
-#if DEBUG
-    private static readonly ILoggerFactory ConsoleLoggerFactory =
-        LoggerFactory.Create(builder => { builder.AddConsole(); });
-#endif
+    private readonly ILoggerFactory _loggerFactory;
+
+    public SqliteContextOptionsFactory(ILoggerFactory loggerFactory)
+    {
+        _loggerFactory = loggerFactory;
+    }
 
     DbContextOptions IContextOptionsFactory.CreateOptions()
     {
@@ -20,11 +22,8 @@ internal sealed class SqliteContextOptionsFactory : IContextOptionsFactory
         }.ToString();
 
         var builder = new DbContextOptionsBuilder<ApplicationContext>()
-            .UseSqlite(connectionString);
-
-#if DEBUG
-        builder = builder.UseLoggerFactory(ConsoleLoggerFactory);
-#endif
+            .UseSqlite(connectionString)
+            .UseLoggerFactory(_loggerFactory);
 
         return builder.Options;
     }

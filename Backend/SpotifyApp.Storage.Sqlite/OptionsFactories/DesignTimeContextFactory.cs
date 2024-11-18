@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.Extensions.Logging;
 
 namespace SpotifyApp.Storage.Sqlite.OptionsFactories;
 
@@ -11,7 +12,7 @@ internal class DesignTimeContextFactory : IDesignTimeDbContextFactory<Applicatio
     /// <inheritdoc cref="IDesignTimeDbContextFactory{TContext}.CreateDbContext"/>
     public ApplicationContext CreateDbContext(string[] args)
     {
-        var contextConfiguration = new SqliteContextOptionsFactory();
+        var contextConfiguration = new SqliteContextOptionsFactory(LoggerFactory.Create(builder => { builder.AddConsole(); }));
 
         return new ApplicationContext(contextConfiguration);
     }

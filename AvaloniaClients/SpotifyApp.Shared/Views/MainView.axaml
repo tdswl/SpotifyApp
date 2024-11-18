@@ -3,7 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewModels="clr-namespace:SpotifyApp.Shared.ViewModels"
-             xmlns:behaviors="clr-namespace:SpotifyApp.Shared.Behaviors"
+             xmlns:spotifyItems="clr-namespace:SpotifyApp.Shared.ViewModels.SpotifyItems"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="SpotifyApp.Shared.Views.MainView">
     <Design.DataContext>
@@ -19,17 +19,19 @@
                         Width="50" 
                         Height="50"
                         Padding="5"
-                        ToolTip.Tip="{Binding UserName}"
-                        behaviors:InitializeBehavior.IsEnabled="True">
+                        ToolTip.Tip="{Binding UserName}">
+                    <Interaction.Behaviors>
+                        <EventTriggerBehavior EventName="Loaded">
+                            <InvokeCommandAction Command="{Binding InitializeCommand}"/>
+                        </EventTriggerBehavior>
+                        <EventTriggerBehavior EventName="Unloaded">
+                            <InvokeCommandAction Command="{Binding DeactivateCommand}"/>
+                        </EventTriggerBehavior>
+                    </Interaction.Behaviors>
                     <Border ClipToBounds="True"
                             CornerRadius="45">
-                        <Grid>
-                            <Image Name="ProfImg"
-                                   Stretch="UniformToFill"
-                                   behaviors:WebImageBehavior.WebUrl="{Binding WebImageUrl}"/>
-                            <ProgressBar IsIndeterminate="True"
-                                         IsVisible="{Binding #ProfImg.Source, Converter={x:Static ObjectConverters.IsNull}}"/>
-                        </Grid>
+                        <ContentControl Content="{Binding Image}"
+                                        ContentTemplate="{StaticResource WebImage}" />
                     </Border>
                 </Button>
             </RelativePanel>
@@ -47,6 +49,42 @@
 
             <SplitView.Pane>
                 <Border Classes="Block Left">
+                    <ListBox DataContext="{Binding YourLibrary}" 
+                             ItemsSource="{Binding Playlists}"
+                             Background="Transparent">
+                        <Interaction.Behaviors>
+                            <EventTriggerBehavior EventName="Loaded">
+                                <InvokeCommandAction Command="{Binding InitializeCommand}"/>
+                            </EventTriggerBehavior>
+                            <EventTriggerBehavior EventName="Unloaded">
+                                <InvokeCommandAction Command="{Binding DeactivateCommand}"/>
+                            </EventTriggerBehavior>
+                        </Interaction.Behaviors>
+                        <ListBox.DataTemplates>
+                            <DataTemplate DataType="{x:Type spotifyItems:PlaylistViewModel}">
+                                <Grid ColumnDefinitions="Auto, *"
+                                      RowDefinitions="*, *">
+                                    <Border Grid.RowSpan="2"
+                                            ClipToBounds="True"
+                                            CornerRadius="2"
+                                            Width="50"
+                                            Height="50"
+                                            Background="Gray">
+                                        <ContentControl Content="{Binding Image}"
+                                                        ContentTemplate="{StaticResource WebImage}" />
+                                    </Border>
+                                    <TextBlock Grid.Row="0"
+                                               Grid.Column="1"
+                                               Text="{Binding Name}"
+                                               TextTrimming="CharacterEllipsis" />
+                                    <TextBlock Grid.Row="1"
+                                               Grid.Column="1"
+                                               Text="{Binding Author}"
+                                               TextTrimming="CharacterEllipsis" />
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.DataTemplates>
+                    </ListBox>
                 </Border>
             </SplitView.Pane>
 

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using SpotifyApp.Storage.Sqlite;
 using SpotifyApp.Storage.Sqlite.OptionsFactories;
 
@@ -11,7 +12,7 @@ public sealed class DatabaseFixture : IAsyncLifetime
 
     public async Task InitializeAsync()
     {
-        var context = new ApplicationContext(new SqliteInMemoryContextOptionsFactory());
+        var context = new ApplicationContext(new SqliteInMemoryContextOptionsFactory(LoggerFactory.Create(builder => { builder.AddConsole(); })));
         await context.Database.OpenConnectionAsync(_cancellationTokenSource.Token);
         await context.Database.EnsureCreatedAsync(_cancellationTokenSource.Token);
         Database = context;

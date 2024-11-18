@@ -1,16 +1,20 @@
 ﻿using System.Net.Http.Headers;
 using System.Text;
+using Microsoft.Extensions.Logging;
 
 namespace SpotifyApp.Api.Client.OpenApiClient;
 
 public partial class SpotifyClient
 {
     private readonly ITokenService _tokenService;
+    private readonly ILogger _logger;
 
     public SpotifyClient(ITokenService tokenService,
-        IHttpClientFactory httpClientFactory) : this(httpClientFactory.CreateClient())
+        IHttpClientFactory httpClientFactory, 
+        ILoggerFactory loggerFactory) : this(httpClientFactory.CreateClient())
     {
         _tokenService = tokenService;
+        _logger = loggerFactory.CreateLogger<SpotifyClient>();
     }
 
     private async Task PrepareRequestAsync(HttpClient client,
@@ -18,6 +22,8 @@ public partial class SpotifyClient
         StringBuilder url,
         CancellationToken cancellationToken)
     {
+        _logger.LogDebug("API. Request: {Request}", request);
+        
         var authToken = await _tokenService.GetAccessToken(cancellationToken);
         request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", authToken);
     }
@@ -27,14 +33,18 @@ public partial class SpotifyClient
         string url,
         CancellationToken cancellationToken)
     {
+        _logger.LogDebug("API. Request: {Request}", request);
+        
         var authToken = await _tokenService.GetAccessToken(cancellationToken);
         request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", authToken);
     }
 
-    private static Task ProcessResponseAsync(HttpClient client,
+    private Task ProcessResponseAsync(HttpClient client,
         HttpResponseMessage request,
         CancellationToken cancellationToken)
     {
+        _logger.LogDebug("API. Response: {Request}", request);
+        
         return Task.CompletedTask;
     }
 

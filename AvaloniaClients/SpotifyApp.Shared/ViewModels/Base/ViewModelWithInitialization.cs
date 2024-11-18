@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using Avalonia.Controls;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
 namespace SpotifyApp.Shared.ViewModels.Base;
@@ -13,6 +14,11 @@ public abstract partial class ViewModelWithInitialization : ObservableObject
     [RelayCommand(IncludeCancelCommand = true)]
     private async Task InitializeAsync(CancellationToken token)
     {
+        if (Design.IsDesignMode)
+        {
+            return;
+        }
+        
         if (!_isInitialized)
         {
             IsLoading = true;
@@ -27,6 +33,11 @@ public abstract partial class ViewModelWithInitialization : ObservableObject
     [RelayCommand(IncludeCancelCommand = true)]
     private async Task DeactivateAsync(CancellationToken token)
     {
+        if (Design.IsDesignMode)
+        {
+            return;
+        }
+        
         if (_isInitialized)
         {
             IsLoading = true;

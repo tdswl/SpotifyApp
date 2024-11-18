@@ -1,0 +1,23 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:base="clr-namespace:SpotifyApp.Shared.ViewModels.Base">
+    <DataTemplate x:Key="WebImage"
+                  DataType="{x:Type base:ImageViewModel}">
+        <Grid>
+            <Image Name="ProfImg"
+                   Stretch="UniformToFill"
+                   Source="{Binding Image}">
+                <Interaction.Behaviors>
+                    <EventTriggerBehavior EventName="Loaded">
+                        <InvokeCommandAction Command="{Binding LoadImageCommand}" />
+                    </EventTriggerBehavior>
+                    <EventTriggerBehavior EventName="Unloaded">
+                        <InvokeCommandAction Command="{Binding Cleanup}" />
+                    </EventTriggerBehavior>
+                </Interaction.Behaviors>
+            </Image>
+            <ProgressBar IsIndeterminate="True"
+                         IsVisible="{Binding #ProfImg.Source, Converter={x:Static ObjectConverters.IsNull}}" />
+        </Grid>
+    </DataTemplate>
+</ResourceDictionary>

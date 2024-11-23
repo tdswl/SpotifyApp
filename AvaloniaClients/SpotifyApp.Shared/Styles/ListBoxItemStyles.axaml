@@ -1,0 +1,21 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ControlTheme x:Key="YourLibraryItem"
+                  TargetType="ListBoxItem">
+        <Setter Property="CornerRadius" Value="5" />
+        <Setter Property="Padding" Value="7" />
+
+        <!--  PointerOver State  -->
+        <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="#1F1F1F" />
+        </Style>
+        <!--  Selected PointerOver State  -->
+        <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="#2A2A2A" />
+        </Style>
+        <!--  Pressed State  -->
+        <Style Selector="^:pressed /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="Black" />
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

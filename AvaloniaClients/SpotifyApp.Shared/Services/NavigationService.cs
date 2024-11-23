@@ -16,12 +16,13 @@ internal sealed class NavigationService : INavigationService
             case PageType.Home:
                 return null;
             case PageType.PlaylistDetails:
-                var vm = Ioc.Default.GetRequiredService<PlaylistDetailsViewModel>();
-                if (navigateParams is PlaylistParams playlistParams)
+                var vm = Ioc.Default.GetRequiredService<SpotifyItemDetailsViewModel>();
+                if (navigateParams is SpotifyItemParams playlistParams)
                 {
-                    vm.Id = playlistParams.Id;
+                    vm.Id = playlistParams.Item.Id;
+                    vm.Type = playlistParams.Item.Type;
                 }
-                return new PlaylistDetailsView { DataContext = vm, };
+                return new SpotifyItemDetailsView { DataContext = vm, };
             default:
                 throw new ArgumentOutOfRangeException(nameof(pageType), pageType, null);
         }

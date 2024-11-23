@@ -1,0 +1,62 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:spotifyItems="clr-namespace:SpotifyApp.Shared.ViewModels.SpotifyItems"
+                    xmlns:converters="clr-namespace:SpotifyApp.Shared.Converters">
+    <DataTemplate x:Key="YourLibraryPlaylistDataTemplate"
+                  DataType="{x:Type spotifyItems:PlaylistViewModel}">
+        <Grid ColumnDefinitions="Auto, *"
+              RowDefinitions="*, *">
+            <Border Grid.RowSpan="2"
+                    ClipToBounds="True"
+                    CornerRadius="2"
+                    Width="43"
+                    Height="43"
+                    Background="Gray">
+                <ContentControl Content="{Binding Image}"
+                                ContentTemplate="{StaticResource WebImage}" />
+            </Border>
+            <TextBlock Grid.Row="0"
+                       Grid.Column="1"
+                       Text="{Binding Name}"
+                       TextTrimming="CharacterEllipsis" />
+            <StackPanel Grid.Row="1"
+                        Grid.Column="1"
+                        Orientation="Horizontal">
+                <TextBlock
+                    Text="{Binding Type, Converter={x:Static converters:SpotifyItemTypeToTextConverter.Instance}}" />
+                <TextBlock Text=" " />
+                <TextBlock Text="{Binding Author}"
+                           TextTrimming="CharacterEllipsis" />
+            </StackPanel>
+        </Grid>
+    </DataTemplate>
+
+    <DataTemplate x:Key="YourLibraryAlbumDataTemplate"
+                  DataType="{x:Type spotifyItems:AlbumViewModel}">
+        <Grid ColumnDefinitions="Auto, *"
+              RowDefinitions="*, *">
+            <Border Grid.RowSpan="2"
+                    ClipToBounds="True"
+                    CornerRadius="2"
+                    Width="43"
+                    Height="43"
+                    Background="Gray">
+                <ContentControl Content="{Binding Image}"
+                                ContentTemplate="{StaticResource WebImage}" />
+            </Border>
+            <TextBlock Grid.Row="0"
+                       Grid.Column="1"
+                       Text="{Binding Name}"
+                       TextTrimming="CharacterEllipsis" />
+            <StackPanel Grid.Row="1"
+                        Grid.Column="1"
+                        Orientation="Horizontal">
+                <TextBlock
+                    Text="{Binding Type, Converter={x:Static converters:SpotifyItemTypeToTextConverter.Instance}}" />
+                <TextBlock Text=" " />
+                <TextBlock Text="{Binding Author}"
+                           TextTrimming="CharacterEllipsis" />
+            </StackPanel>
+        </Grid>
+    </DataTemplate>
+</ResourceDictionary>

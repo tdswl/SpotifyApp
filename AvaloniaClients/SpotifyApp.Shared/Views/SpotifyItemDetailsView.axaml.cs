@@ -4,9 +4,9 @@ using Avalonia.Markup.Xaml;
 
 namespace SpotifyApp.Shared.Views;
 
-public partial class PlaylistDetailsView : UserControl
+public partial class SpotifyItemDetailsView : UserControl
 {
-    public PlaylistDetailsView()
+    public SpotifyItemDetailsView()
     {
         InitializeComponent();
     }

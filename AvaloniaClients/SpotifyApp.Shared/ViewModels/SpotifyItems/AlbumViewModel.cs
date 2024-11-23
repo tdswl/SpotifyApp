@@ -5,7 +5,7 @@ using SpotifyApp.Shared.ViewModels.Base;
 
 namespace SpotifyApp.Shared.ViewModels.SpotifyItems;
 
-public sealed partial class PlaylistViewModel : SpotifyItemBaseViewModel
+public sealed partial class AlbumViewModel : SpotifyItemBaseViewModel
 {
     [ObservableProperty] 
     private string _name;
@@ -13,17 +13,17 @@ public sealed partial class PlaylistViewModel : SpotifyItemBaseViewModel
     [ObservableProperty] 
     private string _author;
 
-    public PlaylistViewModel()
+    public AlbumViewModel()
     {
         // Designer constructor
     }
     
-    public PlaylistViewModel(SimplifiedPlaylistObject playlist)
+    public AlbumViewModel(SimplifiedPlaylistObject playlist)
     {
         Id = playlist.Id;
         Name = playlist.Name;
         Author = playlist.Owner.Display_name;
         Image = new ImageViewModel(playlist.Images, ImageSize.Small);
-        Type = SpotifyItemType.Playlist;
+        Type = SpotifyItemType.Album;
     }
 }

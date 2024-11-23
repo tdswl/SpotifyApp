@@ -19,7 +19,7 @@ public sealed partial class YourLibraryViewModel : ViewModelWithInitialization
     private PlaylistViewModel? _selectedPlaylist;
     
     [ObservableProperty] 
-    private ObservableCollection<PlaylistViewModel> _playlists = [];
+    private ObservableCollection<SpotifyItemBaseViewModel> _items = [];
 
     public YourLibraryViewModel()
     {
@@ -34,7 +34,7 @@ public sealed partial class YourLibraryViewModel : ViewModelWithInitialization
     protected override Task Initialize(CancellationToken cancellationToken = default)
     {
         var likedSongsPlaylist = new PlaylistViewModel { Name = Resources.LikedSongs, Author = "0 songs", };
-        Playlists.Add(likedSongsPlaylist);
+        Items.Add(likedSongsPlaylist);
         var loadLikedSongs = LoadLikedSongs(likedSongsPlaylist, cancellationToken);
         var loadPlaylists = LoadPlaylists(cancellationToken);
 
@@ -52,7 +52,7 @@ public sealed partial class YourLibraryViewModel : ViewModelWithInitialization
 
         foreach (var spotifyPlaylist in spotifyPlaylists.Items)
         {
-            Playlists.Add(new PlaylistViewModel(spotifyPlaylist));
+            Items.Add(new PlaylistViewModel(spotifyPlaylist));
         }
     }
 
@@ -60,12 +60,11 @@ public sealed partial class YourLibraryViewModel : ViewModelWithInitialization
     {
         var skip = 0;
         const int limit = 50;
-        const string market = "TR";
         var savedTracks = new List<SavedTrackObject>();
         
         while (true)
         {
-            var pagedSavedTracks = await _spotifyClient.GetUsersSavedTracksAsync(market, limit, skip, cancellationToken);
+            var pagedSavedTracks = await _spotifyClient.GetUsersSavedTracksAsync(null, limit, skip, cancellationToken);
             savedTracks.AddRange(pagedSavedTracks.Items);
             playlistViewModel.Author = $"{savedTracks.Count} songs";
             
@@ -91,7 +90,7 @@ public sealed partial class YourLibraryViewModel : ViewModelWithInitialization
         WeakReferenceMessenger.Default.Send(new NavigateMessage
         {
             Type = PageType.PlaylistDetails,
-            NavigateParams = new PlaylistParams { Id = value.Id, },
+            NavigateParams = new SpotifyItemParams { Item = value, },
         });
     }
 }

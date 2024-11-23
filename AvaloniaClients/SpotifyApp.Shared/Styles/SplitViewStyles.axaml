@@ -45,6 +45,7 @@
         <Setter Property="PanePlacement" Value="Left" />
         <Setter Property="IsPaneOpen" Value="False" />
         <Setter Property="DisplayMode" Value="Inline" />
+        <Setter Property="CompactPaneLength" Value="66" />
     </Style>
     <Style Selector="SplitView.Medium">
         <Setter Property="IsPaneOpen" Value="False" />

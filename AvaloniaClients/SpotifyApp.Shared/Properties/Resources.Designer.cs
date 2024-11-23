@@ -60,74 +60,11 @@ namespace SpotifyApp.Shared.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ALBUM.
-        /// </summary>
-        public static string AlbumTypeAlbum {
-            get {
-                return ResourceManager.GetString("AlbumTypeAlbum", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to COMPILATION.
-        /// </summary>
-        public static string AlbumTypeCompilation {
-            get {
-                return ResourceManager.GetString("AlbumTypeCompilation", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to SINGLE.
-        /// </summary>
-        public static string AlbumTypeSingle {
-            get {
-                return ResourceManager.GetString("AlbumTypeSingle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Following.
-        /// </summary>
-        public static string Following {
-            get {
-                return ResourceManager.GetString("Following", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Album.
         /// </summary>
         public static string ItemTypeAlbum {
             get {
                 return ResourceManager.GetString("ItemTypeAlbum", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Artist.
-        /// </summary>
-        public static string ItemTypeArtist {
-            get {
-                return ResourceManager.GetString("ItemTypeArtist", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Audio Features.
-        /// </summary>
-        public static string ItemTypeAudioFeatures {
-            get {
-                return ResourceManager.GetString("ItemTypeAudioFeatures", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Genre.
-        /// </summary>
-        public static string ItemTypeGenre {
-            get {
-                return ResourceManager.GetString("ItemTypeGenre", resourceCulture);
             }
         }
         
@@ -141,24 +78,6 @@ namespace SpotifyApp.Shared.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Track.
-        /// </summary>
-        public static string ItemTypeTrack {
-            get {
-                return ResourceManager.GetString("ItemTypeTrack", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to User.
-        /// </summary>
-        public static string ItemTypeUser {
-            get {
-                return ResourceManager.GetString("ItemTypeUser", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Liked songs.
         /// </summary>
         public static string LikedSongs {
@@ -168,137 +87,11 @@ namespace SpotifyApp.Shared.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Home.
-        /// </summary>
-        public static string NavigationHome {
-            get {
-                return ResourceManager.GetString("NavigationHome", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Your Library.
         /// </summary>
         public static string NavigationLibrary {
             get {
                 return ResourceManager.GetString("NavigationLibrary", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Search.
-        /// </summary>
-        public static string NavigationSearch {
-            get {
-                return ResourceManager.GetString("NavigationSearch", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Only visible to you.
-        /// </summary>
-        public static string OnlyVisibleToYou {
-            get {
-                return ResourceManager.GetString("OnlyVisibleToYou", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Next.
-        /// </summary>
-        public static string PlayerNext {
-            get {
-                return ResourceManager.GetString("PlayerNext", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Play.
-        /// </summary>
-        public static string PlayerPlay {
-            get {
-                return ResourceManager.GetString("PlayerPlay", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Previous.
-        /// </summary>
-        public static string PlayerPrevious {
-            get {
-                return ResourceManager.GetString("PlayerPrevious", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Shuffle.
-        /// </summary>
-        public static string PlayerShuffle {
-            get {
-                return ResourceManager.GetString("PlayerShuffle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Profile.
-        /// </summary>
-        public static string Profile {
-            get {
-                return ResourceManager.GetString("Profile", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Search.
-        /// </summary>
-        public static string SearchWatermark {
-            get {
-                return ResourceManager.GetString("SearchWatermark", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Top artists this month.
-        /// </summary>
-        public static string TopArtistsThisMonth {
-            get {
-                return ResourceManager.GetString("TopArtistsThisMonth", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Top tracks this month.
-        /// </summary>
-        public static string TopTracksThisMonth {
-            get {
-                return ResourceManager.GetString("TopTracksThisMonth", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ALBUM.
-        /// </summary>
-        public static string TrackGridHeaderAlbum {
-            get {
-                return ResourceManager.GetString("TrackGridHeaderAlbum", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to DURATION.
-        /// </summary>
-        public static string TrackGridHeaderDuration {
-            get {
-                return ResourceManager.GetString("TrackGridHeaderDuration", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to TITLE.
-        /// </summary>
-        public static string TrackGridHeaderTitle {
-            get {
-                return ResourceManager.GetString("TrackGridHeaderTitle", resourceCulture);
             }
         }
     }

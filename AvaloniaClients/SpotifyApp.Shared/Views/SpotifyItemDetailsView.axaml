@@ -1,0 +1,51 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:SpotifyApp.Shared.ViewModels"
+             xmlns:converters="clr-namespace:SpotifyApp.Shared.Converters"
+             xmlns:controls="clr-namespace:SpotifyApp.Shared.Controls"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="SpotifyApp.Shared.Views.SpotifyItemDetailsView">
+    <Design.DataContext>
+        <viewModels:SpotifyItemDetailsViewModel />
+    </Design.DataContext>
+    <StackPanel>
+        <Interaction.Behaviors>
+            <EventTriggerBehavior EventName="Loaded">
+                <InvokeCommandAction Command="{Binding InitializeCommand}"/>
+            </EventTriggerBehavior>
+            <EventTriggerBehavior EventName="Unloaded">
+                <InvokeCommandAction Command="{Binding DeactivateCommand}"/>
+            </EventTriggerBehavior>
+        </Interaction.Behaviors>
+        
+        <Border Padding="18">
+            <Grid RowDefinitions="*,Auto,Auto"
+                  ColumnDefinitions="Auto,22,*">
+                <Border Grid.RowSpan="3"
+                        ClipToBounds="True"
+                        CornerRadius="2" 
+                        Width="208"
+                        Height="208">
+                    <ContentControl Content="{Binding Image}"
+                                    ContentTemplate="{StaticResource WebImage}" />
+                </Border>
+                <TextBlock Grid.Row="0" 
+                           Grid.Column="2"
+                           VerticalAlignment="Bottom"
+                           Text="{Binding Type, Converter={x:Static converters:SpotifyItemTypeToTextConverter.Instance}}" />
+                <TextBlock Grid.Row="1" 
+                           Grid.Column="2"
+                           Text="{Binding Name}" />
+                <TextBlock Grid.Row="2" 
+                           Grid.Column="2"
+                           Text="{Binding Name}" />
+            </Grid>
+        </Border>
+        
+        <Border>
+            <controls:TracksGridControl ItemsSource="{Binding Items}" />
+        </Border>
+    </StackPanel>
+</UserControl>

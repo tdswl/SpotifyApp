@@ -44,7 +44,7 @@ public static class AppServiceCollectionExtensions
             .AddSingleton<YourLibraryViewModel>()
             
             // Pages
-            .AddTransient<PlaylistDetailsViewModel>();
+            .AddTransient<SpotifyItemDetailsViewModel>();
     }
 
     private static IServiceCollection AddAutomapper(this IServiceCollection services)

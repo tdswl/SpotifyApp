@@ -23,83 +23,14 @@
             PublicKeyToken=b77a5c561934e089
         </value>
     </resheader>
-    <data name="TopArtistsThisMonth" xml:space="preserve">
-        <value>Top artists this month</value>
-    </data>
-    <data name="OnlyVisibleToYou" xml:space="preserve">
-        <value>Only visible to you</value>
-    </data>
-    <data name="TopTracksThisMonth" xml:space="preserve">
-        <value>Top tracks this month</value>
-    </data>
-    <data name="Following" xml:space="preserve">
-        <value>Following</value>
-    </data>
-    <data name="Profile" xml:space="preserve">
-        <value>Profile</value>
-    </data>
     <data name="LikedSongs" xml:space="preserve">
         <value>Liked songs</value>
-    </data>
-    <data name="TrackGridHeaderTitle" xml:space="preserve">
-        <value>TITLE</value>
-    </data>
-    <data name="TrackGridHeaderAlbum" xml:space="preserve">
-        <value>ALBUM</value>
-    </data>
-    <data name="TrackGridHeaderDuration" xml:space="preserve">
-        <value>DURATION</value>
     </data>
     <data name="ItemTypeAlbum" xml:space="preserve">
         <value>Album</value>
     </data>
-    <data name="ItemTypeArtist" xml:space="preserve">
-        <value>Artist</value>
-    </data>
-    <data name="ItemTypeTrack" xml:space="preserve">
-        <value>Track</value>
-    </data>
-    <data name="ItemTypeUser" xml:space="preserve">
-        <value>User</value>
-    </data>
-    <data name="ItemTypeAudioFeatures" xml:space="preserve">
-        <value>Audio Features</value>
-    </data>
-    <data name="ItemTypeGenre" xml:space="preserve">
-        <value>Genre</value>
-    </data>
     <data name="ItemTypePlaylist" xml:space="preserve">
         <value>Playlist</value>
-    </data>
-    <data name="AlbumTypeAlbum" xml:space="preserve">
-        <value>ALBUM</value>
-    </data>
-    <data name="AlbumTypeSingle" xml:space="preserve">
-        <value>SINGLE</value>
-    </data>
-    <data name="AlbumTypeCompilation" xml:space="preserve">
-        <value>COMPILATION</value>
-    </data>
-    <data name="PlayerShuffle" xml:space="preserve">
-        <value>Shuffle</value>
-    </data>
-    <data name="PlayerPrevious" xml:space="preserve">
-        <value>Previous</value>
-    </data>
-    <data name="PlayerPlay" xml:space="preserve">
-        <value>Play</value>
-    </data>
-    <data name="PlayerNext" xml:space="preserve">
-        <value>Next</value>
-    </data>
-    <data name="SearchWatermark" xml:space="preserve">
-        <value>Search</value>
-    </data>
-    <data name="NavigationHome" xml:space="preserve">
-        <value>Home</value>
-    </data>
-    <data name="NavigationSearch" xml:space="preserve">
-        <value>Search</value>
     </data>
     <data name="NavigationLibrary" xml:space="preserve">
         <value>Your Library</value>

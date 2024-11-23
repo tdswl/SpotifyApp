@@ -1,0 +1,133 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:SpotifyApp.Shared.Controls">
+    <Design.PreviewWith>
+        <controls:TracksGridControl />
+    </Design.PreviewWith>
+
+    <Styles.Resources>
+        <ControlTheme x:Key="TracksHeader"
+                      TargetType="DataGridColumnHeader"
+                      BasedOn="{StaticResource {x:Type DataGridColumnHeader}}">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="BorderBrush" Value="Gray" />
+            <Setter Property="BorderThickness" Value="0 0 0 1" />
+        </ControlTheme>
+
+        <ControlTheme x:Key="TracksCell"
+                      TargetType="DataGridCell"
+                      BasedOn="{StaticResource {x:Type DataGridCell}}">
+            <Style Selector="^:focus /template/ Grid#FocusVisual > Rectangle">
+                <Setter Property="Stroke" Value="Transparent" />
+            </Style>
+        </ControlTheme>
+
+        <ControlTheme x:Key="TracksRow"
+                      TargetType="DataGridRow"
+                      BasedOn="{StaticResource {x:Type DataGridRow}}">
+            <Style Selector="^:pointerover /template/ Rectangle#BackgroundRectangle">
+                <Setter Property="Fill" Value="Gray" />
+            </Style>
+            <Style Selector="^:selected">
+                <Style Selector="^ /template/ Rectangle#BackgroundRectangle">
+                    <Setter Property="Fill" Value="Gray" />
+                    <Setter Property="Opacity" Value="{DynamicResource DataGridRowSelectedUnfocusedBackgroundOpacity}" />
+                </Style>
+                <Style Selector="^:pointerover /template/ Rectangle#BackgroundRectangle">
+                    <Setter Property="Fill" Value="Gray" />
+                    <Setter Property="Opacity"
+                            Value="{DynamicResource DataGridRowSelectedHoveredUnfocusedBackgroundOpacity}" />
+                </Style>
+                <Style Selector="^:focus /template/ Rectangle#BackgroundRectangle">
+                    <Setter Property="Fill" Value="Gray" />
+                    <Setter Property="Opacity" Value="{DynamicResource DataGridRowSelectedBackgroundOpacity}" />
+                </Style>
+                <Style Selector="^:pointerover:focus /template/ Rectangle#BackgroundRectangle">
+                    <Setter Property="Fill" Value="DarkGray" />
+                    <Setter Property="Opacity" Value="{DynamicResource DataGridRowSelectedHoveredBackgroundOpacity}" />
+                </Style>
+            </Style>
+        </ControlTheme>
+    </Styles.Resources>
+
+    <Style Selector="controls|TracksGridControl">
+        <Setter Property="Template">
+            <ControlTemplate>
+                <DataGrid x:Name="TracksGrid"
+                          ItemsSource="{TemplateBinding ItemsSource}"
+                          Background="Transparent"
+                          AutoGenerateColumns="False"
+                          SelectionMode="Single"
+                          CanUserReorderColumns="False"
+                          CanUserResizeColumns="False"
+                          CanUserSortColumns="False"
+                          IsReadOnly="True"
+                          GridLinesVisibility="None"
+                          ColumnHeaderTheme="{StaticResource TracksHeader}"
+                          CellTheme="{StaticResource TracksCell}"
+                          RowTheme="{StaticResource TracksRow}"
+                          VerticalScrollBarVisibility="Disabled">
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn MinWidth="150"
+                                                Width="*">
+                            <DataGridTemplateColumn.Header>
+                                <TextBlock Text="Title"
+                                           Foreground="{DynamicResource SystemBaseHighColor}" />
+                            </DataGridTemplateColumn.Header>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Grid ColumnDefinitions="Auto, Auto, *"
+                                          RowDefinitions="*, *">
+                                        <Border Grid.RowSpan="2"
+                                                ClipToBounds="True"
+                                                CornerRadius="2"
+                                                Width="43"
+                                                Height="43"
+                                                Margin="10"
+                                                Background="Gray">
+                                            <ContentControl Content="{Binding Image}"
+                                                            ContentTemplate="{StaticResource WebImage}" />
+                                        </Border>
+                                        <TextBlock Grid.Row="0"
+                                                   Grid.Column="1"
+                                                   Grid.ColumnSpan="2"
+                                                   Text="{Binding Name}"
+                                                   TextTrimming="CharacterEllipsis"
+                                                   VerticalAlignment="Bottom" />
+                                        <TextBlock Grid.Row="1"
+                                                   Grid.Column="2"
+                                                   Text="{Binding Author}"
+                                                   TextTrimming="CharacterEllipsis"
+                                                   VerticalAlignment="Top" />
+                                    </Grid>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn MinWidth="150"
+                                                Width="*">
+                            <DataGridTemplateColumn.Header>
+                                <TextBlock Text="Album"
+                                           Foreground="{DynamicResource SystemBaseHighColor}" />
+                            </DataGridTemplateColumn.Header>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Album}"
+                                               VerticalAlignment="Center"
+                                               TextTrimming="CharacterEllipsis" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTextColumn Width="Auto">
+                            <DataGridTextColumn.Header>
+                                <TextBlock Text="Duration"
+                                           Foreground="{DynamicResource SystemBaseHighColor}" />
+                            </DataGridTextColumn.Header>
+                        </DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+</Styles>

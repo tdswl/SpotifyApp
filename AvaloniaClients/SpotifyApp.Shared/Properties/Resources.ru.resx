@@ -15,83 +15,14 @@
             PublicKeyToken=b77a5c561934e089
         </value>
     </resheader>
-    <data name="TopArtistsThisMonth" xml:space="preserve">
-        <value>Лучшие артисты месяца</value>
-    </data>
-    <data name="OnlyVisibleToYou" xml:space="preserve">
-        <value>Видны только вам</value>
-    </data>
-    <data name="TopTracksThisMonth" xml:space="preserve">
-        <value>Лучшие треки месяца</value>
-    </data>
-    <data name="Following" xml:space="preserve">
-        <value>Подписки</value>
-    </data>
-    <data name="Profile" xml:space="preserve">
-        <value>Профиль</value>
-    </data>
     <data name="LikedSongs" xml:space="preserve">
         <value>Любимые песни</value>
-    </data>
-    <data name="TrackGridHeaderTitle" xml:space="preserve">
-        <value>ИМЯ</value>
-    </data>
-    <data name="TrackGridHeaderAlbum" xml:space="preserve">
-        <value>АЛЬБОМ</value>
-    </data>
-    <data name="TrackGridHeaderDuration" xml:space="preserve">
-        <value>ПРОДОЛЖИТЕЛЬНОСТЬ</value>
     </data>
     <data name="ItemTypeAlbum" xml:space="preserve">
         <value>Альбом</value>
     </data>
-    <data name="ItemTypeArtist" xml:space="preserve">
-        <value>Артист</value>
-    </data>
-    <data name="ItemTypeAudioFeatures" xml:space="preserve">
-        <value>Параметры аудио</value>
-    </data>
-    <data name="ItemTypeGenre" xml:space="preserve">
-        <value>Жанр</value>
-    </data>
     <data name="ItemTypePlaylist" xml:space="preserve">
         <value>Плейлист</value>
-    </data>
-    <data name="ItemTypeTrack" xml:space="preserve">
-        <value>Трек</value>
-    </data>
-    <data name="ItemTypeUser" xml:space="preserve">
-        <value>Пользователь</value>
-    </data>
-    <data name="AlbumTypeAlbum" xml:space="preserve">
-        <value>АЛЬБОМ</value>
-    </data>
-    <data name="AlbumTypeSingle" xml:space="preserve">
-        <value>СИНГЛ</value>
-    </data>
-    <data name="AlbumTypeCompilation" xml:space="preserve">
-        <value>СБОРНИК</value>
-    </data>
-    <data name="PlayerShuffle" xml:space="preserve">
-        <value>Перемешать</value>
-    </data>
-    <data name="PlayerPrevious" xml:space="preserve">
-        <value>Предыдущий трек</value>
-    </data>
-    <data name="PlayerPlay" xml:space="preserve">
-        <value>Играть</value>
-    </data>
-    <data name="PlayerNext" xml:space="preserve">
-        <value>Следующий трек</value>
-    </data>
-    <data name="SearchWatermark" xml:space="preserve">
-        <value>Поиск</value>
-    </data>
-    <data name="NavigationHome" xml:space="preserve">
-        <value>Главная</value>
-    </data>
-    <data name="NavigationSearch" xml:space="preserve">
-        <value>Поиск</value>
     </data>
     <data name="NavigationLibrary" xml:space="preserve">
         <value>Библиотека</value>

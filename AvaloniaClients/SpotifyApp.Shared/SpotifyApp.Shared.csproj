@@ -60,5 +60,6 @@
       <UpToDateCheckInput Remove="Controls\SpotifyItemDetailsControl.axaml" />
       <UpToDateCheckInput Remove="Controls\TracksGridControl.axaml" />
       <UpToDateCheckInput Remove="Controls\WebImage.axaml" />
+      <UpToDateCheckInput Remove="Controls\TracksGridControl.axaml" />
     </ItemGroup>
 </Project>

@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewModels="clr-namespace:SpotifyApp.Shared.ViewModels"
              xmlns:p="clr-namespace:SpotifyApp.Shared.Properties"
+             xmlns:behaviors="clr-namespace:SpotifyApp.Shared.Behaviors"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="SpotifyApp.Shared.Views.MainView">
     <Design.DataContext>
@@ -21,12 +22,7 @@
                         Padding="5"
                         ToolTip.Tip="{Binding UserName}">
                     <Interaction.Behaviors>
-                        <EventTriggerBehavior EventName="Loaded">
-                            <InvokeCommandAction Command="{Binding InitializeCommand}"/>
-                        </EventTriggerBehavior>
-                        <EventTriggerBehavior EventName="Unloaded">
-                            <InvokeCommandAction Command="{Binding DeactivateCommand}"/>
-                        </EventTriggerBehavior>
+                        <behaviors:InitializationBehavior />
                     </Interaction.Behaviors>
                     <Border ClipToBounds="True"
                             CornerRadius="45">
@@ -59,12 +55,7 @@
                                  SelectedItem="{Binding SelectedPlaylist}"
                                  ItemContainerTheme="{StaticResource YourLibraryItem}">
                             <Interaction.Behaviors>
-                                <EventTriggerBehavior EventName="Loaded">
-                                    <InvokeCommandAction Command="{Binding InitializeCommand}"/>
-                                </EventTriggerBehavior>
-                                <EventTriggerBehavior EventName="Unloaded">
-                                    <InvokeCommandAction Command="{Binding DeactivateCommand}"/>
-                                </EventTriggerBehavior>
+                                <behaviors:InitializationBehavior />
                             </Interaction.Behaviors>
                             <ListBox.DataTemplates>
                                 <StaticResource ResourceKey="YourLibraryPlaylistDataTemplate" />

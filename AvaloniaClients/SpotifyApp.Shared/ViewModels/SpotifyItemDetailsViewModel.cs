@@ -12,6 +12,9 @@ public sealed partial class SpotifyItemDetailsViewModel : ViewModelWithInitializ
     private readonly ISpotifyClient _spotifyClient;
     
     [ObservableProperty] 
+    private bool _isLoading;
+    
+    [ObservableProperty] 
     private string _id;
     
     [ObservableProperty] 
@@ -27,7 +30,7 @@ public sealed partial class SpotifyItemDetailsViewModel : ViewModelWithInitializ
     private SpotifyItemType _type;
     
     [ObservableProperty] 
-    private ObservableCollection<SpotifyItemBaseViewModel> _items = [];
+    private ObservableCollection<TrackViewModel> _items = [];
 
     public SpotifyItemDetailsViewModel()
     {
@@ -39,7 +42,7 @@ public sealed partial class SpotifyItemDetailsViewModel : ViewModelWithInitializ
         _spotifyClient = spotifyClient;
     }
 
-    protected override async Task Initialize(CancellationToken cancellationToken = default)
+    protected override async Task InitializeInternal(CancellationToken cancellationToken = default)
     {
         switch (Type)
         {
@@ -66,10 +69,5 @@ public sealed partial class SpotifyItemDetailsViewModel : ViewModelWithInitializ
             default:
                 throw new ArgumentOutOfRangeException();
         }
-    }
-
-    protected override Task Deactivate(CancellationToken cancellationToken = default)
-    {
-        return Task.CompletedTask;
     }
 }

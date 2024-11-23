@@ -8,7 +8,6 @@
         <StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Fluent.xaml"/>
         <StyleInclude Source="/Styles/BorderStyles.axaml" />
         <StyleInclude Source="/Styles/SplitViewStyles.axaml" />
-        <StyleInclude Source="avares://SpotifyApp.Shared/Controls/TracksGridControl.axaml" />
     </Application.Styles>
     
     <Application.Resources>

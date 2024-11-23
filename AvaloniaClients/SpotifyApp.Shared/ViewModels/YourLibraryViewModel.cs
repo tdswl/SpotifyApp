@@ -14,6 +14,9 @@ namespace SpotifyApp.Shared.ViewModels;
 public sealed partial class YourLibraryViewModel : ViewModelWithInitialization
 {
     private readonly ISpotifyClient _spotifyClient;
+    
+    [ObservableProperty] 
+    private bool _isLoading;
    
     [ObservableProperty] 
     private PlaylistViewModel? _selectedPlaylist;
@@ -31,7 +34,7 @@ public sealed partial class YourLibraryViewModel : ViewModelWithInitialization
         _spotifyClient = spotifyClient;
     }
 
-    protected override Task Initialize(CancellationToken cancellationToken = default)
+    protected override Task InitializeInternal(CancellationToken cancellationToken = default)
     {
         var likedSongsPlaylist = new PlaylistViewModel { Name = Resources.LikedSongs, Author = "0 songs", };
         Items.Add(likedSongsPlaylist);
@@ -39,11 +42,6 @@ public sealed partial class YourLibraryViewModel : ViewModelWithInitialization
         var loadPlaylists = LoadPlaylists(cancellationToken);
 
         return Task.WhenAll(loadLikedSongs, loadPlaylists);
-    }
-
-    protected override Task Deactivate(CancellationToken cancellationToken = default)
-    {
-        return Task.CompletedTask;
     }
 
     private async Task LoadPlaylists(CancellationToken cancellationToken)

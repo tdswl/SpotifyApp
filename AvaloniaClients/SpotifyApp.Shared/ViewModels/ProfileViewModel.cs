@@ -25,16 +25,11 @@ public sealed partial class ProfileViewModel : ViewModelWithInitialization
         _spotifyClient = spotifyClient;
     }
 
-    protected override async Task Initialize(CancellationToken cancellationToken = default)
+    protected override async Task InitializeInternal(CancellationToken cancellationToken = default)
     {
         var profile = await _spotifyClient.GetCurrentUsersProfileAsync(cancellationToken);
         
         UserName = profile.Display_name;
         Image = new ImageViewModel(profile.Images, ImageSize.Small);
-    }
-
-    protected override Task Deactivate(CancellationToken cancellationToken = default)
-    {
-        return Task.CompletedTask;
     }
 }

@@ -1,60 +1,22 @@
-﻿using Avalonia.Controls;
-using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace SpotifyApp.Shared.ViewModels.Base;
 
 public abstract partial class ViewModelWithInitialization : ObservableObject
 {
-    private bool _isInitialized;
-    
     [ObservableProperty] 
     private bool _isLoading;
-    
-    [RelayCommand(IncludeCancelCommand = true)]
-    private async Task InitializeAsync(CancellationToken token)
+
+    public async Task Initialize(CancellationToken cancellationToken = default)
     {
-        if (Design.IsDesignMode)
-        {
-            return;
-        }
-        
-        if (!_isInitialized)
-        {
-            IsLoading = true;
+        IsLoading = true;
 
-            await Initialize(token);
-            _isInitialized = true;
+        await InitializeInternal(cancellationToken);
 
-            IsLoading = false;
-        }
-    }
-    
-    [RelayCommand(IncludeCancelCommand = true)]
-    private async Task DeactivateAsync(CancellationToken token)
-    {
-        if (Design.IsDesignMode)
-        {
-            return;
-        }
-        
-        if (_isInitialized)
-        {
-            IsLoading = true;
-
-            await Deactivate(token);
-            _isInitialized = false;
-
-            IsLoading = false;
-        }
+        IsLoading = false;
     }
 
-    protected virtual Task Initialize(CancellationToken cancellationToken = default)
-    {
-        return Task.CompletedTask;
-    }
-
-    protected virtual Task Deactivate(CancellationToken cancellationToken = default)
+    protected virtual Task InitializeInternal(CancellationToken cancellationToken = default)
     {
         return Task.CompletedTask;
     }

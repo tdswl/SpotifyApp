@@ -12,7 +12,7 @@
                         <InvokeCommandAction Command="{Binding LoadImageCommand}" />
                     </EventTriggerBehavior>
                     <EventTriggerBehavior EventName="Unloaded">
-                        <InvokeCommandAction Command="{Binding Cleanup}" />
+                        <InvokeCommandAction Command="{Binding CleanupCommand}" />
                     </EventTriggerBehavior>
                 </Interaction.Behaviors>
             </Image>

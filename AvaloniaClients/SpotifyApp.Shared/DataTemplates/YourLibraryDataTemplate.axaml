@@ -5,7 +5,8 @@
     <DataTemplate x:Key="YourLibraryPlaylistDataTemplate"
                   DataType="{x:Type spotifyItems:PlaylistViewModel}">
         <Grid ColumnDefinitions="Auto, *"
-              RowDefinitions="*, *">
+              RowDefinitions="*, *"
+              Background="Transparent">
             <Border Grid.RowSpan="2"
                     ClipToBounds="True"
                     CornerRadius="2"
@@ -34,7 +35,8 @@
     <DataTemplate x:Key="YourLibraryAlbumDataTemplate"
                   DataType="{x:Type spotifyItems:AlbumViewModel}">
         <Grid ColumnDefinitions="Auto, *"
-              RowDefinitions="*, *">
+              RowDefinitions="*, *"
+              Background="Transparent">
             <Border Grid.RowSpan="2"
                     ClipToBounds="True"
                     CornerRadius="2"

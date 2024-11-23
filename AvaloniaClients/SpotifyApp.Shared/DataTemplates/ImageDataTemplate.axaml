@@ -3,7 +3,7 @@
                     xmlns:base="clr-namespace:SpotifyApp.Shared.ViewModels.Base">
     <DataTemplate x:Key="WebImage"
                   DataType="{x:Type base:ImageViewModel}">
-        <Grid>
+        <Panel>
             <Image Name="ProfImg"
                    Stretch="UniformToFill"
                    Source="{Binding Image}">
@@ -18,6 +18,6 @@
             </Image>
             <ProgressBar IsIndeterminate="True"
                          IsVisible="{Binding #ProfImg.Source, Converter={x:Static ObjectConverters.IsNull}}" />
-        </Grid>
+        </Panel>
     </DataTemplate>
 </ResourceDictionary>

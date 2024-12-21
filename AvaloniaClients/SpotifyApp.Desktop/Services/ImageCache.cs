@@ -1,7 +1,12 @@
+using System;
+using System.IO;
+using System.Net.Http;
+using System.Threading;
+using System.Threading.Tasks;
 using AsyncKeyedLock;
 using SpotifyApp.Services.Contracts;
 
-namespace SpotifyApp.Services;
+namespace SpotifyApp.Desktop.Services;
 
 internal sealed class ImageCache : IImageCache 
 {
@@ -18,7 +23,7 @@ internal sealed class ImageCache : IImageCache
         _httpClient = httpClientFactory.CreateClient();
     }
     
-    async Task<string> IImageCache.GetCachedImagePath(string webPath, CancellationToken cancellationToken)
+    async Task<byte[]> IImageCache.GetCachedImagePath(string webPath, CancellationToken cancellationToken)
     {
         using (await AsyncKeyedLocker.LockAsync(webPath, cancellationToken))
         {
@@ -32,7 +37,7 @@ internal sealed class ImageCache : IImageCache
             var filePath = $"{CacheFolder}/{fileName}";
             if (File.Exists(filePath))
             {
-                return filePath;
+                return await File.ReadAllBytesAsync(filePath, cancellationToken);
             }
 
             await using (var webStream = await _httpClient.GetStreamAsync(webPath, cancellationToken))
@@ -43,7 +48,7 @@ internal sealed class ImageCache : IImageCache
                 }
             }
 
-            return filePath;
+            return await File.ReadAllBytesAsync(filePath, cancellationToken);
         }
     }
 }

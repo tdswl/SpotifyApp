@@ -15,8 +15,7 @@ public static class ServicesCollectionExtensions
             .AddApiClients()
 
             .AddScoped<IAuthService, AuthService>()
-            .AddScoped<ITokenService, TokenService>()
-            .AddSingleton<IImageCache, ImageCache>();
+            .AddScoped<ITokenService, TokenService>();
 
         return services;
     }

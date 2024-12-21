@@ -29,11 +29,14 @@ public sealed partial class ImageViewModel : ViewModelWithInitialization, IDispo
         if (_spotifyImages is { Count: > 0 })
         {
             var imageWebUrl = GetImage(_spotifyImages, _imageSize).Url;
-            var cachedUrl = await _imageCache.GetCachedImagePath(imageWebUrl, cancellationToken);
+            var cachedFile = await _imageCache.GetCachedImagePath(imageWebUrl, cancellationToken);
             // Cleanup old image if it exists
             Dispose();
             // Set new one
-            Image = new Bitmap(cachedUrl);
+            using (var memoryStream = new MemoryStream(cachedFile))
+            {
+                Image = new Bitmap(memoryStream);
+            }
         }
     }
     

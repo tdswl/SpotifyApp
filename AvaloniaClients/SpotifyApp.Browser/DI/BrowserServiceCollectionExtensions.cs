@@ -2,7 +2,12 @@ using IdentityModel.OidcClient.Browser;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using SpotifyApp.Browser.Browser;
-using SpotifyApp.Storage.Sqlite.DI;
+using SpotifyApp.Browser.Repositories;
+using SpotifyApp.Browser.Services;
+using SpotifyApp.Browser.Storage;
+using SpotifyApp.Repositories.Contracts;
+using SpotifyApp.Services.Contracts;
+using SpotifyApp.Storage.Contracts.Interfaces;
 
 namespace SpotifyApp.Browser.DI;
 
@@ -17,7 +22,10 @@ public static class BrowserServiceCollectionExtensions
     public static IServiceCollection AddBrowser(this IServiceCollection services)
     {
         services.TryAdd(ServiceDescriptor.Scoped<IBrowser, SystemBrowser>());
-        services.AddSqliteInMemoryStorage();
+        services.TryAdd(ServiceDescriptor.Singleton<IImageCache, ImageCache>());
+        services.TryAdd(ServiceDescriptor.Scoped<IOAuthTokenReadRepository, OAuthTokenLocalStorageReadRepository>());
+        services.TryAdd(ServiceDescriptor.Scoped<IOAuthTokenWriteRepository, OAuthTokenLocalStorageWriteRepository>());
+        services.TryAdd(ServiceDescriptor.Scoped<IStorageInitialization, WasmStorageInitialization>());
 
         return services;
     }

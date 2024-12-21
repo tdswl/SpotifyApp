@@ -1,15 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk.WebAssembly">
 
     <PropertyGroup>
-        <TargetFramework>net8.0</TargetFramework>
-        <RuntimeIdentifier>browser-wasm</RuntimeIdentifier>
-        <WasmMainJSPath>AppBundle\main.js</WasmMainJSPath>
+        <TargetFramework>net9.0-browser</TargetFramework>
         <OutputType>Exe</OutputType>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <Nullable>enable</Nullable>
     </PropertyGroup>
-
-    <ItemGroup>
-        <WasmExtraFilesToDeploy Include="AppBundle\**" />
-    </ItemGroup>
 
     <ItemGroup>
         <PackageReference Include="Avalonia.Browser" />
@@ -19,10 +15,6 @@
         
         <ProjectReference Include="..\SpotifyApp.Shared\SpotifyApp.Shared.csproj" />
         <ProjectReference Include="..\..\Backend\SpotifyApp.Storage.Sqlite\SpotifyApp.Storage.Sqlite.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="AppBundle\" />
     </ItemGroup>
 
 </Project>

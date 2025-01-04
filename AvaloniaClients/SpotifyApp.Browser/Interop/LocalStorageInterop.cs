@@ -1,18 +1,17 @@
 ﻿using System.Runtime.InteropServices.JavaScript;
+using System.Runtime.Versioning;
 
 namespace SpotifyApp.Browser.Interop;
 
+[SupportedOSPlatform("browser")]
 internal static partial class LocalStorageInterop
 {
-    [JSImport("read", "localStorage.js")]
-    public static partial string Read(string key);
+    [JSImport("read", "LocalStorageScript")]
+    internal static partial string Read(string key);
     
-    [JSImport("add", "localStorage.js")]
-    public static partial void Add(string key, string value);
-
-    [JSImport("update", "localStorage.js")]
-    public static partial void Update(string key, string value);
+    [JSImport("add", "LocalStorageScript")]
+    internal static partial void Add(string key, string value);
     
-    [JSImport("delete", "localStorage.js")]
-    public static partial void Delete(string key);
+    [JSImport("remove", "LocalStorageScript")]
+    internal static partial void Remove(string key);
 }

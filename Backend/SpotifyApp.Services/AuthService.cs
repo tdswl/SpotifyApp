@@ -45,7 +45,15 @@ internal sealed class AuthService : IAuthService
             }
 
             // Else do a new login
-            info ??= await NewLogin(token);
+            try
+            {
+                info ??= await NewLogin(token);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
 
             _memoryCache.Set(MemoryCacheKeys.AuthorizationInfo, info);
 

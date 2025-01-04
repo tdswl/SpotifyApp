@@ -5,7 +5,7 @@ using System.Net.Sockets;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
-using IdentityModel.OidcClient.Browser;
+using Duende.IdentityModel.OidcClient.Browser;
 
 namespace SpotifyApp.Desktop.Browser;
 

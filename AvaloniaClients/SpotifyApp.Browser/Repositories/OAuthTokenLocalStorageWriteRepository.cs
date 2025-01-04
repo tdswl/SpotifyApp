@@ -33,7 +33,7 @@ internal sealed class OAuthTokenLocalStorageWriteRepository : IOAuthTokenWriteRe
     {
         try
         {
-            using (await JSHost.ImportAsync("localStorage.js", "../localStorage.js", token))
+            using (await JSHost.ImportAsync("LocalStorageScript", "../localStorage.js", token))
             {
                 foreach (var item in ToAdd)
                 {
@@ -44,14 +44,14 @@ internal sealed class OAuthTokenLocalStorageWriteRepository : IOAuthTokenWriteRe
                 
                 foreach (var item in ToUpdate)
                 {
-                    Interop.LocalStorageInterop.Update($"{nameof(OAuthToken)}-{item.Id}", JsonSerializer.Serialize(item));
+                    Interop.LocalStorageInterop.Add($"{nameof(OAuthToken)}-{item.Id}", JsonSerializer.Serialize(item));
                 }
                     
                 ToAdd.Clear();
                 
                 foreach (var item in ToDelete)
                 {
-                    Interop.LocalStorageInterop.Delete($"{nameof(OAuthToken)}-{item.Id}");
+                    Interop.LocalStorageInterop.Remove($"{nameof(OAuthToken)}-{item.Id}");
                 }
                 
                 ToAdd.Clear();

@@ -1,5 +1,5 @@
-using IdentityModel.OidcClient;
-using IdentityModel.OidcClient.Results;
+using Duende.IdentityModel.OidcClient;
+using Duende.IdentityModel.OidcClient.Results;
 
 namespace SpotifyApp.Api.Client.Auth;
 

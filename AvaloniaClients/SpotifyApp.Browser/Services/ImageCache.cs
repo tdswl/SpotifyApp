@@ -18,7 +18,7 @@ internal sealed class ImageCache : IImageCache
     {
         using (await AsyncKeyedLocker.LockAsync(webPath, cancellationToken))
         {
-            using (await JSHost.ImportAsync("cacheStorage.js", "../cacheStorage.js", cancellationToken))
+            using (await JSHost.ImportAsync("CacheStorageScript", "../cacheStorage.js", cancellationToken))
             {
                 return Interop.CacheStorageInterop.CacheData(webPath);
             }

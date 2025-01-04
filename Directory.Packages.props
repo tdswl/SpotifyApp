@@ -3,12 +3,13 @@
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
   </PropertyGroup>
   <ItemGroup>
-    <PackageVersion Include="IdentityModel.OidcClient" Version="6.0.0" />
     <PackageVersion Include="AsyncKeyedLock" Version="7.1.4" />
     <PackageVersion Include="AutoMapper" Version="13.0.1" />
     <PackageVersion Include="AutoMapper.Extensions.EnumMapping" Version="3.2.0" />
     <PackageVersion Include="AsyncFixer" Version="1.6.0" />
     <PackageVersion Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+    <PackageVersion Include="Duende.AccessTokenManagement" Version="3.1.1" />
+    <PackageVersion Include="Duende.IdentityModel.OidcClient" Version="6.0.0-rc.1" />
     <PackageVersion Include="Microsoft.Extensions.Caching.Abstractions" Version="9.0.0" />
     <PackageVersion Include="Serilog" Version="4.2.0" />
     <PackageVersion Include="Serilog.Extensions.Logging" Version="9.0.0" />

@@ -27,7 +27,7 @@ internal class LoopbackHttpListener : IDisposable
             path = path[1..];
         }
 
-        var url = $"http://127.0.0.1:{port}/{path}";
+        var url = $"https://127.0.0.1:{port}/{path}";
 
         _host = new WebHostBuilder()
             .UseKestrel()

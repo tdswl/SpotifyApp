@@ -1,7 +1,7 @@
-using IdentityModel.Jwk;
-using IdentityModel.OidcClient;
-using IdentityModel.OidcClient.Browser;
-using IdentityModel.OidcClient.Results;
+using Duende.IdentityModel.Jwk;
+using Duende.IdentityModel.OidcClient;
+using Duende.IdentityModel.OidcClient.Browser;
+using Duende.IdentityModel.OidcClient.Results;
 using Microsoft.Extensions.Logging;
 
 namespace SpotifyApp.Api.Client.Auth;
@@ -11,6 +11,7 @@ internal sealed class AuthClient : IAuthClient
     private readonly IBrowser _browser;
     private readonly ILoggerFactory _loggerFactory;
     private readonly IOidcConfiguration _oidcConfiguration;
+    
 
     public AuthClient(IBrowser browser,
         ILoggerFactory loggerFactory,

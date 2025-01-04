@@ -4,8 +4,8 @@ using System.Runtime.Versioning;
 namespace SpotifyApp.Browser.Interop;
 
 [SupportedOSPlatform("browser")]
-internal static partial class CacheStorageInterop
+internal static partial class RedirectInterop
 {
-    [JSImport("cacheData", "CacheStorageScript")]
-    internal static partial byte[] CacheData(string url);
+    [JSImport("open", "RedirectScript")]
+    internal static partial void Open(string url);
 }

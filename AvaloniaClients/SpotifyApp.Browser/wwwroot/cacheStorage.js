@@ -1,5 +1,5 @@
 ﻿// Try to get data from the cache, but fall back to fetching it live.
-async function cacheData(url) {
+export async function cacheData(url) {
     const cacheVersion = 1;
     const cacheName = `spotify-app-183C8380-${cacheVersion}`;
     let cachedData = await getCachedData(cacheName, url);
@@ -19,7 +19,7 @@ async function cacheData(url) {
 }
 
 // Get data from the cache.
-async function getCachedData(cacheName, url) {
+export async function getCachedData(cacheName, url) {
     const cacheStorage = await caches.open(cacheName);
     const cachedResponse = await cacheStorage.match(url);
 
@@ -31,7 +31,7 @@ async function getCachedData(cacheName, url) {
 }
 
 // Delete any old caches to respect user's disk space.
-async function deleteOldCaches(currentCache) {
+export async function deleteOldCaches(currentCache) {
     const keys = await caches.keys();
 
     for (const key of keys) {

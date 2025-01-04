@@ -13,6 +13,7 @@ internal partial class Program
     private static Task Main(string[] args)
         => AppBuilder.Configure(AppFactory)
             .WithInterFont()
+            .LogToTrace()
             .StartBrowserAppAsync("out");
     
     private static App AppFactory()

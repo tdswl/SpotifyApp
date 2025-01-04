@@ -12,7 +12,7 @@ public sealed class OAuthTokenLocalStorageReadRepository : IOAuthTokenReadReposi
 {
     async Task<OAuthToken?> IOAuthTokenReadRepository.GetLatestUserToken(CancellationToken cancellationToken)
     {
-        using (await JSHost.ImportAsync("localStorage.js", "../localStorage.js", cancellationToken))
+        using (await JSHost.ImportAsync("LocalStorageScript", "../localStorage.js", cancellationToken))
         {
             try
             { 

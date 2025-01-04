@@ -1,6 +1,6 @@
 namespace SpotifyApp.Api.Client.Auth;
 
-internal static class AuthRoutes
+public static class AuthRoutes
 {
     public const string IssuerName = "https://accounts.spotify.com/";
 

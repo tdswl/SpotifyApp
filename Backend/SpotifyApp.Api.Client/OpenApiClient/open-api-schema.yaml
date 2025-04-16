@@ -225,6 +225,7 @@ paths:
         - oauth_2_0: []
   /artists/{id}/related-artists:
     get:
+      deprecated: true
       tags:
         - Artists
       operationId: get-an-artists-related-artists
@@ -1884,6 +1885,7 @@ paths:
             - playlist-modify-private
   /browse/featured-playlists:
     get:
+      deprecated: true
       tags:
         - Playlists
       operationId: get-featured-playlists
@@ -1989,6 +1991,7 @@ paths:
         - oauth_2_0: []
   /browse/categories/{category_id}/playlists:
     get:
+      deprecated: true
       tags:
         - Playlists
         - Categories
@@ -2355,6 +2358,7 @@ paths:
         - oauth_2_0: []
   /audio-features:
     get:
+      deprecated: true
       tags:
         - Tracks
       operationId: get-several-audio-features
@@ -2388,6 +2392,7 @@ paths:
         - oauth_2_0: []
   /audio-features/{id}:
     get:
+      deprecated: true
       tags:
         - Tracks
       operationId: get-audio-features
@@ -2421,6 +2426,7 @@ paths:
         - oauth_2_0: []
   /audio-analysis/{id}:
     get:
+      deprecated: true
       tags:
         - Tracks
       operationId: get-audio-analysis
@@ -2452,6 +2458,7 @@ paths:
         - oauth_2_0: []
   /recommendations:
     get:
+      deprecated: true
       tags:
         - Tracks
       operationId: get-recommendations
@@ -2912,6 +2919,7 @@ paths:
         - oauth_2_0: []
   /recommendations/available-genre-seeds:
     get:
+      deprecated: true
       tags:
         - Genres
       operationId: get-recommendation-genres
@@ -4879,7 +4887,7 @@ components:
 
             Vectors are normalized to 1 by their strongest dimension, therefore noisy sounds are likely represented by values that are all close to 1, while pure tones are described by one value at 1 (the pitch) and others near 0.
             As can be seen below, the 12 vector indices are a combination of low-power spectrum values at their respective pitch frequencies.
-            ![pitch vector](https://developer.spotify.com/assets/audio/Pitch_vector.png)
+            ![pitch vector](/assets/audio/Pitch_vector.png)
           items:
             type: number
             minimum: 0
@@ -4891,7 +4899,7 @@ components:
             Timbre is the quality of a musical note or sound that distinguishes different types of musical instruments, or voices. It is a complex notion also referred to as sound color, texture, or tone quality, and is derived from the shape of a segment’s spectro-temporal surface, independently of pitch and loudness. The timbre feature is a vector that includes 12 unbounded values roughly centered around 0. Those values are high level abstractions of the spectral surface, ordered by degree of importance.
 
             For completeness however, the first dimension represents the average loudness of the segment; second emphasizes brightness; third is more closely correlated to the flatness of a sound; fourth to sounds with a stronger attack; etc. See an image below representing the 12 basis functions (i.e. template segments).
-            ![timbre basis functions](https://developer.spotify.com/assets/audio/Timbre_basis_functions.png)
+            ![timbre basis functions](/assets/audio/Timbre_basis_functions.png)
 
             The actual timbre of the segment is best described as a linear combination of these 12 basis functions weighted by the coefficient values: timbre = c1 x b1 + c2 x b2 + ... + c12 x b12, where c1 to c12 represent the 12 coefficients and b1 to b12 the 12 basis functions as displayed below. Timbre vectors are best used in comparison with each other.
           items:
@@ -5088,6 +5096,7 @@ components:
           type: string
           description: The name of the track.
         preview_url:
+          deprecated: true
           type: string
           nullable: true
           description: |
@@ -5577,10 +5586,6 @@ components:
             - $ref: '#/components/schemas/ExternalUrlObject'
           description: |
             Known external URLs for this playlist.
-        followers:
-          allOf:
-            - $ref: '#/components/schemas/FollowersObject'
-          description: Information about the followers of the playlist.
         href:
           type: string
           description: |
@@ -5711,11 +5716,6 @@ components:
             - $ref: '#/components/schemas/ExternalUrlObject'
           description: |
             Known public external URLs for this user.
-        followers:
-          allOf:
-            - $ref: '#/components/schemas/FollowersObject'
-          description: |
-            Information about the followers of this user.
         href:
           type: string
           description: |
@@ -5848,6 +5848,7 @@ components:
           description: |
             The popularity of the track. The value will be between 0 and 100, with 100 being the most popular.<br/>The popularity of a track is a value between 0 and 100, with 100 being the most popular. The popularity is calculated by algorithm and is based, in the most part, on the total number of plays the track has had and how recent those plays are.<br/>Generally speaking, songs that are being played a lot now will have a higher popularity than songs that were played a lot in the past. Duplicate tracks (e.g. the same track from a single and an album) are rated independently. Artist and album popularity is derived mathematically from track popularity. _**Note**: the popularity value may lag actual popularity by a few days: the value is not updated in real time._
         preview_url:
+          deprecated: true
           type: string
           nullable: true
           description: |
@@ -5916,6 +5917,7 @@ components:
         - uri
       properties:
         audio_preview_url:
+          deprecated: true
           type: string
           nullable: true
           example: https://p.scdn.co/mp3-preview/2f37da1d4221f40b9d1a98cd191f4d6f1646ad17
@@ -6451,6 +6453,7 @@ components:
         - uri
       properties:
         audio_preview_url:
+          deprecated: true
           type: string
           nullable: true
           example: https://p.scdn.co/mp3-preview/2f37da1d4221f40b9d1a98cd191f4d6f1646ad17
@@ -6600,9 +6603,10 @@ components:
               type: array
               items:
                 type: string
-              example: ['Egg punk', 'Noise rock']
+              deprecated: true
+              example: []
               description: |
-                A list of the genres the album is associated with. If not yet classified, the array is empty.
+                **Deprecated** The array is always empty.
             label:
               type: string
               description: |

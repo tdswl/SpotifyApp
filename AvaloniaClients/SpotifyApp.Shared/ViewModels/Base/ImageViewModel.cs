@@ -53,6 +53,7 @@ public sealed partial class ImageViewModel : ViewModelWithInitialization, IDispo
 
     public void Dispose()
     {
-        Image?.Dispose(); 
+        // https://github.com/AvaloniaUI/Avalonia/issues/8515
+        // Image?.Dispose(); 
     }
 }
